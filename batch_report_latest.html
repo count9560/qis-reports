@@ -449,6 +449,177 @@
         .comparison-table tbody tr:hover td:not(.col-fixed) {
             background: rgba(0,0,0,0.04) !important;
         }
+
+        /* 체크리스트 항목 설명 모달 */
+        .item-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .item-modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .item-modal {
+            background: white;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.2s ease;
+        }
+
+        .item-modal-overlay.active .item-modal {
+            transform: scale(1);
+        }
+
+        .item-modal-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .item-modal-header h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #2c3e50;
+            line-height: 1.4;
+        }
+
+        .item-modal-header .item-id {
+            font-size: 12px;
+            color: #6c757d;
+            background: #f1f3f5;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-top: 5px;
+            display: inline-block;
+        }
+
+        .item-modal-close {
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: #adb5bd;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+            margin-left: 15px;
+        }
+
+        .item-modal-close:hover {
+            color: #495057;
+        }
+
+        .item-modal-body {
+            padding: 25px;
+        }
+
+        .item-modal-section {
+            margin-bottom: 20px;
+        }
+
+        .item-modal-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .item-modal-section label {
+            font-size: 11px;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .item-modal-section .value {
+            font-size: 14px;
+            color: #212529;
+            line-height: 1.6;
+        }
+
+        .item-modal-section .value.description {
+            background: #f8f9fa;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+
+        .item-modal-section .value.benchmark {
+            font-weight: 600;
+            color: #28a745;
+        }
+
+        .item-modal-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .item-modal-tag {
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            background: #e9ecef;
+            color: #495057;
+        }
+
+        .item-modal-tag.mandatory {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .item-modal-tag.auto {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .item-modal-tag.manual {
+            background: #cce5ff;
+            color: #004085;
+        }
+
+        /* 클릭 가능한 항목명 스타일 */
+        .clickable-item {
+            cursor: pointer;
+            color: #495057;
+            transition: color 0.15s, background 0.15s;
+            padding: 2px 5px;
+            margin: -2px -5px;
+            border-radius: 4px;
+        }
+
+        .clickable-item:hover {
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .clickable-item::after {
+            content: ' ℹ️';
+            font-size: 10px;
+            opacity: 0;
+            transition: opacity 0.15s;
+        }
+
+        .clickable-item:hover::after {
+            opacity: 1;
+        }
     </style>
     <!-- Lightweight Charts (TradingView) for interactive price charts -->
     <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
@@ -457,7 +628,7 @@
     <!-- Header -->
     <div class="report-header">
         <h1>QIS Strategy Comparison Report</h1>
-        <p class="subtitle">7 Strategies Evaluated | 2025-12-09 13:03</p>
+        <p class="subtitle">7 Strategies Evaluated | 2025-12-09 13:40</p>
     </div>
 
     <!-- Summary Cards -->
@@ -2545,7 +2716,9 @@
                             <span class="mandatory-star">★</span>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">연환산 수익률</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('PERF_01')">연환산 수익률</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -2615,7 +2788,9 @@
                             <span class="mandatory-star">★</span>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">샤프 비율</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('PERF_02')">샤프 비율</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -2685,7 +2860,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">소르티노 비율</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('PERF_03')">소르티노 비율</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -2755,7 +2932,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">칼마 비율</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('PERF_04')">칼마 비율</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -2825,7 +3004,9 @@
                             <span class="mandatory-star">★</span>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">3년 수익률 일관성</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('PERF_05')">3년 수익률 일관성</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -2895,7 +3076,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">승률 (일간)</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('PERF_06')">승률 (일간)</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -2965,7 +3148,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">1년 수익률</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('PERF_07')">1년 수익률</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -3035,7 +3220,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">YTD 수익률</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('PERF_08')">YTD 수익률</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -3105,7 +3292,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">정보비율</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('PERF_09')">정보비율</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -3175,7 +3364,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">알파</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('PERF_10')">알파</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -3248,7 +3439,9 @@
                             <span class="mandatory-star">★</span>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">1년 최대 낙폭 (MDD)</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('RISK_01')">1년 최대 낙폭 (MDD)</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -3318,7 +3511,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">연환산 변동성</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('RISK_02')">연환산 변동성</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -3388,7 +3583,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">VaR 95% (일간)</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('RISK_03')">VaR 95% (일간)</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -3458,7 +3655,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">CVaR 95%</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('RISK_04')">CVaR 95%</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -3528,7 +3727,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">하방 변동성</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('RISK_05')">하방 변동성</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -3598,7 +3799,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">테일 비율</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('RISK_06')">테일 비율</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -3668,7 +3871,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">현재 낙폭</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('RISK_07')">현재 낙폭</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -3738,7 +3943,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">최악의 월간 수익률</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('RISK_08')">최악의 월간 수익률</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -3811,7 +4018,9 @@
                             <span class="mandatory-star">★</span>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">트랙레코드 기간</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('QUAL_01')">트랙레코드 기간</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -3881,7 +4090,9 @@
                             <span class="mandatory-star">★</span>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">전략 투명성</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('QUAL_02')">전략 투명성</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -3951,7 +4162,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">백테스트 신뢰성</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('QUAL_03')">백테스트 신뢰성</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -4021,7 +4234,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">구성자산 다양성</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('QUAL_04')">구성자산 다양성</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -4091,7 +4306,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">리밸런싱 합리성</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('QUAL_05')">리밸런싱 합리성</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -4161,7 +4378,9 @@
                             <span class="mandatory-star">★</span>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">유동성 평가</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('QUAL_06')">유동성 평가</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -4231,7 +4450,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">레버리지 수준</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('QUAL_07')">레버리지 수준</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -4301,7 +4522,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">IB 신뢰도</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('QUAL_08')">IB 신뢰도</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -4374,7 +4597,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">운용보수</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('COST_01')">운용보수</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -4444,7 +4669,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">거래비용</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('COST_02')">거래비용</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -4514,7 +4741,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">총 비용</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('COST_03')">총 비용</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -4584,7 +4813,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">비용 대비 초과수익</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('COST_04')">비용 대비 초과수익</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -4657,7 +4888,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">포트폴리오 평균 상관계수</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('CORR_01')">포트폴리오 평균 상관계수</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -4727,7 +4960,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">최대 상관 상품</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('CORR_02')">최대 상관 상품</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -4797,7 +5032,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">분산효과 기여도</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('CORR_03')">분산효과 기여도</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -4867,7 +5104,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">구성자산 중복도</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('CORR_04')">구성자산 중복도</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -4937,7 +5176,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">팩터 익스포저 다양성</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('CORR_05')">팩터 익스포저 다양성</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -5007,7 +5248,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">자산군 분산 기여</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('CORR_06')">자산군 분산 기여</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -5077,7 +5320,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">위기 시 상대 손실률</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('CORR_07')">위기 시 상대 손실률</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -5147,7 +5392,9 @@
                             
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">위기 시 상관계수 급등</td>
+                        <td class="col-fixed col-name">
+                            <span class="clickable-item" onclick="showItemInfo('CORR_08')">위기 시 상관계수 급등</span>
+                        </td>
 
                         <!-- 각 전략의 값 -->
                         
@@ -5232,7 +5479,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>Generated by QIS Fund Manager | 2025-12-09 13:03:23</p>
+        <p>Generated by QIS Fund Manager | 2025-12-09 13:40:12</p>
     </footer>
 
     <!-- Price Chart Initialization -->
@@ -5553,5 +5800,517 @@
     });
     </script>
     
+
+    <!-- 체크리스트 항목 설명 모달 -->
+    <div id="item-modal-overlay" class="item-modal-overlay" onclick="closeItemModal(event)">
+        <div class="item-modal" onclick="event.stopPropagation()">
+            <div class="item-modal-header">
+                <div>
+                    <h3 id="modal-item-name"></h3>
+                    <span id="modal-item-id" class="item-id"></span>
+                </div>
+                <button class="item-modal-close" onclick="closeItemModal()">&times;</button>
+            </div>
+            <div class="item-modal-body">
+                <div class="item-modal-section">
+                    <label>설명 (Description)</label>
+                    <div id="modal-item-desc" class="value description"></div>
+                </div>
+                <div class="item-modal-section">
+                    <label>기준 (Benchmark)</label>
+                    <div id="modal-item-benchmark" class="value benchmark"></div>
+                </div>
+                <div class="item-modal-section">
+                    <label>속성 (Attributes)</label>
+                    <div id="modal-item-tags" class="item-modal-tags"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // 체크리스트 정의 데이터
+    const checklistDefinitions = {
+        
+        'PERF_01': {
+            name: '연환산 수익률',
+            name_en: 'Annualized Return',
+            description: '복리 기준 연간 수익률. 장기 성과의 핵심 지표로 최소 5% 이상 요구',
+            category: 'performance',
+            item_type: 'auto',
+            is_mandatory: true,
+            benchmark: '&gt;= 5%',
+            weight: 1.2
+        },
+        
+        'PERF_02': {
+            name: '샤프 비율',
+            name_en: 'Sharpe Ratio',
+            description: '위험 대비 초과수익 측정. 변동성 1단위당 무위험수익률 초과분',
+            category: 'performance',
+            item_type: 'auto',
+            is_mandatory: true,
+            benchmark: '&gt;= 0.5',
+            weight: 1.2
+        },
+        
+        'PERF_03': {
+            name: '소르티노 비율',
+            name_en: 'Sortino Ratio',
+            description: '하방 위험 대비 수익률. 샤프와 달리 손실 변동성만 고려하여 더 정밀',
+            category: 'performance',
+            item_type: 'auto',
+            is_mandatory: false,
+            benchmark: '&gt;= 0.7',
+            weight: 1.0
+        },
+        
+        'PERF_04': {
+            name: '칼마 비율',
+            name_en: 'Calmar Ratio',
+            description: '최대낙폭 대비 수익률. MDD 1단위당 연수익률로 회복력 측정',
+            category: 'performance',
+            item_type: 'auto',
+            is_mandatory: false,
+            benchmark: '&gt;= 0.3',
+            weight: 1.0
+        },
+        
+        'PERF_05': {
+            name: '3년 수익률 일관성',
+            name_en: '3Y Return Consistency',
+            description: '연도별 양의 수익 비율. 특정 연도 쏠림 없이 꾸준한 성과 확인',
+            category: 'performance',
+            item_type: 'auto',
+            is_mandatory: true,
+            benchmark: '&gt;= 60% 양의 연도',
+            weight: 1.1
+        },
+        
+        'PERF_06': {
+            name: '승률 (일간)',
+            name_en: 'Win Rate (Daily)',
+            description: '일간 양의 수익률 비율. 50% 이상이면 평균적으로 이기는 전략',
+            category: 'performance',
+            item_type: 'auto',
+            is_mandatory: false,
+            benchmark: '&gt;= 50%',
+            weight: 0.8
+        },
+        
+        'PERF_07': {
+            name: '1년 수익률',
+            name_en: '1Y Return',
+            description: '최근 1년간 절대 수익률. 단기 성과 및 현재 모멘텀 확인',
+            category: 'performance',
+            item_type: 'auto',
+            is_mandatory: false,
+            benchmark: '&gt;= 0%',
+            weight: 0.9
+        },
+        
+        'PERF_08': {
+            name: 'YTD 수익률',
+            name_en: 'YTD Return',
+            description: '연초 이후 수익률. 올해 성과 및 최신 트렌드 반영',
+            category: 'performance',
+            item_type: 'auto',
+            is_mandatory: false,
+            benchmark: '&gt;= 0%',
+            weight: 0.8
+        },
+        
+        'PERF_09': {
+            name: '정보비율',
+            name_en: 'Information Ratio',
+            description: '추적오차 대비 초과수익. 벤치마크 대비 일관된 아웃퍼폼 측정',
+            category: 'performance',
+            item_type: 'auto',
+            is_mandatory: false,
+            benchmark: '&gt;= 0.3',
+            weight: 0.9
+        },
+        
+        'PERF_10': {
+            name: '알파',
+            name_en: 'Alpha',
+            description: '시장수익률 초과분. 전략 고유의 부가가치 창출 능력',
+            category: 'performance',
+            item_type: 'auto',
+            is_mandatory: false,
+            benchmark: '&gt;= 0%',
+            weight: 0.9
+        },
+        
+        'RISK_01': {
+            name: '1년 최대 낙폭 (MDD)',
+            name_en: '1-Year Maximum Drawdown',
+            description: '최근 1년간 고점 대비 최대 하락폭. 최근 시장 환경에서의 손실 위험 측정',
+            category: 'risk',
+            item_type: 'auto',
+            is_mandatory: true,
+            benchmark: '&lt;= 25%',
+            weight: 1.2
+        },
+        
+        'RISK_02': {
+            name: '연환산 변동성',
+            name_en: 'Annualized Volatility',
+            description: '수익률의 표준편차. 가격 변동의 불확실성 정도',
+            category: 'risk',
+            item_type: 'auto',
+            is_mandatory: false,
+            benchmark: '&lt;= 20%',
+            weight: 1.0
+        },
+        
+        'RISK_03': {
+            name: 'VaR 95% (일간)',
+            name_en: 'VaR 95% (Daily)',
+            description: '95% 신뢰구간 일간 최대손실. 20일 중 1일 초과 가능 손실',
+            category: 'risk',
+            item_type: 'auto',
+            is_mandatory: false,
+            benchmark: '&lt;= 3%',
+            weight: 1.0
+        },
+        
+        'RISK_04': {
+            name: 'CVaR 95%',
+            name_en: 'CVaR 95%',
+            description: 'VaR 초과시 평균 손실(Expected Shortfall). 꼬리위험 측정',
+            category: 'risk',
+            item_type: 'auto',
+            is_mandatory: false,
+            benchmark: '&lt;= 4%',
+            weight: 1.0
+        },
+        
+        'RISK_05': {
+            name: '하방 변동성',
+            name_en: 'Downside Volatility',
+            description: '음의 수익률만의 표준편차. 손실 발생시 변동 크기 측정',
+            category: 'risk',
+            item_type: 'auto',
+            is_mandatory: false,
+            benchmark: '&lt;= 15%',
+            weight: 0.9
+        },
+        
+        'RISK_06': {
+            name: '테일 비율',
+            name_en: 'Tail Ratio',
+            description: '상위 수익/하위 손실 비율. 1 이상이면 이익이 손실보다 큼',
+            category: 'risk',
+            item_type: 'auto',
+            is_mandatory: false,
+            benchmark: '&gt;= 0.8',
+            weight: 0.8
+        },
+        
+        'RISK_07': {
+            name: '현재 낙폭',
+            name_en: 'Current Drawdown',
+            description: '현재 고점 대비 하락폭. 현시점 손실 상태 및 회복 필요분',
+            category: 'risk',
+            item_type: 'auto',
+            is_mandatory: false,
+            benchmark: '&lt;= 15%',
+            weight: 0.9
+        },
+        
+        'RISK_08': {
+            name: '최악의 월간 수익률',
+            name_en: 'Worst Monthly Return',
+            description: '역사적 최악의 월 손실. 단기 급락 리스크 측정',
+            category: 'risk',
+            item_type: 'auto',
+            is_mandatory: false,
+            benchmark: '&gt;= -10%',
+            weight: 0.8
+        },
+        
+        'QUAL_01': {
+            name: '트랙레코드 기간',
+            name_en: 'Track Record Length',
+            description: '실제 운용 기간. 다양한 시장 환경 경험 여부 확인',
+            category: 'strategy_quality',
+            item_type: 'auto',
+            is_mandatory: true,
+            benchmark: '&gt;= 3년',
+            weight: 1.1
+        },
+        
+        'QUAL_02': {
+            name: '전략 투명성',
+            name_en: 'Strategy Transparency',
+            description: '전략 로직/규칙 공개 수준. 블랙박스 여부 및 이해 가능성',
+            category: 'strategy_quality',
+            item_type: 'manual',
+            is_mandatory: true,
+            benchmark: '로직 공개 정도 (1-10)',
+            weight: 1.2
+        },
+        
+        'QUAL_03': {
+            name: '백테스트 신뢰성',
+            name_en: 'Backtest Reliability',
+            description: '백테스트와 실제 성과 괴리. 오버피팅/룩어헤드 바이어스 점검',
+            category: 'strategy_quality',
+            item_type: 'semi_auto',
+            is_mandatory: false,
+            benchmark: '백테스트 vs 실제 괴리',
+            weight: 1.0
+        },
+        
+        'QUAL_04': {
+            name: '구성자산 다양성',
+            name_en: 'Asset Diversity',
+            description: '기초자산 분산도(HHI). 특정 자산 집중 위험 측정',
+            category: 'strategy_quality',
+            item_type: 'auto',
+            is_mandatory: false,
+            benchmark: 'HHI 기반 집중도',
+            weight: 0.9
+        },
+        
+        'QUAL_05': {
+            name: '리밸런싱 합리성',
+            name_en: 'Rebalancing Logic',
+            description: '리밸런싱 빈도와 규칙의 적정성. 과도한 거래/비용 발생 여부',
+            category: 'strategy_quality',
+            item_type: 'manual',
+            is_mandatory: false,
+            benchmark: '리밸런싱 빈도/로직',
+            weight: 0.9
+        },
+        
+        'QUAL_06': {
+            name: '유동성 평가',
+            name_en: 'Liquidity Assessment',
+            description: '진입/청산 용이성. 대규모 포지션 구축/해제시 슬리피지',
+            category: 'strategy_quality',
+            item_type: 'manual',
+            is_mandatory: true,
+            benchmark: '진입/청산 용이성',
+            weight: 1.1
+        },
+        
+        'QUAL_07': {
+            name: '레버리지 수준',
+            name_en: 'Leverage Level',
+            description: '사용 레버리지 배수. 2배 초과시 급격한 손실 위험 증가',
+            category: 'strategy_quality',
+            item_type: 'semi_auto',
+            is_mandatory: false,
+            benchmark: '&lt;= 2x 권장',
+            weight: 1.0
+        },
+        
+        'QUAL_08': {
+            name: 'IB 신뢰도',
+            name_en: 'IB Credibility',
+            description: '발행 IB의 시장 신뢰도 및 트랙레코드. Tier1 IB 선호',
+            category: 'strategy_quality',
+            item_type: 'semi_auto',
+            is_mandatory: false,
+            benchmark: '발행사 티어',
+            weight: 0.9
+        },
+        
+        'COST_01': {
+            name: '운용보수',
+            name_en: 'Management Fee',
+            description: '연간 운용보수(bps). 장기 성과에 직접 영향하는 고정비용',
+            category: 'cost',
+            item_type: 'semi_auto',
+            is_mandatory: false,
+            benchmark: '&lt;= 50bps',
+            weight: 1.0
+        },
+        
+        'COST_02': {
+            name: '거래비용',
+            name_en: 'Transaction Cost',
+            description: '리밸런싱 등 매매시 발생 비용. 거래빈도에 비례하여 증가',
+            category: 'cost',
+            item_type: 'semi_auto',
+            is_mandatory: false,
+            benchmark: '&lt;= 30bps',
+            weight: 0.9
+        },
+        
+        'COST_03': {
+            name: '총 비용',
+            name_en: 'Total Cost',
+            description: '운용보수+거래비용 합계. 전체 비용 부담 수준',
+            category: 'cost',
+            item_type: 'semi_auto',
+            is_mandatory: false,
+            benchmark: '&lt;= 80bps',
+            weight: 1.0
+        },
+        
+        'COST_04': {
+            name: '비용 대비 초과수익',
+            name_en: 'Excess Return / Cost',
+            description: '초과수익/총비용 비율. 비용 1단위당 얻는 초과수익',
+            category: 'cost',
+            item_type: 'auto',
+            is_mandatory: false,
+            benchmark: '&gt;= 3x',
+            weight: 0.9
+        },
+        
+        'CORR_01': {
+            name: '포트폴리오 평균 상관계수',
+            name_en: 'Portfolio Avg Correlation',
+            description: '기존 포트폴리오 보유 상품들과의 평균 상관계수. 낮을수록 분산효과 우수',
+            category: 'correlation',
+            item_type: 'auto',
+            is_mandatory: false,
+            benchmark: '&lt;= 0.5',
+            weight: 1.2
+        },
+        
+        'CORR_02': {
+            name: '최대 상관 상품',
+            name_en: 'Max Correlation Product',
+            description: '기존 포트폴리오 중 가장 높은 상관관계 상품과의 상관계수. 중복 투자 방지',
+            category: 'correlation',
+            item_type: 'auto',
+            is_mandatory: false,
+            benchmark: '&lt;= 0.7',
+            weight: 1.0
+        },
+        
+        'CORR_03': {
+            name: '분산효과 기여도',
+            name_en: 'Diversification Benefit',
+            description: '포트폴리오에 추가 시 변동성 감소 효과. 높을수록 분산효과 큼',
+            category: 'correlation',
+            item_type: 'auto',
+            is_mandatory: false,
+            benchmark: '&gt;= 5%',
+            weight: 1.1
+        },
+        
+        'CORR_04': {
+            name: '구성자산 중복도',
+            name_en: 'Underlying Overlap',
+            description: '기존 포트폴리오와 중복되는 구성자산 비중. 낮을수록 다양성 확보',
+            category: 'correlation',
+            item_type: 'auto',
+            is_mandatory: false,
+            benchmark: '&lt;= 30%',
+            weight: 1.0
+        },
+        
+        'CORR_05': {
+            name: '팩터 익스포저 다양성',
+            name_en: 'Factor Exposure Diversity',
+            description: '기존 포트폴리오에 없는 신규 팩터 익스포저 기여도 (0~1)',
+            category: 'correlation',
+            item_type: 'semi_auto',
+            is_mandatory: false,
+            benchmark: '&gt;= 0.5',
+            weight: 0.9
+        },
+        
+        'CORR_06': {
+            name: '자산군 분산 기여',
+            name_en: 'Asset Class Diversification',
+            description: '포트폴리오에 없는 새로운 자산군 포함 여부. 신규 자산군 추가 시 높은 점수',
+            category: 'correlation',
+            item_type: 'auto',
+            is_mandatory: false,
+            benchmark: '신규 자산군 추가',
+            weight: 0.9
+        },
+        
+        'CORR_07': {
+            name: '위기 시 상대 손실률',
+            name_en: 'Crisis Relative Loss',
+            description: '위기 시기(COVID, 금리인상 등) 평균 손실이 벤치마크(SPX) 대비 양호한지',
+            category: 'correlation',
+            item_type: 'auto',
+            is_mandatory: false,
+            benchmark: '&gt;= 벤치마크',
+            weight: 1.1
+        },
+        
+        'CORR_08': {
+            name: '위기 시 상관계수 급등',
+            name_en: 'Crisis Correlation Spike',
+            description: '위기 시기에 벤치마크와의 상관계수가 급등하는지 (분산효과 상실 여부)',
+            category: 'correlation',
+            item_type: 'auto',
+            is_mandatory: false,
+            benchmark: '급등 &lt; 0.2',
+            weight: 1.0
+        }
+        
+    };
+
+    function showItemInfo(itemId) {
+        const defn = checklistDefinitions[itemId];
+        if (!defn) return;
+
+        // 모달 내용 설정
+        document.getElementById('modal-item-name').textContent = defn.name + ' (' + defn.name_en + ')';
+        document.getElementById('modal-item-id').textContent = itemId;
+        document.getElementById('modal-item-desc').textContent = defn.description;
+        document.getElementById('modal-item-benchmark').textContent = defn.benchmark;
+
+        // 태그 생성
+        const tagsContainer = document.getElementById('modal-item-tags');
+        tagsContainer.innerHTML = '';
+
+        // 카테고리 태그
+        const catTag = document.createElement('span');
+        catTag.className = 'item-modal-tag';
+        catTag.textContent = defn.category.replace('_', ' ').toUpperCase();
+        tagsContainer.appendChild(catTag);
+
+        // 입력 타입 태그
+        const typeTag = document.createElement('span');
+        typeTag.className = 'item-modal-tag ' + defn.item_type;
+        typeTag.textContent = defn.item_type === 'auto' ? '자동계산' : (defn.item_type === 'manual' ? '수동입력' : '반자동');
+        tagsContainer.appendChild(typeTag);
+
+        // 필수항목 태그
+        if (defn.is_mandatory) {
+            const mandTag = document.createElement('span');
+            mandTag.className = 'item-modal-tag mandatory';
+            mandTag.textContent = '★ 필수항목';
+            tagsContainer.appendChild(mandTag);
+        }
+
+        // 가중치 태그
+        const weightTag = document.createElement('span');
+        weightTag.className = 'item-modal-tag';
+        weightTag.textContent = '가중치: ' + defn.weight.toFixed(1) + 'x';
+        tagsContainer.appendChild(weightTag);
+
+        // 모달 표시
+        document.getElementById('item-modal-overlay').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeItemModal(event) {
+        if (event && event.target !== document.getElementById('item-modal-overlay')) {
+            return;
+        }
+        document.getElementById('item-modal-overlay').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // ESC 키로 모달 닫기
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeItemModal();
+        }
+    });
+    </script>
 </body>
 </html>
