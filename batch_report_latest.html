@@ -621,6 +621,162 @@
             opacity: 1;
         }
 
+        /* 전략명 클릭 스타일 */
+        .clickable-strategy {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .clickable-strategy:hover {
+            background: rgba(102, 126, 234, 0.15) !important;
+            transform: translateY(-1px);
+        }
+
+        /* 전략 정보 모달 스타일 */
+        .strategy-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .strategy-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .strategy-modal {
+            background: white;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .strategy-modal-overlay.active .strategy-modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .strategy-modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .strategy-modal-header h3 {
+            margin: 0 0 5px 0;
+            font-size: 20px;
+        }
+
+        .strategy-modal-header .ticker {
+            font-size: 14px;
+            opacity: 0.9;
+            background: rgba(255,255,255,0.2);
+            padding: 3px 10px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .strategy-modal-close {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .strategy-modal-close:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .strategy-modal-body {
+            padding: 25px;
+        }
+
+        .strategy-modal-section {
+            margin-bottom: 20px;
+        }
+
+        .strategy-modal-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .strategy-modal-section label {
+            display: block;
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #6c757d;
+            margin-bottom: 6px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .strategy-modal-section .value {
+            font-size: 14px;
+            color: #212529;
+            line-height: 1.6;
+        }
+
+        .strategy-modal-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .strategy-modal-tag {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #e9ecef;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #495057;
+            font-weight: 500;
+        }
+
+        .strategy-modal-tag.issuer {
+            background: #667eea;
+            color: white;
+        }
+
+        .strategy-modal-tag.type {
+            background: #28a745;
+            color: white;
+        }
+
+        .strategy-modal-tag.grade {
+            font-weight: 700;
+        }
+
+        .strategy-modal-tag.grade-a { background: #28a745; color: white; }
+        .strategy-modal-tag.grade-b { background: #20c997; color: white; }
+        .strategy-modal-tag.grade-c { background: #ffc107; color: #212529; }
+        .strategy-modal-tag.grade-d { background: #fd7e14; color: white; }
+        .strategy-modal-tag.grade-f { background: #dc3545; color: white; }
+
         /* 위기 상관계수 히트맵 스타일 */
         .crisis-tab-btn {
             padding: 12px 18px;
@@ -697,25 +853,25 @@
         }
 
         .crisis-heatmap-table .hm-high {
-            background: linear-gradient(135deg, #dc3545, #c82333);
-            color: white;
-            font-weight: 700;
+            background: #f8d7da;
+            color: #721c24;
+            font-weight: 600;
         }
 
         .crisis-heatmap-table .hm-medium {
-            background: linear-gradient(135deg, #ffc107, #e0a800);
-            color: #212529;
+            background: #fff3cd;
+            color: #856404;
         }
 
         .crisis-heatmap-table .hm-low {
-            background: linear-gradient(135deg, #d4edda, #b8daff);
+            background: #d4edda;
             color: #155724;
         }
 
         .crisis-heatmap-table .hm-negative {
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            color: white;
-            font-weight: 700;
+            background: #cce5ff;
+            color: #004085;
+            font-weight: 600;
         }
 
         .crisis-heatmap-table .hm-na {
@@ -733,23 +889,23 @@
         }
 
         .hm-high-legend {
-            background: linear-gradient(135deg, #dc3545, #c82333);
-            color: white;
+            background: #f8d7da;
+            color: #721c24;
         }
 
         .hm-medium-legend {
-            background: linear-gradient(135deg, #ffc107, #e0a800);
-            color: #212529;
+            background: #fff3cd;
+            color: #856404;
         }
 
         .hm-low-legend {
-            background: linear-gradient(135deg, #d4edda, #b8daff);
+            background: #d4edda;
             color: #155724;
         }
 
         .hm-negative-legend {
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            color: white;
+            background: #cce5ff;
+            color: #004085;
         }
     </style>
     <!-- Lightweight Charts (TradingView) for interactive price charts -->
@@ -759,7 +915,7 @@
     <!-- Header -->
     <div class="report-header">
         <h1>QIS Strategy Comparison Report</h1>
-        <p class="subtitle">7 Strategies Evaluated | 2025-12-10 12:56</p>
+        <p class="subtitle">7 Strategies Evaluated | 2025-12-10 13:13</p>
     </div>
 
     <!-- Summary Cards -->
@@ -3987,7 +4143,7 @@
                         <th class="col-fixed col-name">Item</th>
                         
                         
-                        <th class="col-strategy">
+                        <th class="col-strategy clickable-strategy" onclick="showStrategyInfo('MSCBUVQ1')">
                             <div style="font-size: 11px; font-weight: bold;">MSCBUVQ1</div>
                             <div style="font-size: 9px; opacity: 0.9; max-width: 100px; white-space: normal; line-height: 1.2;">NDX Upside Volatility Car...</div>
                             <span class="grade-mini g-f">
@@ -3996,7 +4152,7 @@
                         </th>
                         
                         
-                        <th class="col-strategy">
+                        <th class="col-strategy clickable-strategy" onclick="showStrategyInfo('MSVXCSG2')">
                             <div style="font-size: 11px; font-weight: bold;">MSVXCSG2</div>
                             <div style="font-size: 9px; opacity: 0.9; max-width: 100px; white-space: normal; line-height: 1.2;">VIX Carry Strategy G2</div>
                             <span class="grade-mini g-f">
@@ -4005,7 +4161,7 @@
                         </th>
                         
                         
-                        <th class="col-strategy">
+                        <th class="col-strategy clickable-strategy" onclick="showStrategyInfo('CIEQPU06')">
                             <div style="font-size: 11px; font-weight: bold;">CIEQPU06</div>
                             <div style="font-size: 9px; opacity: 0.9; max-width: 100px; white-space: normal; line-height: 1.2;">Citi Equity US Put Ratio ...</div>
                             <span class="grade-mini g-f">
@@ -4014,7 +4170,7 @@
                         </th>
                         
                         
-                        <th class="col-strategy">
+                        <th class="col-strategy clickable-strategy" onclick="showStrategyInfo('CIEQDUV5')">
                             <div style="font-size: 11px; font-weight: bold;">CIEQDUV5</div>
                             <div style="font-size: 9px; opacity: 0.9; max-width: 100px; white-space: normal; line-height: 1.2;">Citi VN Downside Dispersi...</div>
                             <span class="grade-mini g-f">
@@ -4023,7 +4179,7 @@
                         </th>
                         
                         
-                        <th class="col-strategy">
+                        <th class="col-strategy clickable-strategy" onclick="showStrategyInfo('MSCBDV11')">
                             <div style="font-size: 11px; font-weight: bold;">MSCBDV11</div>
                             <div style="font-size: 9px; opacity: 0.9; max-width: 100px; white-space: normal; line-height: 1.2;">SPX Top 10 Vega Dispersio...</div>
                             <span class="grade-mini g-f">
@@ -4032,7 +4188,7 @@
                         </th>
                         
                         
-                        <th class="col-strategy">
+                        <th class="col-strategy clickable-strategy" onclick="showStrategyInfo('MSCBDVDS')">
                             <div style="font-size: 11px; font-weight: bold;">MSCBDVDS</div>
                             <div style="font-size: 9px; opacity: 0.9; max-width: 100px; white-space: normal; line-height: 1.2;">US Equity Downside Vega N...</div>
                             <span class="grade-mini g-f">
@@ -4041,7 +4197,7 @@
                         </th>
                         
                         
-                        <th class="col-strategy">
+                        <th class="col-strategy clickable-strategy" onclick="showStrategyInfo('MSCBGLQ1')">
                             <div style="font-size: 11px; font-weight: bold;">MSCBGLQ1</div>
                             <div style="font-size: 9px; opacity: 0.9; max-width: 100px; white-space: normal; line-height: 1.2;">NDX Grind Lower</div>
                             <span class="grade-mini g-f">
@@ -6802,7 +6958,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>Generated by QIS Fund Manager | 2025-12-10 12:56:03</p>
+        <p>Generated by QIS Fund Manager | 2025-12-10 13:13:27</p>
     </footer>
 
     <!-- Price Chart Initialization -->
@@ -7146,6 +7302,33 @@
                 <div class="item-modal-section">
                     <label>속성 (Attributes)</label>
                     <div id="modal-item-tags" class="item-modal-tags"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 전략 정보 모달 -->
+    <div id="strategy-modal-overlay" class="strategy-modal-overlay" onclick="closeStrategyModal(event)">
+        <div class="strategy-modal" onclick="event.stopPropagation()">
+            <div class="strategy-modal-header">
+                <div>
+                    <h3 id="modal-strategy-name"></h3>
+                    <span id="modal-strategy-ticker" class="ticker"></span>
+                </div>
+                <button class="strategy-modal-close" onclick="closeStrategyModal()">&times;</button>
+            </div>
+            <div class="strategy-modal-body">
+                <div class="strategy-modal-section">
+                    <label>전략 설명 (Description)</label>
+                    <div id="modal-strategy-desc" class="value"></div>
+                </div>
+                <div class="strategy-modal-section">
+                    <label>전략 유형 / 발행사</label>
+                    <div id="modal-strategy-tags" class="strategy-modal-tags"></div>
+                </div>
+                <div class="strategy-modal-section">
+                    <label>평가 등급</label>
+                    <div id="modal-strategy-grade" class="strategy-modal-tags"></div>
                 </div>
             </div>
         </div>
@@ -7640,8 +7823,157 @@
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             closeItemModal();
+            closeStrategyModal();
         }
     });
+    </script>
+
+    <script>
+    // 전략 정보 데이터
+    const strategyData = {
+        
+        
+        'MSCBUVQ1': {
+            ticker: 'MSCBUVQ1',
+            name: 'NDX Upside Volatility Carry',
+            description: 'NDX 업사이드 변동성 캐리 전략. 1-5 DTE 단기 OTM 콜 매도로 프리미엄 수확. 인트라데이 델타 헤징으로 방향성 리스크 관리. 안정적 캐리 수익 추구.',
+            strategy_type: '',
+            issuer: 'Morgan Stanley',
+            grade: 'F',
+            score: 73.55925065114297,
+            is_eligible: false
+        },
+        
+        
+        'MSVXCSG2': {
+            ticker: 'MSVXCSG2',
+            name: 'VIX Carry Strategy G2',
+            description: 'VIX 캐리 전략 G2 버전. VIX 선물 기간구조의 콘탱고 상태를 활용한 롤다운 캐리 수익 추구. 2세대 버전으로 리스크 관리 개선.',
+            strategy_type: '',
+            issuer: 'Morgan Stanley',
+            grade: 'F',
+            score: 72.20642945657501,
+            is_eligible: false
+        },
+        
+        
+        'CIEQPU06': {
+            ticker: 'CIEQPU06',
+            name: 'Citi Equity US Put Ratio Strategy',
+            description: 'Put Ratio 전략. SPX 상위 50종목 OTM 풋 매수 + SPX 지수 풋 매도로 파이낸싱. 개별 종목 급락 시 높은 페이오프. 테일리스크 헤징에 효과적.',
+            strategy_type: '',
+            issuer: 'Citi',
+            grade: 'F',
+            score: 69.63105018123876,
+            is_eligible: false
+        },
+        
+        
+        'CIEQDUV5': {
+            ticker: 'CIEQDUV5',
+            name: 'Citi VN Downside Dispersion Strategy',
+            description: '베가 중립 하방 분산 전략. SPX 상위 50개 개별주식 변동성 매수 vs 지수 변동성 매도. 롱 스큐 포지션으로 하락장에서 방어적. 상관관계 붕괴 시 수익.',
+            strategy_type: '',
+            issuer: 'Citi',
+            grade: 'F',
+            score: 67.21250059069277,
+            is_eligible: false
+        },
+        
+        
+        'MSCBDV11': {
+            ticker: 'MSCBDV11',
+            name: 'SPX Top 10 Vega Dispersion',
+            description: 'SPX 상위 10개 대형주 베가 중립 분산 전략. 개별주식 변동성 매수 vs 지수 변동성 매도. 상관관계 하락 시 수익. 분산 확대 국면에서 방어력 제공.',
+            strategy_type: '',
+            issuer: 'Morgan Stanley',
+            grade: 'F',
+            score: 66.70291490342704,
+            is_eligible: false
+        },
+        
+        
+        'MSCBDVDS': {
+            ticker: 'MSCBDVDS',
+            name: 'US Equity Downside Vega Neutral Dispersion Strategy',
+            description: 'US Equity 베가 중립 하방 분산 전략. SPX 개별주식 변동성 매수 vs 지수 변동성 매도. 상관관계 하락 시 수익. 하방 스큐 포지션으로 시장 스트레스 시 방어력 제공.',
+            strategy_type: '',
+            issuer: 'Morgan Stanley',
+            grade: 'F',
+            score: 59.985787210208905,
+            is_eligible: false
+        },
+        
+        
+        'MSCBGLQ1': {
+            ticker: 'MSCBGLQ1',
+            name: 'NDX Grind Lower',
+            description: 'NDX 점진적 하락 방어 전략. 40델타 풋 복제 + 1-5 DTE OTM 콜 매도로 자금조달. 급락보다 점진적 하락 시 높은 수익. 인트라데이 델타 헤징 적용.',
+            strategy_type: '',
+            issuer: 'Morgan Stanley',
+            grade: 'F',
+            score: 55.93858335839297,
+            is_eligible: false
+        }
+        
+    };
+
+    function showStrategyInfo(ticker) {
+        const strategy = strategyData[ticker];
+        if (!strategy) return;
+
+        // 모달 내용 설정
+        document.getElementById('modal-strategy-name').textContent = strategy.name;
+        document.getElementById('modal-strategy-ticker').textContent = strategy.ticker;
+        document.getElementById('modal-strategy-desc').textContent = strategy.description || '전략 설명이 등록되지 않았습니다.';
+
+        // 전략 유형/발행사 태그
+        const tagsContainer = document.getElementById('modal-strategy-tags');
+        tagsContainer.innerHTML = '';
+
+        if (strategy.issuer) {
+            const issuerTag = document.createElement('span');
+            issuerTag.className = 'strategy-modal-tag issuer';
+            issuerTag.textContent = strategy.issuer;
+            tagsContainer.appendChild(issuerTag);
+        }
+
+        if (strategy.strategy_type) {
+            const typeTag = document.createElement('span');
+            typeTag.className = 'strategy-modal-tag type';
+            typeTag.textContent = strategy.strategy_type;
+            tagsContainer.appendChild(typeTag);
+        }
+
+        // 등급 태그
+        const gradeContainer = document.getElementById('modal-strategy-grade');
+        gradeContainer.innerHTML = '';
+
+        const gradeTag = document.createElement('span');
+        const gradeClass = strategy.grade ? strategy.grade[0].toLowerCase() : 'f';
+        gradeTag.className = 'strategy-modal-tag grade grade-' + gradeClass;
+        gradeTag.textContent = strategy.grade + ' (' + strategy.score.toFixed(1) + '점)';
+        gradeContainer.appendChild(gradeTag);
+
+        const eligibleTag = document.createElement('span');
+        eligibleTag.className = 'strategy-modal-tag';
+        eligibleTag.style.background = strategy.is_eligible ? '#28a745' : '#dc3545';
+        eligibleTag.style.color = 'white';
+        eligibleTag.textContent = strategy.is_eligible ? '✓ 투자 적합' : '✗ 투자 부적합';
+        gradeContainer.appendChild(eligibleTag);
+
+        // 모달 표시
+        document.getElementById('strategy-modal-overlay').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeStrategyModal(event) {
+        if (event && event.target !== document.getElementById('strategy-modal-overlay')) {
+            return;
+        }
+        document.getElementById('strategy-modal-overlay').classList.remove('active');
+        document.body.style.overflow = '';
+    }
     </script>
 </body>
 </html>
