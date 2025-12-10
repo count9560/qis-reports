@@ -450,6 +450,49 @@
             background: rgba(0,0,0,0.04) !important;
         }
 
+        /* 연도별 수익률 서브 행 */
+        .yearly-sub-row {
+            background: rgba(103, 126, 234, 0.03) !important;
+        }
+        .yearly-sub-row td {
+            padding: 4px 6px !important;
+            border-top: 1px dashed #dee2e6 !important;
+        }
+        .yearly-sub-row .sub-label {
+            vertical-align: middle;
+        }
+        .yearly-sub-cell {
+            padding: 3px !important;
+        }
+        .yearly-mini-table {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .yearly-mini-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+        }
+        .yearly-mini-row.positive {
+            background: rgba(40, 167, 69, 0.12);
+            color: #155724;
+        }
+        .yearly-mini-row.negative {
+            background: rgba(220, 53, 69, 0.12);
+            color: #721c24;
+        }
+        .yearly-mini-row .year-label {
+            font-weight: 500;
+            color: #495057;
+        }
+        .yearly-mini-row .year-value {
+            font-weight: 600;
+        }
+
         /* 체크리스트 항목 설명 모달 */
         .item-modal-overlay {
             position: fixed;
@@ -1063,7 +1106,7 @@
     <!-- Header -->
     <div class="report-header">
         <h1>QIS Strategy Comparison Report</h1>
-        <p class="subtitle">7 Strategies Evaluated | 2025-12-10 16:42</p>
+        <p class="subtitle">7 Strategies Evaluated | 2025-12-10 16:48</p>
     </div>
 
     <!-- Summary Cards -->
@@ -5619,6 +5662,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -5705,6 +5752,208 @@
                         
                         
                     </tr>
+
+                    
+                    
+                    <tr class="yearly-sub-row">
+                        <td class="col-id sub-label"></td>
+                        <td class="col-name sub-label" style="font-size: 11px; color: #666;">
+                            📅 연도별 수익률
+                        </td>
+                        <td class="col-status sub-label"></td>
+                        
+                        <td class="col-strategy yearly-sub-cell">
+                            
+                            
+                            
+                            <div class="yearly-mini-table">
+                                
+                                
+                                <div class="yearly-mini-row negative">
+                                    <span class="year-label">2025</span>
+                                    <span class="year-value">-1.9%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">2024</span>
+                                    <span class="year-value">8.2%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">2023</span>
+                                    <span class="year-value">9.5%</span>
+                                </div>
+                                
+                            </div>
+                        </td>
+                        
+                        <td class="col-strategy yearly-sub-cell">
+                            
+                            
+                            
+                            <div class="yearly-mini-table">
+                                
+                                
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">2025</span>
+                                    <span class="year-value">4.3%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">2024</span>
+                                    <span class="year-value">3.9%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">2023</span>
+                                    <span class="year-value">7.4%</span>
+                                </div>
+                                
+                            </div>
+                        </td>
+                        
+                        <td class="col-strategy yearly-sub-cell">
+                            
+                            
+                            
+                            <div class="yearly-mini-table">
+                                
+                                
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">2025</span>
+                                    <span class="year-value">19.4%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row negative">
+                                    <span class="year-label">2024</span>
+                                    <span class="year-value">-1.7%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row negative">
+                                    <span class="year-label">2023</span>
+                                    <span class="year-value">-6.7%</span>
+                                </div>
+                                
+                            </div>
+                        </td>
+                        
+                        <td class="col-strategy yearly-sub-cell">
+                            
+                            
+                            
+                            <div class="yearly-mini-table">
+                                
+                                
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">2025</span>
+                                    <span class="year-value">6.3%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">2024</span>
+                                    <span class="year-value">1.6%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row negative">
+                                    <span class="year-label">2023</span>
+                                    <span class="year-value">-0.7%</span>
+                                </div>
+                                
+                            </div>
+                        </td>
+                        
+                        <td class="col-strategy yearly-sub-cell">
+                            
+                            
+                            
+                            <div class="yearly-mini-table">
+                                
+                                
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">2025</span>
+                                    <span class="year-value">7.5%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">2024</span>
+                                    <span class="year-value">0.1%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row negative">
+                                    <span class="year-label">2023</span>
+                                    <span class="year-value">-3.7%</span>
+                                </div>
+                                
+                            </div>
+                        </td>
+                        
+                        <td class="col-strategy yearly-sub-cell">
+                            
+                            
+                            
+                            <div class="yearly-mini-table">
+                                
+                                
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">2025</span>
+                                    <span class="year-value">2.4%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row negative">
+                                    <span class="year-label">2024</span>
+                                    <span class="year-value">-2.4%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row negative">
+                                    <span class="year-label">2023</span>
+                                    <span class="year-value">-4.0%</span>
+                                </div>
+                                
+                            </div>
+                        </td>
+                        
+                        <td class="col-strategy yearly-sub-cell">
+                            
+                            
+                            
+                            <div class="yearly-mini-table">
+                                
+                                
+                                <div class="yearly-mini-row negative">
+                                    <span class="year-label">2025</span>
+                                    <span class="year-value">-7.4%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">2024</span>
+                                    <span class="year-value">3.3%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row negative">
+                                    <span class="year-label">2023</span>
+                                    <span class="year-value">-0.0%</span>
+                                </div>
+                                
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+
                     
                     
                     
@@ -5791,6 +6040,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -5877,6 +6130,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -5963,6 +6220,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -6049,6 +6310,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -6135,6 +6400,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -6221,6 +6490,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -6307,6 +6580,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -6393,6 +6670,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -6479,6 +6760,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -6568,6 +6853,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -6654,6 +6943,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -6740,6 +7033,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -6826,6 +7123,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -6912,6 +7213,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -6998,6 +7303,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -7084,6 +7393,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -7173,6 +7486,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -7259,6 +7576,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -7345,6 +7666,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -7431,6 +7756,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -7517,6 +7846,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -7603,6 +7936,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -7689,6 +8026,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -7775,6 +8116,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -7864,6 +8209,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -7950,6 +8299,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -8036,6 +8389,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -8122,6 +8479,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -8211,6 +8572,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -8297,6 +8662,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -8383,6 +8752,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -8469,6 +8842,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -8555,6 +8932,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -8641,6 +9022,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -8727,6 +9112,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                     
                     
@@ -8813,6 +9202,10 @@
                         
                         
                     </tr>
+
+                    
+                    
+
                     
                 </tbody>
             </table>
@@ -8844,7 +9237,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>Generated by QIS Fund Manager | 2025-12-10 16:42:01</p>
+        <p>Generated by QIS Fund Manager | 2025-12-10 16:48:59</p>
     </footer>
 
     <!-- Price Chart Initialization -->
