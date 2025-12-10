@@ -932,7 +932,7 @@
     <!-- Header -->
     <div class="report-header">
         <h1>QIS Strategy Comparison Report</h1>
-        <p class="subtitle">7 Strategies Evaluated | 2025-12-10 13:22</p>
+        <p class="subtitle">7 Strategies Evaluated | 2025-12-10 14:49</p>
     </div>
 
     <!-- Summary Cards -->
@@ -1214,21 +1214,35 @@
                 <label for="strategy-select" style="font-weight: 600; color: #667eea;">
                     전략 1:
                 </label>
-                <select id="strategy-select" style="padding: 10px 15px; border-radius: 6px; border: 2px solid #667eea; min-width: 300px; font-size: 14px; cursor: pointer;">
+                <select id="strategy-select" style="padding: 10px 15px; border-radius: 6px; border: 2px solid #667eea; min-width: 450px; font-size: 13px; cursor: pointer;">
                     
-                    <option value="0">CIEQDUV5 - CIEQDUV5</option>
                     
-                    <option value="1">CIEQPU06 - CIEQPU06</option>
                     
-                    <option value="2">MSCBDV11 - MSCBDV11</option>
+                    <option value="0" title="베가 중립 하방 분산 전략. SPX 상위 50개 개별주식 변동성 매수 vs 지수 변동성 매도. 롱 스큐 포지션으로 하락장에서 방어적. 상관관계 붕괴 시 수익.">CIEQDUV5 - CIEQDUV5 | 베가 중립 하방 분산 전략. SPX 상위 50개 개별주식 변동성 매수 vs 지수 변동성 매...</option>
                     
-                    <option value="3">MSCBDVDS - MSCBDVDS</option>
                     
-                    <option value="4">MSCBGLQ1 - MSCBGLQ1</option>
                     
-                    <option value="5">MSCBUVQ1 - MSCBUVQ1</option>
+                    <option value="1" title="Put Ratio 전략. SPX 상위 50종목 OTM 풋 매수 + SPX 지수 풋 매도로 파이낸싱. 개별 종목 급락 시 높은 페이오프. 테일리스크 헤징에 효과적.">CIEQPU06 - CIEQPU06 | Put Ratio 전략. SPX 상위 50종목 OTM 풋 매수 + SPX 지수 풋 매도로 ...</option>
                     
-                    <option value="6">MSVXCSG2 - MSVXCSG2</option>
+                    
+                    
+                    <option value="2" title="SPX 상위 10개 대형주 베가 중립 분산 전략. 개별주식 변동성 매수 vs 지수 변동성 매도. 상관관계 하락 시 수익. 분산 확대 국면에서 방어력 제공.">MSCBDV11 - MSCBDV11 | SPX 상위 10개 대형주 베가 중립 분산 전략. 개별주식 변동성 매수 vs 지수 변동성 ...</option>
+                    
+                    
+                    
+                    <option value="3" title="US Equity 베가 중립 하방 분산 전략. SPX 개별주식 변동성 매수 vs 지수 변동성 매도. 상관관계 하락 시 수익. 하방 스큐 포지션으로 시장 스트레스 시 방어력 제공.">MSCBDVDS - MSCBDVDS | US Equity 베가 중립 하방 분산 전략. SPX 개별주식 변동성 매수 vs 지수 변동...</option>
+                    
+                    
+                    
+                    <option value="4" title="NDX 점진적 하락 방어 전략. 40델타 풋 복제 + 1-5 DTE OTM 콜 매도로 자금조달. 급락보다 점진적 하락 시 높은 수익. 인트라데이 델타 헤징 적용.">MSCBGLQ1 - MSCBGLQ1 | NDX 점진적 하락 방어 전략. 40델타 풋 복제 + 1-5 DTE OTM 콜 매도로 자금...</option>
+                    
+                    
+                    
+                    <option value="5" title="NDX 업사이드 변동성 캐리 전략. 1-5 DTE 단기 OTM 콜 매도로 프리미엄 수확. 인트라데이 델타 헤징으로 방향성 리스크 관리. 안정적 캐리 수익 추구.">MSCBUVQ1 - MSCBUVQ1 | NDX 업사이드 변동성 캐리 전략. 1-5 DTE 단기 OTM 콜 매도로 프리미엄 수확. ...</option>
+                    
+                    
+                    
+                    <option value="6" title="VIX 캐리 전략 G2 버전. VIX 선물 기간구조의 콘탱고 상태를 활용한 롤다운 캐리 수익 추구. 2세대 버전으로 리스크 관리 개선.">MSVXCSG2 - MSVXCSG2 | VIX 캐리 전략 G2 버전. VIX 선물 기간구조의 콘탱고 상태를 활용한 롤다운 캐리 수...</option>
                     
                 </select>
             </div>
@@ -1236,22 +1250,36 @@
                 <label for="strategy-compare" style="font-weight: 600; color: #dc3545;">
                     비교:
                 </label>
-                <select id="strategy-compare" style="padding: 10px 15px; border-radius: 6px; border: 2px solid #dc3545; min-width: 300px; font-size: 14px; cursor: pointer;">
+                <select id="strategy-compare" style="padding: 10px 15px; border-radius: 6px; border: 2px solid #dc3545; min-width: 450px; font-size: 13px; cursor: pointer;">
                     <option value="-1">None (비교 없음)</option>
                     
-                    <option value="0">CIEQDUV5 - CIEQDUV5</option>
                     
-                    <option value="1">CIEQPU06 - CIEQPU06</option>
                     
-                    <option value="2">MSCBDV11 - MSCBDV11</option>
+                    <option value="0" title="베가 중립 하방 분산 전략. SPX 상위 50개 개별주식 변동성 매수 vs 지수 변동성 매도. 롱 스큐 포지션으로 하락장에서 방어적. 상관관계 붕괴 시 수익.">CIEQDUV5 - CIEQDUV5 | 베가 중립 하방 분산 전략. SPX 상위 50개 개별주식 변동성 매수 vs 지수 변동성 매...</option>
                     
-                    <option value="3">MSCBDVDS - MSCBDVDS</option>
                     
-                    <option value="4">MSCBGLQ1 - MSCBGLQ1</option>
                     
-                    <option value="5">MSCBUVQ1 - MSCBUVQ1</option>
+                    <option value="1" title="Put Ratio 전략. SPX 상위 50종목 OTM 풋 매수 + SPX 지수 풋 매도로 파이낸싱. 개별 종목 급락 시 높은 페이오프. 테일리스크 헤징에 효과적.">CIEQPU06 - CIEQPU06 | Put Ratio 전략. SPX 상위 50종목 OTM 풋 매수 + SPX 지수 풋 매도로 ...</option>
                     
-                    <option value="6">MSVXCSG2 - MSVXCSG2</option>
+                    
+                    
+                    <option value="2" title="SPX 상위 10개 대형주 베가 중립 분산 전략. 개별주식 변동성 매수 vs 지수 변동성 매도. 상관관계 하락 시 수익. 분산 확대 국면에서 방어력 제공.">MSCBDV11 - MSCBDV11 | SPX 상위 10개 대형주 베가 중립 분산 전략. 개별주식 변동성 매수 vs 지수 변동성 ...</option>
+                    
+                    
+                    
+                    <option value="3" title="US Equity 베가 중립 하방 분산 전략. SPX 개별주식 변동성 매수 vs 지수 변동성 매도. 상관관계 하락 시 수익. 하방 스큐 포지션으로 시장 스트레스 시 방어력 제공.">MSCBDVDS - MSCBDVDS | US Equity 베가 중립 하방 분산 전략. SPX 개별주식 변동성 매수 vs 지수 변동...</option>
+                    
+                    
+                    
+                    <option value="4" title="NDX 점진적 하락 방어 전략. 40델타 풋 복제 + 1-5 DTE OTM 콜 매도로 자금조달. 급락보다 점진적 하락 시 높은 수익. 인트라데이 델타 헤징 적용.">MSCBGLQ1 - MSCBGLQ1 | NDX 점진적 하락 방어 전략. 40델타 풋 복제 + 1-5 DTE OTM 콜 매도로 자금...</option>
+                    
+                    
+                    
+                    <option value="5" title="NDX 업사이드 변동성 캐리 전략. 1-5 DTE 단기 OTM 콜 매도로 프리미엄 수확. 인트라데이 델타 헤징으로 방향성 리스크 관리. 안정적 캐리 수익 추구.">MSCBUVQ1 - MSCBUVQ1 | NDX 업사이드 변동성 캐리 전략. 1-5 DTE 단기 OTM 콜 매도로 프리미엄 수확. ...</option>
+                    
+                    
+                    
+                    <option value="6" title="VIX 캐리 전략 G2 버전. VIX 선물 기간구조의 콘탱고 상태를 활용한 롤다운 캐리 수익 추구. 2세대 버전으로 리스크 관리 개선.">MSVXCSG2 - MSVXCSG2 | VIX 캐리 전략 G2 버전. VIX 선물 기간구조의 콘탱고 상태를 활용한 롤다운 캐리 수...</option>
                     
                 </select>
             </div>
@@ -8060,7 +8088,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>Generated by QIS Fund Manager | 2025-12-10 13:22:25</p>
+        <p>Generated by QIS Fund Manager | 2025-12-10 14:49:13</p>
     </footer>
 
     <!-- Price Chart Initialization -->
