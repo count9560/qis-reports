@@ -897,6 +897,137 @@
             color: #FFB6C1 !important;
         }
 
+        /* 연도별 수익률 클릭 셀 */
+        .clickable-yearly {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .clickable-yearly:hover {
+            background: rgba(102, 126, 234, 0.15) !important;
+        }
+
+        .yearly-icon {
+            font-size: 8px;
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .clickable-yearly:hover .yearly-icon {
+            opacity: 1;
+        }
+
+        /* 연도별 수익률 모달 */
+        .yearly-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .yearly-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .yearly-modal {
+            background: white;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .yearly-modal-overlay.active .yearly-modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .yearly-modal-header {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .yearly-modal-header h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .yearly-modal-close {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .yearly-modal-close:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .yearly-modal-body {
+            padding: 20px;
+        }
+
+        .yearly-returns-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .yearly-returns-table th,
+        .yearly-returns-table td {
+            padding: 10px 15px;
+            text-align: center;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .yearly-returns-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .yearly-returns-table .year-cell {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .yearly-returns-table .return-positive {
+            color: #28a745;
+            font-weight: 600;
+        }
+
+        .yearly-returns-table .return-negative {
+            color: #dc3545;
+            font-weight: 600;
+        }
+
         /* 히트맵 범례 */
         .hm-legend {
             padding: 4px 12px;
@@ -932,7 +1063,7 @@
     <!-- Header -->
     <div class="report-header">
         <h1>QIS Strategy Comparison Report</h1>
-        <p class="subtitle">7 Strategies Evaluated | 2025-12-10 16:19</p>
+        <p class="subtitle">7 Strategies Evaluated | 2025-12-10 16:30</p>
     </div>
 
     <!-- Summary Cards -->
@@ -5419,51 +5550,72 @@
                         
                         
                         
-                        <td class="col-strategy cell-pass">
+                        
+                        <td class="col-strategy cell-pass clickable-yearly" onclick="showYearlyReturns('MSCBUVQ1')" title="클릭하여 연도별 수익률 보기">
                             <span class="val-only">6.19%</span>
+                            <span class="yearly-icon">📊</span>
                         </td>
                         
                         
                         
                         
-                        <td class="col-strategy cell-pass">
+                        
+                        
+                        <td class="col-strategy cell-pass clickable-yearly" onclick="showYearlyReturns('MSVXCSG2')" title="클릭하여 연도별 수익률 보기">
                             <span class="val-only">6.91%</span>
+                            <span class="yearly-icon">📊</span>
                         </td>
                         
                         
                         
                         
-                        <td class="col-strategy cell-pass">
+                        
+                        
+                        <td class="col-strategy cell-pass clickable-yearly" onclick="showYearlyReturns('CIEQPU06')" title="클릭하여 연도별 수익률 보기">
                             <span class="val-only">11.93%</span>
+                            <span class="yearly-icon">📊</span>
                         </td>
                         
                         
                         
                         
-                        <td class="col-strategy cell-fail">
+                        
+                        
+                        <td class="col-strategy cell-fail clickable-yearly" onclick="showYearlyReturns('CIEQDUV5')" title="클릭하여 연도별 수익률 보기">
                             <span class="val-only">4.72%</span>
+                            <span class="yearly-icon">📊</span>
                         </td>
                         
                         
                         
                         
-                        <td class="col-strategy cell-fail">
+                        
+                        
+                        <td class="col-strategy cell-fail clickable-yearly" onclick="showYearlyReturns('MSCBDV11')" title="클릭하여 연도별 수익률 보기">
                             <span class="val-only">4.88%</span>
+                            <span class="yearly-icon">📊</span>
                         </td>
                         
                         
                         
                         
-                        <td class="col-strategy cell-fail">
+                        
+                        
+                        <td class="col-strategy cell-fail clickable-yearly" onclick="showYearlyReturns('MSCBDVDS')" title="클릭하여 연도별 수익률 보기">
                             <span class="val-only">2.10%</span>
+                            <span class="yearly-icon">📊</span>
                         </td>
                         
                         
                         
                         
-                        <td class="col-strategy cell-fail">
+                        
+                        
+                        <td class="col-strategy cell-fail clickable-yearly" onclick="showYearlyReturns('MSCBGLQ1')" title="클릭하여 연도별 수익률 보기">
                             <span class="val-only">0.73%</span>
+                            <span class="yearly-icon">📊</span>
                         </td>
+                        
                         
                         
                     </tr>
@@ -5491,9 +5643,12 @@
                         
                         
                         
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">1.86</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -5505,9 +5660,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">0.73</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -5519,9 +5678,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">0.64</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -5533,9 +5696,12 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-fail">
                             <span class="val-only">0.11</span>
                         </td>
+                        
                         
                         
                     </tr>
@@ -5563,9 +5729,12 @@
                         
                         
                         
+                        
                         <td class="col-strategy cell-warning">
                             <span class="val-only">1.41</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -5577,9 +5746,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-fail">
                             <span class="val-only">0.95</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -5591,9 +5764,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-fail">
                             <span class="val-only">0.65</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -5605,9 +5782,12 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-fail">
                             <span class="val-only">-0.18</span>
                         </td>
+                        
                         
                         
                     </tr>
@@ -5635,9 +5815,12 @@
                         
                         
                         
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">1.19</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -5649,9 +5832,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-warning">
                             <span class="val-only">0.76</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -5663,9 +5850,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-fail">
                             <span class="val-only">0.60</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -5677,9 +5868,12 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-fail">
                             <span class="val-only">0.06</span>
                         </td>
+                        
                         
                         
                     </tr>
@@ -5707,6 +5901,7 @@
                         
                         
                         
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">80% (8/10 년)</span>
                         </td>
@@ -5714,9 +5909,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">94% (15/16 년)</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -5728,9 +5927,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">94% (15/16 년)</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -5742,6 +5945,8 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-fail">
                             <span class="val-only">50% (8/16 년)</span>
                         </td>
@@ -5749,9 +5954,12 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-fail">
                             <span class="val-only">50% (5/10 년)</span>
                         </td>
+                        
                         
                         
                     </tr>
@@ -5779,9 +5987,12 @@
                         
                         
                         
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">55.5%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -5793,9 +6004,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">51.5%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -5807,9 +6022,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-fail">
                             <span class="val-only">48.5%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -5821,9 +6040,12 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-warning">
                             <span class="val-only">49.2%</span>
                         </td>
+                        
                         
                         
                     </tr>
@@ -5851,9 +6073,12 @@
                         
                         
                         
+                        
                         <td class="col-strategy cell-fail">
                             <span class="val-only">-1.79%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -5865,9 +6090,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">20.91%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -5879,9 +6108,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">8.50%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -5893,9 +6126,12 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-fail">
                             <span class="val-only">-7.25%</span>
                         </td>
+                        
                         
                         
                     </tr>
@@ -5923,9 +6159,12 @@
                         
                         
                         
+                        
                         <td class="col-strategy cell-fail">
                             <span class="val-only">-1.93%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -5937,9 +6176,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">19.39%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -5951,9 +6194,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">7.55%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -5965,9 +6212,12 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-fail">
                             <span class="val-only">-7.44%</span>
                         </td>
+                        
                         
                         
                     </tr>
@@ -5995,9 +6245,12 @@
                         
                         
                         
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">1.26</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6009,9 +6262,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">0.61</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6023,9 +6280,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-fail">
                             <span class="val-only">0.38</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6037,9 +6298,12 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-fail">
                             <span class="val-only">-0.18</span>
                         </td>
+                        
                         
                         
                     </tr>
@@ -6067,9 +6331,12 @@
                         
                         
                         
+                        
                         <td class="col-strategy cell-warning">
                             <span class="val-only">1.19%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6081,9 +6348,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">6.93%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6095,9 +6366,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-fail">
                             <span class="val-only">-0.12%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6109,9 +6384,12 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-fail">
                             <span class="val-only">-4.27%</span>
                         </td>
+                        
                         
                         
                     </tr>
@@ -6142,9 +6420,12 @@
                         
                         
                         
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">-5.21%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6156,9 +6437,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">-11.90%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6170,9 +6455,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">-3.79%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6184,9 +6473,12 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">-11.81%</span>
                         </td>
+                        
                         
                         
                     </tr>
@@ -6214,9 +6506,12 @@
                         
                         
                         
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">3.32%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6228,9 +6523,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-warning">
                             <span class="val-only">16.36%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6242,9 +6541,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">7.60%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6256,9 +6559,12 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">6.93%</span>
                         </td>
+                        
                         
                         
                     </tr>
@@ -6286,9 +6592,12 @@
                         
                         
                         
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">0.26%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6300,9 +6609,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">1.14%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6314,9 +6627,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">0.45%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6328,9 +6645,12 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">0.53%</span>
                         </td>
+                        
                         
                         
                     </tr>
@@ -6358,9 +6678,12 @@
                         
                         
                         
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">0.50%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6372,9 +6695,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">2.05%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6386,9 +6713,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">0.82%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6400,9 +6731,12 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">1.02%</span>
                         </td>
+                        
                         
                         
                     </tr>
@@ -6430,9 +6764,12 @@
                         
                         
                         
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">2.89%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6444,9 +6781,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-warning">
                             <span class="val-only">11.18%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6458,9 +6799,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">4.70%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6472,9 +6817,12 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">5.75%</span>
                         </td>
+                        
                         
                         
                     </tr>
@@ -6502,9 +6850,12 @@
                         
                         
                         
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">1.34</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6516,9 +6867,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">1.18</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6530,9 +6885,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">1.21</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6544,9 +6903,12 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">1.05</span>
                         </td>
+                        
                         
                         
                     </tr>
@@ -6574,9 +6936,12 @@
                         
                         
                         
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">-3.44%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6588,9 +6953,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">-6.82%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6602,9 +6971,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">-5.02%</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -6616,9 +6989,12 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">-4.24%</span>
                         </td>
+                        
                         
                         
                     </tr>
@@ -6649,51 +7025,65 @@
                         
                         
                         
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">9.3년 (3379일)</span>
-                        </td>
-                        
-                        
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">15.9년 (5811일)</span>
-                        </td>
-                        
-                        
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">15.9년 (5811일)</span>
-                        </td>
-                        
-                        
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">15.9년 (5811일)</span>
-                        </td>
-                        
-                        
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">15.9년 (5811일)</span>
-                        </td>
-                        
-                        
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">15.9년 (5811일)</span>
-                        </td>
-                        
-                        
-                        
                         
                         <td class="col-strategy cell-pass">
                             <span class="val-only">9.3년 (3379일)</span>
                         </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">15.9년 (5811일)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">15.9년 (5811일)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">15.9년 (5811일)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">15.9년 (5811일)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">15.9년 (5811일)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">9.3년 (3379일)</span>
+                        </td>
+                        
                         
                         
                     </tr>
@@ -6721,23 +7111,12 @@
                         
                         
                         
-                        <td class="col-strategy cell-pending">
-                            <span class="val-only">-</span>
-                        </td>
-                        
-                        
-                        
                         
                         <td class="col-strategy cell-pending">
                             <span class="val-only">-</span>
                         </td>
                         
                         
-                        
-                        
-                        <td class="col-strategy cell-pending">
-                            <span class="val-only">-</span>
-                        </td>
                         
                         
                         
@@ -6749,11 +7128,6 @@
                         
                         
                         
-                        <td class="col-strategy cell-pending">
-                            <span class="val-only">-</span>
-                        </td>
-                        
-                        
                         
                         
                         <td class="col-strategy cell-pending">
@@ -6763,9 +7137,39 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pending">
                             <span class="val-only">-</span>
                         </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pending">
+                            <span class="val-only">-</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pending">
+                            <span class="val-only">-</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pending">
+                            <span class="val-only">-</span>
+                        </td>
+                        
                         
                         
                     </tr>
@@ -6793,51 +7197,65 @@
                         
                         
                         
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">기본값 (데이터 3379일)</span>
-                        </td>
-                        
-                        
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">기본값 (데이터 5811일)</span>
-                        </td>
-                        
-                        
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">기본값 (데이터 5811일)</span>
-                        </td>
-                        
-                        
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">기본값 (데이터 5811일)</span>
-                        </td>
-                        
-                        
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">기본값 (데이터 5811일)</span>
-                        </td>
-                        
-                        
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">기본값 (데이터 5811일)</span>
-                        </td>
-                        
-                        
-                        
                         
                         <td class="col-strategy cell-pass">
                             <span class="val-only">기본값 (데이터 3379일)</span>
                         </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">기본값 (데이터 5811일)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">기본값 (데이터 5811일)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">기본값 (데이터 5811일)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">기본값 (데이터 5811일)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">기본값 (데이터 5811일)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">기본값 (데이터 3379일)</span>
+                        </td>
+                        
                         
                         
                     </tr>
@@ -6865,23 +7283,12 @@
                         
                         
                         
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">HHI=0.50</span>
-                        </td>
-                        
-                        
-                        
                         
                         <td class="col-strategy cell-pass">
                             <span class="val-only">HHI=0.50</span>
                         </td>
                         
                         
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">HHI=0.50</span>
-                        </td>
                         
                         
                         
@@ -6893,11 +7300,6 @@
                         
                         
                         
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">HHI=0.50</span>
-                        </td>
-                        
-                        
                         
                         
                         <td class="col-strategy cell-pass">
@@ -6907,9 +7309,39 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">HHI=0.50</span>
                         </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">HHI=0.50</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">HHI=0.50</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">HHI=0.50</span>
+                        </td>
+                        
                         
                         
                     </tr>
@@ -6937,23 +7369,12 @@
                         
                         
                         
-                        <td class="col-strategy cell-pending">
-                            <span class="val-only">-</span>
-                        </td>
-                        
-                        
-                        
                         
                         <td class="col-strategy cell-pending">
                             <span class="val-only">-</span>
                         </td>
                         
                         
-                        
-                        
-                        <td class="col-strategy cell-pending">
-                            <span class="val-only">-</span>
-                        </td>
                         
                         
                         
@@ -6965,11 +7386,6 @@
                         
                         
                         
-                        <td class="col-strategy cell-pending">
-                            <span class="val-only">-</span>
-                        </td>
-                        
-                        
                         
                         
                         <td class="col-strategy cell-pending">
@@ -6979,9 +7395,39 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pending">
                             <span class="val-only">-</span>
                         </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pending">
+                            <span class="val-only">-</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pending">
+                            <span class="val-only">-</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pending">
+                            <span class="val-only">-</span>
+                        </td>
+                        
                         
                         
                     </tr>
@@ -7009,23 +7455,12 @@
                         
                         
                         
-                        <td class="col-strategy cell-pending">
-                            <span class="val-only">-</span>
-                        </td>
-                        
-                        
-                        
                         
                         <td class="col-strategy cell-pending">
                             <span class="val-only">-</span>
                         </td>
                         
                         
-                        
-                        
-                        <td class="col-strategy cell-pending">
-                            <span class="val-only">-</span>
-                        </td>
                         
                         
                         
@@ -7037,11 +7472,6 @@
                         
                         
                         
-                        <td class="col-strategy cell-pending">
-                            <span class="val-only">-</span>
-                        </td>
-                        
-                        
                         
                         
                         <td class="col-strategy cell-pending">
@@ -7051,9 +7481,39 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pending">
                             <span class="val-only">-</span>
                         </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pending">
+                            <span class="val-only">-</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pending">
+                            <span class="val-only">-</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pending">
+                            <span class="val-only">-</span>
+                        </td>
+                        
                         
                         
                     </tr>
@@ -7081,23 +7541,12 @@
                         
                         
                         
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">1.0x</span>
-                        </td>
-                        
-                        
-                        
                         
                         <td class="col-strategy cell-pass">
                             <span class="val-only">1.0x</span>
                         </td>
                         
                         
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">1.0x</span>
-                        </td>
                         
                         
                         
@@ -7109,11 +7558,6 @@
                         
                         
                         
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">1.0x</span>
-                        </td>
-                        
-                        
                         
                         
                         <td class="col-strategy cell-pass">
@@ -7123,9 +7567,39 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">1.0x</span>
                         </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">1.0x</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">1.0x</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">1.0x</span>
+                        </td>
+                        
                         
                         
                     </tr>
@@ -7153,16 +7627,21 @@
                         
                         
                         
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">Morgan Stanley</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">Morgan Stanley</span>
                         </td>
                         
                         
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">Morgan Stanley</span>
-                        </td>
                         
                         
                         
@@ -7174,6 +7653,8 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">Citi</span>
                         </td>
@@ -7181,11 +7662,6 @@
                         
                         
                         
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">Morgan Stanley</span>
-                        </td>
-                        
-                        
                         
                         
                         <td class="col-strategy cell-pass">
@@ -7195,9 +7671,21 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">Morgan Stanley</span>
                         </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">Morgan Stanley</span>
+                        </td>
+                        
                         
                         
                     </tr>
@@ -7228,23 +7716,12 @@
                         
                         
                         
-                        <td class="col-strategy cell-warning">
-                            <span class="val-only">0bps</span>
-                        </td>
-                        
-                        
-                        
                         
                         <td class="col-strategy cell-warning">
                             <span class="val-only">0bps</span>
                         </td>
                         
                         
-                        
-                        
-                        <td class="col-strategy cell-warning">
-                            <span class="val-only">0bps</span>
-                        </td>
                         
                         
                         
@@ -7256,11 +7733,6 @@
                         
                         
                         
-                        <td class="col-strategy cell-warning">
-                            <span class="val-only">0bps</span>
-                        </td>
-                        
-                        
                         
                         
                         <td class="col-strategy cell-warning">
@@ -7270,9 +7742,39 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-warning">
                             <span class="val-only">0bps</span>
                         </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-warning">
+                            <span class="val-only">0bps</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-warning">
+                            <span class="val-only">0bps</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-warning">
+                            <span class="val-only">0bps</span>
+                        </td>
+                        
                         
                         
                     </tr>
@@ -7300,23 +7802,12 @@
                         
                         
                         
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">30bps (추정)</span>
-                        </td>
-                        
-                        
-                        
                         
                         <td class="col-strategy cell-pass">
                             <span class="val-only">30bps (추정)</span>
                         </td>
                         
                         
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">30bps (추정)</span>
-                        </td>
                         
                         
                         
@@ -7328,11 +7819,6 @@
                         
                         
                         
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">30bps (추정)</span>
-                        </td>
-                        
-                        
                         
                         
                         <td class="col-strategy cell-pass">
@@ -7342,9 +7828,39 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">30bps (추정)</span>
                         </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">30bps (추정)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">30bps (추정)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">30bps (추정)</span>
+                        </td>
+                        
                         
                         
                     </tr>
@@ -7372,23 +7888,12 @@
                         
                         
                         
-                        <td class="col-strategy cell-warning">
-                            <span class="val-only">80bps</span>
-                        </td>
-                        
-                        
-                        
                         
                         <td class="col-strategy cell-warning">
                             <span class="val-only">80bps</span>
                         </td>
                         
                         
-                        
-                        
-                        <td class="col-strategy cell-warning">
-                            <span class="val-only">80bps</span>
-                        </td>
                         
                         
                         
@@ -7400,11 +7905,6 @@
                         
                         
                         
-                        <td class="col-strategy cell-warning">
-                            <span class="val-only">80bps</span>
-                        </td>
-                        
-                        
                         
                         
                         <td class="col-strategy cell-warning">
@@ -7414,9 +7914,39 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-warning">
                             <span class="val-only">80bps</span>
                         </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-warning">
+                            <span class="val-only">80bps</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-warning">
+                            <span class="val-only">80bps</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-warning">
+                            <span class="val-only">80bps</span>
+                        </td>
+                        
                         
                         
                     </tr>
@@ -7444,9 +7974,12 @@
                         
                         
                         
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">8.4x</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -7458,9 +7991,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">19.9x</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -7472,9 +8009,13 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">5.8x</span>
                         </td>
+                        
+                        
                         
                         
                         
@@ -7486,9 +8027,12 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-fail">
                             <span class="val-only">0.0x</span>
                         </td>
+                        
                         
                         
                     </tr>
@@ -7519,23 +8063,12 @@
                         
                         
                         
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">N/A (첫 투자)</span>
-                        </td>
-                        
-                        
-                        
                         
                         <td class="col-strategy cell-pass">
                             <span class="val-only">N/A (첫 투자)</span>
                         </td>
                         
                         
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">N/A (첫 투자)</span>
-                        </td>
                         
                         
                         
@@ -7547,11 +8080,6 @@
                         
                         
                         
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">N/A (첫 투자)</span>
-                        </td>
-                        
-                        
                         
                         
                         <td class="col-strategy cell-pass">
@@ -7561,9 +8089,39 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">N/A (첫 투자)</span>
                         </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">N/A (첫 투자)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">N/A (첫 투자)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">N/A (첫 투자)</span>
+                        </td>
+                        
                         
                         
                     </tr>
@@ -7591,23 +8149,12 @@
                         
                         
                         
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">N/A (첫 투자)</span>
-                        </td>
-                        
-                        
-                        
                         
                         <td class="col-strategy cell-pass">
                             <span class="val-only">N/A (첫 투자)</span>
                         </td>
                         
                         
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">N/A (첫 투자)</span>
-                        </td>
                         
                         
                         
@@ -7619,11 +8166,6 @@
                         
                         
                         
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">N/A (첫 투자)</span>
-                        </td>
-                        
-                        
                         
                         
                         <td class="col-strategy cell-pass">
@@ -7633,9 +8175,39 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">N/A (첫 투자)</span>
                         </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">N/A (첫 투자)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">N/A (첫 투자)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">N/A (첫 투자)</span>
+                        </td>
+                        
                         
                         
                     </tr>
@@ -7663,23 +8235,12 @@
                         
                         
                         
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">N/A (첫 투자)</span>
-                        </td>
-                        
-                        
-                        
                         
                         <td class="col-strategy cell-pass">
                             <span class="val-only">N/A (첫 투자)</span>
                         </td>
                         
                         
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">N/A (첫 투자)</span>
-                        </td>
                         
                         
                         
@@ -7691,11 +8252,6 @@
                         
                         
                         
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">N/A (첫 투자)</span>
-                        </td>
-                        
-                        
                         
                         
                         <td class="col-strategy cell-pass">
@@ -7705,9 +8261,39 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">N/A (첫 투자)</span>
                         </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">N/A (첫 투자)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">N/A (첫 투자)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">N/A (첫 투자)</span>
+                        </td>
+                        
                         
                         
                     </tr>
@@ -7735,23 +8321,12 @@
                         
                         
                         
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">0% (첫 투자)</span>
-                        </td>
-                        
-                        
-                        
                         
                         <td class="col-strategy cell-pass">
                             <span class="val-only">0% (첫 투자)</span>
                         </td>
                         
                         
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">0% (첫 투자)</span>
-                        </td>
                         
                         
                         
@@ -7763,11 +8338,6 @@
                         
                         
                         
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">0% (첫 투자)</span>
-                        </td>
-                        
-                        
                         
                         
                         <td class="col-strategy cell-pass">
@@ -7777,9 +8347,39 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">0% (첫 투자)</span>
                         </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">0% (첫 투자)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">0% (첫 투자)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">0% (첫 투자)</span>
+                        </td>
+                        
                         
                         
                     </tr>
@@ -7807,23 +8407,12 @@
                         
                         
                         
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">100% (첫 투자)</span>
-                        </td>
-                        
-                        
-                        
                         
                         <td class="col-strategy cell-pass">
                             <span class="val-only">100% (첫 투자)</span>
                         </td>
                         
                         
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">100% (첫 투자)</span>
-                        </td>
                         
                         
                         
@@ -7835,11 +8424,6 @@
                         
                         
                         
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">100% (첫 투자)</span>
-                        </td>
-                        
-                        
                         
                         
                         <td class="col-strategy cell-pass">
@@ -7849,9 +8433,39 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">100% (첫 투자)</span>
                         </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">100% (첫 투자)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">100% (첫 투자)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">100% (첫 투자)</span>
+                        </td>
+                        
                         
                         
                     </tr>
@@ -7879,23 +8493,12 @@
                         
                         
                         
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">0개 (첫 투자)</span>
-                        </td>
-                        
-                        
-                        
                         
                         <td class="col-strategy cell-pass">
                             <span class="val-only">0개 (첫 투자)</span>
                         </td>
                         
                         
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">0개 (첫 투자)</span>
-                        </td>
                         
                         
                         
@@ -7907,11 +8510,6 @@
                         
                         
                         
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">0개 (첫 투자)</span>
-                        </td>
-                        
-                        
                         
                         
                         <td class="col-strategy cell-pass">
@@ -7921,9 +8519,39 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pass">
                             <span class="val-only">0개 (첫 투자)</span>
                         </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">0개 (첫 투자)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">0개 (첫 투자)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">0개 (첫 투자)</span>
+                        </td>
+                        
                         
                         
                     </tr>
@@ -7951,23 +8579,12 @@
                         
                         
                         
-                        <td class="col-strategy cell-pending">
-                            <span class="val-only">N/A (벤치마크 없음)</span>
-                        </td>
-                        
-                        
-                        
                         
                         <td class="col-strategy cell-pending">
                             <span class="val-only">N/A (벤치마크 없음)</span>
                         </td>
                         
                         
-                        
-                        
-                        <td class="col-strategy cell-pending">
-                            <span class="val-only">N/A (벤치마크 없음)</span>
-                        </td>
                         
                         
                         
@@ -7979,11 +8596,6 @@
                         
                         
                         
-                        <td class="col-strategy cell-pending">
-                            <span class="val-only">N/A (벤치마크 없음)</span>
-                        </td>
-                        
-                        
                         
                         
                         <td class="col-strategy cell-pending">
@@ -7993,9 +8605,39 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pending">
                             <span class="val-only">N/A (벤치마크 없음)</span>
                         </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pending">
+                            <span class="val-only">N/A (벤치마크 없음)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pending">
+                            <span class="val-only">N/A (벤치마크 없음)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pending">
+                            <span class="val-only">N/A (벤치마크 없음)</span>
+                        </td>
+                        
                         
                         
                     </tr>
@@ -8023,23 +8665,12 @@
                         
                         
                         
-                        <td class="col-strategy cell-pending">
-                            <span class="val-only">N/A (벤치마크 없음)</span>
-                        </td>
-                        
-                        
-                        
                         
                         <td class="col-strategy cell-pending">
                             <span class="val-only">N/A (벤치마크 없음)</span>
                         </td>
                         
                         
-                        
-                        
-                        <td class="col-strategy cell-pending">
-                            <span class="val-only">N/A (벤치마크 없음)</span>
-                        </td>
                         
                         
                         
@@ -8051,11 +8682,6 @@
                         
                         
                         
-                        <td class="col-strategy cell-pending">
-                            <span class="val-only">N/A (벤치마크 없음)</span>
-                        </td>
-                        
-                        
                         
                         
                         <td class="col-strategy cell-pending">
@@ -8065,9 +8691,39 @@
                         
                         
                         
+                        
+                        
                         <td class="col-strategy cell-pending">
                             <span class="val-only">N/A (벤치마크 없음)</span>
                         </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pending">
+                            <span class="val-only">N/A (벤치마크 없음)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pending">
+                            <span class="val-only">N/A (벤치마크 없음)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pending">
+                            <span class="val-only">N/A (벤치마크 없음)</span>
+                        </td>
+                        
                         
                         
                     </tr>
@@ -8102,7 +8758,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>Generated by QIS Fund Manager | 2025-12-10 16:19:48</p>
+        <p>Generated by QIS Fund Manager | 2025-12-10 16:30:06</p>
     </footer>
 
     <!-- Price Chart Initialization -->
@@ -8474,6 +9130,28 @@
                     <label>평가 등급</label>
                     <div id="modal-strategy-grade" class="strategy-modal-tags"></div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 연도별 수익률 모달 -->
+    <div id="yearly-modal-overlay" class="yearly-modal-overlay" onclick="closeYearlyModal(event)">
+        <div class="yearly-modal" onclick="event.stopPropagation()">
+            <div class="yearly-modal-header">
+                <h3 id="yearly-modal-title">연도별 수익률</h3>
+                <button class="yearly-modal-close" onclick="closeYearlyModal()">&times;</button>
+            </div>
+            <div class="yearly-modal-body">
+                <table class="yearly-returns-table">
+                    <thead>
+                        <tr>
+                            <th>연도</th>
+                            <th>수익률</th>
+                        </tr>
+                    </thead>
+                    <tbody id="yearly-returns-tbody">
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -9118,6 +9796,295 @@
         document.getElementById('strategy-modal-overlay').classList.remove('active');
         document.body.style.overflow = '';
     }
+    </script>
+
+    <script>
+    // 연도별 수익률 데이터
+    const yearlyReturnsData = {
+        
+        'CIEQDUV5': {
+            
+            2010: 0.009092578986039657,
+            
+            2011: 0.0048050770625567285,
+            
+            2012: 0.023933777217923335,
+            
+            2013: 0.0037709374725949374,
+            
+            2014: 0.010842004022033613,
+            
+            2015: 0.06603125536664955,
+            
+            2016: 0.037950205462895736,
+            
+            2017: 0.0009272137227631649,
+            
+            2018: 0.049588683016837276,
+            
+            2019: 0.024329655877840084,
+            
+            2020: 0.2332668755340359,
+            
+            2021: 0.04699542214753438,
+            
+            2022: 0.16255994708119736,
+            
+            2023: -0.00662721893491125,
+            
+            2024: 0.0158458244111348,
+            
+            2025: 0.06272838002436054
+            
+        },
+        
+        'CIEQPU06': {
+            
+            2010: 0.07040337093446869,
+            
+            2011: 0.10940865677707778,
+            
+            2012: 0.08688065723944893,
+            
+            2013: 0.0216930683079406,
+            
+            2014: 0.06415616050561224,
+            
+            2015: 0.13331510013067138,
+            
+            2016: 0.07613633272583842,
+            
+            2017: 0.04279065111856273,
+            
+            2018: -0.01867624666920431,
+            
+            2019: 0.005975999225781514,
+            
+            2020: 1.0695403953175973,
+            
+            2021: 0.17742839788814657,
+            
+            2022: 0.22243093596640473,
+            
+            2023: -0.06675584534174939,
+            
+            2024: -0.01728297883262897,
+            
+            2025: 0.19385870133491312
+            
+        },
+        
+        'MSCBDV11': {
+            
+            2010: -0.0182106096595408,
+            
+            2011: -0.014566577301161843,
+            
+            2012: 0.04468162083936322,
+            
+            2013: 0.032509752925877766,
+            
+            2014: 0.016726905942674675,
+            
+            2015: 0.05243261012491773,
+            
+            2016: 0.0436176033768465,
+            
+            2017: -0.01090854751942627,
+            
+            2018: 0.0982667671439339,
+            
+            2019: 0.004376666894618131,
+            
+            2020: 0.33573369565217415,
+            
+            2021: 0.012488530940972575,
+            
+            2022: 0.16980188112867722,
+            
+            2023: -0.036970704873992566,
+            
+            2024: 0.0007076201848656982,
+            
+            2025: 0.07545748593203072
+            
+        },
+        
+        'MSCBDVDS': {
+            
+            2010: -0.023541084152611136,
+            
+            2011: 0.007373951516268962,
+            
+            2012: 0.006678865507776743,
+            
+            2013: -0.010205941315837297,
+            
+            2014: -0.01362673786944113,
+            
+            2015: 0.03584362522054052,
+            
+            2016: 0.019247985675917567,
+            
+            2017: -0.0182168505867929,
+            
+            2018: 0.07074842039690288,
+            
+            2019: -0.025236593059936863,
+            
+            2020: 0.18697318007662833,
+            
+            2021: -0.01444173013364003,
+            
+            2022: 0.16816991562409078,
+            
+            2023: -0.040449857089598584,
+            
+            2024: -0.02437289888802696,
+            
+            2025: 0.02353643174434783
+            
+        },
+        
+        'MSCBGLQ1': {
+            
+            2016: -0.0021999999999999797,
+            
+            2017: -0.06095966200583447,
+            
+            2018: 0.08021505376344074,
+            
+            2019: -0.010054753608760625,
+            
+            2020: 0.010677949027903644,
+            
+            2021: 0.03391347588264537,
+            
+            2022: 0.07945810914681006,
+            
+            2023: -0.00017881090746529882,
+            
+            2024: 0.03267565395946792,
+            
+            2025: -0.07439446366781999
+            
+        },
+        
+        'MSCBUVQ1': {
+            
+            2016: 0.014000000000000012,
+            
+            2017: 0.015295046378527744,
+            
+            2018: 0.07123447204968936,
+            
+            2019: 0.06266956049918626,
+            
+            2020: 0.14538193559350843,
+            
+            2021: 0.12668103128018404,
+            
+            2022: -0.005325093682203685,
+            
+            2023: 0.09520643574230436,
+            
+            2024: 0.0815656719139366,
+            
+            2025: -0.019292423645874246
+            
+        },
+        
+        'MSVXCSG2': {
+            
+            2010: 0.03221502096835671,
+            
+            2011: -0.006361792365849106,
+            
+            2012: 0.07233054781801296,
+            
+            2013: 0.07590559349874648,
+            
+            2014: 0.029092662541187808,
+            
+            2015: 0.0937280324923846,
+            
+            2016: 0.08591508892713695,
+            
+            2017: 0.07289473684210535,
+            
+            2018: 0.05854643337819643,
+            
+            2019: 0.025246411896939325,
+            
+            2020: 0.11071228266965782,
+            
+            2021: 0.14093585058871305,
+            
+            2022: 0.1575330318347079,
+            
+            2023: 0.07352547173422153,
+            
+            2024: 0.03870002138122741,
+            
+            2025: 0.04311262142587435
+            
+        }
+        
+    };
+
+    function showYearlyReturns(ticker) {
+        const returns = yearlyReturnsData[ticker];
+        if (!returns) {
+            alert('연도별 수익률 데이터가 없습니다.');
+            return;
+        }
+
+        // 제목 설정
+        document.getElementById('yearly-modal-title').textContent = ticker + ' 연도별 수익률';
+
+        // 테이블 내용 생성
+        const tbody = document.getElementById('yearly-returns-tbody');
+        tbody.innerHTML = '';
+
+        // 연도 정렬 (내림차순)
+        const years = Object.keys(returns).map(Number).sort((a, b) => b - a);
+
+        years.forEach(year => {
+            const ret = returns[year];
+            const tr = document.createElement('tr');
+
+            const yearTd = document.createElement('td');
+            yearTd.className = 'year-cell';
+            yearTd.textContent = year + '년';
+            tr.appendChild(yearTd);
+
+            const retTd = document.createElement('td');
+            retTd.className = ret >= 0 ? 'return-positive' : 'return-negative';
+            retTd.textContent = (ret >= 0 ? '+' : '') + (ret * 100).toFixed(1) + '%';
+            tr.appendChild(retTd);
+
+            tbody.appendChild(tr);
+        });
+
+        // 모달 표시
+        document.getElementById('yearly-modal-overlay').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeYearlyModal(event) {
+        if (event && event.target !== document.getElementById('yearly-modal-overlay')) {
+            return;
+        }
+        document.getElementById('yearly-modal-overlay').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // ESC 키로 연도별 수익률 모달 닫기 추가
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeYearlyModal();
+        }
+    });
     </script>
 </body>
 </html>
