@@ -1,0 +1,270 @@
+/* Financial Report Stylesheet */
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-header: #e9ecef;
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --border-color: #dee2e6;
+    --positive: #198754;
+    --negative: #dc3545;
+    --link: #0d6efd;
+    --section-header: #e3f2fd;
+    --subtotal: #fff3cd;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+header h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+header .meta {
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+header nav {
+    margin-top: 15px;
+}
+
+header nav a {
+    color: var(--link);
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* Main content */
+main {
+    margin-bottom: 40px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+section h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Tables */
+.table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+th, td {
+    padding: 8px 12px;
+    text-align: right;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background: var(--bg-header);
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+}
+
+th:first-child,
+td:first-child {
+    text-align: left;
+    font-weight: 500;
+    position: sticky;
+    left: 0;
+    background: var(--bg-primary);
+    z-index: 1;
+}
+
+th:first-child {
+    background: var(--bg-header);
+    z-index: 2;
+}
+
+tr:hover {
+    background: var(--bg-secondary);
+}
+
+tr:hover td:first-child {
+    background: var(--bg-secondary);
+}
+
+/* Row types */
+tr.section-header td {
+    background: var(--section-header);
+    font-weight: 600;
+    color: #1565c0;
+}
+
+tr.subtotal td {
+    background: var(--subtotal);
+    font-weight: 600;
+}
+
+tr.total td {
+    background: var(--bg-header);
+    font-weight: 700;
+    border-top: 2px solid var(--text-primary);
+}
+
+/* Number formatting */
+.positive {
+    color: var(--positive);
+}
+
+.negative {
+    color: var(--negative);
+}
+
+.nil {
+    color: var(--text-secondary);
+}
+
+/* Index page */
+.index-table {
+    font-size: 14px;
+}
+
+.index-table th,
+.index-table td {
+    padding: 12px 16px;
+}
+
+.index-table a {
+    color: var(--link);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.index-table a:hover {
+    text-decoration: underline;
+}
+
+.index-table .ticker {
+    font-family: 'SF Mono', Consolas, monospace;
+    font-weight: 600;
+}
+
+/* Stats summary */
+.stats {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.stat-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 12px;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    section h2 {
+        font-size: 18px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 6px 8px;
+    }
+
+    .stats {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        max-width: none;
+        padding: 0;
+    }
+
+    header nav {
+        display: none;
+    }
+
+    .table-wrapper {
+        overflow: visible;
+    }
+
+    th:first-child,
+    td:first-child {
+        position: static;
+    }
+}
