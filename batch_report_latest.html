@@ -1143,7 +1143,7 @@
     <!-- Header -->
     <div class="report-header">
         <h1>QIS Strategy Comparison Report</h1>
-        <p class="subtitle">12 Strategies Evaluated | 2026-01-05 13:49</p>
+        <p class="subtitle">12 Strategies Evaluated | 2026-01-05 13:50</p>
     </div>
 
     <!-- Summary Cards -->
@@ -17928,9 +17928,225 @@
         </p>
     </div>
 
+    <!-- Scoring Methodology (점수 산정 방법론) -->
+    <div class="section" style="margin-top: 60px;">
+        <h2>&#128202; Scoring Methodology (점수 산정 방법론)</h2>
+
+        <!-- 1. 기본 공식 -->
+        <div style="background: #f8f9fa; border-radius: 12px; padding: 25px; margin-bottom: 25px; border-left: 5px solid #667eea;">
+            <h3 style="color: #2c3e50; font-size: 18px; margin-bottom: 15px;">1. 기본 계산 공식</h3>
+            <div style="background: #fff; padding: 20px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.8;">
+                <div style="margin-bottom: 10px;"><strong style="color: #667eea;">항목별 가중점수</strong> = score × weight</div>
+                <div style="margin-bottom: 10px;"><strong style="color: #667eea;">총점</strong> = Σ(모든 항목의 가중점수)</div>
+                <div style="margin-bottom: 10px;"><strong style="color: #667eea;">최대점수</strong> = Σ(max_score × weight)</div>
+                <div><strong style="color: #667eea;">백분율</strong> = (총점 / 최대점수) × 100</div>
+            </div>
+            <p style="margin-top: 15px; font-size: 13px; color: #666;">
+                각 체크리스트 항목은 0~10점 범위의 점수와 가중치(weight)를 가지며,
+                가중치가 높을수록 해당 항목이 최종 점수에 더 큰 영향을 미칩니다.
+            </p>
+        </div>
+
+        <!-- 2. 카테고리별 가중치 -->
+        <div style="background: #f8f9fa; border-radius: 12px; padding: 25px; margin-bottom: 25px; border-left: 5px solid #28a745;">
+            <h3 style="color: #2c3e50; font-size: 18px; margin-bottom: 15px;">2. 카테고리별 가중치 분포</h3>
+            <table style="width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden;">
+                <thead>
+                    <tr style="background: #e9ecef;">
+                        <th style="padding: 12px; text-align: left; font-size: 13px;">카테고리</th>
+                        <th style="padding: 12px; text-align: center; font-size: 13px;">항목 수</th>
+                        <th style="padding: 12px; text-align: center; font-size: 13px;">총 가중치</th>
+                        <th style="padding: 12px; text-align: center; font-size: 13px;">비중</th>
+                        <th style="padding: 12px; text-align: left; font-size: 13px;">주요 평가 항목</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #e9ecef;">
+                        <td style="padding: 12px;"><span style="color: #667eea;">📈</span> <strong>PERFORMANCE</strong></td>
+                        <td style="padding: 12px; text-align: center;">7개</td>
+                        <td style="padding: 12px; text-align: center;">7.0</td>
+                        <td style="padding: 12px; text-align: center;">25.7%</td>
+                        <td style="padding: 12px; font-size: 12px; color: #666;">연환산수익률, 샤프비율, 소르티노, 승률</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #e9ecef;">
+                        <td style="padding: 12px;"><span style="color: #dc3545;">🛡️</span> <strong>RISK</strong></td>
+                        <td style="padding: 12px; text-align: center;">4개</td>
+                        <td style="padding: 12px; text-align: center;">3.9</td>
+                        <td style="padding: 12px; text-align: center;">14.3%</td>
+                        <td style="padding: 12px; font-size: 12px; color: #666;">MDD, 변동성, 하방변동성, 최악월</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #e9ecef;">
+                        <td style="padding: 12px;"><span style="color: #17a2b8;">⚙️</span> <strong>STRATEGY_QUALITY</strong></td>
+                        <td style="padding: 12px; text-align: center;">6개</td>
+                        <td style="padding: 12px; text-align: center;">6.2</td>
+                        <td style="padding: 12px; text-align: center;">22.8%</td>
+                        <td style="padding: 12px; font-size: 12px; color: #666;">트랙레코드, 투명성, 유동성, 레버리지</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #e9ecef;">
+                        <td style="padding: 12px;"><span style="color: #ffc107;">💰</span> <strong>COST</strong></td>
+                        <td style="padding: 12px; text-align: center;">2개</td>
+                        <td style="padding: 12px; text-align: center;">1.9</td>
+                        <td style="padding: 12px; text-align: center;">7.0%</td>
+                        <td style="padding: 12px; font-size: 12px; color: #666;">운용보수, 거래비용</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px;"><span style="color: #6f42c1;">🔗</span> <strong>CORRELATION</strong></td>
+                        <td style="padding: 12px; text-align: center;">8개</td>
+                        <td style="padding: 12px; text-align: center;">8.2</td>
+                        <td style="padding: 12px; text-align: center;">30.1%</td>
+                        <td style="padding: 12px; font-size: 12px; color: #666;">상관계수, 분산효과, 위기시 분석</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr style="background: #e9ecef; font-weight: bold;">
+                        <td style="padding: 12px;">합계</td>
+                        <td style="padding: 12px; text-align: center;">27개</td>
+                        <td style="padding: 12px; text-align: center;">27.2</td>
+                        <td style="padding: 12px; text-align: center;">100%</td>
+                        <td style="padding: 12px;"></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <!-- 3. 등급 산정 기준 -->
+        <div style="background: #f8f9fa; border-radius: 12px; padding: 25px; margin-bottom: 25px; border-left: 5px solid #ffc107;">
+            <h3 style="color: #2c3e50; font-size: 18px; margin-bottom: 15px;">3. 등급 산정 기준</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 20px;">
+                <div style="flex: 1; min-width: 150px; background: #28a745; color: white; padding: 15px; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 24px; font-weight: bold;">A / A+</div>
+                    <div style="font-size: 13px; opacity: 0.9;">80점 이상</div>
+                    <div style="font-size: 11px; margin-top: 5px;">우수 - 투자 적합</div>
+                </div>
+                <div style="flex: 1; min-width: 150px; background: #17a2b8; color: white; padding: 15px; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 24px; font-weight: bold;">B / B+</div>
+                    <div style="font-size: 13px; opacity: 0.9;">60~79점</div>
+                    <div style="font-size: 11px; margin-top: 5px;">양호 - 조건부 가능</div>
+                </div>
+                <div style="flex: 1; min-width: 150px; background: #ffc107; color: #333; padding: 15px; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 24px; font-weight: bold;">C / C+</div>
+                    <div style="font-size: 13px;">40~59점</div>
+                    <div style="font-size: 11px; margin-top: 5px;">보통 - 신중 검토</div>
+                </div>
+                <div style="flex: 1; min-width: 150px; background: #dc3545; color: white; padding: 15px; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 24px; font-weight: bold;">D / F</div>
+                    <div style="font-size: 13px; opacity: 0.9;">40점 미만</div>
+                    <div style="font-size: 11px; margin-top: 5px;">미흡 - 투자 부적합</div>
+                </div>
+            </div>
+            <div style="background: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107;">
+                <strong style="color: #856404;">⚠️ 필수항목(★) 규칙:</strong>
+                <p style="margin: 10px 0 0; font-size: 13px; color: #856404;">
+                    필수항목(Mandatory)이 하나라도 <span style="color: #dc3545; font-weight: bold;">FAIL</span> 또는
+                    <span style="color: #6c757d; font-weight: bold;">PENDING</span> 상태이면,
+                    점수와 관계없이 최종 등급은 <strong>F (부적격)</strong>로 처리됩니다.
+                </p>
+            </div>
+        </div>
+
+        <!-- 4. 개별 항목 점수 산정 예시 -->
+        <div style="background: #f8f9fa; border-radius: 12px; padding: 25px; margin-bottom: 25px; border-left: 5px solid #6f42c1;">
+            <h3 style="color: #2c3e50; font-size: 18px; margin-bottom: 15px;">4. 개별 항목 점수 산정 로직 (예시)</h3>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <!-- 샤프비율 -->
+                <div style="background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #dee2e6;">
+                    <h4 style="color: #667eea; font-size: 14px; margin-bottom: 10px;">📊 샤프비율 (PERF_02)</h4>
+                    <div style="font-family: 'Courier New', monospace; font-size: 12px; background: #f8f9fa; padding: 10px; border-radius: 4px; line-height: 1.6;">
+                        if value ≥ 2.0: score = 10.0<br>
+                        elif value ≤ 0: score = 0.0<br>
+                        else: score = (value / 2.0) × 10
+                    </div>
+                    <p style="font-size: 11px; color: #666; margin-top: 10px;">
+                        예) 샤프비율 1.5 → (1.5/2.0)×10 = 7.5점
+                    </p>
+                </div>
+
+                <!-- MDD -->
+                <div style="background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #dee2e6;">
+                    <h4 style="color: #dc3545; font-size: 14px; margin-bottom: 10px;">🛡️ 최대낙폭 MDD (RISK_01)</h4>
+                    <div style="font-family: 'Courier New', monospace; font-size: 12px; background: #f8f9fa; padding: 10px; border-radius: 4px; line-height: 1.6;">
+                        if MDD < 5%: score = 10.0<br>
+                        elif MDD > 40%: score = 0.0<br>
+                        else: score = (1-(MDD-5%)/35%) × 10
+                    </div>
+                    <p style="font-size: 11px; color: #666; margin-top: 10px;">
+                        예) MDD 15% → (1-(0.15-0.05)/0.35)×10 = 7.14점
+                    </p>
+                </div>
+
+                <!-- 변동성 -->
+                <div style="background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #dee2e6;">
+                    <h4 style="color: #17a2b8; font-size: 14px; margin-bottom: 10px;">📉 연환산 변동성 (RISK_02)</h4>
+                    <div style="font-family: 'Courier New', monospace; font-size: 12px; background: #f8f9fa; padding: 10px; border-radius: 4px; line-height: 1.6;">
+                        if vol < 5%: score = 10.0<br>
+                        elif vol > 30%: score = 0.0<br>
+                        else: score = (1-(vol-5%)/25%) × 10
+                    </div>
+                    <p style="font-size: 11px; color: #666; margin-top: 10px;">
+                        예) 변동성 12% → (1-(0.12-0.05)/0.25)×10 = 7.2점
+                    </p>
+                </div>
+
+                <!-- 운용보수 -->
+                <div style="background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #dee2e6;">
+                    <h4 style="color: #ffc107; font-size: 14px; margin-bottom: 10px;">💰 운용보수 (COST_01)</h4>
+                    <div style="font-family: 'Courier New', monospace; font-size: 12px; background: #f8f9fa; padding: 10px; border-radius: 4px; line-height: 1.6;">
+                        if fee ≤ 10bps: score = 10.0<br>
+                        elif fee ≥ 100bps: score = 0.0<br>
+                        else: score = (1-(fee-10)/90) × 10
+                    </div>
+                    <p style="font-size: 11px; color: #666; margin-top: 10px;">
+                        예) 50bps → (1-(50-10)/90)×10 = 5.56점
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. 상태(Status) 정의 -->
+        <div style="background: #f8f9fa; border-radius: 12px; padding: 25px; border-left: 5px solid #17a2b8;">
+            <h3 style="color: #2c3e50; font-size: 18px; margin-bottom: 15px;">5. 상태(Status) 정의</h3>
+            <table style="width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden;">
+                <thead>
+                    <tr style="background: #e9ecef;">
+                        <th style="padding: 12px; text-align: center; width: 100px;">상태</th>
+                        <th style="padding: 12px; text-align: left;">조건</th>
+                        <th style="padding: 12px; text-align: left;">의미</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #e9ecef;">
+                        <td style="padding: 12px; text-align: center;"><span style="background: #28a745; color: white; padding: 4px 12px; border-radius: 4px; font-weight: bold;">PASS</span></td>
+                        <td style="padding: 12px;">score ≥ pass_threshold</td>
+                        <td style="padding: 12px; color: #666;">기준 충족 - 해당 항목 통과</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #e9ecef;">
+                        <td style="padding: 12px; text-align: center;"><span style="background: #dc3545; color: white; padding: 4px 12px; border-radius: 4px; font-weight: bold;">FAIL</span></td>
+                        <td style="padding: 12px;">score < pass_threshold (평가 완료)</td>
+                        <td style="padding: 12px; color: #666;">기준 미달 - 개선 필요</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #e9ecef;">
+                        <td style="padding: 12px; text-align: center;"><span style="background: #ffc107; color: #333; padding: 4px 12px; border-radius: 4px; font-weight: bold;">WARN</span></td>
+                        <td style="padding: 12px;">score가 임계값 근처 (±10%)</td>
+                        <td style="padding: 12px; color: #666;">주의 필요 - 모니터링 대상</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px; text-align: center;"><span style="background: #6c757d; color: white; padding: 4px 12px; border-radius: 4px; font-weight: bold;">PEND</span></td>
+                        <td style="padding: 12px;">데이터 미입력 또는 계산 불가</td>
+                        <td style="padding: 12px; color: #666;">평가 대기 - 추가 정보 필요</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p style="margin-top: 20px; font-size: 11px; color: #999; text-align: right;">
+            ※ 점수 산정 로직은 시장 환경과 투자 정책에 따라 조정될 수 있습니다.
+        </p>
+    </div>
+
     <!-- Footer -->
     <footer>
-        <p>Generated by QIS Fund Manager | 2026-01-05 13:49:39</p>
+        <p>Generated by QIS Fund Manager | 2026-01-05 13:50:40</p>
     </footer>
 
     <!-- Price Chart Initialization -->
