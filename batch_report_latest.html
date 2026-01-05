@@ -1143,7 +1143,7 @@
     <!-- Header -->
     <div class="report-header">
         <h1>QIS Strategy Comparison Report</h1>
-        <p class="subtitle">12 Strategies Evaluated | 2026-01-05 14:23</p>
+        <p class="subtitle">12 Strategies Evaluated | 2026-01-05 14:28</p>
     </div>
 
     <!-- Summary Cards -->
@@ -17809,66 +17809,383 @@
             </p>
         </div>
 
-        <!-- 2. 카테고리별 가중치 -->
+        <!-- 2. 카테고리별 가중치 분포 -->
         <div style="background: #f8f9fa; border-radius: 12px; padding: 25px; margin-bottom: 25px; border-left: 5px solid #28a745;">
             <h3 style="color: #2c3e50; font-size: 18px; margin-bottom: 15px;">2. 카테고리별 가중치 분포</h3>
-            <table style="width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden;">
+
+            <!-- 카테고리 요약 테이블 -->
+            <table style="width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; margin-bottom: 25px;">
                 <thead>
                     <tr style="background: #e9ecef;">
                         <th style="padding: 12px; text-align: left; font-size: 13px;">카테고리</th>
                         <th style="padding: 12px; text-align: center; font-size: 13px;">항목 수</th>
                         <th style="padding: 12px; text-align: center; font-size: 13px;">총 가중치</th>
                         <th style="padding: 12px; text-align: center; font-size: 13px;">비중</th>
-                        <th style="padding: 12px; text-align: left; font-size: 13px;">주요 평가 항목</th>
+                        <th style="padding: 12px; text-align: center; font-size: 13px;">필수항목</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr style="border-bottom: 1px solid #e9ecef;">
                         <td style="padding: 12px;"><span style="color: #667eea;">📈</span> <strong>PERFORMANCE</strong></td>
-                        <td style="padding: 12px; text-align: center;">7개</td>
-                        <td style="padding: 12px; text-align: center;">7.0</td>
-                        <td style="padding: 12px; text-align: center;">25.7%</td>
-                        <td style="padding: 12px; font-size: 12px; color: #666;">연환산수익률, 샤프비율, 소르티노, 승률</td>
+                        <td style="padding: 12px; text-align: center;">6개</td>
+                        <td style="padding: 12px; text-align: center;">6.2</td>
+                        <td style="padding: 12px; text-align: center;">24.3%</td>
+                        <td style="padding: 12px; text-align: center;">3개</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #e9ecef;">
                         <td style="padding: 12px;"><span style="color: #dc3545;">🛡️</span> <strong>RISK</strong></td>
                         <td style="padding: 12px; text-align: center;">4개</td>
                         <td style="padding: 12px; text-align: center;">3.9</td>
-                        <td style="padding: 12px; text-align: center;">14.3%</td>
-                        <td style="padding: 12px; font-size: 12px; color: #666;">MDD, 변동성, 하방변동성, 최악월</td>
+                        <td style="padding: 12px; text-align: center;">15.3%</td>
+                        <td style="padding: 12px; text-align: center;">1개</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #e9ecef;">
                         <td style="padding: 12px;"><span style="color: #17a2b8;">⚙️</span> <strong>STRATEGY_QUALITY</strong></td>
-                        <td style="padding: 12px; text-align: center;">6개</td>
-                        <td style="padding: 12px; text-align: center;">6.2</td>
-                        <td style="padding: 12px; text-align: center;">22.8%</td>
-                        <td style="padding: 12px; font-size: 12px; color: #666;">트랙레코드, 투명성, 유동성, 레버리지</td>
+                        <td style="padding: 12px; text-align: center;">5개</td>
+                        <td style="padding: 12px; text-align: center;">5.3</td>
+                        <td style="padding: 12px; text-align: center;">20.8%</td>
+                        <td style="padding: 12px; text-align: center;">3개</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #e9ecef;">
                         <td style="padding: 12px;"><span style="color: #ffc107;">💰</span> <strong>COST</strong></td>
                         <td style="padding: 12px; text-align: center;">2개</td>
                         <td style="padding: 12px; text-align: center;">1.9</td>
-                        <td style="padding: 12px; text-align: center;">7.0%</td>
-                        <td style="padding: 12px; font-size: 12px; color: #666;">운용보수, 거래비용</td>
+                        <td style="padding: 12px; text-align: center;">7.5%</td>
+                        <td style="padding: 12px; text-align: center;">0개</td>
                     </tr>
                     <tr>
                         <td style="padding: 12px;"><span style="color: #6f42c1;">🔗</span> <strong>CORRELATION</strong></td>
                         <td style="padding: 12px; text-align: center;">8개</td>
                         <td style="padding: 12px; text-align: center;">8.2</td>
-                        <td style="padding: 12px; text-align: center;">30.1%</td>
-                        <td style="padding: 12px; font-size: 12px; color: #666;">상관계수, 분산효과, 위기시 분석</td>
+                        <td style="padding: 12px; text-align: center;">32.2%</td>
+                        <td style="padding: 12px; text-align: center;">0개</td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr style="background: #e9ecef; font-weight: bold;">
                         <td style="padding: 12px;">합계</td>
-                        <td style="padding: 12px; text-align: center;">27개</td>
-                        <td style="padding: 12px; text-align: center;">27.2</td>
+                        <td style="padding: 12px; text-align: center;">25개</td>
+                        <td style="padding: 12px; text-align: center;">25.5</td>
                         <td style="padding: 12px; text-align: center;">100%</td>
-                        <td style="padding: 12px;"></td>
+                        <td style="padding: 12px; text-align: center;">7개</td>
                     </tr>
                 </tfoot>
             </table>
+
+            <!-- PERFORMANCE 상세 -->
+            <div style="margin-bottom: 20px;">
+                <h4 style="color: #667eea; font-size: 15px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <span>📈</span> PERFORMANCE (성과) - 6개 항목
+                </h4>
+                <table style="width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; font-size: 12px;">
+                    <thead>
+                        <tr style="background: #667eea; color: white;">
+                            <th style="padding: 10px; text-align: left;">항목 ID</th>
+                            <th style="padding: 10px; text-align: left;">항목명</th>
+                            <th style="padding: 10px; text-align: center;">가중치</th>
+                            <th style="padding: 10px; text-align: center;">PASS 기준</th>
+                            <th style="padding: 10px; text-align: left;">벤치마크</th>
+                            <th style="padding: 10px; text-align: center;">유형</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #e9ecef; background: #fff8e1;">
+                            <td style="padding: 10px;"><code>PERF_01</code> <span style="color: #dc3545;">★</span></td>
+                            <td style="padding: 10px;">연환산 수익률</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">1.2</td>
+                            <td style="padding: 10px; text-align: center;">≥ 6.0점</td>
+                            <td style="padding: 10px;">&gt;= 5%</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px;">AUTO</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e9ecef; background: #fff8e1;">
+                            <td style="padding: 10px;"><code>PERF_02</code> <span style="color: #dc3545;">★</span></td>
+                            <td style="padding: 10px;">샤프 비율</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">1.2</td>
+                            <td style="padding: 10px; text-align: center;">≥ 6.0점</td>
+                            <td style="padding: 10px;">&gt;= 0.5</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px;">AUTO</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e9ecef;">
+                            <td style="padding: 10px;"><code>PERF_03</code></td>
+                            <td style="padding: 10px;">소르티노 비율</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">1.0</td>
+                            <td style="padding: 10px; text-align: center;">≥ 6.0점</td>
+                            <td style="padding: 10px;">&gt;= 0.7</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px;">AUTO</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e9ecef; background: #fff8e1;">
+                            <td style="padding: 10px;"><code>PERF_05</code> <span style="color: #dc3545;">★</span></td>
+                            <td style="padding: 10px;">3년 수익률 일관성</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">1.1</td>
+                            <td style="padding: 10px; text-align: center;">≥ 6.0점</td>
+                            <td style="padding: 10px;">&gt;= 60% 양의 연도</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px;">AUTO</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e9ecef;">
+                            <td style="padding: 10px;"><code>PERF_07</code></td>
+                            <td style="padding: 10px;">1년 수익률</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">0.9</td>
+                            <td style="padding: 10px; text-align: center;">≥ 5.0점</td>
+                            <td style="padding: 10px;">&gt;= 0%</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px;">AUTO</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px;"><code>PERF_08</code></td>
+                            <td style="padding: 10px;">YTD 수익률</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">0.8</td>
+                            <td style="padding: 10px; text-align: center;">≥ 5.0점</td>
+                            <td style="padding: 10px;">&gt;= 0%</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px;">AUTO</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- RISK 상세 -->
+            <div style="margin-bottom: 20px;">
+                <h4 style="color: #dc3545; font-size: 15px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <span>🛡️</span> RISK (리스크) - 4개 항목
+                </h4>
+                <table style="width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; font-size: 12px;">
+                    <thead>
+                        <tr style="background: #dc3545; color: white;">
+                            <th style="padding: 10px; text-align: left;">항목 ID</th>
+                            <th style="padding: 10px; text-align: left;">항목명</th>
+                            <th style="padding: 10px; text-align: center;">가중치</th>
+                            <th style="padding: 10px; text-align: center;">PASS 기준</th>
+                            <th style="padding: 10px; text-align: left;">벤치마크</th>
+                            <th style="padding: 10px; text-align: center;">유형</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #e9ecef; background: #fff8e1;">
+                            <td style="padding: 10px;"><code>RISK_01</code> <span style="color: #dc3545;">★</span></td>
+                            <td style="padding: 10px;">1년 최대 낙폭 (MDD)</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">1.2</td>
+                            <td style="padding: 10px; text-align: center;">≥ 6.0점</td>
+                            <td style="padding: 10px;">&lt;= 25%</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px;">AUTO</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e9ecef;">
+                            <td style="padding: 10px;"><code>RISK_02</code></td>
+                            <td style="padding: 10px;">연환산 변동성</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">1.0</td>
+                            <td style="padding: 10px; text-align: center;">≥ 6.0점</td>
+                            <td style="padding: 10px;">&lt;= 20%</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px;">AUTO</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e9ecef;">
+                            <td style="padding: 10px;"><code>RISK_05</code></td>
+                            <td style="padding: 10px;">하방 변동성</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">0.9</td>
+                            <td style="padding: 10px; text-align: center;">≥ 6.0점</td>
+                            <td style="padding: 10px;">&lt;= 15%</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px;">AUTO</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px;"><code>RISK_08</code></td>
+                            <td style="padding: 10px;">최악의 월간 수익률</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">0.8</td>
+                            <td style="padding: 10px; text-align: center;">≥ 5.0점</td>
+                            <td style="padding: 10px;">&gt;= -10%</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px;">AUTO</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- STRATEGY_QUALITY 상세 -->
+            <div style="margin-bottom: 20px;">
+                <h4 style="color: #17a2b8; font-size: 15px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <span>⚙️</span> STRATEGY_QUALITY (전략 품질) - 5개 항목
+                </h4>
+                <table style="width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; font-size: 12px;">
+                    <thead>
+                        <tr style="background: #17a2b8; color: white;">
+                            <th style="padding: 10px; text-align: left;">항목 ID</th>
+                            <th style="padding: 10px; text-align: left;">항목명</th>
+                            <th style="padding: 10px; text-align: center;">가중치</th>
+                            <th style="padding: 10px; text-align: center;">PASS 기준</th>
+                            <th style="padding: 10px; text-align: left;">벤치마크</th>
+                            <th style="padding: 10px; text-align: center;">유형</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #e9ecef; background: #fff8e1;">
+                            <td style="padding: 10px;"><code>QUAL_01</code> <span style="color: #dc3545;">★</span></td>
+                            <td style="padding: 10px;">트랙레코드 기간</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">1.1</td>
+                            <td style="padding: 10px; text-align: center;">≥ 6.0점</td>
+                            <td style="padding: 10px;">&gt;= 3년</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px;">AUTO</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e9ecef; background: #fff8e1;">
+                            <td style="padding: 10px;"><code>QUAL_02</code> <span style="color: #dc3545;">★</span></td>
+                            <td style="padding: 10px;">전략 투명성</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">1.2</td>
+                            <td style="padding: 10px; text-align: center;">≥ 6.0점</td>
+                            <td style="padding: 10px;">로직 공개 정도 (1-10)</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #6c757d; color: white; padding: 2px 6px; border-radius: 3px;">MANUAL</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e9ecef;">
+                            <td style="padding: 10px;"><code>QUAL_05</code></td>
+                            <td style="padding: 10px;">리밸런싱 합리성</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">0.9</td>
+                            <td style="padding: 10px; text-align: center;">≥ 5.0점</td>
+                            <td style="padding: 10px;">리밸런싱 빈도/로직</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #6c757d; color: white; padding: 2px 6px; border-radius: 3px;">MANUAL</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e9ecef; background: #fff8e1;">
+                            <td style="padding: 10px;"><code>QUAL_06</code> <span style="color: #dc3545;">★</span></td>
+                            <td style="padding: 10px;">유동성 평가</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">1.1</td>
+                            <td style="padding: 10px; text-align: center;">≥ 6.0점</td>
+                            <td style="padding: 10px;">진입/청산 용이성</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #6c757d; color: white; padding: 2px 6px; border-radius: 3px;">MANUAL</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px;"><code>QUAL_07</code></td>
+                            <td style="padding: 10px;">레버리지 수준</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">1.0</td>
+                            <td style="padding: 10px; text-align: center;">≥ 6.0점</td>
+                            <td style="padding: 10px;">&lt;= 2x 권장</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #fd7e14; color: white; padding: 2px 6px; border-radius: 3px;">SEMI</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- COST 상세 -->
+            <div style="margin-bottom: 20px;">
+                <h4 style="color: #ffc107; font-size: 15px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <span>💰</span> COST (비용) - 2개 항목
+                </h4>
+                <table style="width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; font-size: 12px;">
+                    <thead>
+                        <tr style="background: #ffc107; color: #333;">
+                            <th style="padding: 10px; text-align: left;">항목 ID</th>
+                            <th style="padding: 10px; text-align: left;">항목명</th>
+                            <th style="padding: 10px; text-align: center;">가중치</th>
+                            <th style="padding: 10px; text-align: center;">PASS 기준</th>
+                            <th style="padding: 10px; text-align: left;">벤치마크</th>
+                            <th style="padding: 10px; text-align: center;">유형</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #e9ecef;">
+                            <td style="padding: 10px;"><code>COST_01</code></td>
+                            <td style="padding: 10px;">운용보수</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">1.0</td>
+                            <td style="padding: 10px; text-align: center;">≥ 6.0점</td>
+                            <td style="padding: 10px;">&lt;= 50bps</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #fd7e14; color: white; padding: 2px 6px; border-radius: 3px;">SEMI</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px;"><code>COST_02</code></td>
+                            <td style="padding: 10px;">거래비용</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">0.9</td>
+                            <td style="padding: 10px; text-align: center;">≥ 6.0점</td>
+                            <td style="padding: 10px;">&lt;= 30bps</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #fd7e14; color: white; padding: 2px 6px; border-radius: 3px;">SEMI</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- CORRELATION 상세 -->
+            <div style="margin-bottom: 10px;">
+                <h4 style="color: #6f42c1; font-size: 15px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <span>🔗</span> CORRELATION (상관관계) - 8개 항목
+                </h4>
+                <table style="width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; font-size: 12px;">
+                    <thead>
+                        <tr style="background: #6f42c1; color: white;">
+                            <th style="padding: 10px; text-align: left;">항목 ID</th>
+                            <th style="padding: 10px; text-align: left;">항목명</th>
+                            <th style="padding: 10px; text-align: center;">가중치</th>
+                            <th style="padding: 10px; text-align: center;">PASS 기준</th>
+                            <th style="padding: 10px; text-align: left;">벤치마크</th>
+                            <th style="padding: 10px; text-align: center;">유형</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #e9ecef;">
+                            <td style="padding: 10px;"><code>CORR_01</code></td>
+                            <td style="padding: 10px;">포트폴리오 평균 상관계수</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">1.2</td>
+                            <td style="padding: 10px; text-align: center;">≥ 6.0점</td>
+                            <td style="padding: 10px;">&lt;= 0.5</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px;">AUTO</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e9ecef;">
+                            <td style="padding: 10px;"><code>CORR_02</code></td>
+                            <td style="padding: 10px;">최대 상관 상품</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">1.0</td>
+                            <td style="padding: 10px; text-align: center;">≥ 6.0점</td>
+                            <td style="padding: 10px;">&lt;= 0.7</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px;">AUTO</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e9ecef;">
+                            <td style="padding: 10px;"><code>CORR_03</code></td>
+                            <td style="padding: 10px;">분산효과 기여도</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">1.1</td>
+                            <td style="padding: 10px; text-align: center;">≥ 6.0점</td>
+                            <td style="padding: 10px;">&gt;= 5%</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px;">AUTO</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e9ecef;">
+                            <td style="padding: 10px;"><code>CORR_04</code></td>
+                            <td style="padding: 10px;">구성자산 중복도</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">1.0</td>
+                            <td style="padding: 10px; text-align: center;">≥ 6.0점</td>
+                            <td style="padding: 10px;">&lt;= 30%</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px;">AUTO</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e9ecef;">
+                            <td style="padding: 10px;"><code>CORR_05</code></td>
+                            <td style="padding: 10px;">팩터 익스포저 다양성</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">0.9</td>
+                            <td style="padding: 10px; text-align: center;">≥ 5.0점</td>
+                            <td style="padding: 10px;">&gt;= 0.5</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #fd7e14; color: white; padding: 2px 6px; border-radius: 3px;">SEMI</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e9ecef;">
+                            <td style="padding: 10px;"><code>CORR_06</code></td>
+                            <td style="padding: 10px;">자산군 분산 기여</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">0.9</td>
+                            <td style="padding: 10px; text-align: center;">≥ 5.0점</td>
+                            <td style="padding: 10px;">신규 자산군 추가</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px;">AUTO</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e9ecef;">
+                            <td style="padding: 10px;"><code>CORR_07</code></td>
+                            <td style="padding: 10px;">위기 시 상대 손실률</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">1.1</td>
+                            <td style="padding: 10px; text-align: center;">≥ 6.0점</td>
+                            <td style="padding: 10px;">&gt;= 벤치마크</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px;">AUTO</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px;"><code>CORR_08</code></td>
+                            <td style="padding: 10px;">위기 시 상관계수 급등</td>
+                            <td style="padding: 10px; text-align: center; font-weight: bold;">1.0</td>
+                            <td style="padding: 10px; text-align: center;">≥ 6.0점</td>
+                            <td style="padding: 10px;">급등 &lt; 0.2</td>
+                            <td style="padding: 10px; text-align: center;"><span style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px;">AUTO</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 범례 -->
+            <div style="background: #fff; padding: 15px; border-radius: 8px; margin-top: 15px; border: 1px solid #dee2e6;">
+                <div style="display: flex; flex-wrap: wrap; gap: 20px; font-size: 12px;">
+                    <div><span style="color: #dc3545; font-weight: bold;">★</span> = 필수항목 (FAIL 시 최종 등급 F)</div>
+                    <div><span style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px;">AUTO</span> = 자동 산정 (가격 데이터 기반)</div>
+                    <div><span style="background: #fd7e14; color: white; padding: 2px 6px; border-radius: 3px;">SEMI</span> = 반자동 (일부 수동 입력)</div>
+                    <div><span style="background: #6c757d; color: white; padding: 2px 6px; border-radius: 3px;">MANUAL</span> = 수동 입력 (분석자 판단)</div>
+                </div>
+            </div>
         </div>
 
         <!-- 3. 등급 산정 기준 -->
@@ -18008,7 +18325,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>Generated by QIS Fund Manager | 2026-01-05 14:23:48</p>
+        <p>Generated by QIS Fund Manager | 2026-01-05 14:28:13</p>
     </footer>
 
     <!-- Price Chart Initialization -->
