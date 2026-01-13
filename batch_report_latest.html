@@ -321,7 +321,8 @@
         }
 
         .comparison-table {
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0;
             font-size: 11px;
             min-width: 100%;
             white-space: nowrap;
@@ -329,9 +330,20 @@
 
         .comparison-table th,
         .comparison-table td {
-            padding: 8px 10px;
+            padding: 6px 8px;
             border: 1px solid var(--border-color);
+            border-left: none;
+            border-top: none;
             text-align: center;
+        }
+
+        .comparison-table th:first-child,
+        .comparison-table td:first-child {
+            border-left: 1px solid var(--border-color);
+        }
+
+        .comparison-table thead tr:first-child th {
+            border-top: 1px solid var(--border-color);
         }
 
         /* 헤더 스타일 */
@@ -353,48 +365,57 @@
             padding: 6px 5px;
         }
 
-        /* 고정 열 (카테고리, ID, 항목명) */
+        /* 고정 열 (카테고리, ID, 항목명) - 스크롤 시 따라옴 */
         .comparison-table th.col-fixed,
         .comparison-table td.col-fixed {
             position: sticky;
             background: white;
-            z-index: 5;
+            z-index: 10;
         }
 
         .comparison-table th.col-cat,
         .comparison-table td.col-cat {
             left: 0;
-            min-width: 90px;
-            max-width: 90px;
+            min-width: 70px;
+            max-width: 70px;
             text-align: left;
             font-weight: 600;
-            font-size: 10px;
+            font-size: 9px;
         }
 
         .comparison-table th.col-id,
         .comparison-table td.col-id {
-            left: 90px;
-            min-width: 70px;
-            max-width: 70px;
+            left: 70px;
+            min-width: 50px;
+            max-width: 50px;
+            font-size: 8px;
+        }
+
+        .comparison-table td.col-id code {
+            font-size: 8px;
+            padding: 1px 3px;
         }
 
         .comparison-table th.col-name,
         .comparison-table td.col-name {
-            left: 160px;
-            min-width: 180px;
-            max-width: 180px;
+            left: 120px;
+            min-width: 110px;
+            max-width: 110px;
             text-align: left;
             white-space: normal;
             word-break: break-word;
+            font-size: 10px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
         }
 
         .comparison-table thead th.col-fixed {
             background: #2c3e50;
-            z-index: 15;
+            z-index: 20;
         }
 
         .comparison-table thead tr:nth-child(2) th.col-fixed {
             background: #495057;
+            z-index: 20;
         }
 
         /* 전략 열 */
@@ -419,12 +440,17 @@
             border-top: 3px solid #495057;
         }
 
-        /* 카테고리별 배경색 */
-        .cat-performance { background: rgba(103, 126, 234, 0.08) !important; }
-        .cat-risk { background: rgba(220, 53, 69, 0.06) !important; }
-        .cat-strategy_quality { background: rgba(40, 167, 69, 0.06) !important; }
-        .cat-cost { background: rgba(255, 193, 7, 0.06) !important; }
-        .cat-correlation { background: rgba(23, 162, 184, 0.06) !important; }
+        /* 카테고리별 배경색 - sticky 열에도 적용 */
+        .comparison-table td.col-fixed.cat-performance,
+        .comparison-table td.cat-performance { background: rgba(103, 126, 234, 0.15) !important; }
+        .comparison-table td.col-fixed.cat-risk,
+        .comparison-table td.cat-risk { background: rgba(220, 53, 69, 0.10) !important; }
+        .comparison-table td.col-fixed.cat-strategy_quality,
+        .comparison-table td.cat-strategy_quality { background: rgba(40, 167, 69, 0.10) !important; }
+        .comparison-table td.col-fixed.cat-cost,
+        .comparison-table td.cat-cost { background: rgba(255, 193, 7, 0.10) !important; }
+        .comparison-table td.col-fixed.cat-correlation,
+        .comparison-table td.cat-correlation { background: rgba(23, 162, 184, 0.10) !important; }
 
         /* 상태별 셀 색상 */
         .cell-pass {
@@ -1192,7 +1218,7 @@
     <!-- Header -->
     <div class="report-header">
         <h1>QIS Strategy Comparison Report</h1>
-        <p class="subtitle">13 Strategies Evaluated | 2026-01-13 10:58</p>
+        <p class="subtitle">13 Strategies Evaluated | 2026-01-13 11:40</p>
     </div>
 
     <!-- Risk Limit Progress -->
@@ -14707,12 +14733,11 @@
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id">
-                            <code style="font-size: 9px; background: #f1f3f5; padding: 2px 4px; border-radius: 3px;">PERF_01</code>
-                            <span class="mandatory-star">★</span>
+                        <td class="col-fixed col-id cat-performance">
+                            <code>PERF_01</code><span class="mandatory-star">★</span>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">
+                        <td class="col-fixed col-name cat-performance">
                             <span class="clickable-item" onclick="showItemInfo('PERF_01')">연환산 수익률</span>
                         </td>
 
@@ -14853,11 +14878,11 @@
                     
                     
                     <tr class="yearly-sub-row">
-                        <td class="col-id sub-label"></td>
-                        <td class="col-name sub-label" style="font-size: 11px; color: #666;">
+                        <td class="col-fixed col-cat cat-performance"></td>
+                        <td class="col-fixed col-id cat-performance"></td>
+                        <td class="col-fixed col-name cat-performance" style="font-size: 10px; color: #666;">
                             📅 연도별 수익률
                         </td>
-                        <td class="col-status sub-label"></td>
                         
                         <td class="col-strategy yearly-sub-cell">
                             
@@ -15227,12 +15252,11 @@
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id">
-                            <code style="font-size: 9px; background: #f1f3f5; padding: 2px 4px; border-radius: 3px;">PERF_08</code>
-                            
+                        <td class="col-fixed col-id cat-performance">
+                            <code>PERF_08</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">
+                        <td class="col-fixed col-name cat-performance">
                             <span class="clickable-item" onclick="showItemInfo('PERF_08')">라이브 연환산 수익률</span>
                         </td>
 
@@ -15374,12 +15398,11 @@
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id">
-                            <code style="font-size: 9px; background: #f1f3f5; padding: 2px 4px; border-radius: 3px;">PERF_02</code>
-                            <span class="mandatory-star">★</span>
+                        <td class="col-fixed col-id cat-performance">
+                            <code>PERF_02</code><span class="mandatory-star">★</span>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">
+                        <td class="col-fixed col-name cat-performance">
                             <span class="clickable-item" onclick="showItemInfo('PERF_02')">샤프 비율</span>
                         </td>
 
@@ -15521,12 +15544,11 @@
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id">
-                            <code style="font-size: 9px; background: #f1f3f5; padding: 2px 4px; border-radius: 3px;">PERF_03</code>
-                            
+                        <td class="col-fixed col-id cat-performance">
+                            <code>PERF_03</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">
+                        <td class="col-fixed col-name cat-performance">
                             <span class="clickable-item" onclick="showItemInfo('PERF_03')">소르티노 비율</span>
                         </td>
 
@@ -15668,12 +15690,11 @@
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id">
-                            <code style="font-size: 9px; background: #f1f3f5; padding: 2px 4px; border-radius: 3px;">PERF_05</code>
-                            <span class="mandatory-star">★</span>
+                        <td class="col-fixed col-id cat-performance">
+                            <code>PERF_05</code><span class="mandatory-star">★</span>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">
+                        <td class="col-fixed col-name cat-performance">
                             <span class="clickable-item" onclick="showItemInfo('PERF_05')">3년 수익률 일관성</span>
                         </td>
 
@@ -15815,12 +15836,11 @@
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id">
-                            <code style="font-size: 9px; background: #f1f3f5; padding: 2px 4px; border-radius: 3px;">PERF_07</code>
-                            
+                        <td class="col-fixed col-id cat-performance">
+                            <code>PERF_07</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">
+                        <td class="col-fixed col-name cat-performance">
                             <span class="clickable-item" onclick="showItemInfo('PERF_07')">1년 수익률</span>
                         </td>
 
@@ -15952,11 +15972,11 @@
                     
                     
                     <tr class="yearly-sub-row">
-                        <td class="col-id sub-label"></td>
-                        <td class="col-name sub-label" style="font-size: 11px; color: #666;">
+                        <td class="col-fixed col-cat cat-performance"></td>
+                        <td class="col-fixed col-id cat-performance"></td>
+                        <td class="col-fixed col-name cat-performance" style="font-size: 10px; color: #666;">
                             📊 YTD 수익률
                         </td>
-                        <td class="col-status sub-label"></td>
                         
                         <td class="col-strategy yearly-sub-cell">
                             
@@ -16052,11 +16072,11 @@
                     </tr>
                     
                     <tr class="yearly-sub-row">
-                        <td class="col-id sub-label"></td>
-                        <td class="col-name sub-label" style="font-size: 11px; color: #666;">
+                        <td class="col-fixed col-cat cat-performance"></td>
+                        <td class="col-fixed col-id cat-performance"></td>
+                        <td class="col-fixed col-name cat-performance" style="font-size: 10px; color: #666;">
                             📅 월별 수익률
                         </td>
-                        <td class="col-status sub-label"></td>
                         
                         <td class="col-strategy yearly-sub-cell">
                             
@@ -17128,12 +17148,11 @@
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id">
-                            <code style="font-size: 9px; background: #f1f3f5; padding: 2px 4px; border-radius: 3px;">RISK_01</code>
-                            <span class="mandatory-star">★</span>
+                        <td class="col-fixed col-id cat-risk">
+                            <code>RISK_01</code><span class="mandatory-star">★</span>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">
+                        <td class="col-fixed col-name cat-risk">
                             <span class="clickable-item" onclick="showItemInfo('RISK_01')">1년 최대 낙폭 (MDD)</span>
                         </td>
 
@@ -17275,12 +17294,11 @@
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id">
-                            <code style="font-size: 9px; background: #f1f3f5; padding: 2px 4px; border-radius: 3px;">RISK_02</code>
-                            
+                        <td class="col-fixed col-id cat-risk">
+                            <code>RISK_02</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">
+                        <td class="col-fixed col-name cat-risk">
                             <span class="clickable-item" onclick="showItemInfo('RISK_02')">연환산 변동성</span>
                         </td>
 
@@ -17422,12 +17440,11 @@
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id">
-                            <code style="font-size: 9px; background: #f1f3f5; padding: 2px 4px; border-radius: 3px;">RISK_05</code>
-                            
+                        <td class="col-fixed col-id cat-risk">
+                            <code>RISK_05</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">
+                        <td class="col-fixed col-name cat-risk">
                             <span class="clickable-item" onclick="showItemInfo('RISK_05')">하방 변동성</span>
                         </td>
 
@@ -17569,12 +17586,11 @@
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id">
-                            <code style="font-size: 9px; background: #f1f3f5; padding: 2px 4px; border-radius: 3px;">RISK_08</code>
-                            
+                        <td class="col-fixed col-id cat-risk">
+                            <code>RISK_08</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">
+                        <td class="col-fixed col-name cat-risk">
                             <span class="clickable-item" onclick="showItemInfo('RISK_08')">최악의 월간 수익률</span>
                         </td>
 
@@ -17715,16 +17731,15 @@
                         <td class="col-fixed col-cat cat-strategy_quality">
                             
                             <span class="cat-icon-mini">&#128736;</span>
-                            STRATEGY QUALITY
+                            STRATEGY
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id">
-                            <code style="font-size: 9px; background: #f1f3f5; padding: 2px 4px; border-radius: 3px;">QUAL_01</code>
-                            <span class="mandatory-star">★</span>
+                        <td class="col-fixed col-id cat-strategy_quality">
+                            <code>QUAL_01</code><span class="mandatory-star">★</span>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">
+                        <td class="col-fixed col-name cat-strategy_quality">
                             <span class="clickable-item" onclick="showItemInfo('QUAL_01')">트랙레코드 기간</span>
                         </td>
 
@@ -17866,12 +17881,11 @@
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id">
-                            <code style="font-size: 9px; background: #f1f3f5; padding: 2px 4px; border-radius: 3px;">QUAL_02</code>
-                            <span class="mandatory-star">★</span>
+                        <td class="col-fixed col-id cat-strategy_quality">
+                            <code>QUAL_02</code><span class="mandatory-star">★</span>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">
+                        <td class="col-fixed col-name cat-strategy_quality">
                             <span class="clickable-item" onclick="showItemInfo('QUAL_02')">전략 투명성</span>
                         </td>
 
@@ -18013,12 +18027,11 @@
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id">
-                            <code style="font-size: 9px; background: #f1f3f5; padding: 2px 4px; border-radius: 3px;">QUAL_06</code>
-                            <span class="mandatory-star">★</span>
+                        <td class="col-fixed col-id cat-strategy_quality">
+                            <code>QUAL_06</code><span class="mandatory-star">★</span>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">
+                        <td class="col-fixed col-name cat-strategy_quality">
                             <span class="clickable-item" onclick="showItemInfo('QUAL_06')">AUM 확인</span>
                         </td>
 
@@ -18160,12 +18173,11 @@
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id">
-                            <code style="font-size: 9px; background: #f1f3f5; padding: 2px 4px; border-radius: 3px;">QUAL_07</code>
-                            
+                        <td class="col-fixed col-id cat-strategy_quality">
+                            <code>QUAL_07</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">
+                        <td class="col-fixed col-name cat-strategy_quality">
                             <span class="clickable-item" onclick="showItemInfo('QUAL_07')">레버리지 수준</span>
                         </td>
 
@@ -18310,12 +18322,11 @@
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id">
-                            <code style="font-size: 9px; background: #f1f3f5; padding: 2px 4px; border-radius: 3px;">COST_01</code>
-                            
+                        <td class="col-fixed col-id cat-cost">
+                            <code>COST_01</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">
+                        <td class="col-fixed col-name cat-cost">
                             <span class="clickable-item" onclick="showItemInfo('COST_01')">운용보수</span>
                         </td>
 
@@ -18457,12 +18468,11 @@
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id">
-                            <code style="font-size: 9px; background: #f1f3f5; padding: 2px 4px; border-radius: 3px;">COST_02</code>
-                            
+                        <td class="col-fixed col-id cat-cost">
+                            <code>COST_02</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">
+                        <td class="col-fixed col-name cat-cost">
                             <span class="clickable-item" onclick="showItemInfo('COST_02')">거래비용</span>
                         </td>
 
@@ -18607,12 +18617,11 @@
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id">
-                            <code style="font-size: 9px; background: #f1f3f5; padding: 2px 4px; border-radius: 3px;">CORR_01</code>
-                            
+                        <td class="col-fixed col-id cat-correlation">
+                            <code>CORR_01</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">
+                        <td class="col-fixed col-name cat-correlation">
                             <span class="clickable-item" onclick="showItemInfo('CORR_01')">포트폴리오 평균 상관계수</span>
                         </td>
 
@@ -18754,12 +18763,11 @@
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id">
-                            <code style="font-size: 9px; background: #f1f3f5; padding: 2px 4px; border-radius: 3px;">CORR_02</code>
-                            
+                        <td class="col-fixed col-id cat-correlation">
+                            <code>CORR_02</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">
+                        <td class="col-fixed col-name cat-correlation">
                             <span class="clickable-item" onclick="showItemInfo('CORR_02')">최대 상관 상품</span>
                         </td>
 
@@ -18901,12 +18909,11 @@
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id">
-                            <code style="font-size: 9px; background: #f1f3f5; padding: 2px 4px; border-radius: 3px;">CORR_03</code>
-                            
+                        <td class="col-fixed col-id cat-correlation">
+                            <code>CORR_03</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">
+                        <td class="col-fixed col-name cat-correlation">
                             <span class="clickable-item" onclick="showItemInfo('CORR_03')">분산효과 기여도</span>
                         </td>
 
@@ -19048,12 +19055,11 @@
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id">
-                            <code style="font-size: 9px; background: #f1f3f5; padding: 2px 4px; border-radius: 3px;">CORR_04</code>
-                            
+                        <td class="col-fixed col-id cat-correlation">
+                            <code>CORR_04</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">
+                        <td class="col-fixed col-name cat-correlation">
                             <span class="clickable-item" onclick="showItemInfo('CORR_04')">구성자산 중복도</span>
                         </td>
 
@@ -19195,12 +19201,11 @@
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id">
-                            <code style="font-size: 9px; background: #f1f3f5; padding: 2px 4px; border-radius: 3px;">CORR_05</code>
-                            
+                        <td class="col-fixed col-id cat-correlation">
+                            <code>CORR_05</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">
+                        <td class="col-fixed col-name cat-correlation">
                             <span class="clickable-item" onclick="showItemInfo('CORR_05')">팩터 익스포저 다양성</span>
                         </td>
 
@@ -19342,12 +19347,11 @@
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id">
-                            <code style="font-size: 9px; background: #f1f3f5; padding: 2px 4px; border-radius: 3px;">CORR_06</code>
-                            
+                        <td class="col-fixed col-id cat-correlation">
+                            <code>CORR_06</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">
+                        <td class="col-fixed col-name cat-correlation">
                             <span class="clickable-item" onclick="showItemInfo('CORR_06')">자산군 분산 기여</span>
                         </td>
 
@@ -19489,12 +19493,11 @@
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id">
-                            <code style="font-size: 9px; background: #f1f3f5; padding: 2px 4px; border-radius: 3px;">CORR_07</code>
-                            
+                        <td class="col-fixed col-id cat-correlation">
+                            <code>CORR_07</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">
+                        <td class="col-fixed col-name cat-correlation">
                             <span class="clickable-item" onclick="showItemInfo('CORR_07')">위기 시 상대 손실률</span>
                         </td>
 
@@ -19636,12 +19639,11 @@
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id">
-                            <code style="font-size: 9px; background: #f1f3f5; padding: 2px 4px; border-radius: 3px;">CORR_08</code>
-                            
+                        <td class="col-fixed col-id cat-correlation">
+                            <code>CORR_08</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name">
+                        <td class="col-fixed col-name cat-correlation">
                             <span class="clickable-item" onclick="showItemInfo('CORR_08')">위기 시 상관계수 급등</span>
                         </td>
 
@@ -20354,7 +20356,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>Generated by QIS Fund Manager | 2026-01-13 10:58:00</p>
+        <p>Generated by QIS Fund Manager | 2026-01-13 11:40:57</p>
     </footer>
 
     <!-- Price Chart Initialization -->
