@@ -318,11 +318,11 @@
             overflow-x: auto;
             border-radius: 12px;
             box-shadow: 0 2px 15px rgba(0,0,0,0.08);
-            position: relative;
         }
 
         .comparison-table {
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0;
             font-size: 11px;
             min-width: 100%;
             white-space: nowrap;
@@ -331,7 +331,8 @@
         .comparison-table th,
         .comparison-table td {
             padding: 6px 8px;
-            border: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
             text-align: center;
         }
 
@@ -342,6 +343,7 @@
             font-weight: 600;
             font-size: 10px;
             padding: 10px 8px;
+            border-top: 1px solid var(--border-color);
         }
 
         .comparison-table thead tr:nth-child(2) th {
@@ -351,13 +353,20 @@
             padding: 6px 5px;
         }
 
+        /* 첫 번째 열 왼쪽 테두리 */
+        .comparison-table th:first-child,
+        .comparison-table td:first-child {
+            border-left: 1px solid var(--border-color);
+        }
+
         /* 고정 열 - 스크롤 시 왼쪽에 고정 */
         .col-cat {
-            position: sticky;
-            left: 0;
-            z-index: 2;
-            background: #fff;
+            position: sticky !important;
+            left: 0 !important;
+            z-index: 10 !important;
+            background-color: #f8f9fa !important;
             min-width: 85px;
+            width: 85px;
             max-width: 85px;
             text-align: left;
             font-weight: 600;
@@ -365,46 +374,61 @@
         }
 
         .col-id {
-            position: sticky;
-            left: 85px;
-            z-index: 2;
-            background: #fff;
+            position: sticky !important;
+            left: 85px !important;
+            z-index: 10 !important;
+            background-color: #f8f9fa !important;
             min-width: 70px;
+            width: 70px;
             max-width: 70px;
             font-size: 9px;
             white-space: nowrap;
         }
 
         .col-name {
-            position: sticky;
-            left: 155px;
-            z-index: 2;
-            background: #fff;
+            position: sticky !important;
+            left: 155px !important;
+            z-index: 10 !important;
+            background-color: #f8f9fa !important;
             min-width: 130px;
+            width: 130px;
             max-width: 130px;
             text-align: left;
             font-size: 11px;
-            border-right: 2px solid #495057 !important;
+            box-shadow: 4px 0 8px rgba(0,0,0,0.15);
         }
 
         .comparison-table td.col-id code {
             font-size: 9px;
             padding: 2px 4px;
+            background: #e9ecef;
         }
 
-        /* 헤더 고정 열 */
-        .comparison-table thead th.col-cat,
-        .comparison-table thead th.col-id,
+        /* 헤더 고정 열 - 배경색 진하게 */
+        .comparison-table thead th.col-cat {
+            background-color: #2c3e50 !important;
+            z-index: 20 !important;
+        }
+        .comparison-table thead th.col-id {
+            background-color: #2c3e50 !important;
+            z-index: 20 !important;
+        }
         .comparison-table thead th.col-name {
-            background: #2c3e50;
-            z-index: 3;
+            background-color: #2c3e50 !important;
+            z-index: 20 !important;
         }
 
-        .comparison-table thead tr:nth-child(2) th.col-cat,
-        .comparison-table thead tr:nth-child(2) th.col-id,
+        .comparison-table thead tr:nth-child(2) th.col-cat {
+            background-color: #495057 !important;
+            z-index: 20 !important;
+        }
+        .comparison-table thead tr:nth-child(2) th.col-id {
+            background-color: #495057 !important;
+            z-index: 20 !important;
+        }
         .comparison-table thead tr:nth-child(2) th.col-name {
-            background: #495057;
-            z-index: 3;
+            background-color: #495057 !important;
+            z-index: 20 !important;
         }
 
         /* 전략 열 */
@@ -429,12 +453,44 @@
             border-top: 3px solid #495057;
         }
 
-        /* 카테고리별 배경색 */
-        .comparison-table td.cat-performance { background: rgba(103, 126, 234, 0.12) !important; }
-        .comparison-table td.cat-risk { background: rgba(220, 53, 69, 0.08) !important; }
-        .comparison-table td.cat-strategy_quality { background: rgba(40, 167, 69, 0.08) !important; }
-        .comparison-table td.cat-cost { background: rgba(255, 193, 7, 0.08) !important; }
-        .comparison-table td.cat-correlation { background: rgba(23, 162, 184, 0.08) !important; }
+        /* 카테고리별 배경색 - 불투명 색상 */
+        .comparison-table td.cat-performance { background-color: #eef1fc !important; }
+        .comparison-table td.cat-risk { background-color: #fdf2f2 !important; }
+        .comparison-table td.cat-strategy_quality { background-color: #f0faf0 !important; }
+        .comparison-table td.cat-cost { background-color: #fffbf0 !important; }
+        .comparison-table td.cat-correlation { background-color: #f0fafb !important; }
+
+        /* ★ Sticky 열 강제 불투명 배경 (스크롤 시 겹침 방지) */
+        .comparison-table tbody td.col-cat,
+        .comparison-table tbody td.col-id,
+        .comparison-table tbody td.col-name {
+            background-color: #f8f9fa !important;
+        }
+        .comparison-table tbody td.col-cat.cat-performance,
+        .comparison-table tbody td.col-id.cat-performance,
+        .comparison-table tbody td.col-name.cat-performance {
+            background-color: #eef1fc !important;
+        }
+        .comparison-table tbody td.col-cat.cat-risk,
+        .comparison-table tbody td.col-id.cat-risk,
+        .comparison-table tbody td.col-name.cat-risk {
+            background-color: #fdf2f2 !important;
+        }
+        .comparison-table tbody td.col-cat.cat-strategy_quality,
+        .comparison-table tbody td.col-id.cat-strategy_quality,
+        .comparison-table tbody td.col-name.cat-strategy_quality {
+            background-color: #f0faf0 !important;
+        }
+        .comparison-table tbody td.col-cat.cat-cost,
+        .comparison-table tbody td.col-id.cat-cost,
+        .comparison-table tbody td.col-name.cat-cost {
+            background-color: #fffbf0 !important;
+        }
+        .comparison-table tbody td.col-cat.cat-correlation,
+        .comparison-table tbody td.col-id.cat-correlation,
+        .comparison-table tbody td.col-name.cat-correlation {
+            background-color: #f0fafb !important;
+        }
 
         /* 상태별 셀 색상 */
         .cell-pass {
@@ -1202,7 +1258,7 @@
     <!-- Header -->
     <div class="report-header">
         <h1>QIS Strategy Comparison Report</h1>
-        <p class="subtitle">13 Strategies Evaluated | 2026-01-15 15:08</p>
+        <p class="subtitle">13 Strategies Evaluated | 2026-01-15 15:18</p>
     </div>
 
     <!-- Risk Limit Progress -->
@@ -20340,7 +20396,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>Generated by QIS Fund Manager | 2026-01-15 15:08:29</p>
+        <p>Generated by QIS Fund Manager | 2026-01-15 15:18:17</p>
     </footer>
 
     <!-- Price Chart Initialization -->
