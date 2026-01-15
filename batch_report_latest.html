@@ -318,11 +318,11 @@
             overflow-x: auto;
             border-radius: 12px;
             box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            position: relative;
         }
 
         .comparison-table {
-            border-collapse: separate;
-            border-spacing: 0;
+            border-collapse: collapse;
             font-size: 11px;
             min-width: 100%;
             white-space: nowrap;
@@ -332,18 +332,7 @@
         .comparison-table td {
             padding: 6px 8px;
             border: 1px solid var(--border-color);
-            border-left: none;
-            border-top: none;
             text-align: center;
-        }
-
-        .comparison-table th:first-child,
-        .comparison-table td:first-child {
-            border-left: 1px solid var(--border-color);
-        }
-
-        .comparison-table thead tr:first-child th {
-            border-top: 1px solid var(--border-color);
         }
 
         /* 헤더 스타일 */
@@ -353,9 +342,6 @@
             font-weight: 600;
             font-size: 10px;
             padding: 10px 8px;
-            position: sticky;
-            top: 0;
-            z-index: 10;
         }
 
         .comparison-table thead tr:nth-child(2) th {
@@ -365,17 +351,12 @@
             padding: 6px 5px;
         }
 
-        /* 고정 열 (카테고리, ID, 항목명) - 스크롤 시 따라옴 */
-        .comparison-table th.col-fixed,
-        .comparison-table td.col-fixed {
+        /* 고정 열 - 스크롤 시 왼쪽에 고정 */
+        .col-cat {
             position: sticky;
-            background: #fff;
-            z-index: 10;
-        }
-
-        .comparison-table th.col-cat,
-        .comparison-table td.col-cat {
             left: 0;
+            z-index: 2;
+            background: #fff;
             min-width: 85px;
             max-width: 85px;
             text-align: left;
@@ -383,13 +364,27 @@
             font-size: 10px;
         }
 
-        .comparison-table th.col-id,
-        .comparison-table td.col-id {
+        .col-id {
+            position: sticky;
             left: 85px;
+            z-index: 2;
+            background: #fff;
             min-width: 70px;
             max-width: 70px;
             font-size: 9px;
             white-space: nowrap;
+        }
+
+        .col-name {
+            position: sticky;
+            left: 155px;
+            z-index: 2;
+            background: #fff;
+            min-width: 130px;
+            max-width: 130px;
+            text-align: left;
+            font-size: 11px;
+            border-right: 2px solid #495057 !important;
         }
 
         .comparison-table td.col-id code {
@@ -397,27 +392,19 @@
             padding: 2px 4px;
         }
 
-        .comparison-table th.col-name,
-        .comparison-table td.col-name {
-            left: 155px;
-            min-width: 130px;
-            max-width: 130px;
-            text-align: left;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            font-size: 11px;
-            box-shadow: 3px 0 6px rgba(0,0,0,0.15);
-        }
-
-        .comparison-table thead th.col-fixed {
+        /* 헤더 고정 열 */
+        .comparison-table thead th.col-cat,
+        .comparison-table thead th.col-id,
+        .comparison-table thead th.col-name {
             background: #2c3e50;
-            z-index: 20;
+            z-index: 3;
         }
 
-        .comparison-table thead tr:nth-child(2) th.col-fixed {
+        .comparison-table thead tr:nth-child(2) th.col-cat,
+        .comparison-table thead tr:nth-child(2) th.col-id,
+        .comparison-table thead tr:nth-child(2) th.col-name {
             background: #495057;
-            z-index: 20;
+            z-index: 3;
         }
 
         /* 전략 열 */
@@ -442,17 +429,12 @@
             border-top: 3px solid #495057;
         }
 
-        /* 카테고리별 배경색 - sticky 열에도 적용 */
-        .comparison-table td.col-fixed.cat-performance,
-        .comparison-table td.cat-performance { background: rgba(103, 126, 234, 0.15) !important; }
-        .comparison-table td.col-fixed.cat-risk,
-        .comparison-table td.cat-risk { background: rgba(220, 53, 69, 0.10) !important; }
-        .comparison-table td.col-fixed.cat-strategy_quality,
-        .comparison-table td.cat-strategy_quality { background: rgba(40, 167, 69, 0.10) !important; }
-        .comparison-table td.col-fixed.cat-cost,
-        .comparison-table td.cat-cost { background: rgba(255, 193, 7, 0.10) !important; }
-        .comparison-table td.col-fixed.cat-correlation,
-        .comparison-table td.cat-correlation { background: rgba(23, 162, 184, 0.10) !important; }
+        /* 카테고리별 배경색 */
+        .comparison-table td.cat-performance { background: rgba(103, 126, 234, 0.12) !important; }
+        .comparison-table td.cat-risk { background: rgba(220, 53, 69, 0.08) !important; }
+        .comparison-table td.cat-strategy_quality { background: rgba(40, 167, 69, 0.08) !important; }
+        .comparison-table td.cat-cost { background: rgba(255, 193, 7, 0.08) !important; }
+        .comparison-table td.cat-correlation { background: rgba(23, 162, 184, 0.08) !important; }
 
         /* 상태별 셀 색상 */
         .cell-pass {
@@ -1220,7 +1202,7 @@
     <!-- Header -->
     <div class="report-header">
         <h1>QIS Strategy Comparison Report</h1>
-        <p class="subtitle">13 Strategies Evaluated | 2026-01-13 13:52</p>
+        <p class="subtitle">13 Strategies Evaluated | 2026-01-15 15:05</p>
     </div>
 
     <!-- Risk Limit Progress -->
@@ -14533,9 +14515,9 @@
                 <thead>
                     <!-- 전략 헤더 행 -->
                     <tr>
-                        <th class="col-fixed col-cat">Category</th>
-                        <th class="col-fixed col-id">ID</th>
-                        <th class="col-fixed col-name">Item</th>
+                        <th class="col-cat">Category</th>
+                        <th class="col-id">ID</th>
+                        <th class="col-name">Item</th>
                         
                         
                         <th class="col-strategy clickable-strategy" onclick="showStrategyInfo('CSCUD15A')">
@@ -14657,9 +14639,9 @@
                     </tr>
                     <!-- 점수 행 -->
                     <tr>
-                        <th class="col-fixed col-cat" style="font-size: 9px;">SCORE</th>
-                        <th class="col-fixed col-id"></th>
-                        <th class="col-fixed col-name" style="font-size: 9px;">Total Score</th>
+                        <th class="col-cat" style="font-size: 9px;">SCORE</th>
+                        <th class="col-id"></th>
+                        <th class="col-name" style="font-size: 9px;">Total Score</th>
                         
                         <th class="col-strategy" style="font-size: 11px; color: #ffc107;">
                             68.4
@@ -14728,18 +14710,18 @@
 
                     <tr class="category-start mandatory-item">
                         <!-- 카테고리 -->
-                        <td class="col-fixed col-cat cat-performance">
+                        <td class="col-cat cat-performance">
                             
                             <span class="cat-icon-mini">&#128200;</span>
                             PERFORMANCE
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id cat-performance">
+                        <td class="col-id cat-performance">
                             <code>PERF_01</code><span class="mandatory-star">★</span>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name cat-performance">
+                        <td class="col-name cat-performance">
                             <span class="clickable-item" onclick="showItemInfo('PERF_01')">연환산 수익률</span>
                         </td>
 
@@ -14880,9 +14862,9 @@
                     
                     
                     <tr class="yearly-sub-row">
-                        <td class="col-fixed col-cat cat-performance"></td>
-                        <td class="col-fixed col-id cat-performance"></td>
-                        <td class="col-fixed col-name cat-performance" style="font-size: 10px; color: #666;">
+                        <td class="col-cat cat-performance"></td>
+                        <td class="col-id cat-performance"></td>
+                        <td class="col-name cat-performance" style="font-size: 10px; color: #666;">
                             📅 연도별 수익률
                         </td>
                         
@@ -15250,15 +15232,15 @@
 
                     <tr class=" ">
                         <!-- 카테고리 -->
-                        <td class="col-fixed col-cat cat-performance">
+                        <td class="col-cat cat-performance">
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id cat-performance">
+                        <td class="col-id cat-performance">
                             <code>PERF_08</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name cat-performance">
+                        <td class="col-name cat-performance">
                             <span class="clickable-item" onclick="showItemInfo('PERF_08')">라이브 연환산 수익률</span>
                         </td>
 
@@ -15396,15 +15378,15 @@
 
                     <tr class=" mandatory-item">
                         <!-- 카테고리 -->
-                        <td class="col-fixed col-cat cat-performance">
+                        <td class="col-cat cat-performance">
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id cat-performance">
+                        <td class="col-id cat-performance">
                             <code>PERF_02</code><span class="mandatory-star">★</span>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name cat-performance">
+                        <td class="col-name cat-performance">
                             <span class="clickable-item" onclick="showItemInfo('PERF_02')">샤프 비율</span>
                         </td>
 
@@ -15542,15 +15524,15 @@
 
                     <tr class=" ">
                         <!-- 카테고리 -->
-                        <td class="col-fixed col-cat cat-performance">
+                        <td class="col-cat cat-performance">
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id cat-performance">
+                        <td class="col-id cat-performance">
                             <code>PERF_03</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name cat-performance">
+                        <td class="col-name cat-performance">
                             <span class="clickable-item" onclick="showItemInfo('PERF_03')">소르티노 비율</span>
                         </td>
 
@@ -15688,15 +15670,15 @@
 
                     <tr class=" mandatory-item">
                         <!-- 카테고리 -->
-                        <td class="col-fixed col-cat cat-performance">
+                        <td class="col-cat cat-performance">
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id cat-performance">
+                        <td class="col-id cat-performance">
                             <code>PERF_05</code><span class="mandatory-star">★</span>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name cat-performance">
+                        <td class="col-name cat-performance">
                             <span class="clickable-item" onclick="showItemInfo('PERF_05')">3년 수익률 일관성</span>
                         </td>
 
@@ -15834,15 +15816,15 @@
 
                     <tr class=" ">
                         <!-- 카테고리 -->
-                        <td class="col-fixed col-cat cat-performance">
+                        <td class="col-cat cat-performance">
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id cat-performance">
+                        <td class="col-id cat-performance">
                             <code>PERF_07</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name cat-performance">
+                        <td class="col-name cat-performance">
                             <span class="clickable-item" onclick="showItemInfo('PERF_07')">1년 수익률</span>
                         </td>
 
@@ -15974,9 +15956,9 @@
                     
                     
                     <tr class="yearly-sub-row">
-                        <td class="col-fixed col-cat cat-performance"></td>
-                        <td class="col-fixed col-id cat-performance"></td>
-                        <td class="col-fixed col-name cat-performance" style="font-size: 10px; color: #666;">
+                        <td class="col-cat cat-performance"></td>
+                        <td class="col-id cat-performance"></td>
+                        <td class="col-name cat-performance" style="font-size: 10px; color: #666;">
                             📊 YTD 수익률
                         </td>
                         
@@ -16074,9 +16056,9 @@
                     </tr>
                     
                     <tr class="yearly-sub-row">
-                        <td class="col-fixed col-cat cat-performance"></td>
-                        <td class="col-fixed col-id cat-performance"></td>
-                        <td class="col-fixed col-name cat-performance" style="font-size: 10px; color: #666;">
+                        <td class="col-cat cat-performance"></td>
+                        <td class="col-id cat-performance"></td>
+                        <td class="col-name cat-performance" style="font-size: 10px; color: #666;">
                             📅 월별 수익률
                         </td>
                         
@@ -17143,18 +17125,18 @@
 
                     <tr class="category-start mandatory-item">
                         <!-- 카테고리 -->
-                        <td class="col-fixed col-cat cat-risk">
+                        <td class="col-cat cat-risk">
                             
                             <span class="cat-icon-mini">&#9888;</span>
                             RISK
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id cat-risk">
+                        <td class="col-id cat-risk">
                             <code>RISK_01</code><span class="mandatory-star">★</span>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name cat-risk">
+                        <td class="col-name cat-risk">
                             <span class="clickable-item" onclick="showItemInfo('RISK_01')">1년 최대 낙폭 (MDD)</span>
                         </td>
 
@@ -17292,15 +17274,15 @@
 
                     <tr class=" ">
                         <!-- 카테고리 -->
-                        <td class="col-fixed col-cat cat-risk">
+                        <td class="col-cat cat-risk">
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id cat-risk">
+                        <td class="col-id cat-risk">
                             <code>RISK_02</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name cat-risk">
+                        <td class="col-name cat-risk">
                             <span class="clickable-item" onclick="showItemInfo('RISK_02')">연환산 변동성</span>
                         </td>
 
@@ -17438,15 +17420,15 @@
 
                     <tr class=" ">
                         <!-- 카테고리 -->
-                        <td class="col-fixed col-cat cat-risk">
+                        <td class="col-cat cat-risk">
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id cat-risk">
+                        <td class="col-id cat-risk">
                             <code>RISK_05</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name cat-risk">
+                        <td class="col-name cat-risk">
                             <span class="clickable-item" onclick="showItemInfo('RISK_05')">하방 변동성</span>
                         </td>
 
@@ -17584,15 +17566,15 @@
 
                     <tr class=" ">
                         <!-- 카테고리 -->
-                        <td class="col-fixed col-cat cat-risk">
+                        <td class="col-cat cat-risk">
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id cat-risk">
+                        <td class="col-id cat-risk">
                             <code>RISK_08</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name cat-risk">
+                        <td class="col-name cat-risk">
                             <span class="clickable-item" onclick="showItemInfo('RISK_08')">최악의 월간 수익률</span>
                         </td>
 
@@ -17730,18 +17712,18 @@
 
                     <tr class="category-start mandatory-item">
                         <!-- 카테고리 -->
-                        <td class="col-fixed col-cat cat-strategy_quality">
+                        <td class="col-cat cat-strategy_quality">
                             
                             <span class="cat-icon-mini">&#128736;</span>
                             STRATEGY QUALITY
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id cat-strategy_quality">
+                        <td class="col-id cat-strategy_quality">
                             <code>QUAL_01</code><span class="mandatory-star">★</span>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name cat-strategy_quality">
+                        <td class="col-name cat-strategy_quality">
                             <span class="clickable-item" onclick="showItemInfo('QUAL_01')">트랙레코드 기간</span>
                         </td>
 
@@ -17879,15 +17861,15 @@
 
                     <tr class=" mandatory-item">
                         <!-- 카테고리 -->
-                        <td class="col-fixed col-cat cat-strategy_quality">
+                        <td class="col-cat cat-strategy_quality">
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id cat-strategy_quality">
+                        <td class="col-id cat-strategy_quality">
                             <code>QUAL_02</code><span class="mandatory-star">★</span>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name cat-strategy_quality">
+                        <td class="col-name cat-strategy_quality">
                             <span class="clickable-item" onclick="showItemInfo('QUAL_02')">전략 투명성</span>
                         </td>
 
@@ -18025,15 +18007,15 @@
 
                     <tr class=" mandatory-item">
                         <!-- 카테고리 -->
-                        <td class="col-fixed col-cat cat-strategy_quality">
+                        <td class="col-cat cat-strategy_quality">
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id cat-strategy_quality">
+                        <td class="col-id cat-strategy_quality">
                             <code>QUAL_06</code><span class="mandatory-star">★</span>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name cat-strategy_quality">
+                        <td class="col-name cat-strategy_quality">
                             <span class="clickable-item" onclick="showItemInfo('QUAL_06')">AUM 확인</span>
                         </td>
 
@@ -18171,15 +18153,15 @@
 
                     <tr class=" ">
                         <!-- 카테고리 -->
-                        <td class="col-fixed col-cat cat-strategy_quality">
+                        <td class="col-cat cat-strategy_quality">
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id cat-strategy_quality">
+                        <td class="col-id cat-strategy_quality">
                             <code>QUAL_07</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name cat-strategy_quality">
+                        <td class="col-name cat-strategy_quality">
                             <span class="clickable-item" onclick="showItemInfo('QUAL_07')">레버리지 수준</span>
                         </td>
 
@@ -18317,18 +18299,18 @@
 
                     <tr class="category-start ">
                         <!-- 카테고리 -->
-                        <td class="col-fixed col-cat cat-cost">
+                        <td class="col-cat cat-cost">
                             
                             <span class="cat-icon-mini">&#128176;</span>
                             COST
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id cat-cost">
+                        <td class="col-id cat-cost">
                             <code>COST_01</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name cat-cost">
+                        <td class="col-name cat-cost">
                             <span class="clickable-item" onclick="showItemInfo('COST_01')">운용보수</span>
                         </td>
 
@@ -18466,15 +18448,15 @@
 
                     <tr class=" ">
                         <!-- 카테고리 -->
-                        <td class="col-fixed col-cat cat-cost">
+                        <td class="col-cat cat-cost">
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id cat-cost">
+                        <td class="col-id cat-cost">
                             <code>COST_02</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name cat-cost">
+                        <td class="col-name cat-cost">
                             <span class="clickable-item" onclick="showItemInfo('COST_02')">거래비용</span>
                         </td>
 
@@ -18612,18 +18594,18 @@
 
                     <tr class="category-start ">
                         <!-- 카테고리 -->
-                        <td class="col-fixed col-cat cat-correlation">
+                        <td class="col-cat cat-correlation">
                             
                             <span class="cat-icon-mini">&#128279;</span>
                             CORRELATION
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id cat-correlation">
+                        <td class="col-id cat-correlation">
                             <code>CORR_01</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name cat-correlation">
+                        <td class="col-name cat-correlation">
                             <span class="clickable-item" onclick="showItemInfo('CORR_01')">포트폴리오 평균 상관계수</span>
                         </td>
 
@@ -18761,15 +18743,15 @@
 
                     <tr class=" ">
                         <!-- 카테고리 -->
-                        <td class="col-fixed col-cat cat-correlation">
+                        <td class="col-cat cat-correlation">
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id cat-correlation">
+                        <td class="col-id cat-correlation">
                             <code>CORR_02</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name cat-correlation">
+                        <td class="col-name cat-correlation">
                             <span class="clickable-item" onclick="showItemInfo('CORR_02')">최대 상관 상품</span>
                         </td>
 
@@ -18907,15 +18889,15 @@
 
                     <tr class=" ">
                         <!-- 카테고리 -->
-                        <td class="col-fixed col-cat cat-correlation">
+                        <td class="col-cat cat-correlation">
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id cat-correlation">
+                        <td class="col-id cat-correlation">
                             <code>CORR_03</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name cat-correlation">
+                        <td class="col-name cat-correlation">
                             <span class="clickable-item" onclick="showItemInfo('CORR_03')">분산효과 기여도</span>
                         </td>
 
@@ -19053,15 +19035,15 @@
 
                     <tr class=" ">
                         <!-- 카테고리 -->
-                        <td class="col-fixed col-cat cat-correlation">
+                        <td class="col-cat cat-correlation">
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id cat-correlation">
+                        <td class="col-id cat-correlation">
                             <code>CORR_04</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name cat-correlation">
+                        <td class="col-name cat-correlation">
                             <span class="clickable-item" onclick="showItemInfo('CORR_04')">구성자산 중복도</span>
                         </td>
 
@@ -19199,15 +19181,15 @@
 
                     <tr class=" ">
                         <!-- 카테고리 -->
-                        <td class="col-fixed col-cat cat-correlation">
+                        <td class="col-cat cat-correlation">
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id cat-correlation">
+                        <td class="col-id cat-correlation">
                             <code>CORR_05</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name cat-correlation">
+                        <td class="col-name cat-correlation">
                             <span class="clickable-item" onclick="showItemInfo('CORR_05')">팩터 익스포저 다양성</span>
                         </td>
 
@@ -19345,15 +19327,15 @@
 
                     <tr class=" ">
                         <!-- 카테고리 -->
-                        <td class="col-fixed col-cat cat-correlation">
+                        <td class="col-cat cat-correlation">
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id cat-correlation">
+                        <td class="col-id cat-correlation">
                             <code>CORR_06</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name cat-correlation">
+                        <td class="col-name cat-correlation">
                             <span class="clickable-item" onclick="showItemInfo('CORR_06')">자산군 분산 기여</span>
                         </td>
 
@@ -19491,15 +19473,15 @@
 
                     <tr class=" ">
                         <!-- 카테고리 -->
-                        <td class="col-fixed col-cat cat-correlation">
+                        <td class="col-cat cat-correlation">
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id cat-correlation">
+                        <td class="col-id cat-correlation">
                             <code>CORR_07</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name cat-correlation">
+                        <td class="col-name cat-correlation">
                             <span class="clickable-item" onclick="showItemInfo('CORR_07')">위기 시 상대 손실률</span>
                         </td>
 
@@ -19637,15 +19619,15 @@
 
                     <tr class=" ">
                         <!-- 카테고리 -->
-                        <td class="col-fixed col-cat cat-correlation">
+                        <td class="col-cat cat-correlation">
                             
                         </td>
                         <!-- ID -->
-                        <td class="col-fixed col-id cat-correlation">
+                        <td class="col-id cat-correlation">
                             <code>CORR_08</code>
                         </td>
                         <!-- 항목명 -->
-                        <td class="col-fixed col-name cat-correlation">
+                        <td class="col-name cat-correlation">
                             <span class="clickable-item" onclick="showItemInfo('CORR_08')">위기 시 상관계수 급등</span>
                         </td>
 
@@ -19835,7 +19817,7 @@
             </ol>
         </div>
         <p style="margin-top: 15px; font-size: 11px; color: #999; text-align: right;">
-            ※ 이 원칙은 지속적으로 업데이트됩니다. Last updated: 2026-01-13
+            ※ 이 원칙은 지속적으로 업데이트됩니다. Last updated: 2026-01-15
         </p>
     </div>
 
@@ -20358,7 +20340,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>Generated by QIS Fund Manager | 2026-01-13 13:52:15</p>
+        <p>Generated by QIS Fund Manager | 2026-01-15 15:05:31</p>
     </footer>
 
     <!-- Price Chart Initialization -->
