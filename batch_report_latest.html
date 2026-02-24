@@ -363,6 +363,30 @@
             background: rgba(255,255,255,0.3);
         }
 
+        .issuer-tab {
+            padding: 5px 14px;
+            border: 1.5px solid #dee2e6;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 12px;
+            color: #6c757d;
+            transition: all 0.2s ease;
+        }
+
+        .issuer-tab:hover {
+            background: #f8f9fa;
+            border-color: #17a2b8;
+            color: #17a2b8;
+        }
+
+        .issuer-tab.active {
+            background: #17a2b8;
+            color: white;
+            border-color: #17a2b8;
+        }
+
         .tab-content {
             display: none;
         }
@@ -1554,7 +1578,7 @@
     <!-- Header -->
     <div class="report-header">
         <h1>QIS Strategy Comparison Report</h1>
-        <p class="subtitle">31 Strategies Evaluated | 2026-02-24 13:09</p>
+        <p class="subtitle">31 Strategies Evaluated | 2026-02-24 15:49</p>
     </div>
 
     <!-- Risk Limit Table -->
@@ -1704,6 +1728,183 @@
             
         </div>
 
+        <!-- Issuer Filter Tabs (visible in 전체 tab) -->
+        <div id="issuer-filter-row" class="category-tabs" style="margin-top: 6px; gap: 6px;">
+            <button class="issuer-tab active" data-issuer="all" onclick="filterByIssuer('all')" style="font-size: 12px; padding: 4px 12px;">
+                전체
+            </button>
+            
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+            
+            <button class="issuer-tab" data-issuer="Citi" onclick="filterByIssuer('Citi')" style="font-size: 12px; padding: 4px 12px;">
+                Citi <span class="tab-count" style="font-size: 10px;">2</span>
+            </button>
+            
+            <button class="issuer-tab" data-issuer="Morgan Stanley" onclick="filterByIssuer('Morgan Stanley')" style="font-size: 12px; padding: 4px 12px;">
+                Morgan Stanley <span class="tab-count" style="font-size: 10px;">5</span>
+            </button>
+            
+            <button class="issuer-tab" data-issuer="UBS" onclick="filterByIssuer('UBS')" style="font-size: 12px; padding: 4px 12px;">
+                UBS <span class="tab-count" style="font-size: 10px;">24</span>
+            </button>
+            
+        </div>
+
         <!-- All Strategies Tab (Ranking Table) -->
         <div id="tab-all" class="tab-content active">
             <div style="overflow-x: auto;">
@@ -1727,9 +1928,37 @@
                 <tbody>
                 
                     
-                    <tr>
+                    <tr data-issuer="UBS">
                         <td class="rank-cell rank-1">
                             #1
+                        </td>
+                        <td><strong>UBCIRSER</strong></td>
+                        <td>UBS Commodity Relative-Skewness (CRIS)</td>
+                        <td style="font-size: 11px; color: #555; line-height: 1.4;">Long/short commodity skewness strategy. Long low-skew, short high-skew commodities across 24 BCOM universe. Monthly rebalance.</td>
+                        <td style="font-size: 11px; color: #666;">Commodity Curve</td>
+                        <td style="font-size: 11px;">UBS</td>
+                        <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
+                        <td style="font-size: 10px; color: #888;">2018-08-29</td>
+                        <td class="clickable-score" onclick="showScoreDetail('UBCIRSER')" title="클릭하여 상세 내역 보기">
+                            78.3
+                            <div class="score-bar">
+                                <div class="score-bar-fill progress-pass"
+                                     style="width: 78.26858878873279%; background: #28a745;"></div>
+                            </div>
+                        </td>
+                        <td class="clickable-score" onclick="showScoreDetail('UBCIRSER')" title="클릭하여 상세 내역 보기">
+                            <span class="grade-badge-sm grade-b">
+                                B+
+                            </span>
+                        </td>
+                        <td style="color: #28a745; font-weight: bold;">16</td>
+                        <td style="color: #dc3545; font-weight: bold;">0</td>
+                    </tr>
+                
+                    
+                    <tr data-issuer="UBS">
+                        <td class="rank-cell rank-2">
+                            #2
                         </td>
                         <td><strong>CSCUD66A</strong></td>
                         <td>UBS Seasonal Curve Carry</td>
@@ -1755,9 +1984,9 @@
                     </tr>
                 
                     
-                    <tr>
-                        <td class="rank-cell rank-2">
-                            #2
+                    <tr data-issuer="UBS">
+                        <td class="rank-cell rank-3">
+                            #3
                         </td>
                         <td><strong>COSXPLNE</strong></td>
                         <td>UBS Short Spread Carry (COSI)</td>
@@ -1783,9 +2012,9 @@
                     </tr>
                 
                     
-                    <tr>
-                        <td class="rank-cell rank-3">
-                            #3
+                    <tr data-issuer="UBS">
+                        <td class="rank-cell ">
+                            #4
                         </td>
                         <td><strong>CSCUD15A</strong></td>
                         <td>UBS Dynamic Curve Carry</td>
@@ -1811,9 +2040,9 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="UBS">
                         <td class="rank-cell ">
-                            #4
+                            #5
                         </td>
                         <td><strong>XUBSTYS1</strong></td>
                         <td>TY Short Volatility</td>
@@ -1839,9 +2068,9 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="UBS">
                         <td class="rank-cell ">
-                            #5
+                            #6
                         </td>
                         <td><strong>UBCCRSER</strong></td>
                         <td>UBS Skewness Curve</td>
@@ -1867,9 +2096,9 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="UBS">
                         <td class="rank-cell ">
-                            #6
+                            #7
                         </td>
                         <td><strong>XUBSXMRU</strong></td>
                         <td>UBS FX Mean Reversion Index</td>
@@ -1895,9 +2124,9 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="UBS">
                         <td class="rank-cell ">
-                            #7
+                            #8
                         </td>
                         <td><strong>XUBSFRP1</strong></td>
                         <td>Fixed Income Risk Premia Portfolio</td>
@@ -1923,9 +2152,9 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="UBS">
                         <td class="rank-cell ">
-                            #8
+                            #9
                         </td>
                         <td><strong>XUBSCSB1</strong></td>
                         <td>Short Brent Vol Hourly Hedged</td>
@@ -1951,35 +2180,7 @@
                     </tr>
                 
                     
-                    <tr>
-                        <td class="rank-cell ">
-                            #9
-                        </td>
-                        <td><strong>UBCIRSER</strong></td>
-                        <td>UBS Commodity Relative-Skewness (CRIS)</td>
-                        <td style="font-size: 11px; color: #555; line-height: 1.4;">Long/short commodity skewness strategy. Long low-skew, short high-skew commodities across 24 BCOM universe. Monthly rebalance.</td>
-                        <td style="font-size: 11px; color: #666;">Commodity Curve</td>
-                        <td style="font-size: 11px;">UBS</td>
-                        <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
-                        <td style="font-size: 10px; color: #888;">2018-08-29</td>
-                        <td class="clickable-score" onclick="showScoreDetail('UBCIRSER')" title="클릭하여 상세 내역 보기">
-                            71.8
-                            <div class="score-bar">
-                                <div class="score-bar-fill progress-pass"
-                                     style="width: 71.84302665855526%; background: #28a745;"></div>
-                            </div>
-                        </td>
-                        <td class="clickable-score" onclick="showScoreDetail('UBCIRSER')" title="클릭하여 상세 내역 보기">
-                            <span class="grade-badge-sm grade-b">
-                                B+
-                            </span>
-                        </td>
-                        <td style="color: #28a745; font-weight: bold;">15</td>
-                        <td style="color: #dc3545; font-weight: bold;">1</td>
-                    </tr>
-                
-                    
-                    <tr>
+                    <tr data-issuer="Morgan Stanley">
                         <td class="rank-cell ">
                             #10
                         </td>
@@ -2007,7 +2208,7 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="UBS">
                         <td class="rank-cell ">
                             #11
                         </td>
@@ -2035,7 +2236,7 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="UBS">
                         <td class="rank-cell ">
                             #12
                         </td>
@@ -2063,7 +2264,7 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="UBS">
                         <td class="rank-cell ">
                             #13
                         </td>
@@ -2091,7 +2292,7 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="UBS">
                         <td class="rank-cell ">
                             #14
                         </td>
@@ -2119,7 +2320,7 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="UBS">
                         <td class="rank-cell ">
                             #15
                         </td>
@@ -2147,7 +2348,7 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="UBS">
                         <td class="rank-cell ">
                             #16
                         </td>
@@ -2175,7 +2376,7 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="Morgan Stanley">
                         <td class="rank-cell ">
                             #17
                         </td>
@@ -2203,7 +2404,7 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="UBS">
                         <td class="rank-cell ">
                             #18
                         </td>
@@ -2231,7 +2432,7 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="Citi">
                         <td class="rank-cell ">
                             #19
                         </td>
@@ -2259,7 +2460,7 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="UBS">
                         <td class="rank-cell ">
                             #20
                         </td>
@@ -2287,7 +2488,7 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="UBS">
                         <td class="rank-cell ">
                             #21
                         </td>
@@ -2315,7 +2516,7 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="Morgan Stanley">
                         <td class="rank-cell ">
                             #22
                         </td>
@@ -2343,7 +2544,7 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="UBS">
                         <td class="rank-cell ">
                             #23
                         </td>
@@ -2371,7 +2572,7 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="UBS">
                         <td class="rank-cell ">
                             #24
                         </td>
@@ -2399,7 +2600,7 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="UBS">
                         <td class="rank-cell ">
                             #25
                         </td>
@@ -2427,7 +2628,7 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="Citi">
                         <td class="rank-cell ">
                             #26
                         </td>
@@ -2455,7 +2656,7 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="UBS">
                         <td class="rank-cell ">
                             #27
                         </td>
@@ -2483,7 +2684,7 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="UBS">
                         <td class="rank-cell ">
                             #28
                         </td>
@@ -2511,7 +2712,7 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="UBS">
                         <td class="rank-cell ">
                             #29
                         </td>
@@ -2539,7 +2740,7 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="Morgan Stanley">
                         <td class="rank-cell ">
                             #30
                         </td>
@@ -2567,7 +2768,7 @@
                     </tr>
                 
                     
-                    <tr>
+                    <tr data-issuer="Morgan Stanley">
                         <td class="rank-cell ">
                             #31
                         </td>
@@ -3282,6 +3483,195 @@
                 <div class="subcategory-accordion">
                     <div class="accordion-header" onclick="toggleAccordion(this)">
                         <div class="subcat-name">
+                            <span>Commodity Curve</span>
+                            <span class="subcat-count">3</span>
+                        </div>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-body expanded">
+                        <div class="category-strategy-grid">
+                            
+                            
+                            
+                            <div class="mini-strategy-card grade-b">
+                                <div class="mini-card-header">
+                                    <div>
+                                        <div class="ticker">UBCIRSER</div>
+                                        <div class="name">UBS Commodity Relative-Skewness (CRIS)</div>
+                                        <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                    </div>
+                                    <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('UBCIRSER')" title="클릭하여 상세 내역 보기">
+                                        
+                                        <div class="grade" style="color: #17a2b8;">B+</div>
+                                        <div style="font-size: 10px; color: #888;">78.3점</div>
+                                        <div style="font-size: 10px; color: #28a745; font-weight: 600;">✓ Eligible</div>
+                                        
+                                    </div>
+                                </div>
+                                
+                                <div style="font-size: 11px; color: #555; line-height: 1.5; margin: 10px 0; padding: 8px; background: #f8f9fa; border-radius: 6px; border-left: 3px solid #667eea;">
+                                    Long/short commodity skewness strategy. Long low-skew, short high-skew commodities across 24 BCOM universe. Monthly rebalance.
+                                </div>
+                                
+                                <div class="mini-card-metrics">
+                                    <div class="mini-metric">
+                                        <div class="label">1Y수익</div>
+                                        <div class="value" style="color: #28a745">
+                                            
+                                                22.7%
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="mini-metric">
+                                        <div class="label">변동성</div>
+                                        <div class="value">
+                                            
+                                                11.7%
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="mini-metric">
+                                        <div class="label">샤프</div>
+                                        <div class="value">
+                                            
+                                                0.66
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="mini-metric">
+                                        <div class="label">MDD</div>
+                                        <div class="value" style="color: #dc3545;">
+                                            
+                                                18.5%
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            
+                            <div class="mini-strategy-card grade-f">
+                                <div class="mini-card-header">
+                                    <div>
+                                        <div class="ticker">UBCCRSER</div>
+                                        <div class="name">UBS Skewness Curve</div>
+                                        <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                    </div>
+                                    <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('UBCCRSER')" title="클릭하여 상세 내역 보기">
+                                        
+                                        <div class="grade" style="color: #dc3545;">F</div>
+                                        <div style="font-size: 10px; color: #888;">73.9점</div>
+                                        <div style="font-size: 10px; color: #dc3545; font-weight: 600;">✗ Not Eligible</div>
+                                        
+                                    </div>
+                                </div>
+                                
+                                <div style="font-size: 11px; color: #555; line-height: 1.5; margin: 10px 0; padding: 8px; background: #f8f9fa; border-radius: 6px; border-left: 3px solid #667eea;">
+                                    실현 스큐니스 기반 밸류 전략. 피어슨 스큐 계수로 21개 원자재 순위화. 스큐 최저 롱 / 스큐 최고 숏. Selective Hedging 이론 기반 과대/과소평가 포착. 연환산 수익률 3.20%, 샤프비율 1.01.
+                                </div>
+                                
+                                <div class="mini-card-metrics">
+                                    <div class="mini-metric">
+                                        <div class="label">1Y수익</div>
+                                        <div class="value" style="color: #28a745">
+                                            
+                                                0.4%
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="mini-metric">
+                                        <div class="label">변동성</div>
+                                        <div class="value">
+                                            
+                                                3.1%
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="mini-metric">
+                                        <div class="label">샤프</div>
+                                        <div class="value">
+                                            
+                                                0.77
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="mini-metric">
+                                        <div class="label">MDD</div>
+                                        <div class="value" style="color: #dc3545;">
+                                            
+                                                6.6%
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            
+                            <div class="mini-strategy-card grade-f">
+                                <div class="mini-card-header">
+                                    <div>
+                                        <div class="ticker">AQPEEC4N</div>
+                                        <div class="name">UBS Scarcity Premium (SPCI-EC)</div>
+                                        <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                    </div>
+                                    <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('AQPEEC4N')" title="클릭하여 상세 내역 보기">
+                                        
+                                        <div class="grade" style="color: #dc3545;">F</div>
+                                        <div style="font-size: 10px; color: #888;">67.0점</div>
+                                        <div style="font-size: 10px; color: #dc3545; font-weight: 600;">✗ Not Eligible</div>
+                                        
+                                    </div>
+                                </div>
+                                
+                                <div style="font-size: 11px; color: #555; line-height: 1.5; margin: 10px 0; padding: 8px; background: #f8f9fa; border-radius: 6px; border-left: 3px solid #667eea;">
+                                    희소성 프리미엄 포착 전략 (비방향성). 18개 원자재에서 달러 중립 캘린더 스프레드 롱 - 원자재 가격 방향과 무관하게 커브 형태에서 수익 추구. Short Spread Carry와 음의 상관관계로 상보적. 연환산 수익률 10.63%, 샤프비율 1.12.
+                                </div>
+                                
+                                <div class="mini-card-metrics">
+                                    <div class="mini-metric">
+                                        <div class="label">1Y수익</div>
+                                        <div class="value" style="color: #dc3545">
+                                            
+                                                -0.1%
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="mini-metric">
+                                        <div class="label">변동성</div>
+                                        <div class="value">
+                                            
+                                                8.8%
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="mini-metric">
+                                        <div class="label">샤프</div>
+                                        <div class="value">
+                                            
+                                                0.52
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="mini-metric">
+                                        <div class="label">MDD</div>
+                                        <div class="value" style="color: #dc3545;">
+                                            
+                                                20.9%
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subcategory-accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <div class="subcat-name">
                             <span>Commodity Carry</span>
                             <span class="subcat-count">5</span>
                         </div>
@@ -3566,195 +3956,6 @@
                                         <div class="value" style="color: #dc3545;">
                                             
                                                 15.0%
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="subcategory-accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <div class="subcat-name">
-                            <span>Commodity Curve</span>
-                            <span class="subcat-count">3</span>
-                        </div>
-                        <span class="accordion-icon">▼</span>
-                    </div>
-                    <div class="accordion-body expanded">
-                        <div class="category-strategy-grid">
-                            
-                            
-                            
-                            <div class="mini-strategy-card grade-f">
-                                <div class="mini-card-header">
-                                    <div>
-                                        <div class="ticker">UBCCRSER</div>
-                                        <div class="name">UBS Skewness Curve</div>
-                                        <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
-                                    </div>
-                                    <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('UBCCRSER')" title="클릭하여 상세 내역 보기">
-                                        
-                                        <div class="grade" style="color: #dc3545;">F</div>
-                                        <div style="font-size: 10px; color: #888;">73.9점</div>
-                                        <div style="font-size: 10px; color: #dc3545; font-weight: 600;">✗ Not Eligible</div>
-                                        
-                                    </div>
-                                </div>
-                                
-                                <div style="font-size: 11px; color: #555; line-height: 1.5; margin: 10px 0; padding: 8px; background: #f8f9fa; border-radius: 6px; border-left: 3px solid #667eea;">
-                                    실현 스큐니스 기반 밸류 전략. 피어슨 스큐 계수로 21개 원자재 순위화. 스큐 최저 롱 / 스큐 최고 숏. Selective Hedging 이론 기반 과대/과소평가 포착. 연환산 수익률 3.20%, 샤프비율 1.01.
-                                </div>
-                                
-                                <div class="mini-card-metrics">
-                                    <div class="mini-metric">
-                                        <div class="label">1Y수익</div>
-                                        <div class="value" style="color: #28a745">
-                                            
-                                                0.4%
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="mini-metric">
-                                        <div class="label">변동성</div>
-                                        <div class="value">
-                                            
-                                                3.1%
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="mini-metric">
-                                        <div class="label">샤프</div>
-                                        <div class="value">
-                                            
-                                                0.77
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="mini-metric">
-                                        <div class="label">MDD</div>
-                                        <div class="value" style="color: #dc3545;">
-                                            
-                                                6.6%
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            
-                            
-                            <div class="mini-strategy-card grade-b">
-                                <div class="mini-card-header">
-                                    <div>
-                                        <div class="ticker">UBCIRSER</div>
-                                        <div class="name">UBS Commodity Relative-Skewness (CRIS)</div>
-                                        <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
-                                    </div>
-                                    <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('UBCIRSER')" title="클릭하여 상세 내역 보기">
-                                        
-                                        <div class="grade" style="color: #17a2b8;">B+</div>
-                                        <div style="font-size: 10px; color: #888;">71.8점</div>
-                                        <div style="font-size: 10px; color: #28a745; font-weight: 600;">✓ Eligible</div>
-                                        
-                                    </div>
-                                </div>
-                                
-                                <div style="font-size: 11px; color: #555; line-height: 1.5; margin: 10px 0; padding: 8px; background: #f8f9fa; border-radius: 6px; border-left: 3px solid #667eea;">
-                                    Long/short commodity skewness strategy. Long low-skew, short high-skew commodities across 24 BCOM universe. Monthly rebalance.
-                                </div>
-                                
-                                <div class="mini-card-metrics">
-                                    <div class="mini-metric">
-                                        <div class="label">1Y수익</div>
-                                        <div class="value" style="color: #28a745">
-                                            
-                                                22.7%
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="mini-metric">
-                                        <div class="label">변동성</div>
-                                        <div class="value">
-                                            
-                                                11.7%
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="mini-metric">
-                                        <div class="label">샤프</div>
-                                        <div class="value">
-                                            
-                                                0.66
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="mini-metric">
-                                        <div class="label">MDD</div>
-                                        <div class="value" style="color: #dc3545;">
-                                            
-                                                18.5%
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            
-                            
-                            <div class="mini-strategy-card grade-f">
-                                <div class="mini-card-header">
-                                    <div>
-                                        <div class="ticker">AQPEEC4N</div>
-                                        <div class="name">UBS Scarcity Premium (SPCI-EC)</div>
-                                        <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
-                                    </div>
-                                    <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('AQPEEC4N')" title="클릭하여 상세 내역 보기">
-                                        
-                                        <div class="grade" style="color: #dc3545;">F</div>
-                                        <div style="font-size: 10px; color: #888;">67.0점</div>
-                                        <div style="font-size: 10px; color: #dc3545; font-weight: 600;">✗ Not Eligible</div>
-                                        
-                                    </div>
-                                </div>
-                                
-                                <div style="font-size: 11px; color: #555; line-height: 1.5; margin: 10px 0; padding: 8px; background: #f8f9fa; border-radius: 6px; border-left: 3px solid #667eea;">
-                                    희소성 프리미엄 포착 전략 (비방향성). 18개 원자재에서 달러 중립 캘린더 스프레드 롱 - 원자재 가격 방향과 무관하게 커브 형태에서 수익 추구. Short Spread Carry와 음의 상관관계로 상보적. 연환산 수익률 10.63%, 샤프비율 1.12.
-                                </div>
-                                
-                                <div class="mini-card-metrics">
-                                    <div class="mini-metric">
-                                        <div class="label">1Y수익</div>
-                                        <div class="value" style="color: #dc3545">
-                                            
-                                                -0.1%
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="mini-metric">
-                                        <div class="label">변동성</div>
-                                        <div class="value">
-                                            
-                                                8.8%
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="mini-metric">
-                                        <div class="label">샤프</div>
-                                        <div class="value">
-                                            
-                                                0.52
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="mini-metric">
-                                        <div class="label">MDD</div>
-                                        <div class="value" style="color: #dc3545;">
-                                            
-                                                20.9%
                                             
                                         </div>
                                     </div>
@@ -4602,6 +4803,106 @@
             
             
             
+            <div class="strategy-profile-card" style="background: linear-gradient(145deg, #ffffff, #f8f9fa); border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 5px solid #17a2b8;">
+                <!-- Header -->
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                    <div>
+                        <div style="font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px;">UBS</div>
+                        <div style="font-size: 16px; font-weight: 700; color: #2c3e50;">UBCIRSER</div>
+                        
+                        <div style="font-size: 13px; color: #667eea; font-weight: 500; cursor: pointer; text-decoration: underline; text-decoration-style: dotted;" onclick="openDetailModal('UBCIRSER')">
+                            UBS Commodity Relative-Skewness (CRIS) <span style="font-size: 10px;">🔍</span>
+                        </div>
+                        
+                    </div>
+                    <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('UBCIRSER')" title="클릭하여 상세 내역 보기">
+                        
+                        <div style="font-size: 28px; font-weight: 800; color: #17a2b8;">B+</div>
+                        <div style="font-size: 11px; color: #888;">78.3점</div>
+                        
+                    </div>
+                </div>
+
+                <!-- Live Date & Category -->
+                <div style="display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap;">
+                    
+                    <div style="background: #e3f2fd; padding: 6px 12px; border-radius: 20px; font-size: 11px;">
+                        <span style="color: #1976d2; font-weight: 600;">📅 Live:</span>
+                        <span style="color: #0d47a1;">2018-08-29</span>
+                    </div>
+                    
+                    
+                    <div style="background: #f3e5f5; padding: 6px 12px; border-radius: 20px; font-size: 11px;">
+                        <span style="color: #7b1fa2; font-weight: 600;">📁</span>
+                        <span style="color: #4a148c;">Commodity Curve</span>
+                    </div>
+                    
+                    
+                </div>
+
+                <!-- Description -->
+                
+                <div style="background: #f8f9fa; padding: 12px 15px; border-radius: 8px; margin-bottom: 15px; border-left: 3px solid #667eea;">
+                    <div style="font-size: 12px; line-height: 1.7; color: #495057;">
+                        Long/short commodity skewness strategy. Long low-skew, short high-skew commodities across 24 BCOM universe. Monthly rebalance.
+                    </div>
+                    
+                    <div style="margin-top: 10px; text-align: right;">
+                        <button onclick="openDetailModal('UBCIRSER')" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 6px 14px; border-radius: 20px; font-size: 11px; cursor: pointer; font-weight: 600; box-shadow: 0 2px 8px rgba(102,126,234,0.3);">
+                            📖 상세 설명 보기
+                        </button>
+                    </div>
+                    
+                </div>
+                
+
+                <!-- Key Metrics Grid -->
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+                    <div style="text-align: center; background: #e8f5e9; padding: 10px 5px; border-radius: 8px;">
+                        <div style="font-size: 10px; color: #388e3c; text-transform: uppercase;">1년 수익률</div>
+                        <div style="font-size: 14px; font-weight: 700; color: #1b5e20;">
+                            
+                                
+                                    22.7%
+                                
+                            
+                        </div>
+                    </div>
+                    <div style="text-align: center; background: #e3f2fd; padding: 10px 5px; border-radius: 8px;">
+                        <div style="font-size: 10px; color: #1976d2; text-transform: uppercase;">변동성</div>
+                        <div style="font-size: 14px; font-weight: 700; color: #0d47a1;">
+                            
+                                
+                                    11.7%
+                                
+                            
+                        </div>
+                    </div>
+                    <div style="text-align: center; background: #fff3e0; padding: 10px 5px; border-radius: 8px;">
+                        <div style="font-size: 10px; color: #f57c00; text-transform: uppercase;">샤프</div>
+                        <div style="font-size: 14px; font-weight: 700; color: #e65100;">
+                            
+                                
+                                    0.66
+                                
+                            
+                        </div>
+                    </div>
+                    <div style="text-align: center; background: #ffebee; padding: 10px 5px; border-radius: 8px;">
+                        <div style="font-size: 10px; color: #c62828; text-transform: uppercase;">MDD</div>
+                        <div style="font-size: 14px; font-weight: 700; color: #b71c1c;">
+                            
+                                
+                                    18.5%
+                                
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
             <div class="strategy-profile-card" style="background: linear-gradient(145deg, #ffffff, #f8f9fa); border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 5px solid #dc3545;">
                 <!-- Header -->
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
@@ -5356,106 +5657,6 @@
                             
                                 
                                     11.4%
-                                
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            
-            
-            <div class="strategy-profile-card" style="background: linear-gradient(145deg, #ffffff, #f8f9fa); border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 5px solid #17a2b8;">
-                <!-- Header -->
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
-                    <div>
-                        <div style="font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px;">UBS</div>
-                        <div style="font-size: 16px; font-weight: 700; color: #2c3e50;">UBCIRSER</div>
-                        
-                        <div style="font-size: 13px; color: #667eea; font-weight: 500; cursor: pointer; text-decoration: underline; text-decoration-style: dotted;" onclick="openDetailModal('UBCIRSER')">
-                            UBS Commodity Relative-Skewness (CRIS) <span style="font-size: 10px;">🔍</span>
-                        </div>
-                        
-                    </div>
-                    <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('UBCIRSER')" title="클릭하여 상세 내역 보기">
-                        
-                        <div style="font-size: 28px; font-weight: 800; color: #17a2b8;">B+</div>
-                        <div style="font-size: 11px; color: #888;">71.8점</div>
-                        
-                    </div>
-                </div>
-
-                <!-- Live Date & Category -->
-                <div style="display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap;">
-                    
-                    <div style="background: #e3f2fd; padding: 6px 12px; border-radius: 20px; font-size: 11px;">
-                        <span style="color: #1976d2; font-weight: 600;">📅 Live:</span>
-                        <span style="color: #0d47a1;">2018-08-29</span>
-                    </div>
-                    
-                    
-                    <div style="background: #f3e5f5; padding: 6px 12px; border-radius: 20px; font-size: 11px;">
-                        <span style="color: #7b1fa2; font-weight: 600;">📁</span>
-                        <span style="color: #4a148c;">Commodity Curve</span>
-                    </div>
-                    
-                    
-                </div>
-
-                <!-- Description -->
-                
-                <div style="background: #f8f9fa; padding: 12px 15px; border-radius: 8px; margin-bottom: 15px; border-left: 3px solid #667eea;">
-                    <div style="font-size: 12px; line-height: 1.7; color: #495057;">
-                        Long/short commodity skewness strategy. Long low-skew, short high-skew commodities across 24 BCOM universe. Monthly rebalance.
-                    </div>
-                    
-                    <div style="margin-top: 10px; text-align: right;">
-                        <button onclick="openDetailModal('UBCIRSER')" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 6px 14px; border-radius: 20px; font-size: 11px; cursor: pointer; font-weight: 600; box-shadow: 0 2px 8px rgba(102,126,234,0.3);">
-                            📖 상세 설명 보기
-                        </button>
-                    </div>
-                    
-                </div>
-                
-
-                <!-- Key Metrics Grid -->
-                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
-                    <div style="text-align: center; background: #e8f5e9; padding: 10px 5px; border-radius: 8px;">
-                        <div style="font-size: 10px; color: #388e3c; text-transform: uppercase;">1년 수익률</div>
-                        <div style="font-size: 14px; font-weight: 700; color: #1b5e20;">
-                            
-                                
-                                    22.7%
-                                
-                            
-                        </div>
-                    </div>
-                    <div style="text-align: center; background: #e3f2fd; padding: 10px 5px; border-radius: 8px;">
-                        <div style="font-size: 10px; color: #1976d2; text-transform: uppercase;">변동성</div>
-                        <div style="font-size: 14px; font-weight: 700; color: #0d47a1;">
-                            
-                                
-                                    11.7%
-                                
-                            
-                        </div>
-                    </div>
-                    <div style="text-align: center; background: #fff3e0; padding: 10px 5px; border-radius: 8px;">
-                        <div style="font-size: 10px; color: #f57c00; text-transform: uppercase;">샤프</div>
-                        <div style="font-size: 14px; font-weight: 700; color: #e65100;">
-                            
-                                
-                                    0.66
-                                
-                            
-                        </div>
-                    </div>
-                    <div style="text-align: center; background: #ffebee; padding: 10px 5px; border-radius: 8px;">
-                        <div style="font-size: 10px; color: #c62828; text-transform: uppercase;">MDD</div>
-                        <div style="font-size: 14px; font-weight: 700; color: #b71c1c;">
-                            
-                                
-                                    18.5%
                                 
                             
                         </div>
@@ -65124,6 +65325,15 @@
                         <th class="col-name">Item</th>
                         
                         
+                        <th class="col-strategy clickable-strategy" onclick="showStrategyInfo('UBCIRSER')">
+                            <div style="font-size: 11px; font-weight: bold;">UBCIRSER</div>
+                            <div style="font-size: 9px; opacity: 0.9; max-width: 100px; white-space: normal; line-height: 1.2;">UBS Commodity Relative-Sk...</div>
+                            <span class="grade-mini g-b">
+                                B+
+                            </span>
+                        </th>
+                        
+                        
                         <th class="col-strategy clickable-strategy" onclick="showStrategyInfo('CSCUD66A')">
                             <div style="font-size: 11px; font-weight: bold;">CSCUD66A</div>
                             <div style="font-size: 9px; opacity: 0.9; max-width: 100px; white-space: normal; line-height: 1.2;">UBS Seasonal Curve Carry</div>
@@ -65192,15 +65402,6 @@
                             <div style="font-size: 9px; opacity: 0.9; max-width: 100px; white-space: normal; line-height: 1.2;">Short Brent Vol Hourly He...</div>
                             <span class="grade-mini g-f">
                                 F
-                            </span>
-                        </th>
-                        
-                        
-                        <th class="col-strategy clickable-strategy" onclick="showStrategyInfo('UBCIRSER')">
-                            <div style="font-size: 11px; font-weight: bold;">UBCIRSER</div>
-                            <div style="font-size: 9px; opacity: 0.9; max-width: 100px; white-space: normal; line-height: 1.2;">UBS Commodity Relative-Sk...</div>
-                            <span class="grade-mini g-b">
-                                B+
                             </span>
                         </th>
                         
@@ -65410,6 +65611,10 @@
                         <th class="col-name" style="font-size: 9px;">Total Score</th>
                         
                         <th class="col-strategy" style="font-size: 11px; color: #28a745;">
+                            78.3
+                        </th>
+                        
+                        <th class="col-strategy" style="font-size: 11px; color: #28a745;">
                             76.0
                         </th>
                         
@@ -65439,10 +65644,6 @@
                         
                         <th class="col-strategy" style="font-size: 11px; color: #28a745;">
                             72.9
-                        </th>
-                        
-                        <th class="col-strategy" style="font-size: 11px; color: #28a745;">
-                            71.8
                         </th>
                         
                         <th class="col-strategy" style="font-size: 11px; color: #28a745;">
@@ -65568,6 +65769,16 @@
                         
                         
                         
+                        <td class="col-strategy cell-pass clickable-yearly" onclick="showYearlyReturns('UBCIRSER')" title="클릭하여 연도별 수익률 보기">
+                            <span class="val-only">7.70%</span>
+                            <span class="yearly-icon">📊</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
                         <td class="col-strategy cell-fail clickable-yearly" onclick="showYearlyReturns('CSCUD66A')" title="클릭하여 연도별 수익률 보기">
                             <span class="val-only">2.75%</span>
                             <span class="yearly-icon">📊</span>
@@ -65640,16 +65851,6 @@
                         
                         <td class="col-strategy cell-pass clickable-yearly" onclick="showYearlyReturns('XUBSCSB1')" title="클릭하여 연도별 수익률 보기">
                             <span class="val-only">9.11%</span>
-                            <span class="yearly-icon">📊</span>
-                        </td>
-                        
-                        
-                        
-                        
-                        
-                        
-                        <td class="col-strategy cell-pass clickable-yearly" onclick="showYearlyReturns('UBCIRSER')" title="클릭하여 연도별 수익률 보기">
-                            <span class="val-only">7.70%</span>
                             <span class="yearly-icon">📊</span>
                         </td>
                         
@@ -65893,6 +66094,33 @@
                             <div class="yearly-mini-table">
                                 
                                 
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">2026</span>
+                                    <span class="year-value">1.4%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">2025</span>
+                                    <span class="year-value">22.9%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">2024</span>
+                                    <span class="year-value">5.7%</span>
+                                </div>
+                                
+                            </div>
+                        </td>
+                        
+                        <td class="col-strategy yearly-sub-cell">
+                            
+                            
+                            
+                            <div class="yearly-mini-table">
+                                
+                                
                                 <div class="yearly-mini-row negative">
                                     <span class="year-label">2026</span>
                                     <span class="year-value">-0.8%</span>
@@ -66097,33 +66325,6 @@
                                 <div class="yearly-mini-row positive">
                                     <span class="year-label">2024</span>
                                     <span class="year-value">6.3%</span>
-                                </div>
-                                
-                            </div>
-                        </td>
-                        
-                        <td class="col-strategy yearly-sub-cell">
-                            
-                            
-                            
-                            <div class="yearly-mini-table">
-                                
-                                
-                                <div class="yearly-mini-row positive">
-                                    <span class="year-label">2026</span>
-                                    <span class="year-value">1.4%</span>
-                                </div>
-                                
-                                
-                                <div class="yearly-mini-row positive">
-                                    <span class="year-label">2025</span>
-                                    <span class="year-value">22.9%</span>
-                                </div>
-                                
-                                
-                                <div class="yearly-mini-row positive">
-                                    <span class="year-label">2024</span>
-                                    <span class="year-value">5.7%</span>
                                 </div>
                                 
                             </div>
@@ -66754,6 +66955,15 @@
                         
                         
                         <td class="col-strategy cell-pass">
+                            <span class="val-only">12.82% (7.5년)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
                             <span class="val-only">3.05% (11.6년)</span>
                         </td>
                         
@@ -66818,15 +67028,6 @@
                         
                         <td class="col-strategy cell-pass">
                             <span class="val-only">6.62% (3.0년)</span>
-                        </td>
-                        
-                        
-                        
-                        
-                        
-                        
-                        <td class="col-strategy cell-fail">
-                            <span class="val-only">0.128</span>
                         </td>
                         
                         
@@ -67062,6 +67263,15 @@
                         
                         
                         <td class="col-strategy cell-pass">
+                            <span class="val-only">0.66</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
                             <span class="val-only">1.01</span>
                         </td>
                         
@@ -67126,15 +67336,6 @@
                         
                         <td class="col-strategy cell-pass">
                             <span class="val-only">1.33</span>
-                        </td>
-                        
-                        
-                        
-                        
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">0.66</span>
                         </td>
                         
                         
@@ -67370,6 +67571,15 @@
                         
                         
                         <td class="col-strategy cell-pass">
+                            <span class="val-only">0.99</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
                             <span class="val-only">1.25</span>
                         </td>
                         
@@ -67434,15 +67644,6 @@
                         
                         <td class="col-strategy cell-pass">
                             <span class="val-only">1.22</span>
-                        </td>
-                        
-                        
-                        
-                        
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">0.99</span>
                         </td>
                         
                         
@@ -67678,6 +67879,15 @@
                         
                         
                         <td class="col-strategy cell-pass">
+                            <span class="val-only">100% (3/3 년)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
                             <span class="val-only">94% (16/17 년)</span>
                         </td>
                         
@@ -67742,15 +67952,6 @@
                         
                         <td class="col-strategy cell-pass">
                             <span class="val-only">88% (7/8 년)</span>
-                        </td>
-                        
-                        
-                        
-                        
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">100% (3/3 년)</span>
                         </td>
                         
                         
@@ -67985,6 +68186,15 @@
                         
                         
                         
+                        <td class="col-strategy cell-pass">
+                            <span class="val-only">22.69%</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
                         <td class="col-strategy cell-fail">
                             <span class="val-only">1.79%</span>
                         </td>
@@ -68050,15 +68260,6 @@
                         
                         <td class="col-strategy cell-warning">
                             <span class="val-only">2.09%</span>
-                        </td>
-                        
-                        
-                        
-                        
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">22.69%</span>
                         </td>
                         
                         
@@ -68278,6 +68479,13 @@
                         
                         <td class="col-strategy yearly-sub-cell">
                             
+                            <div style="font-size: 13px; font-weight: 600; padding: 4px 8px; border-radius: 4px; display: inline-block; background: #d4edda; color: #155724;">
+                                1.41%
+                            </div>
+                        </td>
+                        
+                        <td class="col-strategy yearly-sub-cell">
+                            
                             <div style="font-size: 13px; font-weight: 600; padding: 4px 8px; border-radius: 4px; display: inline-block; background: #f8d7da; color: #721c24;">
                                 -0.79%
                             </div>
@@ -68329,13 +68537,6 @@
                             
                             <div style="font-size: 13px; font-weight: 600; padding: 4px 8px; border-radius: 4px; display: inline-block; background: #d4edda; color: #155724;">
                                 2.06%
-                            </div>
-                        </td>
-                        
-                        <td class="col-strategy yearly-sub-cell">
-                            
-                            <div style="font-size: 13px; font-weight: 600; padding: 4px 8px; border-radius: 4px; display: inline-block; background: #d4edda; color: #155724;">
-                                1.41%
                             </div>
                         </td>
                         
@@ -68500,6 +68701,87 @@
                         <td class="col-id cat-performance"></td>
                         <td class="col-name cat-performance" style="font-size: 10px; color: #666;">
                             📅 월별 수익률
+                        </td>
+                        
+                        <td class="col-strategy yearly-sub-cell">
+                            
+                            
+                            
+                            <div class="yearly-mini-table">
+                                
+                                
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">02월</span>
+                                    <span class="year-value">1.2%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">01월</span>
+                                    <span class="year-value">0.6%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">12월</span>
+                                    <span class="year-value">4.2%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">11월</span>
+                                    <span class="year-value">1.5%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row negative">
+                                    <span class="year-label">10월</span>
+                                    <span class="year-value">-0.0%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">09월</span>
+                                    <span class="year-value">3.2%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">08월</span>
+                                    <span class="year-value">1.1%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">07월</span>
+                                    <span class="year-value">0.5%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">06월</span>
+                                    <span class="year-value">2.6%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">05월</span>
+                                    <span class="year-value">0.4%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row negative">
+                                    <span class="year-label">04월</span>
+                                    <span class="year-value">-1.5%</span>
+                                </div>
+                                
+                                
+                                <div class="yearly-mini-row positive">
+                                    <span class="year-label">03월</span>
+                                    <span class="year-value">3.3%</span>
+                                </div>
+                                
+                            </div>
                         </td>
                         
                         <td class="col-strategy yearly-sub-cell">
@@ -69145,87 +69427,6 @@
                                 <div class="yearly-mini-row positive">
                                     <span class="year-label">03월</span>
                                     <span class="year-value">1.6%</span>
-                                </div>
-                                
-                            </div>
-                        </td>
-                        
-                        <td class="col-strategy yearly-sub-cell">
-                            
-                            
-                            
-                            <div class="yearly-mini-table">
-                                
-                                
-                                <div class="yearly-mini-row positive">
-                                    <span class="year-label">02월</span>
-                                    <span class="year-value">1.2%</span>
-                                </div>
-                                
-                                
-                                <div class="yearly-mini-row positive">
-                                    <span class="year-label">01월</span>
-                                    <span class="year-value">0.6%</span>
-                                </div>
-                                
-                                
-                                <div class="yearly-mini-row positive">
-                                    <span class="year-label">12월</span>
-                                    <span class="year-value">4.2%</span>
-                                </div>
-                                
-                                
-                                <div class="yearly-mini-row positive">
-                                    <span class="year-label">11월</span>
-                                    <span class="year-value">1.5%</span>
-                                </div>
-                                
-                                
-                                <div class="yearly-mini-row negative">
-                                    <span class="year-label">10월</span>
-                                    <span class="year-value">-0.0%</span>
-                                </div>
-                                
-                                
-                                <div class="yearly-mini-row positive">
-                                    <span class="year-label">09월</span>
-                                    <span class="year-value">3.2%</span>
-                                </div>
-                                
-                                
-                                <div class="yearly-mini-row positive">
-                                    <span class="year-label">08월</span>
-                                    <span class="year-value">1.1%</span>
-                                </div>
-                                
-                                
-                                <div class="yearly-mini-row positive">
-                                    <span class="year-label">07월</span>
-                                    <span class="year-value">0.5%</span>
-                                </div>
-                                
-                                
-                                <div class="yearly-mini-row positive">
-                                    <span class="year-label">06월</span>
-                                    <span class="year-value">2.6%</span>
-                                </div>
-                                
-                                
-                                <div class="yearly-mini-row positive">
-                                    <span class="year-label">05월</span>
-                                    <span class="year-value">0.4%</span>
-                                </div>
-                                
-                                
-                                <div class="yearly-mini-row negative">
-                                    <span class="year-label">04월</span>
-                                    <span class="year-value">-1.5%</span>
-                                </div>
-                                
-                                
-                                <div class="yearly-mini-row positive">
-                                    <span class="year-label">03월</span>
-                                    <span class="year-value">3.3%</span>
                                 </div>
                                 
                             </div>
@@ -71044,6 +71245,15 @@
                         
                         
                         <td class="col-strategy cell-pass">
+                            <span class="val-only">-18.54%</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
                             <span class="val-only">-4.48%</span>
                         </td>
                         
@@ -71108,15 +71318,6 @@
                         
                         <td class="col-strategy cell-pass">
                             <span class="val-only">-11.37%</span>
-                        </td>
-                        
-                        
-                        
-                        
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">-18.54%</span>
                         </td>
                         
                         
@@ -71352,6 +71553,15 @@
                         
                         
                         <td class="col-strategy cell-pass">
+                            <span class="val-only">11.69%</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
                             <span class="val-only">2.73%</span>
                         </td>
                         
@@ -71416,15 +71626,6 @@
                         
                         <td class="col-strategy cell-pass">
                             <span class="val-only">6.87%</span>
-                        </td>
-                        
-                        
-                        
-                        
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">11.69%</span>
                         </td>
                         
                         
@@ -71660,6 +71861,15 @@
                         
                         
                         <td class="col-strategy cell-pass">
+                            <span class="val-only">8.30%</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
                             <span class="val-only">2.20%</span>
                         </td>
                         
@@ -71724,15 +71934,6 @@
                         
                         <td class="col-strategy cell-pass">
                             <span class="val-only">7.20%</span>
-                        </td>
-                        
-                        
-                        
-                        
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">8.30%</span>
                         </td>
                         
                         
@@ -71968,6 +72169,15 @@
                         
                         
                         <td class="col-strategy cell-pass">
+                            <span class="val-only">-9.80%</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
                             <span class="val-only">-3.86%</span>
                         </td>
                         
@@ -72032,15 +72242,6 @@
                         
                         <td class="col-strategy cell-pass">
                             <span class="val-only">-7.84%</span>
-                        </td>
-                        
-                        
-                        
-                        
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">-9.80%</span>
                         </td>
                         
                         
@@ -72279,6 +72480,15 @@
                         
                         
                         <td class="col-strategy cell-pass">
+                            <span class="val-only">7.5년</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
                             <span class="val-only">11.7년</span>
                         </td>
                         
@@ -72343,15 +72553,6 @@
                         
                         <td class="col-strategy cell-pending">
                             <span class="val-only">N/A (확인 필요)</span>
-                        </td>
-                        
-                        
-                        
-                        
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">7.5년</span>
                         </td>
                         
                         
@@ -72632,7 +72833,7 @@
                         
                         
                         <td class="col-strategy cell-pass">
-                            <span class="val-only">2.0x</span>
+                            <span class="val-only">1.0x</span>
                         </td>
                         
                         
@@ -72641,7 +72842,7 @@
                         
                         
                         <td class="col-strategy cell-pass">
-                            <span class="val-only">1.0x</span>
+                            <span class="val-only">2.0x</span>
                         </td>
                         
                         
@@ -73840,6 +74041,15 @@
                         
                         
                         <td class="col-strategy cell-pass">
+                            <span class="val-only">2/5 (40%)</span>
+                        </td>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <td class="col-strategy cell-pass">
                             <span class="val-only">1/5 (20%)</span>
                         </td>
                         
@@ -73886,15 +74096,6 @@
                         
                         <td class="col-strategy cell-pass">
                             <span class="val-only">3/5 (60%)</span>
-                        </td>
-                        
-                        
-                        
-                        
-                        
-                        
-                        <td class="col-strategy cell-pass">
-                            <span class="val-only">2/5 (40%)</span>
                         </td>
                         
                         
@@ -74615,6 +74816,39 @@
         if (targetTab) {
             targetTab.classList.add('active');
         }
+
+        // Show/hide issuer filter row (only in 전체 tab)
+        const issuerRow = document.getElementById('issuer-filter-row');
+        if (issuerRow) {
+            issuerRow.style.display = (tabName === 'all') ? '' : 'none';
+        }
+        // Reset issuer filter when switching category
+        if (tabName !== 'all') {
+            filterByIssuer('all');
+        }
+    }
+
+    function filterByIssuer(issuer) {
+        // Update issuer tab buttons
+        document.querySelectorAll('.issuer-tab').forEach(tab => {
+            tab.classList.remove('active');
+            if (tab.dataset.issuer === issuer) {
+                tab.classList.add('active');
+            }
+        });
+
+        // Filter ranking table rows
+        const rows = document.querySelectorAll('#tab-all .ranking-table tbody tr');
+        let rank = 0;
+        rows.forEach(row => {
+            if (issuer === 'all' || row.dataset.issuer === issuer) {
+                row.style.display = '';
+                rank++;
+                row.querySelector('.rank-cell').textContent = '#' + rank;
+            } else {
+                row.style.display = 'none';
+            }
+        });
     }
 
     // Accordion toggle functionality
@@ -74627,7 +74861,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>Generated by QIS Fund Manager | 2026-02-24 13:09:38</p>
+        <p>Generated by QIS Fund Manager | 2026-02-24 15:49:26</p>
     </footer>
 
     <!-- Price Chart Initialization -->
@@ -75731,6 +75965,18 @@
     const strategyData = {
         
         
+        'UBCIRSER': {
+            ticker: 'UBCIRSER',
+            name: 'UBS Commodity Relative-Skewness (CRIS)',
+            description: 'Long/short commodity skewness strategy. Long low-skew, short high-skew commodities across 24 BCOM universe. Monthly rebalance.',
+            strategy_type: '',
+            issuer: 'UBS',
+            grade: 'B+',
+            score: 78.26858878873279,
+            is_eligible: true
+        },
+        
+        
         'CSCUD66A': {
             ticker: 'CSCUD66A',
             name: 'UBS Seasonal Curve Carry',
@@ -75824,18 +76070,6 @@
             grade: 'F',
             score: 72.92505093350911,
             is_eligible: false
-        },
-        
-        
-        'UBCIRSER': {
-            ticker: 'UBCIRSER',
-            name: 'UBS Commodity Relative-Skewness (CRIS)',
-            description: 'Long/short commodity skewness strategy. Long low-skew, short high-skew commodities across 24 BCOM universe. Monthly rebalance.',
-            strategy_type: '',
-            issuer: 'UBS',
-            grade: 'B+',
-            score: 71.84302665855526,
-            is_eligible: true
         },
         
         
@@ -77352,6 +77586,15 @@
     const strategyDetails = {
         
         
+        'UBCIRSER': {
+            name: 'UBS Commodity Relative-Skewness (CRIS)',
+            issuer: 'UBS',
+            category: 'Commodity Curve',
+            inception_date: '2018-08-29',
+            detailed_description: `UBS Commodity Relative-Skewness Investment Strategy (UBS-CRIS)는 상품 선물 시장에서 왜도(skewness) 프리미엄을 추출하는 롱/숏 전략이다.\n\n[투자 근거]\n- Selective Hedging: 양의 왜도가 큰 상품은 위험관리자들의 순매수 헤지 수요로 인해 고평가되는 경향\n- Cumulative Prospect Theory: 투자자들이 낮은 확률의 극단적 수익(lottery-like payoff)을 과대평가하여 양의 왜도 자산에 프리미엄 부여\n- 음의 왜도(하방 위험 큰) 상품은 저평가, 양의 왜도(상방 기대 큰) 상품은 고평가되는 비대칭 활용\n\n[운용 방법론]\n- 24개 상품의 6/9/12개월 Pearson Skewness Coefficient 평균 산출\n- 4분위 랭킹: 가장 음의 왜도(1분위) 매수, 가장 양의 왜도(4분위) 매도\n- 포지션 크기는 해당 상품의 상대적 왜도 강도에 비례\n- 월간 리밸런싱 (10 거래일에 걸쳐 집행)\n\n[주요 리스크]\n- 왜도 측정값이 예상보다 오래 지속되면 손실 가능\n- 수익률 이상치(outlier)로 인한 왜도 왜곡 시 잘못된 신호 발생 가능\n\n[관련 전략]\n- UBCCRSER (Skewness Curve): 동일 왜도 신호를 커브 스프레드(F0 vs F3/F6)로 구현한 저변동성 버전\n- UCCIRSER: UBCIRSER의 UCITS 준거 버전`
+        },
+        
+        
         'CSCUD66A': {
             name: 'UBS Seasonal Curve Carry',
             issuer: 'UBS',
@@ -77421,15 +77664,6 @@
             category: 'Volatility Carry',
             inception_date: 'None',
             detailed_description: ``
-        },
-        
-        
-        'UBCIRSER': {
-            name: 'UBS Commodity Relative-Skewness (CRIS)',
-            issuer: 'UBS',
-            category: 'Commodity Curve',
-            inception_date: '2018-08-29',
-            detailed_description: `UBS Commodity Relative-Skewness Investment Strategy (UBS-CRIS)는 상품 선물 시장에서 왜도(skewness) 프리미엄을 추출하는 롱/숏 전략이다.\n\n[투자 근거]\n- Selective Hedging: 양의 왜도가 큰 상품은 위험관리자들의 순매수 헤지 수요로 인해 고평가되는 경향\n- Cumulative Prospect Theory: 투자자들이 낮은 확률의 극단적 수익(lottery-like payoff)을 과대평가하여 양의 왜도 자산에 프리미엄 부여\n- 음의 왜도(하방 위험 큰) 상품은 저평가, 양의 왜도(상방 기대 큰) 상품은 고평가되는 비대칭 활용\n\n[운용 방법론]\n- 24개 상품의 6/9/12개월 Pearson Skewness Coefficient 평균 산출\n- 4분위 랭킹: 가장 음의 왜도(1분위) 매수, 가장 양의 왜도(4분위) 매도\n- 포지션 크기는 해당 상품의 상대적 왜도 강도에 비례\n- 월간 리밸런싱 (10 거래일에 걸쳐 집행)\n\n[주요 리스크]\n- 왜도 측정값이 예상보다 오래 지속되면 손실 가능\n- 수익률 이상치(outlier)로 인한 왜도 왜곡 시 잘못된 신호 발생 가능\n\n[관련 전략]\n- UBCCRSER (Skewness Curve): 동일 왜도 신호를 커브 스프레드(F0 vs F3/F6)로 구현한 저변동성 버전\n- UCCIRSER: UBCIRSER의 UCITS 준거 버전`
         },
         
         
@@ -77781,6 +78015,243 @@
     <!-- Score Detail Modal: 체크리스트 상세 내역 -->
     <script>
     const checklistData = {
+        
+        'UBCIRSER': {
+            name: 'UBS Commodity Relative-Skewness (CRIS)',
+            grade: 'B+',
+            score_pct: 78.3,
+            is_eligible: true,
+            mandatory_passed: true,
+            blocking_reasons: [],
+            category_scores: {"correlation": 62.5, "performance": 87.73659816113158, "risk": 68.57724679031506, "strategy_quality": 100.0},
+            items: [
+                
+                {
+                    id: 'PERF_01',
+                    name: '연환산 수익률',
+                    name_en: 'Annualized Return',
+                    category: 'performance',
+                    score: 10.0,
+                    max_score: 10.0,
+                    weight: 1.2,
+                    status: 'pass',
+                    raw_value: '7.70%',
+                    benchmark: '&gt;= 3%',
+                    is_mandatory: true
+                },
+                
+                {
+                    id: 'PERF_08',
+                    name: '라이브 연환산 수익률',
+                    name_en: 'Live Annualized Return',
+                    category: 'performance',
+                    score: 10.0,
+                    max_score: 10.0,
+                    weight: 1.1,
+                    status: 'pass',
+                    raw_value: '12.82% (7.5년)',
+                    benchmark: '&gt;= 3%',
+                    is_mandatory: false
+                },
+                
+                {
+                    id: 'PERF_02',
+                    name: '샤프 비율',
+                    name_en: 'Sharpe Ratio',
+                    category: 'performance',
+                    score: 6.423499131855794,
+                    max_score: 10.0,
+                    weight: 1.2,
+                    status: 'pass',
+                    raw_value: '0.66',
+                    benchmark: '&gt;= 0.5',
+                    is_mandatory: true
+                },
+                
+                {
+                    id: 'PERF_03',
+                    name: '소르티노 비율',
+                    name_en: 'Sortino Ratio',
+                    category: 'performance',
+                    score: 6.3205898465085735,
+                    max_score: 10.0,
+                    weight: 1.0,
+                    status: 'pass',
+                    raw_value: '0.99',
+                    benchmark: '&gt;= 0.7',
+                    is_mandatory: false
+                },
+                
+                {
+                    id: 'PERF_05',
+                    name: '3년 수익률 일관성',
+                    name_en: '3Y Return Consistency',
+                    category: 'performance',
+                    score: 10.0,
+                    max_score: 10.0,
+                    weight: 1.1,
+                    status: 'pass',
+                    raw_value: '100% (3/3 년)',
+                    benchmark: '&gt;= 60% 양의 연도',
+                    is_mandatory: true
+                },
+                
+                {
+                    id: 'PERF_07',
+                    name: '1년 수익률',
+                    name_en: '1Y Return',
+                    category: 'performance',
+                    score: 10.0,
+                    max_score: 10.0,
+                    weight: 0.9,
+                    status: 'pass',
+                    raw_value: '22.69%',
+                    benchmark: '&gt;= 3%',
+                    is_mandatory: false
+                },
+                
+                {
+                    id: 'RISK_01',
+                    name: '1년 최대 낙폭 (MDD)',
+                    name_en: '1-Year Rolling Max Drawdown',
+                    category: 'risk',
+                    score: 6.291742487023704,
+                    max_score: 10.0,
+                    weight: 1.2,
+                    status: 'pass',
+                    raw_value: '-18.54%',
+                    benchmark: '&lt;= 20%',
+                    is_mandatory: true
+                },
+                
+                {
+                    id: 'RISK_02',
+                    name: '연환산 변동성',
+                    name_en: 'Annualized Volatility',
+                    category: 'risk',
+                    score: 7.323874041430418,
+                    max_score: 10.0,
+                    weight: 1.0,
+                    status: 'pass',
+                    raw_value: '11.69%',
+                    benchmark: '&lt;= 15%',
+                    is_mandatory: false
+                },
+                
+                {
+                    id: 'RISK_05',
+                    name: '하방 변동성',
+                    name_en: 'Downside Volatility',
+                    category: 'risk',
+                    score: 7.78745309455132,
+                    max_score: 10.0,
+                    weight: 0.9,
+                    status: 'pass',
+                    raw_value: '8.30%',
+                    benchmark: '&lt;= 15%',
+                    is_mandatory: false
+                },
+                
+                {
+                    id: 'RISK_08',
+                    name: '최악의 월간 수익률',
+                    name_en: 'Worst Monthly Return',
+                    category: 'risk',
+                    score: 6.07806679658478,
+                    max_score: 10.0,
+                    weight: 0.8,
+                    status: 'pass',
+                    raw_value: '-9.80%',
+                    benchmark: '&gt;= -10%',
+                    is_mandatory: false
+                },
+                
+                {
+                    id: 'QUAL_01',
+                    name: '트랙레코드 기간',
+                    name_en: 'Track Record Length',
+                    category: 'strategy_quality',
+                    score: 10.0,
+                    max_score: 10.0,
+                    weight: 1.1,
+                    status: 'pass',
+                    raw_value: '7.5년',
+                    benchmark: '&gt;= 3년',
+                    is_mandatory: true
+                },
+                
+                {
+                    id: 'QUAL_07',
+                    name: '레버리지 수준',
+                    name_en: 'Leverage Level',
+                    category: 'strategy_quality',
+                    score: 10.0,
+                    max_score: 10.0,
+                    weight: 1.0,
+                    status: 'pass',
+                    raw_value: '1.0x',
+                    benchmark: '&lt;= 3x',
+                    is_mandatory: false
+                },
+                
+                {
+                    id: 'CORR_01',
+                    name: '포트폴리오 평균 상관계수',
+                    name_en: 'Portfolio Avg Correlation',
+                    category: 'correlation',
+                    score: 6.0,
+                    max_score: 10.0,
+                    weight: 1.2,
+                    status: 'pass',
+                    raw_value: 'N/A (포트폴리오 없음)',
+                    benchmark: '&lt;= 0.5',
+                    is_mandatory: false
+                },
+                
+                {
+                    id: 'CORR_02',
+                    name: '최대 상관 상품',
+                    name_en: 'Max Correlation Product',
+                    category: 'correlation',
+                    score: 6.0,
+                    max_score: 10.0,
+                    weight: 1.0,
+                    status: 'pass',
+                    raw_value: 'N/A (포트폴리오 없음)',
+                    benchmark: '&lt;= 0.7',
+                    is_mandatory: false
+                },
+                
+                {
+                    id: 'CORR_03',
+                    name: '분산효과 기여도',
+                    name_en: 'Diversification Benefit',
+                    category: 'correlation',
+                    score: 6.0,
+                    max_score: 10.0,
+                    weight: 1.1,
+                    status: 'pass',
+                    raw_value: 'N/A (포트폴리오 없음)',
+                    benchmark: '&gt;= 5%',
+                    is_mandatory: false
+                },
+                
+                {
+                    id: 'CORR_07',
+                    name: '위기 시 양(+)의 수익',
+                    name_en: 'Crisis Positive Return',
+                    category: 'correlation',
+                    score: 7.0,
+                    max_score: 10.0,
+                    weight: 1.1,
+                    status: 'pass',
+                    raw_value: '2/5 (40%)',
+                    benchmark: '≥ 1건 양(+)',
+                    is_mandatory: false
+                }
+                
+            ]
+        },
         
         'CSCUD66A': {
             name: 'UBS Seasonal Curve Carry',
@@ -79671,243 +80142,6 @@
                     weight: 1.1,
                     status: 'pass',
                     raw_value: '3/5 (60%)',
-                    benchmark: '≥ 1건 양(+)',
-                    is_mandatory: false
-                }
-                
-            ]
-        },
-        
-        'UBCIRSER': {
-            name: 'UBS Commodity Relative-Skewness (CRIS)',
-            grade: 'B+',
-            score_pct: 71.8,
-            is_eligible: true,
-            mandatory_passed: true,
-            blocking_reasons: [],
-            category_scores: {"correlation": 62.5, "performance": 71.03013662267004, "risk": 68.57724679031506, "strategy_quality": 100.0},
-            items: [
-                
-                {
-                    id: 'PERF_01',
-                    name: '연환산 수익률',
-                    name_en: 'Annualized Return',
-                    category: 'performance',
-                    score: 10.0,
-                    max_score: 10.0,
-                    weight: 1.2,
-                    status: 'pass',
-                    raw_value: '7.70%',
-                    benchmark: '&gt;= 3%',
-                    is_mandatory: true
-                },
-                
-                {
-                    id: 'PERF_08',
-                    name: '라이브 연환산 수익률',
-                    name_en: 'Live Annualized Return',
-                    category: 'performance',
-                    score: 0.128,
-                    max_score: 10.0,
-                    weight: 1.1,
-                    status: 'fail',
-                    raw_value: '0.128',
-                    benchmark: '&gt;= 3%',
-                    is_mandatory: false
-                },
-                
-                {
-                    id: 'PERF_02',
-                    name: '샤프 비율',
-                    name_en: 'Sharpe Ratio',
-                    category: 'performance',
-                    score: 6.423499131855794,
-                    max_score: 10.0,
-                    weight: 1.2,
-                    status: 'pass',
-                    raw_value: '0.66',
-                    benchmark: '&gt;= 0.5',
-                    is_mandatory: true
-                },
-                
-                {
-                    id: 'PERF_03',
-                    name: '소르티노 비율',
-                    name_en: 'Sortino Ratio',
-                    category: 'performance',
-                    score: 6.3205898465085735,
-                    max_score: 10.0,
-                    weight: 1.0,
-                    status: 'pass',
-                    raw_value: '0.99',
-                    benchmark: '&gt;= 0.7',
-                    is_mandatory: false
-                },
-                
-                {
-                    id: 'PERF_05',
-                    name: '3년 수익률 일관성',
-                    name_en: '3Y Return Consistency',
-                    category: 'performance',
-                    score: 10.0,
-                    max_score: 10.0,
-                    weight: 1.1,
-                    status: 'pass',
-                    raw_value: '100% (3/3 년)',
-                    benchmark: '&gt;= 60% 양의 연도',
-                    is_mandatory: true
-                },
-                
-                {
-                    id: 'PERF_07',
-                    name: '1년 수익률',
-                    name_en: '1Y Return',
-                    category: 'performance',
-                    score: 10.0,
-                    max_score: 10.0,
-                    weight: 0.9,
-                    status: 'pass',
-                    raw_value: '22.69%',
-                    benchmark: '&gt;= 3%',
-                    is_mandatory: false
-                },
-                
-                {
-                    id: 'RISK_01',
-                    name: '1년 최대 낙폭 (MDD)',
-                    name_en: '1-Year Rolling Max Drawdown',
-                    category: 'risk',
-                    score: 6.291742487023704,
-                    max_score: 10.0,
-                    weight: 1.2,
-                    status: 'pass',
-                    raw_value: '-18.54%',
-                    benchmark: '&lt;= 20%',
-                    is_mandatory: true
-                },
-                
-                {
-                    id: 'RISK_02',
-                    name: '연환산 변동성',
-                    name_en: 'Annualized Volatility',
-                    category: 'risk',
-                    score: 7.323874041430418,
-                    max_score: 10.0,
-                    weight: 1.0,
-                    status: 'pass',
-                    raw_value: '11.69%',
-                    benchmark: '&lt;= 15%',
-                    is_mandatory: false
-                },
-                
-                {
-                    id: 'RISK_05',
-                    name: '하방 변동성',
-                    name_en: 'Downside Volatility',
-                    category: 'risk',
-                    score: 7.78745309455132,
-                    max_score: 10.0,
-                    weight: 0.9,
-                    status: 'pass',
-                    raw_value: '8.30%',
-                    benchmark: '&lt;= 15%',
-                    is_mandatory: false
-                },
-                
-                {
-                    id: 'RISK_08',
-                    name: '최악의 월간 수익률',
-                    name_en: 'Worst Monthly Return',
-                    category: 'risk',
-                    score: 6.07806679658478,
-                    max_score: 10.0,
-                    weight: 0.8,
-                    status: 'pass',
-                    raw_value: '-9.80%',
-                    benchmark: '&gt;= -10%',
-                    is_mandatory: false
-                },
-                
-                {
-                    id: 'QUAL_01',
-                    name: '트랙레코드 기간',
-                    name_en: 'Track Record Length',
-                    category: 'strategy_quality',
-                    score: 10.0,
-                    max_score: 10.0,
-                    weight: 1.1,
-                    status: 'pass',
-                    raw_value: '7.5년',
-                    benchmark: '&gt;= 3년',
-                    is_mandatory: true
-                },
-                
-                {
-                    id: 'QUAL_07',
-                    name: '레버리지 수준',
-                    name_en: 'Leverage Level',
-                    category: 'strategy_quality',
-                    score: 10.0,
-                    max_score: 10.0,
-                    weight: 1.0,
-                    status: 'pass',
-                    raw_value: '1.0x',
-                    benchmark: '&lt;= 3x',
-                    is_mandatory: false
-                },
-                
-                {
-                    id: 'CORR_01',
-                    name: '포트폴리오 평균 상관계수',
-                    name_en: 'Portfolio Avg Correlation',
-                    category: 'correlation',
-                    score: 6.0,
-                    max_score: 10.0,
-                    weight: 1.2,
-                    status: 'pass',
-                    raw_value: 'N/A (포트폴리오 없음)',
-                    benchmark: '&lt;= 0.5',
-                    is_mandatory: false
-                },
-                
-                {
-                    id: 'CORR_02',
-                    name: '최대 상관 상품',
-                    name_en: 'Max Correlation Product',
-                    category: 'correlation',
-                    score: 6.0,
-                    max_score: 10.0,
-                    weight: 1.0,
-                    status: 'pass',
-                    raw_value: 'N/A (포트폴리오 없음)',
-                    benchmark: '&lt;= 0.7',
-                    is_mandatory: false
-                },
-                
-                {
-                    id: 'CORR_03',
-                    name: '분산효과 기여도',
-                    name_en: 'Diversification Benefit',
-                    category: 'correlation',
-                    score: 6.0,
-                    max_score: 10.0,
-                    weight: 1.1,
-                    status: 'pass',
-                    raw_value: 'N/A (포트폴리오 없음)',
-                    benchmark: '&gt;= 5%',
-                    is_mandatory: false
-                },
-                
-                {
-                    id: 'CORR_07',
-                    name: '위기 시 양(+)의 수익',
-                    name_en: 'Crisis Positive Return',
-                    category: 'correlation',
-                    score: 7.0,
-                    max_score: 10.0,
-                    weight: 1.1,
-                    status: 'pass',
-                    raw_value: '2/5 (40%)',
                     benchmark: '≥ 1건 양(+)',
                     is_mandatory: false
                 }
