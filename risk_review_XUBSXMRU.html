@@ -500,6 +500,10 @@
             .no-print { display: none; }
         }
     </style>
+    <!-- KaTeX: 수식 렌더링 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </head>
 <body>
 
@@ -508,7 +512,7 @@
     <div class="doc-type">리스크검토의뢰서 / Risk Review Request</div>
     <h1>UBS FX Mean Reversion Index</h1>
     <div class="ticker">XUBSXMRU | UBS</div>
-    <div class="meta">생성일: 2026-02-24 16:19 | QIS Fund Manager</div>
+    <div class="meta">생성일: 2026-02-25 14:00 | QIS Fund Manager</div>
 </div>
 
 <!-- ===== SECTION 1: 전략 개요 ===== -->
@@ -1107,13 +1111,13 @@
 
     
     <p style="margin-bottom: 15px; font-size: 14px; color: #555;">
-        기 보유 전략과의 상관계수 (일간 수익률 기준)
+        평가 대상 전략과의 상관계수 (일간 수익률 기준)
     </p>
 
     <table class="corr-mini-table">
         <thead>
             <tr>
-                <th>보유 전략</th>
+                <th>전략</th>
                 <th>티커</th>
                 <th>상관계수</th>
                 <th>분산효과</th>
@@ -1143,7 +1147,7 @@
 
     
     <div style="margin-top: 15px; padding: 12px 16px; background: var(--bg-light); border-radius: 8px;">
-        <strong>보유 전략 대비 평균 상관계수:</strong> -0.00
+        <strong>평가 대상 전략 대비 평균 상관계수:</strong> -0.00
         
         
             — <span class="positive" style="font-weight:bold;">포트폴리오 분산 효과 우수</span>
@@ -1355,46 +1359,10 @@
 </div>
 
 
-<!-- ===== SECTION 8: 한도 조건 ===== -->
+<!-- ===== SECTION 8: 종합 의견 ===== -->
 <div class="section">
     <div class="section-header">
         <span class="section-number">8</span>
-        <h2>한도 조건</h2>
-    </div>
-
-    <table class="limit-table">
-        <thead>
-            <tr>
-                <th>항목</th>
-                <th>한도</th>
-                <th>비고</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="label-col">명목금액 한도</td>
-                <td style="text-align:center;">USD ______</td>
-                <td class="note-cell">QIS 상품별 명목금액 한도 (운용역 결정)</td>
-            </tr>
-            <tr>
-                <td class="label-col">손절매 한도</td>
-                <td style="text-align:center;">______%</td>
-                <td class="note-cell">진입 시점 대비 손실률 기준 (예: -15%)</td>
-            </tr>
-            <tr>
-                <td class="label-col">투자 기간</td>
-                <td style="text-align:center;">______</td>
-                <td class="note-cell">예상 투자 기간 (예: 1년, 장기)</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-
-<!-- ===== SECTION 9: 종합 의견 ===== -->
-<div class="section">
-    <div class="section-header">
-        <span class="section-number">9</span>
         <h2>종합 의견</h2>
     </div>
 
@@ -1492,8 +1460,7 @@
 <!-- ===== FOOTER ===== -->
 <footer>
     <p>QIS Fund Manager — 리스크검토의뢰서 자동 생성</p>
-    <p>본 보고서는 정량적 분석 결과를 요약한 것이며, 투자 판단의 최종 책임은 운용역에게 있습니다.</p>
-    <p>2026-02-24 16:19:04</p>
+    <p>2026-02-25 14:00:03</p>
 </footer>
 
 
@@ -1611,6 +1578,17 @@
         content = content.replace(/<\/ul>\s*<\/p>/g, '</ul>');
 
         descEl.innerHTML = content;
+
+        // KaTeX 수식 렌더링 ($$...$$ 블록 수식, $...$ 인라인 수식)
+        if (typeof renderMathInElement === 'function') {
+            renderMathInElement(descEl, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ],
+                throwOnError: false
+            });
+        }
     });
 </script>
 
