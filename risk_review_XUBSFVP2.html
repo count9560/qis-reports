@@ -329,6 +329,20 @@
 
 
 
+<h3>라이브 기간 성과 (2019-07-01 ~)</h3>
+<table>
+    <thead><tr><th>지표</th><th style="text-align:right;">값</th></tr></thead>
+    <tbody>
+        <tr><td><strong>연환산 수익률</strong></td><td class="r positive">6.5%</td></tr>
+        <tr><td>총 수익률</td><td class="r positive">52.1%</td></tr>
+        <tr><td><strong>샤프 비율</strong></td><td class="r">1.00</td></tr>
+        <tr><td><strong>소르티노 비율</strong></td><td class="r">1.28</td></tr>
+        <tr><td>승률 (일간)</td><td class="r">52.0%</td></tr>
+    </tbody>
+</table>
+
+
+
 
 
 <!-- ===== 4. 리스크 분석 ===== -->
@@ -358,6 +372,20 @@
     <div class="caption">드로다운 시계열</div>
     <div class="chart-area" id="drawdown-chart"></div>
 </div>
+
+
+
+<h3>라이브 기간 리스크 (2019-07-01 ~)</h3>
+<table>
+    <thead><tr><th>지표</th><th style="text-align:right;">값</th></tr></thead>
+    <tbody>
+        <tr><td><strong>MDD</strong></td><td class="r negative">10.0%</td></tr>
+        <tr><td><strong>연환산 변동성</strong></td><td class="r">6.5%</td></tr>
+        <tr><td>하방 변동성</td><td class="r">5.0%</td></tr>
+        <tr><td>VaR (95%)</td><td class="r negative">0.48%</td></tr>
+        <tr><td>최악 일간 수익률</td><td class="r negative">-3.42%</td></tr>
+    </tbody>
+</table>
 
 
 
@@ -661,7 +689,7 @@
 
 
 <footer>
-    <p>QIS Fund Manager — 리스크검토의뢰서 자동 생성 | 2026-02-25 15:18:47</p>
+    <p>QIS Fund Manager — 리스크검토의뢰서 자동 생성 | 2026-02-25 16:30:19</p>
 </footer>
 
 
@@ -686,7 +714,7 @@
             if (d && d.normalizedData) s.setData(d.normalizedData);
             
             const ld = '2019-07-01';
-            if (ld) s.setMarkers([{ time: ld, position: 'belowBar', color: '#1f2328', shape: 'arrowUp', text: 'LIVE' }]);
+            if (ld) s.setMarkers([{ time: ld, position: 'aboveBar', color: '#cf222e', shape: 'arrowDown', text: 'LIVE START' }]);
             
             chart.timeScale().fitContent();
         }
