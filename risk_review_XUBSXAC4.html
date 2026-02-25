@@ -5,145 +5,142 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>리스크검토의뢰서 - XUBSXAC4</title>
     <style>
-        :root {
-            --pass-color: #28a745;
-            --fail-color: #dc3545;
-            --warn-color: #ffc107;
-            --pend-color: #6c757d;
-            --bg-light: #f8f9fa;
-            --border-color: #dee2e6;
-            --primary: #667eea;
-            --primary-dark: #2c3e50;
-        }
-
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
-            max-width: 1100px;
+            font-family: 'Malgun Gothic', '맑은 고딕', 'Segoe UI', sans-serif;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 30px;
+            padding: 40px 50px;
             background: #fff;
-            color: #333;
-            line-height: 1.6;
+            color: #222;
+            line-height: 1.7;
+            font-size: 14px;
         }
 
         /* ===== Header ===== */
         .report-header {
             text-align: center;
-            margin-bottom: 40px;
-            padding: 30px;
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-            border-radius: 15px;
-            color: white;
+            margin-bottom: 36px;
+            padding-bottom: 20px;
+            border-bottom: 3px double #222;
         }
 
         .report-header .doc-type {
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            opacity: 0.8;
-            margin-bottom: 10px;
+            font-size: 12px;
+            letter-spacing: 4px;
+            color: #666;
+            margin-bottom: 12px;
         }
 
         .report-header h1 {
-            font-size: 28px;
-            margin-bottom: 5px;
+            font-size: 22px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 4px;
         }
 
         .report-header .ticker {
-            font-size: 18px;
-            opacity: 0.9;
-            font-weight: 300;
+            font-size: 15px;
+            color: #444;
         }
 
         .report-header .meta {
-            margin-top: 15px;
-            font-size: 13px;
-            opacity: 0.7;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #888;
         }
 
         /* ===== Section ===== */
         .section {
-            margin-bottom: 35px;
+            margin-bottom: 28px;
         }
 
         .section-header {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 18px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--border-color);
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 14px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #333;
         }
 
         .section-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            font-weight: bold;
-            font-size: 14px;
-            flex-shrink: 0;
+            font-size: 16px;
+            font-weight: 700;
+            color: #222;
+        }
+
+        .section-number::after {
+            content: '.';
         }
 
         .section-header h2 {
-            font-size: 20px;
-            color: var(--primary-dark);
+            font-size: 16px;
+            font-weight: 700;
+            color: #222;
         }
 
-        /* ===== Overview Cards ===== */
-        .overview-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-bottom: 20px;
+        /* ===== Tables (공통) ===== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin-bottom: 12px;
         }
 
-        .overview-item {
-            background: var(--bg-light);
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 4px solid var(--primary);
-        }
-
-        .overview-item .label {
+        th {
+            background: #f5f5f5;
+            border: 1px solid #ccc;
+            padding: 7px 10px;
+            font-weight: 600;
+            text-align: center;
             font-size: 12px;
-            color: #666;
-            text-transform: uppercase;
-            margin-bottom: 4px;
+            color: #333;
         }
 
-        .overview-item .value {
-            font-size: 18px;
-            font-weight: bold;
-            color: var(--primary-dark);
+        td {
+            border: 1px solid #ccc;
+            padding: 6px 10px;
+            font-size: 13px;
         }
 
-        .overview-item.highlight {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-left: none;
+        .label-col {
+            background: #fafafa;
+            font-weight: 600;
+            width: 180px;
         }
 
-        .overview-item.highlight .label { color: rgba(255,255,255,0.8); }
-        .overview-item.highlight .value { color: white; }
+        .num-right {
+            text-align: right;
+            font-family: 'Consolas', 'Courier New', monospace;
+        }
 
-        /* ===== Description Section ===== */
+        .positive { color: #0b6e1a; }
+        .negative { color: #c62828; }
+
+        /* ===== Overview Table ===== */
+        .overview-table td {
+            padding: 8px 12px;
+        }
+        .overview-table .val {
+            font-weight: 600;
+        }
+
+        /* ===== Description ===== */
         .description-content {
-            padding: 20px;
-            background: var(--bg-light);
-            border-radius: 10px;
+            padding: 14px 18px;
+            border: 1px solid #ddd;
             line-height: 1.8;
         }
 
         .description-content h3 {
-            color: var(--primary);
-            margin: 18px 0 8px 0;
-            font-size: 15px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #222;
+            margin: 16px 0 6px 0;
+            padding-bottom: 3px;
+            border-bottom: 1px dotted #ccc;
         }
 
         .description-content h3:first-child {
@@ -151,151 +148,108 @@
         }
 
         .description-content p {
-            margin: 8px 0;
+            margin: 6px 0;
         }
 
         .description-content ul {
-            margin: 5px 0 5px 20px;
+            margin: 4px 0 4px 22px;
         }
 
         .description-content li {
-            margin: 4px 0;
+            margin: 3px 0;
         }
 
         .description-warning {
-            padding: 15px 20px;
-            background: #fff3cd;
-            border: 1px solid #ffc107;
-            border-radius: 8px;
-            color: #856404;
-            font-weight: 600;
-        }
-
-        /* ===== Tables ===== */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .data-table th {
-            background: var(--primary-dark);
-            color: white;
             padding: 12px 16px;
-            text-align: left;
+            border: 1px solid #e6c300;
+            background: #fffde7;
+            color: #6d5e00;
             font-weight: 600;
-            font-size: 13px;
         }
 
-        .data-table td {
-            padding: 10px 16px;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 14px;
+        /* ===== Key Metrics ===== */
+        .metrics-row {
+            display: flex;
+            gap: 0;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
         }
 
-        .data-table tr:last-child td { border-bottom: none; }
-        .data-table tr:hover { background: #f8f9fa; }
-
-        .data-table .label-col {
-            background: #f0f2f5;
-            font-weight: 600;
-            width: 200px;
-        }
-
-        .data-table .num-right {
-            text-align: right;
-            font-family: 'Consolas', 'Courier New', monospace;
-        }
-
-        .positive { color: var(--pass-color); }
-        .negative { color: var(--fail-color); }
-
-        /* ===== Monthly Heatmap ===== */
-        .heatmap-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 12px;
-        }
-
-        .heatmap-table th {
-            background: var(--primary-dark);
-            color: white;
-            padding: 8px 6px;
+        .metric-cell {
+            flex: 1;
             text-align: center;
-            font-weight: 600;
+            padding: 10px 8px;
+            border-right: 1px solid #ccc;
         }
 
-        .heatmap-table td {
-            padding: 6px;
-            text-align: center;
-            border: 1px solid #e9ecef;
-            font-family: 'Consolas', monospace;
+        .metric-cell:last-child {
+            border-right: none;
+        }
+
+        .metric-cell .val {
+            font-size: 18px;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .metric-cell .lbl {
             font-size: 11px;
+            color: #666;
+            margin-top: 2px;
         }
 
-        .heatmap-table .year-col {
-            background: #f0f2f5;
-            font-weight: 700;
-            text-align: center;
+        /* ===== Chart Container ===== */
+        .chart-container {
+            margin: 12px 0;
+            border: 1px solid #ccc;
         }
 
-        .heatmap-table .annual-col {
-            font-weight: 700;
-        }
-
-        /* ===== Crisis Table ===== */
-        .crisis-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-        }
-
-        .crisis-table th {
-            background: #495057;
-            color: white;
-            padding: 10px 12px;
-            text-align: center;
+        .chart-title {
+            padding: 6px 10px;
+            background: #f5f5f5;
             font-weight: 600;
+            font-size: 12px;
+            color: #444;
+            border-bottom: 1px solid #ccc;
         }
 
-        .crisis-table td {
-            padding: 8px 12px;
-            border-bottom: 1px solid var(--border-color);
-            text-align: center;
+        .chart-area {
+            height: 280px;
         }
 
-        .crisis-table tr:hover { background: #f8f9fa; }
+        /* ===== Correlation ===== */
+        .corr-high { background: #fce4ec; color: #b71c1c; }
+        .corr-medium { background: #fff8e1; color: #6d5e00; }
+        .corr-low { background: #e8f5e9; color: #1b5e20; }
+        .corr-negative { background: #e3f2fd; color: #0d47a1; }
 
-        /* ===== Checklist Grid ===== */
+        /* ===== Checklist ===== */
         .checklist-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            gap: 14px;
         }
 
         .checklist-category {
-            background: var(--bg-light);
-            padding: 15px;
-            border-radius: 10px;
+            border: 1px solid #ccc;
+            padding: 10px 12px;
         }
 
         .checklist-category h4 {
-            font-size: 13px;
-            color: #666;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            padding-bottom: 5px;
-            border-bottom: 1px solid var(--border-color);
+            font-size: 12px;
+            font-weight: 700;
+            color: #444;
+            margin-bottom: 8px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #ddd;
         }
 
         .checklist-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 6px 0;
-            font-size: 13px;
+            padding: 4px 0;
+            font-size: 12px;
         }
 
         .checklist-item .item-name {
@@ -306,194 +260,119 @@
             font-weight: bold;
             margin: 0 8px;
             font-family: monospace;
+            font-size: 12px;
         }
 
         .status-badge {
             display: inline-block;
-            padding: 2px 10px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: bold;
+            padding: 1px 8px;
+            font-size: 10px;
+            font-weight: 700;
+            border: 1px solid;
         }
 
-        .status-pass { background: var(--pass-color); color: white; }
-        .status-fail { background: var(--fail-color); color: white; }
-        .status-warn { background: var(--warn-color); color: #333; }
-        .status-pend { background: var(--pend-color); color: white; }
+        .status-pass { background: #e8f5e9; color: #1b5e20; border-color: #a5d6a7; }
+        .status-fail { background: #fce4ec; color: #b71c1c; border-color: #ef9a9a; }
+        .status-warn { background: #fff8e1; color: #6d5e00; border-color: #ffe082; }
+        .status-pend { background: #f5f5f5; color: #555; border-color: #ccc; }
 
-        /* ===== Grade Badge ===== */
+        /* ===== Grade ===== */
         .grade-badge {
             display: inline-block;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-weight: bold;
-            font-size: 16px;
+            padding: 4px 14px;
+            font-weight: 700;
+            font-size: 14px;
+            border: 2px solid;
         }
 
-        .grade-a { background: var(--pass-color); color: white; }
-        .grade-b { background: #17a2b8; color: white; }
-        .grade-c { background: var(--warn-color); color: #333; }
-        .grade-d { background: #fd7e14; color: white; }
-        .grade-f { background: var(--fail-color); color: white; }
+        .grade-a { color: #1b5e20; border-color: #1b5e20; background: #e8f5e9; }
+        .grade-b { color: #01579b; border-color: #01579b; background: #e3f2fd; }
+        .grade-c { color: #6d5e00; border-color: #c8a800; background: #fff8e1; }
+        .grade-d { color: #bf360c; border-color: #bf360c; background: #fbe9e7; }
+        .grade-f { color: #b71c1c; border-color: #b71c1c; background: #fce4ec; }
 
         /* ===== Decision Box ===== */
         .decision-box {
-            padding: 25px;
-            border-radius: 12px;
-            margin-top: 15px;
+            padding: 18px 20px;
+            margin-top: 12px;
+            border: 2px solid;
         }
 
         .decision-eligible {
-            background: linear-gradient(135deg, #d4edda, #c3e6cb);
-            border: 2px solid var(--pass-color);
+            border-color: #2e7d32;
+            background: #f1f8f1;
         }
 
         .decision-ineligible {
-            background: linear-gradient(135deg, #f8d7da, #f5c6cb);
-            border: 2px solid var(--fail-color);
+            border-color: #c62828;
+            background: #fef5f5;
         }
 
         .decision-box h3 {
-            font-size: 18px;
-            margin-bottom: 10px;
+            font-size: 16px;
+            margin-bottom: 8px;
         }
 
-        .decision-eligible h3 { color: #155724; }
-        .decision-ineligible h3 { color: #721c24; }
+        .decision-eligible h3 { color: #1b5e20; }
+        .decision-ineligible h3 { color: #b71c1c; }
 
         .blocking-reasons {
             margin-top: 10px;
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.5);
-            border-radius: 8px;
+            padding: 8px 16px;
+            border: 1px solid #ef9a9a;
+            background: #fff;
         }
 
         .blocking-reasons li {
-            color: var(--fail-color);
+            color: #c62828;
             font-weight: 600;
-            margin: 5px 0;
+            margin: 4px 0;
         }
 
-        /* ===== Limit Table ===== */
-        .limit-table {
-            width: 100%;
-            border-collapse: collapse;
+        /* ===== Sub-heading ===== */
+        .sub-heading {
             font-size: 14px;
+            font-weight: 700;
+            color: #333;
+            margin: 20px 0 8px 0;
         }
 
-        .limit-table th {
-            background: var(--primary);
-            color: white;
-            padding: 10px 14px;
-            text-align: center;
-            font-weight: 600;
+        /* ===== Year bar ===== */
+        .year-bar {
+            height: 12px;
+            background: #eee;
+            position: relative;
         }
 
-        .limit-table td {
-            padding: 10px 14px;
-            border-bottom: 1px solid var(--border-color);
+        .year-bar-center {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: #999;
         }
 
-        .limit-table .label-col {
-            background: #f0f2f5;
-            font-weight: 600;
-            width: 180px;
-            text-align: center;
-        }
-
-        .limit-table .note-cell {
-            font-size: 13px;
-            line-height: 1.6;
-            color: #555;
-        }
-
-        /* ===== Chart Container ===== */
-        .chart-container {
-            margin: 15px 0;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
+        /* ===== Category score bar ===== */
+        .cat-bar {
+            height: 14px;
+            background: #eee;
             overflow: hidden;
-        }
-
-        .chart-title {
-            padding: 10px 15px;
-            background: var(--bg-light);
-            font-weight: 600;
-            font-size: 13px;
-            color: #555;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .chart-area {
-            height: 300px;
-        }
-
-        /* ===== Correlation Mini ===== */
-        .corr-mini-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 12px;
-        }
-
-        .corr-mini-table th {
-            background: #495057;
-            color: white;
-            padding: 8px;
-            text-align: center;
-        }
-
-        .corr-mini-table td {
-            padding: 6px 8px;
-            text-align: center;
-            border: 1px solid var(--border-color);
-        }
-
-        .corr-high { background: #f8d7da; color: #721c24; }
-        .corr-medium { background: #fff3cd; color: #856404; }
-        .corr-low { background: #d4edda; color: #155724; }
-        .corr-negative { background: #cce5ff; color: #004085; }
-
-        /* ===== Stats Row ===== */
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin-bottom: 15px;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 12px;
-            background: var(--bg-light);
-            border-radius: 8px;
-        }
-
-        .stat-card .stat-value {
-            font-size: 22px;
-            font-weight: bold;
-            color: var(--primary-dark);
-        }
-
-        .stat-card .stat-label {
-            font-size: 11px;
-            color: #666;
-            text-transform: uppercase;
         }
 
         /* ===== Footer ===== */
         footer {
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
+            padding-top: 12px;
+            border-top: 1px solid #ccc;
             text-align: center;
             color: #999;
-            font-size: 12px;
+            font-size: 11px;
         }
 
         /* ===== Print ===== */
         @media print {
-            body { padding: 15px; max-width: 100%; }
-            .report-header { background: #2c3e50 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            body { padding: 20px; max-width: 100%; font-size: 12px; }
             .section { break-inside: avoid; }
             .chart-container { break-inside: avoid; }
             .checklist-grid { break-inside: avoid; }
@@ -509,10 +388,10 @@
 
 <!-- ===== HEADER ===== -->
 <div class="report-header">
-    <div class="doc-type">리스크검토의뢰서 / Risk Review Request</div>
+    <div class="doc-type">리스크검토의뢰서 / RISK REVIEW REQUEST</div>
     <h1>Cross-Asset Complimentary 4.0</h1>
     <div class="ticker">XUBSXAC4 | UBS</div>
-    <div class="meta">생성일: 2026-02-25 14:00 | QIS Fund Manager</div>
+    <div class="meta">2026-02-25 | QIS Fund Manager</div>
 </div>
 
 <!-- ===== SECTION 1: 전략 개요 ===== -->
@@ -522,39 +401,35 @@
         <h2>전략 개요</h2>
     </div>
 
-    <div class="overview-grid">
-        <div class="overview-item">
-            <div class="label">전략명</div>
-            <div class="value" style="font-size: 15px;">Cross-Asset Complimentary 4.0</div>
-        </div>
-        <div class="overview-item">
-            <div class="label">블룸버그 티커</div>
-            <div class="value">XUBSXAC4</div>
-        </div>
-        <div class="overview-item">
-            <div class="label">발행사</div>
-            <div class="value">UBS</div>
-        </div>
-        <div class="overview-item">
-            <div class="label">카테고리</div>
-            <div class="value" style="font-size: 15px;">Cross-Asset Momentum</div>
-        </div>
-        <div class="overview-item">
-            <div class="label">라이브 시작일</div>
-            <div class="value" style="font-size: 15px;">2024-02-01</div>
-        </div>
-        <div class="overview-item highlight">
-            <div class="label">등급 / 적격 여부</div>
-            <div class="value">
-                
-                    F
+    <table class="overview-table">
+        <tbody>
+            <tr>
+                <td class="label-col">전략명</td>
+                <td class="val">Cross-Asset Complimentary 4.0</td>
+                <td class="label-col">블룸버그 티커</td>
+                <td class="val">XUBSXAC4</td>
+            </tr>
+            <tr>
+                <td class="label-col">발행사</td>
+                <td class="val">UBS</td>
+                <td class="label-col">카테고리</td>
+                <td>Cross-Asset Momentum</td>
+            </tr>
+            <tr>
+                <td class="label-col">라이브 시작일</td>
+                <td>2024-02-01</td>
+                <td class="label-col">등급 / 적격</td>
+                <td class="val">
                     
-                        &#10007; 부적격
+                        F
+                        
+                            / 부적격
+                        
                     
-                
-            </div>
-        </div>
-    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
     
 </div>
@@ -583,26 +458,26 @@
     </div>
 
     
-    <div class="stats-row">
-        <div class="stat-card">
-            <div class="stat-value positive">
+    <div class="metrics-row">
+        <div class="metric-cell">
+            <div class="val positive">
                 13.8%
             </div>
-            <div class="stat-label">연환산 수익률</div>
+            <div class="lbl">연환산 수익률</div>
         </div>
-        <div class="stat-card">
-            <div class="stat-value">2.18</div>
-            <div class="stat-label">샤프 비율</div>
+        <div class="metric-cell">
+            <div class="val">2.18</div>
+            <div class="lbl">샤프 비율</div>
         </div>
-        <div class="stat-card">
-            <div class="stat-value">3.00</div>
-            <div class="stat-label">소르티노 비율</div>
+        <div class="metric-cell">
+            <div class="val">3.00</div>
+            <div class="lbl">소르티노 비율</div>
         </div>
-        <div class="stat-card">
-            <div class="stat-value positive">
+        <div class="metric-cell">
+            <div class="val positive">
                 4.5%
             </div>
-            <div class="stat-label">1Y 수익률</div>
+            <div class="lbl">1Y 수익률</div>
         </div>
     </div>
 
@@ -615,10 +490,10 @@
     
 
     <!-- 기간별 수익률 -->
-    <table class="data-table" style="margin-top: 15px;">
+    <table style="margin-top: 10px;">
         <thead>
             <tr>
-                <th>지표</th>
+                <th style="text-align:left;">지표</th>
                 <th style="text-align:right;">값</th>
             </tr>
         </thead>
@@ -638,13 +513,13 @@
 
     <!-- 연도별 수익률 -->
     
-    <h3 style="margin-top: 25px; margin-bottom: 10px; font-size: 15px; color: var(--primary-dark);">연도별 수익률</h3>
-    <table class="data-table">
+    <div class="sub-heading">연도별 수익률</div>
+    <table>
         <thead>
             <tr>
                 <th>연도</th>
                 <th style="text-align:right;">수익률</th>
-                <th style="width:300px;">시각화</th>
+                <th style="width:280px;">시각화</th>
             </tr>
         </thead>
         <tbody>
@@ -654,14 +529,11 @@
                 <td class="label-col" style="text-align:center;">2026</td>
                 <td class="num-right positive">1.2%</td>
                 <td>
-                    <div style="display:flex; align-items:center; height:20px;">
-                        <div style="flex:1; position:relative; height:12px; background:#e9ecef; border-radius:6px;">
-                            
-                            
-                            <div style="position:absolute; left:50%; width:2%; max-width:50%; height:100%; background:var(--pass-color); border-radius:0 6px 6px 0;"></div>
-                            
-                            <div style="position:absolute; left:50%; top:0; bottom:0; width:1px; background:#adb5bd;"></div>
-                        </div>
+                    <div class="year-bar">
+                        
+                        <div style="position:absolute; left:50%; width:2%; height:100%; background:#4caf50;"></div>
+                        
+                        <div class="year-bar-center"></div>
                     </div>
                 </td>
             </tr>
@@ -671,14 +543,11 @@
                 <td class="label-col" style="text-align:center;">2025</td>
                 <td class="num-right positive">3.2%</td>
                 <td>
-                    <div style="display:flex; align-items:center; height:20px;">
-                        <div style="flex:1; position:relative; height:12px; background:#e9ecef; border-radius:6px;">
-                            
-                            
-                            <div style="position:absolute; left:50%; width:5%; max-width:50%; height:100%; background:var(--pass-color); border-radius:0 6px 6px 0;"></div>
-                            
-                            <div style="position:absolute; left:50%; top:0; bottom:0; width:1px; background:#adb5bd;"></div>
-                        </div>
+                    <div class="year-bar">
+                        
+                        <div style="position:absolute; left:50%; width:5%; height:100%; background:#4caf50;"></div>
+                        
+                        <div class="year-bar-center"></div>
                     </div>
                 </td>
             </tr>
@@ -688,14 +557,11 @@
                 <td class="label-col" style="text-align:center;">2024</td>
                 <td class="num-right positive">1.5%</td>
                 <td>
-                    <div style="display:flex; align-items:center; height:20px;">
-                        <div style="flex:1; position:relative; height:12px; background:#e9ecef; border-radius:6px;">
-                            
-                            
-                            <div style="position:absolute; left:50%; width:2%; max-width:50%; height:100%; background:var(--pass-color); border-radius:0 6px 6px 0;"></div>
-                            
-                            <div style="position:absolute; left:50%; top:0; bottom:0; width:1px; background:#adb5bd;"></div>
-                        </div>
+                    <div class="year-bar">
+                        
+                        <div style="position:absolute; left:50%; width:2%; height:100%; background:#4caf50;"></div>
+                        
+                        <div class="year-bar-center"></div>
                     </div>
                 </td>
             </tr>
@@ -705,14 +571,11 @@
                 <td class="label-col" style="text-align:center;">2023</td>
                 <td class="num-right positive">9.0%</td>
                 <td>
-                    <div style="display:flex; align-items:center; height:20px;">
-                        <div style="flex:1; position:relative; height:12px; background:#e9ecef; border-radius:6px;">
-                            
-                            
-                            <div style="position:absolute; left:50%; width:14%; max-width:50%; height:100%; background:var(--pass-color); border-radius:0 6px 6px 0;"></div>
-                            
-                            <div style="position:absolute; left:50%; top:0; bottom:0; width:1px; background:#adb5bd;"></div>
-                        </div>
+                    <div class="year-bar">
+                        
+                        <div style="position:absolute; left:50%; width:14%; height:100%; background:#4caf50;"></div>
+                        
+                        <div class="year-bar-center"></div>
                     </div>
                 </td>
             </tr>
@@ -722,14 +585,11 @@
                 <td class="label-col" style="text-align:center;">2022</td>
                 <td class="num-right positive">27.8%</td>
                 <td>
-                    <div style="display:flex; align-items:center; height:20px;">
-                        <div style="flex:1; position:relative; height:12px; background:#e9ecef; border-radius:6px;">
-                            
-                            
-                            <div style="position:absolute; left:50%; width:46%; max-width:50%; height:100%; background:var(--pass-color); border-radius:0 6px 6px 0;"></div>
-                            
-                            <div style="position:absolute; left:50%; top:0; bottom:0; width:1px; background:#adb5bd;"></div>
-                        </div>
+                    <div class="year-bar">
+                        
+                        <div style="position:absolute; left:50%; width:46%; height:100%; background:#4caf50;"></div>
+                        
+                        <div class="year-bar-center"></div>
                     </div>
                 </td>
             </tr>
@@ -739,14 +599,11 @@
                 <td class="label-col" style="text-align:center;">2021</td>
                 <td class="num-right positive">24.7%</td>
                 <td>
-                    <div style="display:flex; align-items:center; height:20px;">
-                        <div style="flex:1; position:relative; height:12px; background:#e9ecef; border-radius:6px;">
-                            
-                            
-                            <div style="position:absolute; left:50%; width:41%; max-width:50%; height:100%; background:var(--pass-color); border-radius:0 6px 6px 0;"></div>
-                            
-                            <div style="position:absolute; left:50%; top:0; bottom:0; width:1px; background:#adb5bd;"></div>
-                        </div>
+                    <div class="year-bar">
+                        
+                        <div style="position:absolute; left:50%; width:41%; height:100%; background:#4caf50;"></div>
+                        
+                        <div class="year-bar-center"></div>
                     </div>
                 </td>
             </tr>
@@ -756,14 +613,11 @@
                 <td class="label-col" style="text-align:center;">2020</td>
                 <td class="num-right positive">48.1%</td>
                 <td>
-                    <div style="display:flex; align-items:center; height:20px;">
-                        <div style="flex:1; position:relative; height:12px; background:#e9ecef; border-radius:6px;">
-                            
-                            
-                            <div style="position:absolute; left:50%; width:80%; max-width:50%; height:100%; background:var(--pass-color); border-radius:0 6px 6px 0;"></div>
-                            
-                            <div style="position:absolute; left:50%; top:0; bottom:0; width:1px; background:#adb5bd;"></div>
-                        </div>
+                    <div class="year-bar">
+                        
+                        <div style="position:absolute; left:50%; width:50%; height:100%; background:#4caf50;"></div>
+                        
+                        <div class="year-bar-center"></div>
                     </div>
                 </td>
             </tr>
@@ -773,14 +627,11 @@
                 <td class="label-col" style="text-align:center;">2019</td>
                 <td class="num-right positive">5.6%</td>
                 <td>
-                    <div style="display:flex; align-items:center; height:20px;">
-                        <div style="flex:1; position:relative; height:12px; background:#e9ecef; border-radius:6px;">
-                            
-                            
-                            <div style="position:absolute; left:50%; width:9%; max-width:50%; height:100%; background:var(--pass-color); border-radius:0 6px 6px 0;"></div>
-                            
-                            <div style="position:absolute; left:50%; top:0; bottom:0; width:1px; background:#adb5bd;"></div>
-                        </div>
+                    <div class="year-bar">
+                        
+                        <div style="position:absolute; left:50%; width:9%; height:100%; background:#4caf50;"></div>
+                        
+                        <div class="year-bar-center"></div>
                     </div>
                 </td>
             </tr>
@@ -790,14 +641,11 @@
                 <td class="label-col" style="text-align:center;">2018</td>
                 <td class="num-right positive">13.0%</td>
                 <td>
-                    <div style="display:flex; align-items:center; height:20px;">
-                        <div style="flex:1; position:relative; height:12px; background:#e9ecef; border-radius:6px;">
-                            
-                            
-                            <div style="position:absolute; left:50%; width:21%; max-width:50%; height:100%; background:var(--pass-color); border-radius:0 6px 6px 0;"></div>
-                            
-                            <div style="position:absolute; left:50%; top:0; bottom:0; width:1px; background:#adb5bd;"></div>
-                        </div>
+                    <div class="year-bar">
+                        
+                        <div style="position:absolute; left:50%; width:21%; height:100%; background:#4caf50;"></div>
+                        
+                        <div class="year-bar-center"></div>
                     </div>
                 </td>
             </tr>
@@ -807,14 +655,11 @@
                 <td class="label-col" style="text-align:center;">2017</td>
                 <td class="num-right positive">6.3%</td>
                 <td>
-                    <div style="display:flex; align-items:center; height:20px;">
-                        <div style="flex:1; position:relative; height:12px; background:#e9ecef; border-radius:6px;">
-                            
-                            
-                            <div style="position:absolute; left:50%; width:10%; max-width:50%; height:100%; background:var(--pass-color); border-radius:0 6px 6px 0;"></div>
-                            
-                            <div style="position:absolute; left:50%; top:0; bottom:0; width:1px; background:#adb5bd;"></div>
-                        </div>
+                    <div class="year-bar">
+                        
+                        <div style="position:absolute; left:50%; width:10%; height:100%; background:#4caf50;"></div>
+                        
+                        <div class="year-bar-center"></div>
                     </div>
                 </td>
             </tr>
@@ -824,14 +669,11 @@
                 <td class="label-col" style="text-align:center;">2016</td>
                 <td class="num-right positive">14.7%</td>
                 <td>
-                    <div style="display:flex; align-items:center; height:20px;">
-                        <div style="flex:1; position:relative; height:12px; background:#e9ecef; border-radius:6px;">
-                            
-                            
-                            <div style="position:absolute; left:50%; width:24%; max-width:50%; height:100%; background:var(--pass-color); border-radius:0 6px 6px 0;"></div>
-                            
-                            <div style="position:absolute; left:50%; top:0; bottom:0; width:1px; background:#adb5bd;"></div>
-                        </div>
+                    <div class="year-bar">
+                        
+                        <div style="position:absolute; left:50%; width:24%; height:100%; background:#4caf50;"></div>
+                        
+                        <div class="year-bar-center"></div>
                     </div>
                 </td>
             </tr>
@@ -841,14 +683,11 @@
                 <td class="label-col" style="text-align:center;">2015</td>
                 <td class="num-right positive">6.4%</td>
                 <td>
-                    <div style="display:flex; align-items:center; height:20px;">
-                        <div style="flex:1; position:relative; height:12px; background:#e9ecef; border-radius:6px;">
-                            
-                            
-                            <div style="position:absolute; left:50%; width:10%; max-width:50%; height:100%; background:var(--pass-color); border-radius:0 6px 6px 0;"></div>
-                            
-                            <div style="position:absolute; left:50%; top:0; bottom:0; width:1px; background:#adb5bd;"></div>
-                        </div>
+                    <div class="year-bar">
+                        
+                        <div style="position:absolute; left:50%; width:10%; height:100%; background:#4caf50;"></div>
+                        
+                        <div class="year-bar-center"></div>
                     </div>
                 </td>
             </tr>
@@ -858,14 +697,11 @@
                 <td class="label-col" style="text-align:center;">2014</td>
                 <td class="num-right positive">12.5%</td>
                 <td>
-                    <div style="display:flex; align-items:center; height:20px;">
-                        <div style="flex:1; position:relative; height:12px; background:#e9ecef; border-radius:6px;">
-                            
-                            
-                            <div style="position:absolute; left:50%; width:20%; max-width:50%; height:100%; background:var(--pass-color); border-radius:0 6px 6px 0;"></div>
-                            
-                            <div style="position:absolute; left:50%; top:0; bottom:0; width:1px; background:#adb5bd;"></div>
-                        </div>
+                    <div class="year-bar">
+                        
+                        <div style="position:absolute; left:50%; width:20%; height:100%; background:#4caf50;"></div>
+                        
+                        <div class="year-bar-center"></div>
                     </div>
                 </td>
             </tr>
@@ -875,14 +711,11 @@
                 <td class="label-col" style="text-align:center;">2013</td>
                 <td class="num-right positive">6.3%</td>
                 <td>
-                    <div style="display:flex; align-items:center; height:20px;">
-                        <div style="flex:1; position:relative; height:12px; background:#e9ecef; border-radius:6px;">
-                            
-                            
-                            <div style="position:absolute; left:50%; width:10%; max-width:50%; height:100%; background:var(--pass-color); border-radius:0 6px 6px 0;"></div>
-                            
-                            <div style="position:absolute; left:50%; top:0; bottom:0; width:1px; background:#adb5bd;"></div>
-                        </div>
+                    <div class="year-bar">
+                        
+                        <div style="position:absolute; left:50%; width:10%; height:100%; background:#4caf50;"></div>
+                        
+                        <div class="year-bar-center"></div>
                     </div>
                 </td>
             </tr>
@@ -892,14 +725,11 @@
                 <td class="label-col" style="text-align:center;">2012</td>
                 <td class="num-right positive">6.7%</td>
                 <td>
-                    <div style="display:flex; align-items:center; height:20px;">
-                        <div style="flex:1; position:relative; height:12px; background:#e9ecef; border-radius:6px;">
-                            
-                            
-                            <div style="position:absolute; left:50%; width:11%; max-width:50%; height:100%; background:var(--pass-color); border-radius:0 6px 6px 0;"></div>
-                            
-                            <div style="position:absolute; left:50%; top:0; bottom:0; width:1px; background:#adb5bd;"></div>
-                        </div>
+                    <div class="year-bar">
+                        
+                        <div style="position:absolute; left:50%; width:11%; height:100%; background:#4caf50;"></div>
+                        
+                        <div class="year-bar-center"></div>
                     </div>
                 </td>
             </tr>
@@ -909,14 +739,11 @@
                 <td class="label-col" style="text-align:center;">2011</td>
                 <td class="num-right positive">19.2%</td>
                 <td>
-                    <div style="display:flex; align-items:center; height:20px;">
-                        <div style="flex:1; position:relative; height:12px; background:#e9ecef; border-radius:6px;">
-                            
-                            
-                            <div style="position:absolute; left:50%; width:32%; max-width:50%; height:100%; background:var(--pass-color); border-radius:0 6px 6px 0;"></div>
-                            
-                            <div style="position:absolute; left:50%; top:0; bottom:0; width:1px; background:#adb5bd;"></div>
-                        </div>
+                    <div class="year-bar">
+                        
+                        <div style="position:absolute; left:50%; width:32%; height:100%; background:#4caf50;"></div>
+                        
+                        <div class="year-bar-center"></div>
                     </div>
                 </td>
             </tr>
@@ -926,14 +753,11 @@
                 <td class="label-col" style="text-align:center;">2010</td>
                 <td class="num-right positive">21.1%</td>
                 <td>
-                    <div style="display:flex; align-items:center; height:20px;">
-                        <div style="flex:1; position:relative; height:12px; background:#e9ecef; border-radius:6px;">
-                            
-                            
-                            <div style="position:absolute; left:50%; width:35%; max-width:50%; height:100%; background:var(--pass-color); border-radius:0 6px 6px 0;"></div>
-                            
-                            <div style="position:absolute; left:50%; top:0; bottom:0; width:1px; background:#adb5bd;"></div>
-                        </div>
+                    <div class="year-bar">
+                        
+                        <div style="position:absolute; left:50%; width:35%; height:100%; background:#4caf50;"></div>
+                        
+                        <div class="year-bar-center"></div>
                     </div>
                 </td>
             </tr>
@@ -941,8 +765,6 @@
         </tbody>
     </table>
     
-
-    <!-- 월별 수익률 히트맵 제거됨 (리스크검토의뢰서에서 불필요) -->
 
     
 </div>
@@ -956,22 +778,22 @@
     </div>
 
     
-    <div class="stats-row">
-        <div class="stat-card">
-            <div class="stat-value negative">6.6%</div>
-            <div class="stat-label">최대 낙폭 (MDD)</div>
+    <div class="metrics-row">
+        <div class="metric-cell">
+            <div class="val negative">6.6%</div>
+            <div class="lbl">최대 낙폭 (MDD)</div>
         </div>
-        <div class="stat-card">
-            <div class="stat-value">6.3%</div>
-            <div class="stat-label">연환산 변동성</div>
+        <div class="metric-cell">
+            <div class="val">6.3%</div>
+            <div class="lbl">연환산 변동성</div>
         </div>
-        <div class="stat-card">
-            <div class="stat-value">4.6%</div>
-            <div class="stat-label">하방 변동성</div>
+        <div class="metric-cell">
+            <div class="val">4.6%</div>
+            <div class="lbl">하방 변동성</div>
         </div>
-        <div class="stat-card">
-            <div class="stat-value negative">-3.48%</div>
-            <div class="stat-label">최악의 일간 수익률</div>
+        <div class="metric-cell">
+            <div class="val negative">-3.48%</div>
+            <div class="lbl">최악의 일간 수익률</div>
         </div>
     </div>
 
@@ -983,9 +805,9 @@
     </div>
     
 
-    <table class="data-table" style="margin-top: 15px;">
+    <table style="margin-top: 10px;">
         <thead>
-            <tr><th>리스크 지표</th><th style="text-align:right;">값</th></tr>
+            <tr><th style="text-align:left;">리스크 지표</th><th style="text-align:right;">값</th></tr>
         </thead>
         <tbody>
             <tr><td class="label-col">최대 낙폭 (MDD)</td><td class="num-right negative">6.6%</td></tr>
@@ -1014,10 +836,10 @@
     </div>
 
     
-    <table class="crisis-table">
+    <table>
         <thead>
             <tr>
-                <th>위기 시기</th>
+                <th style="text-align:left;">위기 시기</th>
                 <th>기간</th>
                 <th>수익률</th>
                 <th>MDD</th>
@@ -1029,66 +851,66 @@
             
             <tr>
                 <td style="text-align:left; font-weight:600;">COVID-19 Crash</td>
-                <td style="font-size:11px;">2020-02-19 ~ 2020-03-23</td>
+                <td style="font-size:11px; text-align:center;">2020-02-19 ~ 2020-03-23</td>
                 
-                <td class="positive" style="font-weight:bold;">
+                <td class="num-right positive" style="font-weight:600;">
                     +7.0%
                 </td>
-                <td class="negative">4.7%</td>
-                <td>24.2%</td>
-                <td class="negative">-1.87%</td>
+                <td class="num-right negative">4.7%</td>
+                <td class="num-right">24.2%</td>
+                <td class="num-right negative">-1.87%</td>
                 
             </tr>
             
             <tr>
                 <td style="text-align:left; font-weight:600;">2022 Rate Hikes</td>
-                <td style="font-size:11px;">2022-01-03 ~ 2022-09-30</td>
+                <td style="font-size:11px; text-align:center;">2022-01-03 ~ 2022-09-30</td>
                 
-                <td class="positive" style="font-weight:bold;">
+                <td class="num-right positive" style="font-weight:600;">
                     +22.1%
                 </td>
-                <td class="negative">4.6%</td>
-                <td>7.3%</td>
-                <td class="negative">-1.64%</td>
+                <td class="num-right negative">4.6%</td>
+                <td class="num-right">7.3%</td>
+                <td class="num-right negative">-1.64%</td>
                 
             </tr>
             
             <tr>
                 <td style="text-align:left; font-weight:600;">2023 Fall Correction</td>
-                <td style="font-size:11px;">2023-09-01 ~ 2023-10-31</td>
+                <td style="font-size:11px; text-align:center;">2023-09-01 ~ 2023-10-31</td>
                 
-                <td class="positive" style="font-weight:bold;">
+                <td class="num-right positive" style="font-weight:600;">
                     +0.8%
                 </td>
-                <td class="negative">1.1%</td>
-                <td>4.1%</td>
-                <td class="negative">-0.52%</td>
+                <td class="num-right negative">1.1%</td>
+                <td class="num-right">4.1%</td>
+                <td class="num-right negative">-0.52%</td>
                 
             </tr>
             
             <tr>
                 <td style="text-align:left; font-weight:600;">2024 VIX Spike</td>
-                <td style="font-size:11px;">2024-08-01 ~ 2024-08-15</td>
+                <td style="font-size:11px; text-align:center;">2024-08-01 ~ 2024-08-15</td>
                 
-                <td class="negative" style="font-weight:bold;">
+                <td class="num-right negative" style="font-weight:600;">
                     -1.2%
                 </td>
-                <td class="negative">2.4%</td>
-                <td>8.9%</td>
-                <td class="negative">-1.28%</td>
+                <td class="num-right negative">2.4%</td>
+                <td class="num-right">8.9%</td>
+                <td class="num-right negative">-1.28%</td>
                 
             </tr>
             
             <tr>
                 <td style="text-align:left; font-weight:600;">2025 Tariff Shock</td>
-                <td style="font-size:11px;">2025-04-01 ~ 2025-04-30</td>
+                <td style="font-size:11px; text-align:center;">2025-04-01 ~ 2025-04-30</td>
                 
-                <td class="negative" style="font-weight:bold;">
+                <td class="num-right negative" style="font-weight:600;">
                     -1.7%
                 </td>
-                <td class="negative">4.7%</td>
-                <td>11.9%</td>
-                <td class="negative">-1.87%</td>
+                <td class="num-right negative">4.7%</td>
+                <td class="num-right">11.9%</td>
+                <td class="num-right negative">-1.87%</td>
                 
             </tr>
             
@@ -1106,14 +928,14 @@
     </div>
 
     
-    <p style="margin-bottom: 15px; font-size: 14px; color: #555;">
+    <p style="margin-bottom: 10px; font-size: 13px; color: #555;">
         평가 대상 전략과의 상관계수 (일간 수익률 기준)
     </p>
 
-    <table class="corr-mini-table">
+    <table>
         <thead>
             <tr>
-                <th>전략</th>
+                <th style="text-align:left;">전략</th>
                 <th>티커</th>
                 <th>상관계수</th>
                 <th>분산효과</th>
@@ -1126,13 +948,13 @@
                 
                 <tr>
                     <td style="text-align:left; font-weight:600;">MS Cross Asset Vol Carry</td>
-                    <td style="text-align:left; font-size:11px; color:#888;">MSCBVCB4</td>
-                    <td class="corr-negative">
+                    <td style="text-align:center; font-size:11px; color:#666;">MSCBVCB4</td>
+                    <td class="num-right corr-negative">
                         -0.01
                     </td>
-                    <td>
+                    <td style="text-align:center;">
                         
-                            <span style="color: var(--pass-color); font-weight: bold;">우수</span>
+                            <span style="color: #1b5e20; font-weight: 600;">우수</span>
                         
                     </td>
                 </tr>
@@ -1142,13 +964,13 @@
     </table>
 
     
-    <div style="margin-top: 15px; padding: 12px 16px; background: var(--bg-light); border-radius: 8px;">
+    <p style="margin-top: 10px; font-size: 13px;">
         <strong>평가 대상 전략 대비 평균 상관계수:</strong> -0.01
         
         
-            — <span class="positive" style="font-weight:bold;">포트폴리오 분산 효과 우수</span>
+            — <span class="positive" style="font-weight:600;">분산 효과 우수</span>
         
-    </div>
+    </p>
     
 
     
@@ -1163,24 +985,24 @@
     </div>
 
     
-    <div class="stats-row">
-        <div class="stat-card">
-            <div class="stat-value">64점</div>
-            <div class="stat-label">총점</div>
+    <div class="metrics-row">
+        <div class="metric-cell">
+            <div class="val">64점</div>
+            <div class="lbl">총점</div>
         </div>
-        <div class="stat-card">
-            <div class="stat-value">
+        <div class="metric-cell">
+            <div class="val">
                 <span class="grade-badge grade-f">F</span>
             </div>
-            <div class="stat-label">등급</div>
+            <div class="lbl">등급</div>
         </div>
-        <div class="stat-card">
-            <div class="stat-value positive">13</div>
-            <div class="stat-label">PASS</div>
+        <div class="metric-cell">
+            <div class="val positive">13</div>
+            <div class="lbl">PASS</div>
         </div>
-        <div class="stat-card">
-            <div class="stat-value negative">2</div>
-            <div class="stat-label">FAIL</div>
+        <div class="metric-cell">
+            <div class="val negative">2</div>
+            <div class="lbl">FAIL</div>
         </div>
     </div>
 
@@ -1369,7 +1191,7 @@
                 &#10007; 투자 부적격
             
         </h3>
-        <p style="font-size: 14px; line-height: 1.7;">
+        <p style="font-size: 13px; line-height: 1.8;">
             부적격: 필수 항목 미달 - 투자 불가
         </p>
 
@@ -1388,13 +1210,13 @@
     </div>
 
     
-    <h3 style="margin-top: 25px; margin-bottom: 10px; font-size: 15px; color: var(--primary-dark);">카테고리별 점수</h3>
-    <table class="data-table">
+    <div class="sub-heading">카테고리별 점수</div>
+    <table>
         <thead>
             <tr>
-                <th>카테고리</th>
+                <th style="text-align:left;">카테고리</th>
                 <th style="text-align:right;">점수</th>
-                <th style="width:300px;">수준</th>
+                <th style="width:280px;">수준</th>
             </tr>
         </thead>
         <tbody>
@@ -1403,9 +1225,9 @@
                 <td class="label-col">performance</td>
                 <td class="num-right">58%</td>
                 <td>
-                    <div style="height:16px; background:#e9ecef; border-radius:8px; overflow:hidden;">
-                        <div style="height:100%; width:57.520376126360674%; border-radius:8px;
-                            background: var(--warn-color);">
+                    <div class="cat-bar">
+                        <div style="height:100%; width:57.520376126360674%;
+                            background: #f9a825;">
                         </div>
                     </div>
                 </td>
@@ -1415,9 +1237,9 @@
                 <td class="label-col">risk</td>
                 <td class="num-right">81%</td>
                 <td>
-                    <div style="height:16px; background:#e9ecef; border-radius:8px; overflow:hidden;">
-                        <div style="height:100%; width:80.73814671724085%; border-radius:8px;
-                            background: var(--pass-color);">
+                    <div class="cat-bar">
+                        <div style="height:100%; width:80.73814671724085%;
+                            background: #4caf50;">
                         </div>
                     </div>
                 </td>
@@ -1427,9 +1249,9 @@
                 <td class="label-col">strategy_quality</td>
                 <td class="num-right">48%</td>
                 <td>
-                    <div style="height:16px; background:#e9ecef; border-radius:8px; overflow:hidden;">
-                        <div style="height:100%; width:47.61904761904761%; border-radius:8px;
-                            background: var(--fail-color);">
+                    <div class="cat-bar">
+                        <div style="height:100%; width:47.61904761904761%;
+                            background: #e53935;">
                         </div>
                     </div>
                 </td>
@@ -1439,9 +1261,9 @@
                 <td class="label-col">correlation</td>
                 <td class="num-right">65%</td>
                 <td>
-                    <div style="height:16px; background:#e9ecef; border-radius:8px; overflow:hidden;">
-                        <div style="height:100%; width:65.0%; border-radius:8px;
-                            background: #17a2b8;">
+                    <div class="cat-bar">
+                        <div style="height:100%; width:65.0%;
+                            background: #1976d2;">
                         </div>
                     </div>
                 </td>
@@ -1458,7 +1280,7 @@
 <!-- ===== FOOTER ===== -->
 <footer>
     <p>QIS Fund Manager — 리스크검토의뢰서 자동 생성</p>
-    <p>2026-02-25 14:00:04</p>
+    <p>2026-02-25 14:12:08</p>
 </footer>
 
 
@@ -1470,8 +1292,8 @@
         const chartOptions = {
             layout: { background: { color: '#ffffff' }, textColor: '#333' },
             grid: { vertLines: { color: '#f0f0f0' }, horzLines: { color: '#f0f0f0' } },
-            timeScale: { borderColor: '#dee2e6', timeVisible: false },
-            rightPriceScale: { borderColor: '#dee2e6' },
+            timeScale: { borderColor: '#ccc', timeVisible: false },
+            rightPriceScale: { borderColor: '#ccc' },
             crosshair: { mode: 0 },
         };
 
@@ -1481,11 +1303,11 @@
         if (priceContainer) {
             const priceChart = LightweightCharts.createChart(priceContainer, {
                 ...chartOptions,
-                height: 300,
+                height: 280,
             });
 
             const priceSeries = priceChart.addLineSeries({
-                color: '#667eea',
+                color: '#333',
                 lineWidth: 2,
                 priceFormat: { type: 'custom', formatter: (p) => p.toFixed(1) },
             });
@@ -1502,7 +1324,7 @@
                 priceSeries.setMarkers([{
                     time: liveDate,
                     position: 'belowBar',
-                    color: '#667eea',
+                    color: '#333',
                     shape: 'arrowUp',
                     text: 'LIVE',
                 }]);
@@ -1519,13 +1341,13 @@
         if (ddContainer) {
             const ddChart = LightweightCharts.createChart(ddContainer, {
                 ...chartOptions,
-                height: 300,
+                height: 280,
             });
 
             const ddSeries = ddChart.addAreaSeries({
-                lineColor: '#dc3545',
-                topColor: 'rgba(220, 53, 69, 0.1)',
-                bottomColor: 'rgba(220, 53, 69, 0.4)',
+                lineColor: '#c62828',
+                topColor: 'rgba(198, 40, 40, 0.05)',
+                bottomColor: 'rgba(198, 40, 40, 0.25)',
                 lineWidth: 1,
                 priceFormat: { type: 'custom', formatter: (p) => (p * 100).toFixed(1) + '%' },
             });
