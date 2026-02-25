@@ -500,6 +500,10 @@
             .no-print { display: none; }
         }
     </style>
+    <!-- KaTeX: 수식 렌더링 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </head>
 <body>
 
@@ -508,7 +512,7 @@
     <div class="doc-type">리스크검토의뢰서 / Risk Review Request</div>
     <h1>UBS Commodity Relative-Skewness (CRIS)</h1>
     <div class="ticker">UBCIRSER | UBS</div>
-    <div class="meta">생성일: 2026-02-24 16:19 | QIS Fund Manager</div>
+    <div class="meta">생성일: 2026-02-25 13:55 | QIS Fund Manager</div>
 </div>
 
 <!-- ===== SECTION 1: 전략 개요 ===== -->
@@ -1484,7 +1488,7 @@
 <footer>
     <p>QIS Fund Manager — 리스크검토의뢰서 자동 생성</p>
     <p>본 보고서는 정량적 분석 결과를 요약한 것이며, 투자 판단의 최종 책임은 운용역에게 있습니다.</p>
-    <p>2026-02-24 16:19:05</p>
+    <p>2026-02-25 13:55:40</p>
 </footer>
 
 
@@ -1576,7 +1580,7 @@
         const descEl = document.getElementById('description-content');
         if (!descEl) return;
 
-        let content = "UBS Commodity Relative-Skewness Investment Strategy (UBS-CRIS)\ub294 \uc0c1\ud488 \uc120\ubb3c \uc2dc\uc7a5\uc5d0\uc11c \uc65c\ub3c4(skewness) \ud504\ub9ac\ubbf8\uc5c4\uc744 \ucd94\ucd9c\ud558\ub294 \ub871/\uc20f \uc804\ub7b5\uc774\ub2e4.\n\n[\ud22c\uc790 \uadfc\uac70]\n- Selective Hedging: \uc591\uc758 \uc65c\ub3c4\uac00 \ud070 \uc0c1\ud488\uc740 \uc704\ud5d8\uad00\ub9ac\uc790\ub4e4\uc758 \uc21c\ub9e4\uc218 \ud5e4\uc9c0 \uc218\uc694\ub85c \uc778\ud574 \uace0\ud3c9\uac00\ub418\ub294 \uacbd\ud5a5\n- Cumulative Prospect Theory: \ud22c\uc790\uc790\ub4e4\uc774 \ub0ae\uc740 \ud655\ub960\uc758 \uadf9\ub2e8\uc801 \uc218\uc775(lottery-like payoff)\uc744 \uacfc\ub300\ud3c9\uac00\ud558\uc5ec \uc591\uc758 \uc65c\ub3c4 \uc790\uc0b0\uc5d0 \ud504\ub9ac\ubbf8\uc5c4 \ubd80\uc5ec\n- \uc74c\uc758 \uc65c\ub3c4(\ud558\ubc29 \uc704\ud5d8 \ud070) \uc0c1\ud488\uc740 \uc800\ud3c9\uac00, \uc591\uc758 \uc65c\ub3c4(\uc0c1\ubc29 \uae30\ub300 \ud070) \uc0c1\ud488\uc740 \uace0\ud3c9\uac00\ub418\ub294 \ube44\ub300\uce6d \ud65c\uc6a9\n\n[\uc6b4\uc6a9 \ubc29\ubc95\ub860]\n- 24\uac1c \uc0c1\ud488\uc758 6/9/12\uac1c\uc6d4 Pearson Skewness Coefficient \ud3c9\uade0 \uc0b0\ucd9c\n- 4\ubd84\uc704 \ub7ad\ud0b9: \uac00\uc7a5 \uc74c\uc758 \uc65c\ub3c4(1\ubd84\uc704) \ub9e4\uc218, \uac00\uc7a5 \uc591\uc758 \uc65c\ub3c4(4\ubd84\uc704) \ub9e4\ub3c4\n- \ud3ec\uc9c0\uc158 \ud06c\uae30\ub294 \ud574\ub2f9 \uc0c1\ud488\uc758 \uc0c1\ub300\uc801 \uc65c\ub3c4 \uac15\ub3c4\uc5d0 \ube44\ub840\n- \uc6d4\uac04 \ub9ac\ubc38\ub7f0\uc2f1 (10 \uac70\ub798\uc77c\uc5d0 \uac78\uccd0 \uc9d1\ud589)\n\n[\uc8fc\uc694 \ub9ac\uc2a4\ud06c]\n- \uc65c\ub3c4 \uce21\uc815\uac12\uc774 \uc608\uc0c1\ubcf4\ub2e4 \uc624\ub798 \uc9c0\uc18d\ub418\uba74 \uc190\uc2e4 \uac00\ub2a5\n- \uc218\uc775\ub960 \uc774\uc0c1\uce58(outlier)\ub85c \uc778\ud55c \uc65c\ub3c4 \uc65c\uace1 \uc2dc \uc798\ubabb\ub41c \uc2e0\ud638 \ubc1c\uc0dd \uac00\ub2a5\n\n[\uad00\ub828 \uc804\ub7b5]\n- UBCCRSER (Skewness Curve): \ub3d9\uc77c \uc65c\ub3c4 \uc2e0\ud638\ub97c \ucee4\ube0c \uc2a4\ud504\ub808\ub4dc(F0 vs F3/F6)\ub85c \uad6c\ud604\ud55c \uc800\ubcc0\ub3d9\uc131 \ubc84\uc804\n- UCCIRSER: UBCIRSER\uc758 UCITS \uc900\uac70 \ubc84\uc804";
+        let content = "UBS Commodity Relative-Skewness Investment Strategy (UBS-CRIS)\ub294 \uc0c1\ud488 \uc120\ubb3c \uc2dc\uc7a5\uc5d0\uc11c \uc65c\ub3c4(skewness) \ud504\ub9ac\ubbf8\uc5c4\uc744 \ucd94\ucd9c\ud558\ub294 \ub871/\uc20f \uc804\ub7b5\uc774\ub2e4.\n\n[\ud22c\uc790 \uadfc\uac70]\n- Selective Hedging: \uc591\uc758 \uc65c\ub3c4\uac00 \ud070 \uc0c1\ud488\uc740 \uc704\ud5d8\uad00\ub9ac\uc790\ub4e4\uc758 \uc21c\ub9e4\uc218 \ud5e4\uc9c0 \uc218\uc694\ub85c \uc778\ud574 \uace0\ud3c9\uac00\ub418\ub294 \uacbd\ud5a5\n- Cumulative Prospect Theory: \ud22c\uc790\uc790\ub4e4\uc774 \ub0ae\uc740 \ud655\ub960\uc758 \uadf9\ub2e8\uc801 \uc218\uc775(lottery-like payoff)\uc744 \uacfc\ub300\ud3c9\uac00\ud558\uc5ec \uc591\uc758 \uc65c\ub3c4 \uc790\uc0b0\uc5d0 \ud504\ub9ac\ubbf8\uc5c4 \ubd80\uc5ec\n- \uc74c\uc758 \uc65c\ub3c4(\ud558\ubc29 \uc704\ud5d8 \ud070) \uc0c1\ud488\uc740 \uc800\ud3c9\uac00, \uc591\uc758 \uc65c\ub3c4(\uc0c1\ubc29 \uae30\ub300 \ud070) \uc0c1\ud488\uc740 \uace0\ud3c9\uac00\ub418\ub294 \ube44\ub300\uce6d \ud65c\uc6a9\n\n[\uc6b4\uc6a9 \ubc29\ubc95\ub860]\n- 24\uac1c \uc0c1\ud488\uc758 6/9/12\uac1c\uc6d4 Pearson Skewness Coefficient \ud3c9\uade0 \uc0b0\ucd9c\n- 4\ubd84\uc704 \ub7ad\ud0b9: \uac00\uc7a5 \uc74c\uc758 \uc65c\ub3c4(1\ubd84\uc704) \ub9e4\uc218, \uac00\uc7a5 \uc591\uc758 \uc65c\ub3c4(4\ubd84\uc704) \ub9e4\ub3c4\n- \ud3ec\uc9c0\uc158 \ud06c\uae30\ub294 \ud574\ub2f9 \uc0c1\ud488\uc758 \uc0c1\ub300\uc801 \uc65c\ub3c4 \uac15\ub3c4\uc5d0 \ube44\ub840\n- \uc6d4\uac04 \ub9ac\ubc38\ub7f0\uc2f1 (10 \uac70\ub798\uc77c\uc5d0 \uac78\uccd0 \uc9d1\ud589)\n\n[\ud575\uc2ec \uc218\uc2dd: Pearson Skewness Coefficient]\n\n\uac01 \uc0c1\ud488 $i$\uc5d0 \ub300\ud574 lookback \uae30\uac04 $T$ (6, 9, 12\uac1c\uc6d4)\uc758 \uc77c\uac04 \uc218\uc775\ub960\ub85c \uc65c\ub3c4\ub97c \uc0b0\ucd9c\ud55c\ub2e4:\n\n$$S_p^{(i,T)} = \\frac{3(\\bar{r}_{i,T} - \\tilde{r}_{i,T})}{s_{i,T}}$$\n\n- $\\bar{r}_{i,T}$: \uae30\uac04 $T$ \uc77c\uac04 \uc218\uc775\ub960\uc758 \uc0b0\uc220\ud3c9\uade0 (mean)\n- $\\tilde{r}_{i,T}$: \uae30\uac04 $T$ \uc77c\uac04 \uc218\uc775\ub960\uc758 \uc911\uc559\uac12 (median)\n- $s_{i,T}$: \uae30\uac04 $T$ \uc77c\uac04 \uc218\uc775\ub960\uc758 \ud45c\uc900\ud3b8\ucc28 (std dev)\n\n3\uac1c \uae30\uac04 \ud3c9\uade0\uc73c\ub85c \ucd5c\uc885 \uc65c\ub3c4 \uc2e0\ud638\ub97c \uc0b0\ucd9c\ud55c\ub2e4:\n\n$$\\text{Signal}_i = \\frac{1}{3}\\left(S_{p,6M}^{(i)} + S_{p,9M}^{(i)} + S_{p,12M}^{(i)}\\right)$$\n\n- $\\text{Signal}_i \u003e 0$ (\uc591\uc758 \uc65c\ub3c4): \uace0\ud3c9\uac00 \u2192 **\ub9e4\ub3c4** (Q4)\n- $\\text{Signal}_i \u003c 0$ (\uc74c\uc758 \uc65c\ub3c4): \uc800\ud3c9\uac00 \u2192 **\ub9e4\uc218** (Q1)\n\n[\uc8fc\uc694 \ub9ac\uc2a4\ud06c]\n- \uc65c\ub3c4 \uce21\uc815\uac12\uc774 \uc608\uc0c1\ubcf4\ub2e4 \uc624\ub798 \uc9c0\uc18d\ub418\uba74 \uc190\uc2e4 \uac00\ub2a5\n- \uc218\uc775\ub960 \uc774\uc0c1\uce58(outlier)\ub85c \uc778\ud55c \uc65c\ub3c4 \uc65c\uace1 \uc2dc \uc798\ubabb\ub41c \uc2e0\ud638 \ubc1c\uc0dd \uac00\ub2a5\n\n[\uad00\ub828 \uc804\ub7b5]\n- UBCCRSER (Skewness Curve): \ub3d9\uc77c \uc65c\ub3c4 \uc2e0\ud638\ub97c \ucee4\ube0c \uc2a4\ud504\ub808\ub4dc(F0 vs F3/F6)\ub85c \uad6c\ud604\ud55c \uc800\ubcc0\ub3d9\uc131 \ubc84\uc804\n- UCCIRSER: UBCIRSER\uc758 UCITS \uc900\uac70 \ubc84\uc804";
 
         // 섹션 헤더 변환: [투자 근거] → <h3>
         content = content.replace(/\[(.+?)\]/g, '<h3>$1</h3>');
@@ -1602,6 +1606,17 @@
         content = content.replace(/<\/ul>\s*<\/p>/g, '</ul>');
 
         descEl.innerHTML = content;
+
+        // KaTeX 수식 렌더링 ($$...$$ 블록 수식, $...$ 인라인 수식)
+        if (typeof renderMathInElement === 'function') {
+            renderMathInElement(descEl, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ],
+                throwOnError: false
+            });
+        }
     });
 </script>
 
