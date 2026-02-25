@@ -9,7 +9,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Malgun Gothic', 'Segoe UI', Helvetica, Arial, sans-serif;
-            max-width: 860px;
+            max-width: 780px;
             margin: 0 auto;
             padding: 40px 28px;
             background: #fff;
@@ -18,137 +18,36 @@
             font-size: 14px;
         }
 
-        /* ===== Headings ===== */
-        h1 {
-            font-size: 20px;
-            font-weight: 700;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #d1d9e0;
-            margin-bottom: 16px;
-        }
-
-        h2 {
-            font-size: 16px;
-            font-weight: 700;
-            padding-bottom: 6px;
-            border-bottom: 1px solid #d1d9e0;
-            margin: 28px 0 12px 0;
-        }
-
-        h3 {
-            font-size: 14px;
-            font-weight: 700;
-            margin: 18px 0 8px 0;
-        }
-
-        /* ===== Paragraphs & Lists ===== */
-        p { margin: 6px 0; }
-
-        ul, ol {
-            margin: 4px 0 8px 24px;
-        }
-
+        h1 { font-size: 20px; font-weight: 700; padding-bottom: 10px; border-bottom: 2px solid #d1d9e0; margin-bottom: 16px; }
+        h2 { font-size: 16px; font-weight: 700; padding-bottom: 6px; border-bottom: 1px solid #d1d9e0; margin: 28px 0 12px 0; }
+        h3 { font-size: 14px; font-weight: 700; margin: 18px 0 6px 0; }
+        p { margin: 4px 0; }
+        ul { margin: 4px 0 8px 24px; }
         li { margin: 2px 0; }
-
+        hr { border: none; border-top: 1px solid #d1d9e0; margin: 16px 0; }
         strong { font-weight: 700; }
-
-        hr {
-            border: none;
-            border-top: 1px solid #d1d9e0;
-            margin: 24px 0;
-        }
-
-        /* ===== Tables ===== */
-        table {
-            border-collapse: collapse;
-            margin: 8px 0 14px 0;
-            font-size: 13px;
-        }
-
-        table.wide { width: 100%; }
-
-        th, td {
-            border: 1px solid #d1d9e0;
-            padding: 6px 10px;
-        }
-
-        th {
-            background: #f6f8fa;
-            font-weight: 600;
-            text-align: left;
-            font-size: 13px;
-        }
-
-        td.r { text-align: right; font-family: 'SFMono-Regular', Consolas, monospace; font-size: 13px; }
-        td.c { text-align: center; }
-
-        tr:hover { background: #f6f8fa; }
 
         .positive { color: #1a7f37; }
         .negative { color: #cf222e; }
+        .muted { color: #656d76; font-size: 13px; }
+        .mono { font-family: 'SFMono-Regular', Consolas, monospace; }
 
-        /* ===== Chart ===== */
-        .chart-wrap {
-            margin: 10px 0;
-            border: 1px solid #d1d9e0;
-        }
+        .row { display: flex; flex-wrap: wrap; gap: 0 32px; }
+        .kv { min-width: 220px; }
 
-        .chart-wrap .caption {
-            padding: 5px 10px;
-            font-size: 12px;
-            color: #656d76;
-            border-bottom: 1px solid #d1d9e0;
-            background: #f6f8fa;
-        }
-
+        .chart-wrap { margin: 10px 0; border: 1px solid #d1d9e0; }
+        .chart-wrap .caption { padding: 5px 10px; font-size: 12px; color: #656d76; border-bottom: 1px solid #d1d9e0; background: #f6f8fa; }
         .chart-area { height: 260px; }
 
-        /* ===== Blockquote (decision) ===== */
-        blockquote {
-            margin: 10px 0;
-            padding: 10px 16px;
-            border-left: 4px solid #d1d9e0;
-            color: #1f2328;
-        }
+        .desc h3 { font-size: 14px; margin: 14px 0 4px 0; border-bottom: none; padding-bottom: 0; }
+        .desc h3:first-child { margin-top: 0; }
 
+        blockquote { margin: 10px 0; padding: 10px 16px; border-left: 4px solid #d1d9e0; }
         blockquote.pass { border-left-color: #1a7f37; }
         blockquote.fail { border-left-color: #cf222e; }
 
-        blockquote strong.pass-title { color: #1a7f37; }
-        blockquote strong.fail-title { color: #cf222e; }
+        footer { margin-top: 36px; padding-top: 10px; border-top: 1px solid #d1d9e0; color: #656d76; font-size: 12px; }
 
-        /* ===== Description ===== */
-        .desc h3 {
-            font-size: 14px;
-            margin: 14px 0 4px 0;
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .desc h3:first-child { margin-top: 0; }
-
-        /* ===== Inline status ===== */
-        .s-pass { color: #1a7f37; font-weight: 700; }
-        .s-fail { color: #cf222e; font-weight: 700; }
-        .s-warn { color: #9a6700; font-weight: 700; }
-
-        /* ===== Year bar ===== */
-        .ybar {
-            display: inline-block;
-            height: 10px;
-            position: relative;
-        }
-
-        /* ===== Footer ===== */
-        footer {
-            margin-top: 36px;
-            padding-top: 10px;
-            border-top: 1px solid #d1d9e0;
-            color: #656d76;
-            font-size: 12px;
-        }
-
-        /* ===== Print ===== */
         @media print {
             body { padding: 15px; max-width: 100%; }
             .chart-wrap { break-inside: avoid; }
@@ -161,25 +60,27 @@
 </head>
 <body>
 
-<p style="font-size:12px; color:#656d76; letter-spacing:2px;">리스크검토의뢰서 / RISK REVIEW REQUEST</p>
+<p class="muted" style="letter-spacing:2px;">리스크검토의뢰서 / RISK REVIEW REQUEST</p>
 
 <h1>UBS Short Spread Carry (COSI) <span style="font-weight:400; font-size:15px; color:#656d76;">COSXPLNE</span></h1>
 
-<p style="font-size:13px; color:#656d76;">UBS | 2026-02-25</p>
+<p class="muted">UBS | 2026-02-25</p>
+
 
 <!-- ===== 1. 전략 개요 ===== -->
 <h2>1. 전략 개요</h2>
 
-<table class="wide">
-    <tbody>
-        <tr><td style="width:140px;"><strong>전략명</strong></td><td>UBS Short Spread Carry (COSI)</td><td style="width:140px;"><strong>블룸버그 티커</strong></td><td>COSXPLNE</td></tr>
-        <tr><td><strong>발행사</strong></td><td>UBS</td><td><strong>카테고리</strong></td><td>Commodity Carry</td></tr>
-        <tr><td><strong>라이브 시작일</strong></td><td>2010-01-29</td><td><strong>등급 / 적격</strong></td><td>B+ / 적격</td></tr>
-    </tbody>
-</table>
+<div class="row">
+    <p class="kv"><strong>전략명</strong>: UBS Short Spread Carry (COSI)</p>
+    <p class="kv"><strong>블룸버그 티커</strong>: COSXPLNE</p>
+    <p class="kv"><strong>발행사</strong>: UBS</p>
+    <p class="kv"><strong>카테고리</strong>: Commodity Carry</p>
+    <p class="kv"><strong>라이브 시작일</strong>: 2010-01-29</p>
+    <p class="kv"><strong>등급 / 적격</strong>: B+ / 적격</p>
+</div>
 
 
-<p>CMCI 방법론 기반 숏 스프레드 캐리 전략. BCOM 숏 + CM-BCOM 롱 포지션으로 원자재 커브 콘탱고 활용. 테너 분산 및 일일 롤링으로 시장 충격 최소화. 연환산 수익률 7.24%, 샤프비율 0.97.</p>
+<p style="margin-top:8px;">CMCI 방법론 기반 숏 스프레드 캐리 전략. BCOM 숏 + CM-BCOM 롱 포지션으로 원자재 커브 콘탱고 활용. 테너 분산 및 일일 롤링으로 시장 충격 최소화. 연환산 수익률 7.24%, 샤프비율 0.97.</p>
 
 
 
@@ -195,21 +96,21 @@
 <h2>3. 성과 분석</h2>
 
 
-<table>
-    <thead><tr><th>지표</th><th style="text-align:right;">값</th></tr></thead>
-    <tbody>
-        <tr><td><strong>연환산 수익률</strong></td><td class="r positive">5.2%</td></tr>
-        <tr><td>총 수익률</td><td class="r positive">127.0%</td></tr>
-        <tr><td>YTD</td><td class="r negative">-4.2%</td></tr>
-        <tr><td>1개월</td><td class="r negative">-1.1%</td></tr>
-        <tr><td>3개월</td><td class="r negative">-1.6%</td></tr>
-        <tr><td>6개월</td><td class="r negative">-5.1%</td></tr>
-        <tr><td>1년</td><td class="r positive">0.6%</td></tr>
-        <tr><td><strong>샤프 비율</strong></td><td class="r">0.69</td></tr>
-        <tr><td><strong>소르티노 비율</strong></td><td class="r">0.98</td></tr>
-        <tr><td>승률 (일간)</td><td class="r">52.9%</td></tr>
-    </tbody>
-</table>
+<div class="row">
+    <p class="kv"><strong>연환산 수익률</strong>: <span class="mono positive">5.2%</span></p>
+    <p class="kv"><strong>총 수익률</strong>: <span class="mono positive">127.0%</span></p>
+    <p class="kv"><strong>샤프 비율</strong>: <span class="mono">0.69</span></p>
+    <p class="kv"><strong>소르티노 비율</strong>: <span class="mono">0.98</span></p>
+</div>
+<hr>
+<div class="row">
+    <p class="kv">YTD: <span class="mono negative">-4.2%</span></p>
+    <p class="kv">1개월: <span class="mono negative">-1.1%</span></p>
+    <p class="kv">3개월: <span class="mono negative">-1.6%</span></p>
+    <p class="kv">6개월: <span class="mono negative">-5.1%</span></p>
+    <p class="kv">1년: <span class="mono positive">0.6%</span></p>
+    <p class="kv">승률 (일간): <span class="mono">52.9%</span></p>
+</div>
 
 
 <div class="chart-wrap">
@@ -220,128 +121,18 @@
 
 
 <h3>연도별 수익률</h3>
-<table>
-    <thead><tr><th>연도</th><th style="text-align:right;">수익률</th></tr></thead>
-    <tbody>
-        
-        
-        <tr>
-            <td>2026</td>
-            <td class="r negative">-4.2%</td>
-        </tr>
-        
-        
-        <tr>
-            <td>2025</td>
-            <td class="r positive">+3.6%</td>
-        </tr>
-        
-        
-        <tr>
-            <td>2024</td>
-            <td class="r negative">-0.8%</td>
-        </tr>
-        
-        
-        <tr>
-            <td>2023</td>
-            <td class="r positive">+3.3%</td>
-        </tr>
-        
-        
-        <tr>
-            <td>2022</td>
-            <td class="r positive">+5.3%</td>
-        </tr>
-        
-        
-        <tr>
-            <td>2021</td>
-            <td class="r positive">+6.4%</td>
-        </tr>
-        
-        
-        <tr>
-            <td>2020</td>
-            <td class="r positive">+17.6%</td>
-        </tr>
-        
-        
-        <tr>
-            <td>2019</td>
-            <td class="r negative">-0.4%</td>
-        </tr>
-        
-        
-        <tr>
-            <td>2018</td>
-            <td class="r positive">+7.4%</td>
-        </tr>
-        
-        
-        <tr>
-            <td>2017</td>
-            <td class="r positive">+5.3%</td>
-        </tr>
-        
-        
-        <tr>
-            <td>2016</td>
-            <td class="r positive">+3.0%</td>
-        </tr>
-        
-        
-        <tr>
-            <td>2015</td>
-            <td class="r positive">+6.4%</td>
-        </tr>
-        
-        
-        <tr>
-            <td>2014</td>
-            <td class="r positive">+8.9%</td>
-        </tr>
-        
-        
-        <tr>
-            <td>2013</td>
-            <td class="r positive">+0.1%</td>
-        </tr>
-        
-        
-        <tr>
-            <td>2012</td>
-            <td class="r positive">+3.2%</td>
-        </tr>
-        
-        
-        <tr>
-            <td>2011</td>
-            <td class="r positive">+12.9%</td>
-        </tr>
-        
-        
-        <tr>
-            <td>2010</td>
-            <td class="r positive">+4.2%</td>
-        </tr>
-        
-    </tbody>
-</table>
+<span class="mono" style="display:inline-block; min-width:110px;">2026: <span class="negative">-4.2%</span></span> <span class="mono" style="display:inline-block; min-width:110px;">2025: <span class="positive">+3.6%</span></span> <span class="mono" style="display:inline-block; min-width:110px;">2024: <span class="negative">-0.8%</span></span> <span class="mono" style="display:inline-block; min-width:110px;">2023: <span class="positive">+3.3%</span></span> <span class="mono" style="display:inline-block; min-width:110px;">2022: <span class="positive">+5.3%</span></span> <span class="mono" style="display:inline-block; min-width:110px;">2021: <span class="positive">+6.4%</span></span> <span class="mono" style="display:inline-block; min-width:110px;">2020: <span class="positive">+17.6%</span></span> <span class="mono" style="display:inline-block; min-width:110px;">2019: <span class="negative">-0.4%</span></span> <span class="mono" style="display:inline-block; min-width:110px;">2018: <span class="positive">+7.4%</span></span> <span class="mono" style="display:inline-block; min-width:110px;">2017: <span class="positive">+5.3%</span></span> <span class="mono" style="display:inline-block; min-width:110px;">2016: <span class="positive">+3.0%</span></span> <span class="mono" style="display:inline-block; min-width:110px;">2015: <span class="positive">+6.4%</span></span> <span class="mono" style="display:inline-block; min-width:110px;">2014: <span class="positive">+8.9%</span></span> <span class="mono" style="display:inline-block; min-width:110px;">2013: <span class="positive">+0.1%</span></span> <span class="mono" style="display:inline-block; min-width:110px;">2012: <span class="positive">+3.2%</span></span> <span class="mono" style="display:inline-block; min-width:110px;">2011: <span class="positive">+12.9%</span></span> <span class="mono" style="display:inline-block; min-width:110px;">2010: <span class="positive">+4.2%</span></span> 
 
 
 
 <h3>라이브 기간 성과 (2010-01-29 ~)</h3>
-<table>
-    <thead><tr><th>지표</th><th style="text-align:right;">값</th></tr></thead>
-    <tbody>
-        <tr><td><strong>연환산 수익률</strong></td><td class="r positive">5.1%</td></tr>
-        <tr><td>총 수익률</td><td class="r positive">122.7%</td></tr>
-        <tr><td><strong>샤프 비율</strong></td><td class="r">0.67</td></tr>
-        <tr><td><strong>소르티노 비율</strong></td><td class="r">0.97</td></tr>
-        <tr><td>승률 (일간)</td><td class="r">52.8%</td></tr>
-    </tbody>
-</table>
+<div class="row">
+    <p class="kv"><strong>연환산 수익률</strong>: <span class="mono positive">5.1%</span></p>
+    <p class="kv"><strong>총 수익률</strong>: <span class="mono positive">122.7%</span></p>
+    <p class="kv"><strong>샤프 비율</strong>: <span class="mono">0.67</span></p>
+    <p class="kv"><strong>소르티노 비율</strong>: <span class="mono">0.97</span></p>
+    <p class="kv">승률 (일간): <span class="mono">52.8%</span></p>
+</div>
 
 
 
@@ -351,23 +142,23 @@
 <h2>4. 리스크 분석</h2>
 
 
-<table>
-    <thead><tr><th>지표</th><th style="text-align:right;">값</th></tr></thead>
-    <tbody>
-        <tr><td><strong>최대 낙폭 (MDD)</strong></td><td class="r negative">15.0%</td></tr>
-        <tr><td>현재 낙폭</td><td class="r">5.8%</td></tr>
-        <tr><td><strong>연환산 변동성</strong></td><td class="r">7.6%</td></tr>
-        <tr><td>하방 변동성</td><td class="r">5.6%</td></tr>
-        <tr><td>VaR (95%, 일간)</td><td class="r negative">0.67%</td></tr>
-        <tr><td>VaR (99%, 일간)</td><td class="r negative">1.30%</td></tr>
-        <tr><td>CVaR (95%, 일간)</td><td class="r negative">1.09%</td></tr>
-        <tr><td>CVaR (99%, 일간)</td><td class="r negative">1.92%</td></tr>
-        <tr><td><strong>최악 일간 수익률</strong></td><td class="r negative">-3.44%</td></tr>
-        <tr><td>최고 일간 수익률</td><td class="r positive">3.99%</td></tr>
-        <tr><td>왜도 (Skewness)</td><td class="r">0.00</td></tr>
-        <tr><td>첨도 (Kurtosis)</td><td class="r">7.17</td></tr>
-    </tbody>
-</table>
+<div class="row">
+    <p class="kv"><strong>최대 낙폭 (MDD)</strong>: <span class="mono negative">15.0%</span></p>
+    <p class="kv"><strong>연환산 변동성</strong>: <span class="mono">7.6%</span></p>
+    <p class="kv"><strong>하방 변동성</strong>: <span class="mono">5.6%</span></p>
+    <p class="kv"><strong>최악 일간 수익률</strong>: <span class="mono negative">-3.44%</span></p>
+</div>
+<hr>
+<div class="row">
+    <p class="kv">현재 낙폭: <span class="mono">5.8%</span></p>
+    <p class="kv">VaR (95%, 일간): <span class="mono negative">0.67%</span></p>
+    <p class="kv">VaR (99%, 일간): <span class="mono negative">1.30%</span></p>
+    <p class="kv">CVaR (95%, 일간): <span class="mono negative">1.09%</span></p>
+    <p class="kv">CVaR (99%, 일간): <span class="mono negative">1.92%</span></p>
+    <p class="kv">최고 일간 수익률: <span class="mono positive">3.99%</span></p>
+    <p class="kv">왜도: <span class="mono">0.00</span></p>
+    <p class="kv">첨도: <span class="mono">7.17</span></p>
+</div>
 
 
 <div class="chart-wrap">
@@ -378,16 +169,13 @@
 
 
 <h3>라이브 기간 리스크 (2010-01-29 ~)</h3>
-<table>
-    <thead><tr><th>지표</th><th style="text-align:right;">값</th></tr></thead>
-    <tbody>
-        <tr><td><strong>MDD</strong></td><td class="r negative">15.0%</td></tr>
-        <tr><td><strong>연환산 변동성</strong></td><td class="r">7.6%</td></tr>
-        <tr><td>하방 변동성</td><td class="r">5.6%</td></tr>
-        <tr><td>VaR (95%)</td><td class="r negative">0.67%</td></tr>
-        <tr><td>최악 일간 수익률</td><td class="r negative">-3.44%</td></tr>
-    </tbody>
-</table>
+<div class="row">
+    <p class="kv"><strong>MDD</strong>: <span class="mono negative">15.0%</span></p>
+    <p class="kv"><strong>연환산 변동성</strong>: <span class="mono">7.6%</span></p>
+    <p class="kv">하방 변동성: <span class="mono">5.6%</span></p>
+    <p class="kv">VaR (95%): <span class="mono negative">0.67%</span></p>
+    <p class="kv">최악 일간: <span class="mono negative">-3.44%</span></p>
+</div>
 
 
 
@@ -397,69 +185,42 @@
 <h2>5. 위기 시나리오 분석</h2>
 
 
-<table class="wide">
-    <thead>
-        <tr><th>위기 시기</th><th>기간</th><th style="text-align:right;">수익률</th><th style="text-align:right;">MDD</th><th style="text-align:right;">변동성</th><th style="text-align:right;">최악 일간</th></tr>
-    </thead>
-    <tbody>
-        
-        <tr>
-            <td><strong>COVID-19 Crash</strong></td>
-            <td style="font-size:12px; color:#656d76;">2020-02-19 ~ 2020-03-23</td>
-            
-            <td class="r positive">+8.8%</td>
-            <td class="r negative">1.7%</td>
-            <td class="r">13.4%</td>
-            <td class="r negative">-1.67%</td>
-            
-        </tr>
-        
-        <tr>
-            <td><strong>2022 Rate Hikes</strong></td>
-            <td style="font-size:12px; color:#656d76;">2022-01-03 ~ 2022-09-30</td>
-            
-            <td class="r negative">-2.3%</td>
-            <td class="r negative">14.1%</td>
-            <td class="r">13.1%</td>
-            <td class="r negative">-2.85%</td>
-            
-        </tr>
-        
-        <tr>
-            <td><strong>2023 Fall Correction</strong></td>
-            <td style="font-size:12px; color:#656d76;">2023-09-01 ~ 2023-10-31</td>
-            
-            <td class="r negative">-0.7%</td>
-            <td class="r negative">2.0%</td>
-            <td class="r">7.3%</td>
-            <td class="r negative">-1.21%</td>
-            
-        </tr>
-        
-        <tr>
-            <td><strong>2024 VIX Spike</strong></td>
-            <td style="font-size:12px; color:#656d76;">2024-08-01 ~ 2024-08-15</td>
-            
-            <td class="r negative">-1.3%</td>
-            <td class="r negative">1.7%</td>
-            <td class="r">5.3%</td>
-            <td class="r negative">-0.73%</td>
-            
-        </tr>
-        
-        <tr>
-            <td><strong>2025 Tariff Shock</strong></td>
-            <td style="font-size:12px; color:#656d76;">2025-04-01 ~ 2025-04-30</td>
-            
-            <td class="r positive">+1.6%</td>
-            <td class="r negative">0.9%</td>
-            <td class="r">5.4%</td>
-            <td class="r negative">-0.74%</td>
-            
-        </tr>
-        
-    </tbody>
-</table>
+
+<p>
+    <strong>COVID-19 Crash</strong> <span class="muted">(2020-02-19 ~ 2020-03-23)</span>
+    
+    — 수익률 <span class="mono positive">+8.8%</span>, MDD <span class="mono negative">1.7%</span>, 변동성 <span class="mono">13.4%</span>, 최악 일간 <span class="mono negative">-1.67%</span>
+    
+</p>
+
+<p>
+    <strong>2022 Rate Hikes</strong> <span class="muted">(2022-01-03 ~ 2022-09-30)</span>
+    
+    — 수익률 <span class="mono negative">-2.3%</span>, MDD <span class="mono negative">14.1%</span>, 변동성 <span class="mono">13.1%</span>, 최악 일간 <span class="mono negative">-2.85%</span>
+    
+</p>
+
+<p>
+    <strong>2023 Fall Correction</strong> <span class="muted">(2023-09-01 ~ 2023-10-31)</span>
+    
+    — 수익률 <span class="mono negative">-0.7%</span>, MDD <span class="mono negative">2.0%</span>, 변동성 <span class="mono">7.3%</span>, 최악 일간 <span class="mono negative">-1.21%</span>
+    
+</p>
+
+<p>
+    <strong>2024 VIX Spike</strong> <span class="muted">(2024-08-01 ~ 2024-08-15)</span>
+    
+    — 수익률 <span class="mono negative">-1.3%</span>, MDD <span class="mono negative">1.7%</span>, 변동성 <span class="mono">5.3%</span>, 최악 일간 <span class="mono negative">-0.73%</span>
+    
+</p>
+
+<p>
+    <strong>2025 Tariff Shock</strong> <span class="muted">(2025-04-01 ~ 2025-04-30)</span>
+    
+    — 수익률 <span class="mono positive">+1.6%</span>, MDD <span class="mono negative">0.9%</span>, 변동성 <span class="mono">5.4%</span>, 최악 일간 <span class="mono negative">-0.74%</span>
+    
+</p>
+
 
 
 
@@ -467,31 +228,20 @@
 <h2>6. 포트폴리오 적합성</h2>
 
 
-<p style="margin-bottom:8px; font-size:13px; color:#656d76;">평가 대상 전략과의 상관계수 (일간 수익률 기준)</p>
-
-<table class="wide">
-    <thead><tr><th>전략</th><th>티커</th><th style="text-align:right;">상관계수</th><th style="text-align:center;">분산효과</th></tr></thead>
-    <tbody>
-        
-        
-        
-        
-        <tr>
-            <td>MS Cross Asset Vol Carry</td>
-            <td style="font-size:12px; color:#656d76;">MSCBVCB4</td>
-            <td class="r">0.00</td>
-            <td class="c"><span class="s-pass">우수</span></td>
-        </tr>
-        
-        
-    </tbody>
-</table>
+<p class="muted" style="margin-bottom:6px;">평가 대상 전략과의 상관계수 (일간 수익률 기준)</p>
 
 
 
-<p>평균 상관계수: <strong>0.00</strong>
- — <span class="s-pass">분산 효과 우수</span>
-</p>
+
+
+<p>MS Cross Asset Vol Carry <span class="muted">(MSCBVCB4)</span> — <span class="mono">0.00</span> <span class="positive" style="font-weight:700;">우수</span></p>
+
+
+
+
+
+<hr>
+<p>평균 상관계수: <strong class="mono">0.00</strong> — <span class="positive" style="font-weight:700;">분산 효과 우수</span></p>
 
 
 
@@ -505,132 +255,48 @@
 
 
 <h3>performance (74%)</h3>
-<table class="wide">
-    <thead><tr><th>항목</th><th style="text-align:right;">점수</th><th style="text-align:center; width:70px;">상태</th></tr></thead>
-    <tbody>
-        
-        <tr>
-            <td><strong>&#9733; 연환산 수익률</strong></td>
-            <td class="r">8.5/10</td>
-            <td class="c s-warn">pass</td>
-        </tr>
-        
-        <tr>
-            <td>라이브 연환산 수익률</td>
-            <td class="r">8.4/10</td>
-            <td class="c s-warn">pass</td>
-        </tr>
-        
-        <tr>
-            <td><strong>&#9733; 샤프 비율</strong></td>
-            <td class="r">6.6/10</td>
-            <td class="c s-warn">pass</td>
-        </tr>
-        
-        <tr>
-            <td>소르티노 비율</td>
-            <td class="r">6.4/10</td>
-            <td class="c s-warn">pass</td>
-        </tr>
-        
-        <tr>
-            <td><strong>&#9733; 3년 수익률 일관성</strong></td>
-            <td class="r">8.2/10</td>
-            <td class="c s-warn">pass</td>
-        </tr>
-        
-        <tr>
-            <td>1년 수익률</td>
-            <td class="r">5.8/10</td>
-            <td class="c s-warn">warning</td>
-        </tr>
-        
-    </tbody>
-</table>
+
+<p><strong>&#9733; 연환산 수익률</strong> — <span class="mono">8.5/10</span> <span style="color:#9a6700; font-weight:700;">pass</span></p>
+
+<p>라이브 연환산 수익률 — <span class="mono">8.4/10</span> <span style="color:#9a6700; font-weight:700;">pass</span></p>
+
+<p><strong>&#9733; 샤프 비율</strong> — <span class="mono">6.6/10</span> <span style="color:#9a6700; font-weight:700;">pass</span></p>
+
+<p>소르티노 비율 — <span class="mono">6.4/10</span> <span style="color:#9a6700; font-weight:700;">pass</span></p>
+
+<p><strong>&#9733; 3년 수익률 일관성</strong> — <span class="mono">8.2/10</span> <span style="color:#9a6700; font-weight:700;">pass</span></p>
+
+<p>1년 수익률 — <span class="mono">5.8/10</span> <span style="color:#9a6700; font-weight:700;">warning</span></p>
+
 
 <h3>risk (80%)</h3>
-<table class="wide">
-    <thead><tr><th>항목</th><th style="text-align:right;">점수</th><th style="text-align:center; width:70px;">상태</th></tr></thead>
-    <tbody>
-        
-        <tr>
-            <td><strong>&#9733; 1년 최대 낙폭 (MDD)</strong></td>
-            <td class="r">7.0/10</td>
-            <td class="c s-warn">pass</td>
-        </tr>
-        
-        <tr>
-            <td>연환산 변동성</td>
-            <td class="r">9.0/10</td>
-            <td class="c s-warn">pass</td>
-        </tr>
-        
-        <tr>
-            <td>하방 변동성</td>
-            <td class="r">8.5/10</td>
-            <td class="c s-warn">pass</td>
-        </tr>
-        
-        <tr>
-            <td>최악의 월간 수익률</td>
-            <td class="r">7.6/10</td>
-            <td class="c s-warn">pass</td>
-        </tr>
-        
-    </tbody>
-</table>
+
+<p><strong>&#9733; 1년 최대 낙폭 (MDD)</strong> — <span class="mono">7.0/10</span> <span style="color:#9a6700; font-weight:700;">pass</span></p>
+
+<p>연환산 변동성 — <span class="mono">9.0/10</span> <span style="color:#9a6700; font-weight:700;">pass</span></p>
+
+<p>하방 변동성 — <span class="mono">8.5/10</span> <span style="color:#9a6700; font-weight:700;">pass</span></p>
+
+<p>최악의 월간 수익률 — <span class="mono">7.6/10</span> <span style="color:#9a6700; font-weight:700;">pass</span></p>
+
 
 <h3>strategy_quality (100%)</h3>
-<table class="wide">
-    <thead><tr><th>항목</th><th style="text-align:right;">점수</th><th style="text-align:center; width:70px;">상태</th></tr></thead>
-    <tbody>
-        
-        <tr>
-            <td><strong>&#9733; 트랙레코드 기간</strong></td>
-            <td class="r">10.0/10</td>
-            <td class="c s-warn">pass</td>
-        </tr>
-        
-        <tr>
-            <td>레버리지 수준</td>
-            <td class="r">10.0/10</td>
-            <td class="c s-warn">pass</td>
-        </tr>
-        
-    </tbody>
-</table>
+
+<p><strong>&#9733; 트랙레코드 기간</strong> — <span class="mono">10.0/10</span> <span style="color:#9a6700; font-weight:700;">pass</span></p>
+
+<p>레버리지 수준 — <span class="mono">10.0/10</span> <span style="color:#9a6700; font-weight:700;">pass</span></p>
+
 
 <h3>correlation (62%)</h3>
-<table class="wide">
-    <thead><tr><th>항목</th><th style="text-align:right;">점수</th><th style="text-align:center; width:70px;">상태</th></tr></thead>
-    <tbody>
-        
-        <tr>
-            <td>포트폴리오 평균 상관계수</td>
-            <td class="r">6.0/10</td>
-            <td class="c s-warn">pass</td>
-        </tr>
-        
-        <tr>
-            <td>최대 상관 상품</td>
-            <td class="r">6.0/10</td>
-            <td class="c s-warn">pass</td>
-        </tr>
-        
-        <tr>
-            <td>분산효과 기여도</td>
-            <td class="r">6.0/10</td>
-            <td class="c s-warn">pass</td>
-        </tr>
-        
-        <tr>
-            <td>위기 시 양(+)의 수익</td>
-            <td class="r">7.0/10</td>
-            <td class="c s-warn">pass</td>
-        </tr>
-        
-    </tbody>
-</table>
+
+<p>포트폴리오 평균 상관계수 — <span class="mono">6.0/10</span> <span style="color:#9a6700; font-weight:700;">pass</span></p>
+
+<p>최대 상관 상품 — <span class="mono">6.0/10</span> <span style="color:#9a6700; font-weight:700;">pass</span></p>
+
+<p>분산효과 기여도 — <span class="mono">6.0/10</span> <span style="color:#9a6700; font-weight:700;">pass</span></p>
+
+<p>위기 시 양(+)의 수익 — <span class="mono">7.0/10</span> <span style="color:#9a6700; font-weight:700;">pass</span></p>
+
 
 
 
@@ -641,7 +307,7 @@
 
 <blockquote class="pass">
     
-    <strong class="pass-title">&#10003; 투자 적격 — 리스크 검토 의뢰</strong>
+    <strong style="color:#1a7f37;">&#10003; 투자 적격 — 리스크 검토 의뢰</strong>
     
     <br>추천: 양호한 성과, 일부 개선 가능
 </blockquote>
@@ -650,39 +316,22 @@
 
 
 <h3>카테고리별 점수</h3>
-<table>
-    <thead><tr><th>카테고리</th><th style="text-align:right;">점수</th></tr></thead>
-    <tbody>
-        
-        <tr>
-            <td>performance</td>
-            <td class="r">74%</td>
-        </tr>
-        
-        <tr>
-            <td>risk</td>
-            <td class="r">80%</td>
-        </tr>
-        
-        <tr>
-            <td>strategy_quality</td>
-            <td class="r">100%</td>
-        </tr>
-        
-        <tr>
-            <td>correlation</td>
-            <td class="r">62%</td>
-        </tr>
-        
-    </tbody>
-</table>
+
+<p>performance: <span class="mono">74%</span></p>
+
+<p>risk: <span class="mono">80%</span></p>
+
+<p>strategy_quality: <span class="mono">100%</span></p>
+
+<p>correlation: <span class="mono">62%</span></p>
+
 
 
 
 
 
 <footer>
-    <p>QIS Fund Manager — 리스크검토의뢰서 자동 생성 | 2026-02-25 16:30:17</p>
+    <p>QIS Fund Manager — 리스크검토의뢰서 자동 생성 | 2026-02-25 17:45:02</p>
 </footer>
 
 
