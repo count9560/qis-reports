@@ -1570,6 +1570,94 @@
             background: #cce5ff;
             color: #004085;
         }
+
+        /* ===== Strategy Style Badges ===== */
+        .style-badge {
+            display: inline-block;
+            padding: 1px 7px;
+            border-radius: 10px;
+            font-size: 9px;
+            font-weight: 600;
+            margin: 1px 2px;
+            color: #fff;
+            white-space: nowrap;
+            line-height: 1.6;
+        }
+        .style-badges-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+        }
+
+        /* Style Filter Row */
+        #style-filter-row {
+            margin-top: 6px;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+        .style-filter-btn {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1.5px solid #ccc;
+            background: #fff;
+            color: #555;
+            transition: all 0.2s;
+        }
+        .style-filter-btn:hover {
+            border-color: #888;
+        }
+        .style-filter-btn.active {
+            color: #fff;
+            border-color: transparent;
+        }
+
+        /* ===== Reference Asset Correlation Badges ===== */
+        .ref-corr-badge {
+            display: inline-block;
+            padding: 1px 6px;
+            border-radius: 8px;
+            font-size: 9px;
+            font-weight: 600;
+            margin: 1px 1px;
+            white-space: nowrap;
+            line-height: 1.5;
+        }
+        .ref-corr-positive {
+            background: rgba(40, 167, 69, 0.12);
+            color: #155724;
+            border: 1px solid rgba(40, 167, 69, 0.3);
+        }
+        .ref-corr-negative {
+            background: rgba(220, 53, 69, 0.10);
+            color: #721c24;
+            border: 1px solid rgba(220, 53, 69, 0.3);
+        }
+        .ref-corr-tooltip {
+            position: relative;
+            cursor: help;
+        }
+        .ref-corr-tooltip .ref-corr-tip {
+            display: none;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 10px;
+            white-space: nowrap;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .ref-corr-tooltip:hover .ref-corr-tip {
+            display: block;
+        }
     </style>
     <!-- Lightweight Charts (TradingView) for interactive price charts -->
     <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
@@ -1578,7 +1666,7 @@
     <!-- Header -->
     <div class="report-header">
         <h1>QIS Strategy Comparison Report</h1>
-        <p class="subtitle">31 Strategies Evaluated | 2026-02-25 14:15</p>
+        <p class="subtitle">31 Strategies Evaluated | 2026-02-25 14:29</p>
     </div>
 
     <!-- Risk Limit Table -->
@@ -1905,6 +1993,74 @@
             
         </div>
 
+        <!-- Style Filter Row (visible in 전체 tab) -->
+        <div id="style-filter-row" class="category-tabs" style="margin-top: 6px; gap: 4px;">
+            <button class="style-filter-btn active" data-style="all" onclick="filterByStyle('all')" style="background: #6c757d; color: #fff; border-color: #6c757d;">
+                Style: 전체
+            </button>
+            
+            <button class="style-filter-btn" data-style="Carry" onclick="filterByStyle('Carry')"
+                    style="border-color: #28a745; color: #28a745;">
+                Carry
+            </button>
+            
+            <button class="style-filter-btn" data-style="Vol Selling" onclick="filterByStyle('Vol Selling')"
+                    style="border-color: #6f42c1; color: #6f42c1;">
+                Vol Selling
+            </button>
+            
+            <button class="style-filter-btn" data-style="Momentum" onclick="filterByStyle('Momentum')"
+                    style="border-color: #007bff; color: #007bff;">
+                Momentum
+            </button>
+            
+            <button class="style-filter-btn" data-style="Mean Reversion" onclick="filterByStyle('Mean Reversion')"
+                    style="border-color: #e83e8c; color: #e83e8c;">
+                Mean Reversion
+            </button>
+            
+            <button class="style-filter-btn" data-style="Value" onclick="filterByStyle('Value')"
+                    style="border-color: #fd7e14; color: #fd7e14;">
+                Value
+            </button>
+            
+            <button class="style-filter-btn" data-style="Dispersion" onclick="filterByStyle('Dispersion')"
+                    style="border-color: #6610f2; color: #6610f2;">
+                Dispersion
+            </button>
+            
+            <button class="style-filter-btn" data-style="Risk Premium" onclick="filterByStyle('Risk Premium')"
+                    style="border-color: #20c997; color: #20c997;">
+                Risk Premium
+            </button>
+            
+            <button class="style-filter-btn" data-style="Long/Short" onclick="filterByStyle('Long/Short')"
+                    style="border-color: #86b300; color: #86b300;">
+                Long/Short
+            </button>
+            
+            <button class="style-filter-btn" data-style="Curve" onclick="filterByStyle('Curve')"
+                    style="border-color: #e6a800; color: #e6a800;">
+                Curve
+            </button>
+            
+            <button class="style-filter-btn" data-style="Trend Following" onclick="filterByStyle('Trend Following')"
+                    style="border-color: #17a2b8; color: #17a2b8;">
+                Trend Following
+            </button>
+            
+            <button class="style-filter-btn" data-style="Multi-Factor" onclick="filterByStyle('Multi-Factor')"
+                    style="border-color: #6c757d; color: #6c757d;">
+                Multi-Factor
+            </button>
+            
+            <button class="style-filter-btn" data-style="Defensive" onclick="filterByStyle('Defensive')"
+                    style="border-color: #003366; color: #003366;">
+                Defensive
+            </button>
+            
+        </div>
+
         <!-- All Strategies Tab (Ranking Table) -->
         <div id="tab-all" class="tab-content active">
             <div style="overflow-x: auto;">
@@ -1916,7 +2072,9 @@
                         <th style="width: 150px;">Name</th>
                         <th style="width: 300px;">Description</th>
                         <th style="width: 100px;">Strategy Type</th>
+                        <th style="width: 110px;">Style</th>
                         <th style="width: 80px;">Issuer</th>
+                        <th style="width: 100px;">Correlated Asset</th>
                         <th style="width: 70px;">Leverage</th>
                         <th style="width: 80px;">Live Date</th>
                         <th style="width: 90px;">Score</th>
@@ -1928,7 +2086,8 @@
                 <tbody>
                 
                     
-                    <tr data-issuer="UBS">
+                    
+                    <tr data-issuer="UBS" data-styles="Curve">
                         <td class="rank-cell rank-1">
                             #1
                         </td>
@@ -1939,7 +2098,19 @@
                         <td>UBS Commodity Relative-Skewness (CRIS)</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;">Long/short commodity skewness strategy. Long low-skew, short high-skew commodities across 24 BCOM universe. Monthly rebalance.</td>
                         <td style="font-size: 11px; color: #666;">Commodity Curve</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #e6a800;">Curve</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">UBS</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">2018-08-29</td>
                         <td class="clickable-score" onclick="showScoreDetail('UBCIRSER')" title="클릭하여 상세 내역 보기">
@@ -1959,7 +2130,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="UBS">
+                    
+                    <tr data-issuer="UBS" data-styles="Carry,Curve">
                         <td class="rank-cell rank-2">
                             #2
                         </td>
@@ -1970,7 +2142,21 @@
                         <td>UBS Seasonal Curve Carry</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;">계절성 기반 원자재 커브 캐리 전략. 기상 리스크 노출 시점(겨울 천연가스, 신곡 농산물)에 투자. 연 2회 롤링으로 네거티브 롤 수익률 최소화. 연환산 수익률 3.93%, 샤프비율 1.22.</td>
                         <td style="font-size: 11px; color: #666;">Commodity Carry</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #28a745;">Carry</span>
+                            
+                                <span class="style-badge" style="background: #e6a800;">Curve</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">UBS</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">2014-06-01</td>
                         <td class="clickable-score" onclick="showScoreDetail('CSCUD66A')" title="클릭하여 상세 내역 보기">
@@ -1990,7 +2176,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="UBS">
+                    
+                    <tr data-issuer="UBS" data-styles="Carry">
                         <td class="rank-cell rank-3">
                             #3
                         </td>
@@ -2001,7 +2188,19 @@
                         <td>UBS Short Spread Carry (COSI)</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;">CMCI 방법론 기반 숏 스프레드 캐리 전략. BCOM 숏 + CM-BCOM 롱 포지션으로 원자재 커브 콘탱고 활용. 테너 분산 및 일일 롤링으로 시장 충격 최소화. 연환산 수익률 7.24%, 샤프비율 0.97.</td>
                         <td style="font-size: 11px; color: #666;">Commodity Carry</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #28a745;">Carry</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">UBS</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">2010-01-29</td>
                         <td class="clickable-score" onclick="showScoreDetail('COSXPLNE')" title="클릭하여 상세 내역 보기">
@@ -2021,7 +2220,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="UBS">
+                    
+                    <tr data-issuer="UBS" data-styles="Carry,Curve">
                         <td class="rank-cell ">
                             #4
                         </td>
@@ -2032,7 +2232,21 @@
                         <td>UBS Dynamic Curve Carry</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;">동적 테너 선택 원자재 커브 캐리 전략. 50일 리스크 조정 성과 기준으로 F0/F3/F6 테너 중 최적 선택. 모멘텀 기반 동적 배분. 연환산 수익률 3.39%, 샤프비율 1.16.</td>
                         <td style="font-size: 11px; color: #666;">Commodity Carry</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #28a745;">Carry</span>
+                            
+                                <span class="style-badge" style="background: #e6a800;">Curve</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">UBS</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">2015-12-01</td>
                         <td class="clickable-score" onclick="showScoreDetail('CSCUD15A')" title="클릭하여 상세 내역 보기">
@@ -2052,7 +2266,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="UBS">
+                    
+                    <tr data-issuer="UBS" data-styles="Carry,Vol Selling">
                         <td class="rank-cell ">
                             #5
                         </td>
@@ -2063,7 +2278,21 @@
                         <td>TY Short Volatility</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;"></td>
                         <td style="font-size: 11px; color: #666;">Volatility Carry</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #28a745;">Carry</span>
+                            
+                                <span class="style-badge" style="background: #6f42c1;">Vol Selling</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">UBS</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSTYS1')" title="클릭하여 상세 내역 보기">
@@ -2083,7 +2312,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="UBS">
+                    
+                    <tr data-issuer="UBS" data-styles="Curve">
                         <td class="rank-cell ">
                             #6
                         </td>
@@ -2094,7 +2324,19 @@
                         <td>UBS Skewness Curve</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;">실현 스큐니스 기반 밸류 전략. 피어슨 스큐 계수로 21개 원자재 순위화. 스큐 최저 롱 / 스큐 최고 숏. Selective Hedging 이론 기반 과대/과소평가 포착. 연환산 수익률 3.20%, 샤프비율 1.01.</td>
                         <td style="font-size: 11px; color: #666;">Commodity Curve</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #e6a800;">Curve</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">UBS</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">2019-06-25</td>
                         <td class="clickable-score" onclick="showScoreDetail('UBCCRSER')" title="클릭하여 상세 내역 보기">
@@ -2114,7 +2356,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="UBS">
+                    
+                    <tr data-issuer="UBS" data-styles="Mean Reversion,Value">
                         <td class="rank-cell ">
                             #7
                         </td>
@@ -2125,7 +2368,21 @@
                         <td>UBS FX Mean Reversion Index</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;">G10 FX 평균회귀 전략. 7개 저유동성 G10 통화(AUD, CAD, CHF, GBP, NOK, NZD, SEK)의 21개 크로스에서 일간 변동성 &gt; 월간 변동성 현상을 활용. 일간 리밸런싱, Market Making 성격의 유동성 공급 전략.</td>
                         <td style="font-size: 11px; color: #666;">FX Value</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #e83e8c;">Mean Reversion</span>
+                            
+                                <span class="style-badge" style="background: #fd7e14;">Value</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">UBS</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #e74c3c; font-weight: 600;">최대 ±200%</td>
                         <td style="font-size: 10px; color: #888;">2020-06-10</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSXMRU')" title="클릭하여 상세 내역 보기">
@@ -2145,7 +2402,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="UBS">
+                    
+                    <tr data-issuer="UBS" data-styles="Risk Premium">
                         <td class="rank-cell ">
                             #8
                         </td>
@@ -2156,7 +2414,19 @@
                         <td>Fixed Income Risk Premia Portfolio</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;"></td>
                         <td style="font-size: 11px; color: #666;">Bond Risk Premium</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #20c997;">Risk Premium</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">UBS</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSFRP1')" title="클릭하여 상세 내역 보기">
@@ -2176,7 +2446,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="UBS">
+                    
+                    <tr data-issuer="UBS" data-styles="Carry,Vol Selling">
                         <td class="rank-cell ">
                             #9
                         </td>
@@ -2187,7 +2458,21 @@
                         <td>Short Brent Vol Hourly Hedged</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;"></td>
                         <td style="font-size: 11px; color: #666;">Volatility Carry</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #28a745;">Carry</span>
+                            
+                                <span class="style-badge" style="background: #6f42c1;">Vol Selling</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">UBS</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSCSB1')" title="클릭하여 상세 내역 보기">
@@ -2207,7 +2492,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="Morgan Stanley">
+                    
+                    <tr data-issuer="Morgan Stanley" data-styles="Carry,Vol Selling">
                         <td class="rank-cell ">
                             #10
                         </td>
@@ -2218,7 +2504,21 @@
                         <td>VIX Carry Strategy G2</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;">VIX 캐리 전략 G2 버전. VIX 선물 기간구조의 콘탱고 상태를 활용한 롤다운 캐리 수익 추구. 2세대 버전으로 리스크 관리 개선.</td>
                         <td style="font-size: 11px; color: #666;">Volatility Carry</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #28a745;">Carry</span>
+                            
+                                <span class="style-badge" style="background: #6f42c1;">Vol Selling</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">Morgan Stanley</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('MSVXCSG2')" title="클릭하여 상세 내역 보기">
@@ -2238,7 +2538,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="UBS">
+                    
+                    <tr data-issuer="UBS" data-styles="Momentum">
                         <td class="rank-cell ">
                             #11
                         </td>
@@ -2249,7 +2550,19 @@
                         <td>Commodity Skewness (CRIS)</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;"></td>
                         <td style="font-size: 11px; color: #666;">Commodity Momentum</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #007bff;">Momentum</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">UBS</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('UCCIRSER')" title="클릭하여 상세 내역 보기">
@@ -2269,7 +2582,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="UBS">
+                    
+                    <tr data-issuer="UBS" data-styles="Momentum,Long/Short">
                         <td class="rank-cell ">
                             #12
                         </td>
@@ -2280,7 +2594,21 @@
                         <td>Equity Momentum L/S</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;"></td>
                         <td style="font-size: 11px; color: #666;">Equity Momentum</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #007bff;">Momentum</span>
+                            
+                                <span class="style-badge" style="background: #86b300;">Long/Short</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">UBS</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSGMM3')" title="클릭하여 상세 내역 보기">
@@ -2300,7 +2628,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="UBS">
+                    
+                    <tr data-issuer="UBS" data-styles="Value,Long/Short">
                         <td class="rank-cell ">
                             #13
                         </td>
@@ -2311,7 +2640,21 @@
                         <td>Equity Value L/S</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;"></td>
                         <td style="font-size: 11px; color: #666;">Equity Value</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #fd7e14;">Value</span>
+                            
+                                <span class="style-badge" style="background: #86b300;">Long/Short</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">UBS</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSGVL3')" title="클릭하여 상세 내역 보기">
@@ -2331,7 +2674,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="UBS">
+                    
+                    <tr data-issuer="UBS" data-styles="Vol Selling,Risk Premium">
                         <td class="rank-cell ">
                             #14
                         </td>
@@ -2342,7 +2686,21 @@
                         <td>SX5E Put FVA</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;"></td>
                         <td style="font-size: 11px; color: #666;">Volatility Premium</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #6f42c1;">Vol Selling</span>
+                            
+                                <span class="style-badge" style="background: #20c997;">Risk Premium</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">UBS</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSFVP2')" title="클릭하여 상세 내역 보기">
@@ -2362,7 +2720,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="UBS">
+                    
+                    <tr data-issuer="UBS" data-styles="Mean Reversion,Value">
                         <td class="rank-cell ">
                             #15
                         </td>
@@ -2373,7 +2732,21 @@
                         <td>Global FX Mean Reversion</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;"></td>
                         <td style="font-size: 11px; color: #666;">FX Value</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #e83e8c;">Mean Reversion</span>
+                            
+                                <span class="style-badge" style="background: #fd7e14;">Value</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">UBS</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSXMRF')" title="클릭하여 상세 내역 보기">
@@ -2393,7 +2766,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="UBS">
+                    
+                    <tr data-issuer="UBS" data-styles="Long/Short,Multi-Factor">
                         <td class="rank-cell ">
                             #16
                         </td>
@@ -2404,7 +2778,21 @@
                         <td>Equity Multi-Factor L/S</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;"></td>
                         <td style="font-size: 11px; color: #666;">Equity Multi-Factor</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #86b300;">Long/Short</span>
+                            
+                                <span class="style-badge" style="background: #6c757d;">Multi-Factor</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">UBS</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSGMF3')" title="클릭하여 상세 내역 보기">
@@ -2424,7 +2812,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="Morgan Stanley">
+                    
+                    <tr data-issuer="Morgan Stanley" data-styles="Carry,Vol Selling">
                         <td class="rank-cell ">
                             #17
                         </td>
@@ -2435,7 +2824,21 @@
                         <td>NDX Upside Volatility Carry</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;">NDX 업사이드 변동성 캐리 전략. 1-5 DTE 단기 OTM 콜 매도로 프리미엄 수확. 인트라데이 델타 헤징으로 방향성 리스크 관리. 안정적 캐리 수익 추구.</td>
                         <td style="font-size: 11px; color: #666;">Volatility Carry</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #28a745;">Carry</span>
+                            
+                                <span class="style-badge" style="background: #6f42c1;">Vol Selling</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">Morgan Stanley</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('MSCBUVQ1')" title="클릭하여 상세 내역 보기">
@@ -2455,7 +2858,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="UBS">
+                    
+                    <tr data-issuer="UBS" data-styles="Carry">
                         <td class="rank-cell ">
                             #18
                         </td>
@@ -2466,7 +2870,19 @@
                         <td>Commodities Congestion (LPCI)</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;"></td>
                         <td style="font-size: 11px; color: #666;">Commodity Carry</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #28a745;">Carry</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">UBS</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('UBCILPLE')" title="클릭하여 상세 내역 보기">
@@ -2486,7 +2902,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="Citi">
+                    
+                    <tr data-issuer="Citi" data-styles="Vol Selling,Dispersion,Risk Premium,Defensive">
                         <td class="rank-cell ">
                             #19
                         </td>
@@ -2497,7 +2914,25 @@
                         <td>Citi VN Downside Dispersion Strategy</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;">베가 중립 하방 분산 전략. SPX 상위 50개 개별주식 변동성 매수 vs 지수 변동성 매도. 롱 스큐 포지션으로 하락장에서 방어적. 상관관계 붕괴 시 수익.</td>
                         <td style="font-size: 11px; color: #666;">Volatility Premium</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #6f42c1;">Vol Selling</span>
+                            
+                                <span class="style-badge" style="background: #6610f2;">Dispersion</span>
+                            
+                                <span class="style-badge" style="background: #20c997;">Risk Premium</span>
+                            
+                                <span class="style-badge" style="background: #003366;">Defensive</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">Citi</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('CIEQDUV5')" title="클릭하여 상세 내역 보기">
@@ -2517,7 +2952,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="UBS">
+                    
+                    <tr data-issuer="UBS" data-styles="Mean Reversion,Value">
                         <td class="rank-cell ">
                             #20
                         </td>
@@ -2528,7 +2964,21 @@
                         <td>UBS G10 FX Value (Enhanced PPP)</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;">G10 currency value strategy using PPP adjusted by Penn effect (GDP, Terms of Trade). Rank-weighted long undervalued, short overvalued currencies.</td>
                         <td style="font-size: 11px; color: #666;">FX Value</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #e83e8c;">Mean Reversion</span>
+                            
+                                <span class="style-badge" style="background: #fd7e14;">Value</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">UBS</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">2020-12-16</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSXVAU')" title="클릭하여 상세 내역 보기">
@@ -2548,7 +2998,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="UBS">
+                    
+                    <tr data-issuer="UBS" data-styles="Curve">
                         <td class="rank-cell ">
                             #21
                         </td>
@@ -2559,7 +3010,19 @@
                         <td>UBS Scarcity Premium (SPCI-EC)</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;">희소성 프리미엄 포착 전략 (비방향성). 18개 원자재에서 달러 중립 캘린더 스프레드 롱 - 원자재 가격 방향과 무관하게 커브 형태에서 수익 추구. Short Spread Carry와 음의 상관관계로 상보적. 연환산 수익률 10.63%, 샤프비율 1.12.</td>
                         <td style="font-size: 11px; color: #666;">Commodity Curve</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #e6a800;">Curve</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">UBS</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #e74c3c; font-weight: 600;">~150%</td>
                         <td style="font-size: 10px; color: #888;">2018-12-13</td>
                         <td class="clickable-score" onclick="showScoreDetail('AQPEEC4N')" title="클릭하여 상세 내역 보기">
@@ -2579,7 +3042,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="Morgan Stanley">
+                    
+                    <tr data-issuer="Morgan Stanley" data-styles="Vol Selling,Dispersion,Risk Premium">
                         <td class="rank-cell ">
                             #22
                         </td>
@@ -2590,7 +3054,23 @@
                         <td>SPX Top 10 Vega Dispersion</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;">SPX 상위 10개 대형주 베가 중립 분산 전략. 개별주식 변동성 매수 vs 지수 변동성 매도. 상관관계 하락 시 수익. 분산 확대 국면에서 방어력 제공.</td>
                         <td style="font-size: 11px; color: #666;">Volatility Premium</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #6f42c1;">Vol Selling</span>
+                            
+                                <span class="style-badge" style="background: #6610f2;">Dispersion</span>
+                            
+                                <span class="style-badge" style="background: #20c997;">Risk Premium</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">Morgan Stanley</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('MSCBDV11')" title="클릭하여 상세 내역 보기">
@@ -2610,7 +3090,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="UBS">
+                    
+                    <tr data-issuer="UBS" data-styles="Carry">
                         <td class="rank-cell ">
                             #23
                         </td>
@@ -2621,7 +3102,19 @@
                         <td>Alpha Beta Neutral Carry (CABNS)</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;"></td>
                         <td style="font-size: 11px; color: #666;">Commodity Carry</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #28a745;">Carry</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">UBS</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('UBSIXPLN')" title="클릭하여 상세 내역 보기">
@@ -2641,7 +3134,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="UBS">
+                    
+                    <tr data-issuer="UBS" data-styles="Carry,Vol Selling">
                         <td class="rank-cell ">
                             #24
                         </td>
@@ -2652,7 +3146,21 @@
                         <td>Gold Short Strangles</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;"></td>
                         <td style="font-size: 11px; color: #666;">Volatility Carry</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #28a745;">Carry</span>
+                            
+                                <span class="style-badge" style="background: #6f42c1;">Vol Selling</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">UBS</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSGLDS')" title="클릭하여 상세 내역 보기">
@@ -2672,7 +3180,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="UBS">
+                    
+                    <tr data-issuer="UBS" data-styles="Carry,Curve">
                         <td class="rank-cell ">
                             #25
                         </td>
@@ -2683,7 +3192,21 @@
                         <td>USD IRS Dynamic Curve</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;"></td>
                         <td style="font-size: 11px; color: #666;">Rates Carry</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #28a745;">Carry</span>
+                            
+                                <span class="style-badge" style="background: #e6a800;">Curve</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">UBS</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSRDCU')" title="클릭하여 상세 내역 보기">
@@ -2703,7 +3226,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="Citi">
+                    
+                    <tr data-issuer="Citi" data-styles="Risk Premium,Defensive">
                         <td class="rank-cell ">
                             #26
                         </td>
@@ -2714,7 +3238,21 @@
                         <td>Citi Equity US Put Ratio Strategy</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;">Put Ratio 전략. SPX 상위 50종목 OTM 풋 매수 + SPX 지수 풋 매도로 파이낸싱. 개별 종목 급락 시 높은 페이오프. 테일리스크 헤징에 효과적.</td>
                         <td style="font-size: 11px; color: #666;">Variance Risk Premium</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #20c997;">Risk Premium</span>
+                            
+                                <span class="style-badge" style="background: #003366;">Defensive</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">Citi</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('CIEQPU06')" title="클릭하여 상세 내역 보기">
@@ -2734,7 +3272,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="UBS">
+                    
+                    <tr data-issuer="UBS" data-styles="Momentum">
                         <td class="rank-cell ">
                             #27
                         </td>
@@ -2745,7 +3284,19 @@
                         <td>Cross-Asset Complimentary 4.0</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;"></td>
                         <td style="font-size: 11px; color: #666;">Cross-Asset Momentum</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #007bff;">Momentum</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">UBS</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSXAC4')" title="클릭하여 상세 내역 보기">
@@ -2765,7 +3316,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="UBS">
+                    
+                    <tr data-issuer="UBS" data-styles="Carry,Value">
                         <td class="rank-cell ">
                             #28
                         </td>
@@ -2776,7 +3328,21 @@
                         <td>UBS G9 Cross-Sectional IRS Relative Value</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;">Duration-neutral IRS relative value across 9 currencies (AUD,CAD,CHF,EUR,GBP,JPY,NZD,SEK,USD) and 4 tenors (5/10/20/30Y). Long high-value, short low-value instruments.</td>
                         <td style="font-size: 11px; color: #666;">Rates Carry</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #28a745;">Carry</span>
+                            
+                                <span class="style-badge" style="background: #fd7e14;">Value</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">UBS</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">2020-05-07</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSR9VD')" title="클릭하여 상세 내역 보기">
@@ -2796,7 +3362,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="UBS">
+                    
+                    <tr data-issuer="UBS" data-styles="Trend Following">
                         <td class="rank-cell ">
                             #29
                         </td>
@@ -2807,7 +3374,19 @@
                         <td>NDX Intraday Trend II</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;"></td>
                         <td style="font-size: 11px; color: #666;">Trend Following</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #17a2b8;">Trend Following</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">UBS</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSNHIT')" title="클릭하여 상세 내역 보기">
@@ -2827,7 +3406,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="Morgan Stanley">
+                    
+                    <tr data-issuer="Morgan Stanley" data-styles="Vol Selling,Dispersion,Risk Premium,Defensive">
                         <td class="rank-cell ">
                             #30
                         </td>
@@ -2838,7 +3418,25 @@
                         <td>US Equity Downside Vega Neutral Dispersion Strategy</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;">US Equity 베가 중립 하방 분산 전략. SPX 개별주식 변동성 매수 vs 지수 변동성 매도. 상관관계 하락 시 수익. 하방 스큐 포지션으로 시장 스트레스 시 방어력 제공.</td>
                         <td style="font-size: 11px; color: #666;">Volatility Premium</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #6f42c1;">Vol Selling</span>
+                            
+                                <span class="style-badge" style="background: #6610f2;">Dispersion</span>
+                            
+                                <span class="style-badge" style="background: #20c997;">Risk Premium</span>
+                            
+                                <span class="style-badge" style="background: #003366;">Defensive</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">Morgan Stanley</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('MSCBDVDS')" title="클릭하여 상세 내역 보기">
@@ -2858,7 +3456,8 @@
                     </tr>
                 
                     
-                    <tr data-issuer="Morgan Stanley">
+                    
+                    <tr data-issuer="Morgan Stanley" data-styles="Vol Selling,Risk Premium,Defensive">
                         <td class="rank-cell ">
                             #31
                         </td>
@@ -2869,7 +3468,23 @@
                         <td>NDX Grind Lower</td>
                         <td style="font-size: 11px; color: #555; line-height: 1.4;">NDX 점진적 하락 방어 전략. 40델타 풋 복제 + 1-5 DTE OTM 콜 매도로 자금조달. 급락보다 점진적 하락 시 높은 수익. 인트라데이 델타 헤징 적용.</td>
                         <td style="font-size: 11px; color: #666;">Volatility Premium</td>
+                        <td>
+                            <div class="style-badges-wrap">
+                            
+                                <span class="style-badge" style="background: #6f42c1;">Vol Selling</span>
+                            
+                                <span class="style-badge" style="background: #20c997;">Risk Premium</span>
+                            
+                                <span class="style-badge" style="background: #003366;">Defensive</span>
+                            
+                            </div>
+                        </td>
                         <td style="font-size: 11px;">Morgan Stanley</td>
+                        <td>
+                            
+                            <span style="color: #bbb; font-size: 10px;">-</span>
+                            
+                        </td>
                         <td style="font-size: 11px; color: #aaa; font-weight: 400;">-</td>
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('MSCBGLQ1')" title="클릭하여 상세 내역 보기">
@@ -2918,6 +3533,15 @@
                                         <div class="ticker">XUBSTYS1</div>
                                         <div class="name">TY Short Volatility</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #28a745;">Carry</span>
+                                            
+                                            <span class="style-badge" style="background: #6f42c1;">Vol Selling</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('XUBSTYS1')" title="클릭하여 상세 내역 보기">
                                         
@@ -2972,6 +3596,15 @@
                                         <div class="ticker">XUBSCSB1</div>
                                         <div class="name">Short Brent Vol Hourly Hedged</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #28a745;">Carry</span>
+                                            
+                                            <span class="style-badge" style="background: #6f42c1;">Vol Selling</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('XUBSCSB1')" title="클릭하여 상세 내역 보기">
                                         
@@ -3026,6 +3659,15 @@
                                         <div class="ticker">MSVXCSG2</div>
                                         <div class="name">VIX Carry Strategy G2</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">Morgan Stanley</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #28a745;">Carry</span>
+                                            
+                                            <span class="style-badge" style="background: #6f42c1;">Vol Selling</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('MSVXCSG2')" title="클릭하여 상세 내역 보기">
                                         
@@ -3084,6 +3726,15 @@
                                         <div class="ticker">MSCBUVQ1</div>
                                         <div class="name">NDX Upside Volatility Carry</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">Morgan Stanley</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #28a745;">Carry</span>
+                                            
+                                            <span class="style-badge" style="background: #6f42c1;">Vol Selling</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('MSCBUVQ1')" title="클릭하여 상세 내역 보기">
                                         
@@ -3142,6 +3793,15 @@
                                         <div class="ticker">XUBSGLDS</div>
                                         <div class="name">Gold Short Strangles</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #28a745;">Carry</span>
+                                            
+                                            <span class="style-badge" style="background: #6f42c1;">Vol Selling</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('XUBSGLDS')" title="클릭하여 상세 내역 보기">
                                         
@@ -3211,6 +3871,15 @@
                                         <div class="ticker">XUBSFVP2</div>
                                         <div class="name">SX5E Put FVA</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #6f42c1;">Vol Selling</span>
+                                            
+                                            <span class="style-badge" style="background: #20c997;">Risk Premium</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('XUBSFVP2')" title="클릭하여 상세 내역 보기">
                                         
@@ -3265,6 +3934,19 @@
                                         <div class="ticker">CIEQDUV5</div>
                                         <div class="name">Citi VN Downside Dispersion Strategy</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">Citi</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #6f42c1;">Vol Selling</span>
+                                            
+                                            <span class="style-badge" style="background: #6610f2;">Dispersion</span>
+                                            
+                                            <span class="style-badge" style="background: #20c997;">Risk Premium</span>
+                                            
+                                            <span class="style-badge" style="background: #003366;">Defensive</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('CIEQDUV5')" title="클릭하여 상세 내역 보기">
                                         
@@ -3323,6 +4005,17 @@
                                         <div class="ticker">MSCBDV11</div>
                                         <div class="name">SPX Top 10 Vega Dispersion</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">Morgan Stanley</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #6f42c1;">Vol Selling</span>
+                                            
+                                            <span class="style-badge" style="background: #6610f2;">Dispersion</span>
+                                            
+                                            <span class="style-badge" style="background: #20c997;">Risk Premium</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('MSCBDV11')" title="클릭하여 상세 내역 보기">
                                         
@@ -3381,6 +4074,19 @@
                                         <div class="ticker">MSCBDVDS</div>
                                         <div class="name">US Equity Downside Vega Neutral Dispersion Strategy</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">Morgan Stanley</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #6f42c1;">Vol Selling</span>
+                                            
+                                            <span class="style-badge" style="background: #6610f2;">Dispersion</span>
+                                            
+                                            <span class="style-badge" style="background: #20c997;">Risk Premium</span>
+                                            
+                                            <span class="style-badge" style="background: #003366;">Defensive</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('MSCBDVDS')" title="클릭하여 상세 내역 보기">
                                         
@@ -3439,6 +4145,17 @@
                                         <div class="ticker">MSCBGLQ1</div>
                                         <div class="name">NDX Grind Lower</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">Morgan Stanley</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #6f42c1;">Vol Selling</span>
+                                            
+                                            <span class="style-badge" style="background: #20c997;">Risk Premium</span>
+                                            
+                                            <span class="style-badge" style="background: #003366;">Defensive</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('MSCBGLQ1')" title="클릭하여 상세 내역 보기">
                                         
@@ -3512,6 +4229,15 @@
                                         <div class="ticker">CIEQPU06</div>
                                         <div class="name">Citi Equity US Put Ratio Strategy</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">Citi</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #20c997;">Risk Premium</span>
+                                            
+                                            <span class="style-badge" style="background: #003366;">Defensive</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('CIEQPU06')" title="클릭하여 상세 내역 보기">
                                         
@@ -3592,6 +4318,13 @@
                                         <div class="ticker">UBCIRSER</div>
                                         <div class="name">UBS Commodity Relative-Skewness (CRIS)</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #e6a800;">Curve</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('UBCIRSER')" title="클릭하여 상세 내역 보기">
                                         
@@ -3650,6 +4383,13 @@
                                         <div class="ticker">UBCCRSER</div>
                                         <div class="name">UBS Skewness Curve</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #e6a800;">Curve</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('UBCCRSER')" title="클릭하여 상세 내역 보기">
                                         
@@ -3708,6 +4448,13 @@
                                         <div class="ticker">AQPEEC4N</div>
                                         <div class="name">UBS Scarcity Premium (SPCI-EC)</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #e6a800;">Curve</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('AQPEEC4N')" title="클릭하여 상세 내역 보기">
                                         
@@ -3781,6 +4528,15 @@
                                         <div class="ticker">CSCUD66A</div>
                                         <div class="name">UBS Seasonal Curve Carry</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #28a745;">Carry</span>
+                                            
+                                            <span class="style-badge" style="background: #e6a800;">Curve</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('CSCUD66A')" title="클릭하여 상세 내역 보기">
                                         
@@ -3839,6 +4595,13 @@
                                         <div class="ticker">COSXPLNE</div>
                                         <div class="name">UBS Short Spread Carry (COSI)</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #28a745;">Carry</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('COSXPLNE')" title="클릭하여 상세 내역 보기">
                                         
@@ -3897,6 +4660,15 @@
                                         <div class="ticker">CSCUD15A</div>
                                         <div class="name">UBS Dynamic Curve Carry</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #28a745;">Carry</span>
+                                            
+                                            <span class="style-badge" style="background: #e6a800;">Curve</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('CSCUD15A')" title="클릭하여 상세 내역 보기">
                                         
@@ -3955,6 +4727,13 @@
                                         <div class="ticker">UBCILPLE</div>
                                         <div class="name">Commodities Congestion (LPCI)</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #28a745;">Carry</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('UBCILPLE')" title="클릭하여 상세 내역 보기">
                                         
@@ -4009,6 +4788,13 @@
                                         <div class="ticker">UBSIXPLN</div>
                                         <div class="name">Alpha Beta Neutral Carry (CABNS)</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #28a745;">Carry</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('UBSIXPLN')" title="클릭하여 상세 내역 보기">
                                         
@@ -4078,6 +4864,13 @@
                                         <div class="ticker">UCCIRSER</div>
                                         <div class="name">Commodity Skewness (CRIS)</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #007bff;">Momentum</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('UCCIRSER')" title="클릭하여 상세 내역 보기">
                                         
@@ -4154,6 +4947,13 @@
                                         <div class="ticker">XUBSFRP1</div>
                                         <div class="name">Fixed Income Risk Premia Portfolio</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #20c997;">Risk Premium</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('XUBSFRP1')" title="클릭하여 상세 내역 보기">
                                         
@@ -4223,6 +5023,15 @@
                                         <div class="ticker">XUBSRDCU</div>
                                         <div class="name">USD IRS Dynamic Curve</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #28a745;">Carry</span>
+                                            
+                                            <span class="style-badge" style="background: #e6a800;">Curve</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('XUBSRDCU')" title="클릭하여 상세 내역 보기">
                                         
@@ -4277,6 +5086,15 @@
                                         <div class="ticker">XUBSR9VD</div>
                                         <div class="name">UBS G9 Cross-Sectional IRS Relative Value</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #28a745;">Carry</span>
+                                            
+                                            <span class="style-badge" style="background: #fd7e14;">Value</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('XUBSR9VD')" title="클릭하여 상세 내역 보기">
                                         
@@ -4357,6 +5175,15 @@
                                         <div class="ticker">XUBSGMM3</div>
                                         <div class="name">Equity Momentum L/S</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #007bff;">Momentum</span>
+                                            
+                                            <span class="style-badge" style="background: #86b300;">Long/Short</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('XUBSGMM3')" title="클릭하여 상세 내역 보기">
                                         
@@ -4426,6 +5253,15 @@
                                         <div class="ticker">XUBSGVL3</div>
                                         <div class="name">Equity Value L/S</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #fd7e14;">Value</span>
+                                            
+                                            <span class="style-badge" style="background: #86b300;">Long/Short</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('XUBSGVL3')" title="클릭하여 상세 내역 보기">
                                         
@@ -4495,6 +5331,15 @@
                                         <div class="ticker">XUBSGMF3</div>
                                         <div class="name">Equity Multi-Factor L/S</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #86b300;">Long/Short</span>
+                                            
+                                            <span class="style-badge" style="background: #6c757d;">Multi-Factor</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('XUBSGMF3')" title="클릭하여 상세 내역 보기">
                                         
@@ -4571,6 +5416,15 @@
                                         <div class="ticker">XUBSXMRU</div>
                                         <div class="name">UBS FX Mean Reversion Index</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #e83e8c;">Mean Reversion</span>
+                                            
+                                            <span class="style-badge" style="background: #fd7e14;">Value</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('XUBSXMRU')" title="클릭하여 상세 내역 보기">
                                         
@@ -4629,6 +5483,15 @@
                                         <div class="ticker">XUBSXMRF</div>
                                         <div class="name">Global FX Mean Reversion</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #e83e8c;">Mean Reversion</span>
+                                            
+                                            <span class="style-badge" style="background: #fd7e14;">Value</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('XUBSXMRF')" title="클릭하여 상세 내역 보기">
                                         
@@ -4683,6 +5546,15 @@
                                         <div class="ticker">XUBSXVAU</div>
                                         <div class="name">UBS G10 FX Value (Enhanced PPP)</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #e83e8c;">Mean Reversion</span>
+                                            
+                                            <span class="style-badge" style="background: #fd7e14;">Value</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('XUBSXVAU')" title="클릭하여 상세 내역 보기">
                                         
@@ -4763,6 +5635,13 @@
                                         <div class="ticker">XUBSXAC4</div>
                                         <div class="name">Cross-Asset Complimentary 4.0</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #007bff;">Momentum</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('XUBSXAC4')" title="클릭하여 상세 내역 보기">
                                         
@@ -4832,6 +5711,13 @@
                                         <div class="ticker">XUBSNHIT</div>
                                         <div class="name">NDX Intraday Trend II</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
+                                        <div style="margin-top: 4px;">
+                                            
+                                            <span class="style-badge" style="background: #17a2b8;">Trend Following</span>
+                                            
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('XUBSNHIT')" title="클릭하여 상세 내역 보기">
                                         
@@ -74892,6 +75778,10 @@
     <!-- Category Tab/Accordion JavaScript -->
     <script>
     // Tab switching functionality
+    // Track current active filters
+    let currentIssuerFilter = 'all';
+    let currentStyleFilter = 'all';
+
     function switchTab(tabName) {
         // Update tab buttons
         document.querySelectorAll('.category-tab').forEach(tab => {
@@ -74910,18 +75800,25 @@
             targetTab.classList.add('active');
         }
 
-        // Show/hide issuer filter row (only in 전체 tab)
+        // Show/hide issuer and style filter rows (only in 전체 tab)
         const issuerRow = document.getElementById('issuer-filter-row');
+        const styleRow = document.getElementById('style-filter-row');
         if (issuerRow) {
             issuerRow.style.display = (tabName === 'all') ? '' : 'none';
         }
-        // Reset issuer filter when switching category
+        if (styleRow) {
+            styleRow.style.display = (tabName === 'all') ? '' : 'none';
+        }
+        // Reset filters when switching category
         if (tabName !== 'all') {
-            filterByIssuer('all');
+            currentIssuerFilter = 'all';
+            currentStyleFilter = 'all';
+            applyRankingFilters();
         }
     }
 
     function filterByIssuer(issuer) {
+        currentIssuerFilter = issuer;
         // Update issuer tab buttons
         document.querySelectorAll('.issuer-tab').forEach(tab => {
             tab.classList.remove('active');
@@ -74929,12 +75826,49 @@
                 tab.classList.add('active');
             }
         });
+        applyRankingFilters();
+    }
 
-        // Filter ranking table rows
+    function filterByStyle(style) {
+        currentStyleFilter = style;
+        // Update style filter buttons
+        document.querySelectorAll('.style-filter-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.dataset.style === style) {
+                btn.classList.add('active');
+                if (style === 'all') {
+                    btn.style.background = '#6c757d';
+                    btn.style.color = '#fff';
+                    btn.style.borderColor = '#6c757d';
+                } else {
+                    btn.style.background = btn.style.borderColor;
+                    btn.style.color = '#fff';
+                }
+            } else {
+                if (btn.dataset.style === 'all') {
+                    btn.style.background = '#fff';
+                    btn.style.color = '#555';
+                    btn.style.borderColor = '#6c757d';
+                } else {
+                    btn.style.background = '#fff';
+                }
+            }
+        });
+        applyRankingFilters();
+    }
+
+    function applyRankingFilters() {
         const rows = document.querySelectorAll('#tab-all .ranking-table tbody tr');
         let rank = 0;
         rows.forEach(row => {
-            if (issuer === 'all' || row.dataset.issuer === issuer) {
+            const issuerMatch = (currentIssuerFilter === 'all' || row.dataset.issuer === currentIssuerFilter);
+            let styleMatch = true;
+            if (currentStyleFilter !== 'all') {
+                const rowStyles = (row.dataset.styles || '').split(',');
+                styleMatch = rowStyles.includes(currentStyleFilter);
+            }
+
+            if (issuerMatch && styleMatch) {
                 row.style.display = '';
                 rank++;
                 row.querySelector('.rank-cell').textContent = '#' + rank;
@@ -74954,7 +75888,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>Generated by QIS Fund Manager | 2026-02-25 14:15:45</p>
+        <p>Generated by QIS Fund Manager | 2026-02-25 14:29:52</p>
     </footer>
 
     <!-- Price Chart Initialization -->
@@ -76058,6 +76992,7 @@
     const strategyData = {
         
         
+        
         'UBCIRSER': {
             ticker: 'UBCIRSER',
             name: 'UBS Commodity Relative-Skewness (CRIS)',
@@ -76066,8 +77001,11 @@
             issuer: 'UBS',
             grade: 'B+',
             score: 78.26858878873279,
-            is_eligible: true
+            is_eligible: true,
+            style_labels: ['Curve'],
+            ref_corr: null
         },
+        
         
         
         'CSCUD66A': {
@@ -76078,8 +77016,11 @@
             issuer: 'UBS',
             grade: 'F',
             score: 76.03102723838595,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Carry', 'Curve'],
+            ref_corr: null
         },
+        
         
         
         'COSXPLNE': {
@@ -76090,8 +77031,11 @@
             issuer: 'UBS',
             grade: 'B+',
             score: 75.66236872598549,
-            is_eligible: true
+            is_eligible: true,
+            style_labels: ['Carry'],
+            ref_corr: null
         },
+        
         
         
         'CSCUD15A': {
@@ -76102,8 +77046,11 @@
             issuer: 'UBS',
             grade: 'F',
             score: 75.62016246294125,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Carry', 'Curve'],
+            ref_corr: null
         },
+        
         
         
         'XUBSTYS1': {
@@ -76114,8 +77061,11 @@
             issuer: 'UBS',
             grade: 'F',
             score: 74.44437612860958,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Carry', 'Vol Selling'],
+            ref_corr: null
         },
+        
         
         
         'UBCCRSER': {
@@ -76126,8 +77076,11 @@
             issuer: 'UBS',
             grade: 'F',
             score: 73.85261760603835,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Curve'],
+            ref_corr: null
         },
+        
         
         
         'XUBSXMRU': {
@@ -76138,8 +77091,11 @@
             issuer: 'UBS',
             grade: 'F',
             score: 73.18830354761589,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Mean Reversion', 'Value'],
+            ref_corr: null
         },
+        
         
         
         'XUBSFRP1': {
@@ -76150,8 +77106,11 @@
             issuer: 'UBS',
             grade: 'F',
             score: 73.08697784104655,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Risk Premium'],
+            ref_corr: null
         },
+        
         
         
         'XUBSCSB1': {
@@ -76162,8 +77121,11 @@
             issuer: 'UBS',
             grade: 'F',
             score: 72.92505093350911,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Carry', 'Vol Selling'],
+            ref_corr: null
         },
+        
         
         
         'MSVXCSG2': {
@@ -76174,8 +77136,11 @@
             issuer: 'Morgan Stanley',
             grade: 'F',
             score: 71.52480477042906,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Carry', 'Vol Selling'],
+            ref_corr: null
         },
+        
         
         
         'UCCIRSER': {
@@ -76186,8 +77151,11 @@
             issuer: 'UBS',
             grade: 'F',
             score: 71.13360228217844,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Momentum'],
+            ref_corr: null
         },
+        
         
         
         'XUBSGMM3': {
@@ -76198,8 +77166,11 @@
             issuer: 'UBS',
             grade: 'F',
             score: 71.0340763958333,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Momentum', 'Long/Short'],
+            ref_corr: null
         },
+        
         
         
         'XUBSGVL3': {
@@ -76210,8 +77181,11 @@
             issuer: 'UBS',
             grade: 'F',
             score: 71.02499546493893,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Value', 'Long/Short'],
+            ref_corr: null
         },
+        
         
         
         'XUBSFVP2': {
@@ -76222,8 +77196,11 @@
             issuer: 'UBS',
             grade: 'F',
             score: 70.35547796026249,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Vol Selling', 'Risk Premium'],
+            ref_corr: null
         },
+        
         
         
         'XUBSXMRF': {
@@ -76234,8 +77211,11 @@
             issuer: 'UBS',
             grade: 'F',
             score: 69.99352535544635,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Mean Reversion', 'Value'],
+            ref_corr: null
         },
+        
         
         
         'XUBSGMF3': {
@@ -76246,8 +77226,11 @@
             issuer: 'UBS',
             grade: 'F',
             score: 69.48273718338321,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Long/Short', 'Multi-Factor'],
+            ref_corr: null
         },
+        
         
         
         'MSCBUVQ1': {
@@ -76258,8 +77241,11 @@
             issuer: 'Morgan Stanley',
             grade: 'F',
             score: 68.08088026292526,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Carry', 'Vol Selling'],
+            ref_corr: null
         },
+        
         
         
         'UBCILPLE': {
@@ -76270,8 +77256,11 @@
             issuer: 'UBS',
             grade: 'F',
             score: 68.06496617331585,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Carry'],
+            ref_corr: null
         },
+        
         
         
         'CIEQDUV5': {
@@ -76282,8 +77271,11 @@
             issuer: 'Citi',
             grade: 'F',
             score: 67.5617031134369,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Vol Selling', 'Dispersion', 'Risk Premium', 'Defensive'],
+            ref_corr: null
         },
+        
         
         
         'XUBSXVAU': {
@@ -76294,8 +77286,11 @@
             issuer: 'UBS',
             grade: 'F',
             score: 67.49306202540558,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Mean Reversion', 'Value'],
+            ref_corr: null
         },
+        
         
         
         'AQPEEC4N': {
@@ -76306,8 +77301,11 @@
             issuer: 'UBS',
             grade: 'F',
             score: 67.00581234576978,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Curve'],
+            ref_corr: null
         },
+        
         
         
         'MSCBDV11': {
@@ -76318,8 +77316,11 @@
             issuer: 'Morgan Stanley',
             grade: 'F',
             score: 65.97909990770002,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Vol Selling', 'Dispersion', 'Risk Premium'],
+            ref_corr: null
         },
+        
         
         
         'UBSIXPLN': {
@@ -76330,8 +77331,11 @@
             issuer: 'UBS',
             grade: 'F',
             score: 65.054305732991,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Carry'],
+            ref_corr: null
         },
+        
         
         
         'XUBSGLDS': {
@@ -76342,8 +77346,11 @@
             issuer: 'UBS',
             grade: 'F',
             score: 64.71776611693248,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Carry', 'Vol Selling'],
+            ref_corr: null
         },
+        
         
         
         'XUBSRDCU': {
@@ -76354,8 +77361,11 @@
             issuer: 'UBS',
             grade: 'F',
             score: 64.11736968849303,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Carry', 'Curve'],
+            ref_corr: null
         },
+        
         
         
         'CIEQPU06': {
@@ -76366,8 +77376,11 @@
             issuer: 'Citi',
             grade: 'F',
             score: 64.09455283271805,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Risk Premium', 'Defensive'],
+            ref_corr: null
         },
+        
         
         
         'XUBSXAC4': {
@@ -76378,8 +77391,11 @@
             issuer: 'UBS',
             grade: 'F',
             score: 63.595338285123304,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Momentum'],
+            ref_corr: null
         },
+        
         
         
         'XUBSR9VD': {
@@ -76390,8 +77406,11 @@
             issuer: 'UBS',
             grade: 'F',
             score: 63.41298573107861,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Carry', 'Value'],
+            ref_corr: null
         },
+        
         
         
         'XUBSNHIT': {
@@ -76402,8 +77421,11 @@
             issuer: 'UBS',
             grade: 'F',
             score: 60.97114306645197,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Trend Following'],
+            ref_corr: null
         },
+        
         
         
         'MSCBDVDS': {
@@ -76414,8 +77436,11 @@
             issuer: 'Morgan Stanley',
             grade: 'F',
             score: 60.1349353716561,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Vol Selling', 'Dispersion', 'Risk Premium', 'Defensive'],
+            ref_corr: null
         },
+        
         
         
         'MSCBGLQ1': {
@@ -76426,7 +77451,9 @@
             issuer: 'Morgan Stanley',
             grade: 'F',
             score: 54.67496873298327,
-            is_eligible: false
+            is_eligible: false,
+            style_labels: ['Vol Selling', 'Risk Premium', 'Defensive'],
+            ref_corr: null
         }
         
     };
@@ -76456,6 +77483,26 @@
             typeTag.className = 'strategy-modal-tag type';
             typeTag.textContent = strategy.strategy_type;
             tagsContainer.appendChild(typeTag);
+        }
+
+        // 스타일 레이블 태그
+        const styleColors = {"Carry": "#28a745", "Curve": "#e6a800", "Defensive": "#003366", "Dispersion": "#6610f2", "Long/Short": "#86b300", "Mean Reversion": "#e83e8c", "Momentum": "#007bff", "Multi-Factor": "#6c757d", "Risk Premium": "#20c997", "Trend Following": "#17a2b8", "Value": "#fd7e14", "Vol Selling": "#6f42c1"};
+        if (strategy.style_labels && strategy.style_labels.length > 0) {
+            strategy.style_labels.forEach(label => {
+                const styleTag = document.createElement('span');
+                styleTag.className = 'style-badge';
+                styleTag.style.background = styleColors[label] || '#6c757d';
+                styleTag.textContent = label;
+                tagsContainer.appendChild(styleTag);
+            });
+        }
+
+        // 참조자산 상관관계 태그
+        if (strategy.ref_corr) {
+            const refTag = document.createElement('span');
+            refTag.className = 'ref-corr-badge ref-corr-' + (strategy.ref_corr.corr > 0 ? 'positive' : 'negative');
+            refTag.textContent = (strategy.ref_corr.corr > 0 ? '+' : '') + strategy.ref_corr.primary + ' (' + strategy.ref_corr.corr.toFixed(2) + ')';
+            tagsContainer.appendChild(refTag);
         }
 
         // 등급 태그
