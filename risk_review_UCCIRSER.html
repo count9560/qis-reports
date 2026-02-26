@@ -76,7 +76,7 @@
 
 <p class="muted" style="letter-spacing:2px;">리스크검토의뢰서 / RISK REVIEW REQUEST</p>
 
-<h1>Commodity Skewness (CRIS) <span style="font-weight:400; font-size:15px; color:#656d76;">UCCIRSER</span></h1>
+<h1>UBS Commodity Realized-Skewness Capped (CRIS UCITS) <span style="font-weight:400; font-size:15px; color:#656d76;">UCCIRSER</span></h1>
 
 <p class="muted">UBS | 2026-02-26</p>
 
@@ -85,7 +85,7 @@
 <h2>1. 전략 개요</h2>
 
 <div class="row">
-    <p class="kv"><strong>전략명</strong>: Commodity Skewness (CRIS)</p>
+    <p class="kv"><strong>전략명</strong>: UBS Commodity Realized-Skewness Capped (CRIS UCITS)</p>
     <p class="kv"><strong>블룸버그 티커</strong>: UCCIRSER</p>
     <p class="kv"><strong>발행사</strong>: UBS</p>
     <p class="kv"><strong>카테고리</strong>: Commodity Skew</p>
@@ -94,13 +94,15 @@
 </div>
 
 
+<p style="margin-top:8px;">UCITS-compliant capped version of CRIS Outright. Same Pearson skewness signal with 35% max / 20% target single commodity caps applied to long and short legs independently.</p>
+
 
 
 <!-- ===== 2. 전략 상세 설명 ===== -->
 <h2>2. 전략 상세 설명</h2>
 
 
-<p><strong>&#9888; 상세 설명 미등록</strong> — 리스크검토의뢰서 제출 전 전략 상세 설명을 등록해 주세요.</p>
+<div class="desc" id="description-content"></div>
 
 
 
@@ -334,7 +336,7 @@
 
 
 <footer>
-    <p>QIS Fund Manager — 리스크검토의뢰서 자동 생성 | 2026-02-26 17:30:36</p>
+    <p>QIS Fund Manager — 리스크검토의뢰서 자동 생성 | 2026-02-26 17:38:54</p>
 </footer>
 
 
@@ -379,6 +381,29 @@
 </script>
 
 
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const el = document.getElementById('description-content');
+        if (!el) return;
+        let c = "## UBS Commodity Realized-Skewness Capped (UCCIRSER)\n\n### 1. \uc804\ub7b5 \uac1c\uc694\nCRIS Outright(UBCIRSER)\uc758 UCITS \uaddc\uc815 \uc900\uc218 \ubc84\uc804. \ub3d9\uc77c\ud55c \uc65c\ub3c4 \uc2dc\uadf8\ub110\uc744 \uc0ac\uc6a9\ud558\ub418, \ub2e8\uc77c \uc0c1\ud488 \uc9d1\uc911\ub3c4\ub97c \uc81c\ud55c\ud558\ub294 \ucea1\ud551 \uaddc\uce59 \uc801\uc6a9.\n\n### 2. \ud575\uc2ec \uba54\ucee4\ub2c8\uc998\n- **\uc2dc\uadf8\ub110**: UBCIRSER\uc640 \ub3d9\uc77c (Pearson Skewness, 6/9/12M \ube14\ub80c\ub4dc)\n- **\ucea1\ud551 \uaddc\uce59**:\n  - Max cap: 35% (\ub2e8\uc77c \uc0c1\ud488 \ucd5c\ub300 \ube44\uc911)\n  - Target cap: 20% (\ubaa9\ud45c \uc0c1\ud55c)\n  - \ub871/\uc20f \ub808\uadf8 \ub3c5\ub9bd \uc801\uc6a9\n  - \ucea1 \ucd08\uacfc \uc2dc \ub3d9\uc77c \ubd84\uc704 \ub0b4 \ub2e4\ub978 \uc0c1\ud488\uc5d0 \uc7ac\ubc30\ubd84\n- **\ub9ac\ubc38\ub7f0\uc2f1**: UBCIRSER\uc640 \ub3d9\uc77c (\uc6d4 1\ud68c, 10\uc77c \ubd84\uc0b0)\n\n### 3. \ud3ec\ud2b8\ud3f4\ub9ac\uc624 \uad6c\uc131\n- **\uc720\ub2c8\ubc84\uc2a4**: UBCIRSER\uc640 \ub3d9\uc77c (24\uac1c \uc0c1\ud488)\n- **\ucc28\uc774\uc810**: \ucea1\ud551\uc73c\ub85c \uc778\ud574 \ub2e8\uc77c \uc0c1\ud488 \uc9d1\uc911\ub3c4 \uc81c\ud55c\n- **\ud6a8\uacfc**: MDD \uac1c\uc120(-21.4% \u2192 -20.3%), \ubcc0\ub3d9\uc131 \uac10\uc18c(11.2% \u2192 10.3%)\n\n### 4. \uc8fc\uc694 \uc131\uacfc (2026\ub144 1\uc6d4 30\uc77c \uae30\uc900)\n| \uc9c0\ud45c | Outright (UBCIRSER) | Capped (UCCIRSER) |\n|------|-------------------|------------------|\n| \uc5f0\ud658\uc0b0 \uc218\uc775\ub960 | 8.1% | 7.4% |\n| \ubcc0\ub3d9\uc131 | 11.2% | 10.3% |\n| \uc0e4\ud504 \ube44\uc728 | 0.72 | 0.72 |\n| MDD | -21.4% | -20.3% |\n| \uc18c\ub974\ud2f0\ub178 \ube44\uc728 | 1.03 | 0.99 |\n\n### 5. \ub9ac\uc2a4\ud06c/\ud2b9\uc774\uc0ac\ud56d\n- Sharpe \ube44\uc728 \ub3d9\uc77c(0.72), \ucea1\ud551\uc774 \uc218\uc775\ub960\uacfc \ub9ac\uc2a4\ud06c\ub97c \ube44\ub840\uc801\uc73c\ub85c \uac10\uc18c\n- UCITS \ud380\ub4dc \ub798\ud551 \uac00\ub2a5 \u2192 \uaddc\uc81c \uce5c\ud654\uc801 \uad6c\uc870\n- 2025\ub144 \uc218\uc775\ub960: Q4 Review \uae30\uc900 +23.3% (Outright\uc640 \uac70\uc758 \ub3d9\uc77c\ud55c \uc131\uacfc)\n- **\uad00\ub828 \uc804\ub7b5**: UBCIRSER (Uncapped Outright), UBCCRSER (Curve \uad6c\ud604)";
+        c = c.replace(/\[(.+?)\]/g, '<h3>$1</h3>');
+        c = c.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+        c = c.replace(/^- (.+)$/gm, '<li>$1</li>');
+        c = c.replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul>$1</ul>');
+        c = c.replace(/\n\n/g, '</p><p>');
+        c = '<p>' + c + '</p>';
+        c = c.replace(/<p>\s*<\/p>/g, '');
+        c = c.replace(/<p>\s*<h3>/g, '<h3>');
+        c = c.replace(/<\/h3>\s*<\/p>/g, '</h3>');
+        c = c.replace(/<p>\s*<ul>/g, '<ul>');
+        c = c.replace(/<\/ul>\s*<\/p>/g, '</ul>');
+        el.innerHTML = c;
+        if (typeof renderMathInElement === 'function') {
+            renderMathInElement(el, { delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}], throwOnError: false });
+        }
+    });
+</script>
 
 
 

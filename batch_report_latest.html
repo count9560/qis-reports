@@ -1663,7 +1663,7 @@
     <!-- Header -->
     <div class="report-header">
         <h1>QIS Strategy Comparison Report</h1>
-        <p class="subtitle">31 Strategies Evaluated | 2026-02-26 17:30</p>
+        <p class="subtitle">31 Strategies Evaluated | 2026-02-26 17:38</p>
         <p style="margin-top:10px;">
             <a href="qis_progress_report.html" style="display:inline-block; padding:6px 16px; background:#667eea; color:#fff; text-decoration:none; border-radius:6px; font-size:13px; font-weight:600;">투자 진행현황 보고서 (2026-02-26)</a>
         </p>
@@ -2155,8 +2155,8 @@
                             <strong>UCCIRSER</strong>
                             <a href="risk_review_UCCIRSER.html" title="리스크검토의뢰서" style="margin-left: 4px; text-decoration: none; font-size: 13px; opacity: 0.6; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">📋</a>
                         </td>
-                        <td>Commodity Skewness (CRIS)</td>
-                        <td style="font-size: 11px; color: #555; line-height: 1.4;"></td>
+                        <td>UBS Commodity Realized-Skewness Capped (CRIS UCITS)</td>
+                        <td style="font-size: 11px; color: #555; line-height: 1.4;">UCITS-compliant capped version of CRIS Outright. Same Pearson skewness signal with 35% max / 20% target single commodity caps applied to long and short legs independently.</td>
                         <td style="font-size: 11px; color: #666;">Commodity Skew</td>
                         <td>
                             <div class="style-badges-wrap">
@@ -4805,7 +4805,7 @@
                                 <div class="mini-card-header">
                                     <div>
                                         <div class="ticker">UCCIRSER</div>
-                                        <div class="name">Commodity Skewness (CRIS)</div>
+                                        <div class="name">UBS Commodity Realized-Skewness Capped (CRIS UCITS)</div>
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
                                         <div style="margin-top: 4px;">
                                             
@@ -4827,6 +4827,10 @@
                                         <div style="font-size: 10px; color: #28a745; font-weight: 600;">✓ Eligible</div>
                                         
                                     </div>
+                                </div>
+                                
+                                <div style="font-size: 11px; color: #555; line-height: 1.5; margin: 10px 0; padding: 8px; background: #f8f9fa; border-radius: 6px; border-left: 3px solid #667eea;">
+                                    UCITS-compliant capped version of CRIS Outright. Same Pearson skewness signal with 35% max / 20% target single commodity caps applied to long and shor...
                                 </div>
                                 
                                 <div class="mini-card-metrics">
@@ -6485,7 +6489,9 @@
                         <div style="font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px;">UBS</div>
                         <div style="font-size: 16px; font-weight: 700; color: #2c3e50;">UCCIRSER</div>
                         
-                        <div style="font-size: 13px; color: #667eea; font-weight: 500;">Commodity Skewness (CRIS)</div>
+                        <div style="font-size: 13px; color: #667eea; font-weight: 500; cursor: pointer; text-decoration: underline; text-decoration-style: dotted;" onclick="openDetailModal('UCCIRSER')">
+                            UBS Commodity Realized-Skewness Capped (CRIS UCITS) <span style="font-size: 10px;">🔍</span>
+                        </div>
                         
                     </div>
                     <div style="text-align: right; cursor: pointer;" onclick="showScoreDetail('UCCIRSER')" title="클릭하여 상세 내역 보기">
@@ -6515,15 +6521,22 @@
 
                 <!-- Description -->
                 
-                <div style="background: #fff3cd; padding: 12px 15px; border-radius: 8px; margin-bottom: 15px; border-left: 3px solid #ffc107;">
-                    <div style="font-size: 12px; color: #856404;">
-                        ⚠️ 전략 설명이 등록되지 않았습니다.
+                <div style="background: #f8f9fa; padding: 12px 15px; border-radius: 8px; margin-bottom: 15px; border-left: 3px solid #667eea;">
+                    <div style="font-size: 12px; line-height: 1.7; color: #495057;">
+                        UCITS-compliant capped version of CRIS Outright. Same Pearson skewness signal with 35% max / 20% target single commodity caps applied to long and short legs independently.
                     </div>
                     
-                    <div style="margin-top: 10px; text-align: right;">
+                    <div style="margin-top: 10px; text-align: right; display: flex; gap: 8px; justify-content: flex-end;">
+                        
+                        <button onclick="openDetailModal('UCCIRSER')" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 6px 14px; border-radius: 20px; font-size: 11px; cursor: pointer; font-weight: 600; box-shadow: 0 2px 8px rgba(102,126,234,0.3);">
+                            📖 상세 설명 보기
+                        </button>
+                        
+                        
                         <button onclick="openAnalysisModal('UCCIRSER')" style="background: linear-gradient(135deg, #0d9488, #059669); color: white; border: none; padding: 6px 14px; border-radius: 20px; font-size: 11px; cursor: pointer; font-weight: 600; box-shadow: 0 2px 8px rgba(13,148,136,0.3);">
                             📄 심층 분석 보기
                         </button>
+                        
                     </div>
                     
                 </div>
@@ -9557,7 +9570,7 @@
                     
                     
                     
-                    <option value="23" title="">UCCIRSER - Commodity Skewness (CRIS)</option>
+                    <option value="23" title="UCITS-compliant capped version of CRIS Outright. Same Pearson skewness signal with 35% max / 20% target single commodity caps applied to long and short legs independently.">UCCIRSER - UBS Commodity Realized-Skewness Capped (CRIS UCITS) | UCITS-compliant capped version of CRIS Outright. S...</option>
                     
                     
                     
@@ -9721,7 +9734,7 @@
                     
                     
                     
-                    <option value="23" title="">UCCIRSER - Commodity Skewness (CRIS)</option>
+                    <option value="23" title="UCITS-compliant capped version of CRIS Outright. Same Pearson skewness signal with 35% max / 20% target single commodity caps applied to long and short legs independently.">UCCIRSER - UBS Commodity Realized-Skewness Capped (CRIS UCITS) | UCITS-compliant capped version of CRIS Outright. S...</option>
                     
                     
                     
@@ -66819,7 +66832,7 @@
                         
                         <th class="col-strategy clickable-strategy" onclick="showStrategyInfo('UCCIRSER')">
                             <div style="font-size: 11px; font-weight: bold;">UCCIRSER</div>
-                            <div style="font-size: 9px; opacity: 0.9; max-width: 100px; white-space: normal; line-height: 1.2;">Commodity Skewness (CRIS)</div>
+                            <div style="font-size: 9px; opacity: 0.9; max-width: 100px; white-space: normal; line-height: 1.2;">UBS Commodity Realized-Sk...</div>
                             <span class="grade-mini g-b">
                                 B+
                             </span>
@@ -76392,7 +76405,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>Generated by QIS Fund Manager | 2026-02-26 17:30:33</p>
+        <p>Generated by QIS Fund Manager | 2026-02-26 17:38:52</p>
     </footer>
 
     <!-- Price Chart Initialization -->
@@ -77514,8 +77527,8 @@
         
         'UCCIRSER': {
             ticker: 'UCCIRSER',
-            name: 'Commodity Skewness (CRIS)',
-            description: '',
+            name: 'UBS Commodity Realized-Skewness Capped (CRIS UCITS)',
+            description: 'UCITS-compliant capped version of CRIS Outright. Same Pearson skewness signal with 35% max / 20% target single commodity caps applied to long and short legs independently.',
             strategy_type: '',
             issuer: 'UBS',
             grade: 'B+',
@@ -79242,11 +79255,11 @@
         
         
         'UCCIRSER': {
-            name: 'Commodity Skewness (CRIS)',
+            name: 'UBS Commodity Realized-Skewness Capped (CRIS UCITS)',
             issuer: 'UBS',
             category: 'Commodity Skew',
             inception_date: '2018-10-01',
-            detailed_description: ``,
+            detailed_description: `## UBS Commodity Realized-Skewness Capped (UCCIRSER)\n\n### 1. 전략 개요\nCRIS Outright(UBCIRSER)의 UCITS 규정 준수 버전. 동일한 왜도 시그널을 사용하되, 단일 상품 집중도를 제한하는 캡핑 규칙 적용.\n\n### 2. 핵심 메커니즘\n- **시그널**: UBCIRSER와 동일 (Pearson Skewness, 6/9/12M 블렌드)\n- **캡핑 규칙**:\n  - Max cap: 35% (단일 상품 최대 비중)\n  - Target cap: 20% (목표 상한)\n  - 롱/숏 레그 독립 적용\n  - 캡 초과 시 동일 분위 내 다른 상품에 재배분\n- **리밸런싱**: UBCIRSER와 동일 (월 1회, 10일 분산)\n\n### 3. 포트폴리오 구성\n- **유니버스**: UBCIRSER와 동일 (24개 상품)\n- **차이점**: 캡핑으로 인해 단일 상품 집중도 제한\n- **효과**: MDD 개선(-21.4% → -20.3%), 변동성 감소(11.2% → 10.3%)\n\n### 4. 주요 성과 (2026년 1월 30일 기준)\n| 지표 | Outright (UBCIRSER) | Capped (UCCIRSER) |\n|------|-------------------|------------------|\n| 연환산 수익률 | 8.1% | 7.4% |\n| 변동성 | 11.2% | 10.3% |\n| 샤프 비율 | 0.72 | 0.72 |\n| MDD | -21.4% | -20.3% |\n| 소르티노 비율 | 1.03 | 0.99 |\n\n### 5. 리스크/특이사항\n- Sharpe 비율 동일(0.72), 캡핑이 수익률과 리스크를 비례적으로 감소\n- UCITS 펀드 래핑 가능 → 규제 친화적 구조\n- 2025년 수익률: Q4 Review 기준 +23.3% (Outright와 거의 동일한 성과)\n- **관련 전략**: UBCIRSER (Uncapped Outright), UBCCRSER (Curve 구현)`,
             analysis_content: "# UCCIRSER \u2014 UBS Commodity Realized-Skewness Capped (CRIS UCITS)\n\n\u003e \uc6d0\ubcf8: `20260130_UBS CRIS-WF_ ID 53651621.pdf` (53p, 2026\ub144 2\uc6d4) \u2014 p18~20\n\u003e \ubd84\uc11d\uc77c: 2026-02-26\n\u003e \uad00\ub828 \uc804\ub7b5: [UBCIRSER](UBCIRSER.md) (Outright), [UBCCRSER](UBCCRSER.md) (Curve)\n\n---\n\n## 1. \uc804\ub7b5 \uac1c\uc694\n\nCRIS Outright(UBCIRSER)\uc758 **UCITS \uaddc\uc815 \uc900\uc218 \ubc84\uc804**. \ub3d9\uc77c\ud55c \uc2a4\ud050 \uc2dc\uadf8\ub110\uacfc \ubc29\ubc95\ub860\uc744 \uc0ac\uc6a9\ud558\ub418, \ub2e8\uc77c \ucee4\ubaa8\ub514\ud2f0 \ube44\uc911\uc5d0 \uc0c1\ud55c(cap)\uc744 \uc801\uc6a9\ud558\uc5ec \uc720\ub7fd UCITS \ud380\ub4dc\uc5d0 \ud3b8\uc785 \uac00\ub2a5\ud558\ub3c4\ub85d \ud55c \uc778\ub371\uc2a4.\n\n**\ud575\uc2ec \ucc28\uc774**: Outright\uc5d0\uc11c\ub294 \uc2a4\ud050 \uac15\ub3c4\uc5d0 \ub530\ub77c \ud2b9\uc815 \ucee4\ubaa8\ub514\ud2f0\uc5d0 \uacfc\ub3c4\ud55c \ube44\uc911\uc774 \uac08 \uc218 \uc788\uc9c0\ub9cc, Capped \ubc84\uc804\uc740 35/20 \ub8f0\ub85c \uc774\ub97c \uc81c\ud55c.\n\n---\n\n## 2. UCITS 35/20 \ucea1\ud551 \ub8f0 (p18~19)\n\n### \uaddc\uc815\n- **\ub2e8\uc77c \uad6c\uc131\uc885\ubaa9 \ucd5c\ub300 \ube44\uc911**: 35%\n- **\ub098\uba38\uc9c0 \uad6c\uc131\uc885\ubaa9 \ucd5c\ub300 \ube44\uc911**: 20%\n- UCITS (Undertakings for Collective Investment in Transferable Securities) \uc9c0\uce68 \uc900\uc218\n\n### \uc2e4\uc81c \uc801\uc6a9\n- **\ubc84\ud37c \uc801\uc6a9**: \uc6d4\uc911 \ube44\uc911 \ubcc0\ub3d9\uc744 \uace0\ub824\ud558\uc5ec \uc2e4\uc81c \ud0c0\uac9f \ucea1\uc740 **32/18**\ub85c \uc124\uc815\n  - 35% \ud55c\ub3c4 \u2192 32% \ud0c0\uac9f (3% \ubc84\ud37c)\n  - 20% \ud55c\ub3c4 \u2192 18% \ud0c0\uac9f (2% \ubc84\ud37c)\n- \ub871 \ub808\uadf8\uc640 \uc20f \ub808\uadf8\uc5d0 **\ub3c5\ub9bd\uc801\uc73c\ub85c** \ucea1 \uc801\uc6a9\n- \ucea1 \ucd08\uacfc \ube44\uc911\uc740 \uac19\uc740 \ubc84\ud0b7 \ub0b4 \ub2e4\ub978 \ucee4\ubaa8\ub514\ud2f0\ub85c \uc7ac\ubd84\ubc30\n\n---\n\n## 3. \ubc29\ubc95\ub860\n\nUBCIRSER\uacfc \ub3d9\uc77c (24\uac1c \ucee4\ubaa8\ub514\ud2f0, Pearson \uc2a4\ud050, 4\ubc84\ud0b7, \uc6d4\uac04 \ub9ac\ubc38\ub7f0\uc2a4)\n\u2192 [UBCIRSER.md](UBCIRSER.md) \ucc38\uc870\n\n**\uc720\uc77c\ud55c \ucc28\uc774\uc810**: Step 4 \uc775\uc2a4\ud3ec\uc800 \ubc30\ubd84\uc5d0\uc11c 35/20(\uc2e4\uc81c 32/18) \ucea1 \uc801\uc6a9\n\n---\n\n## 4. \uc131\uacfc \ub370\uc774\ud130 (PDF \uc6d0\ubcf8, p19~20)\n\n### Outright vs Capped \ube44\uad50\n\n| \uc9c0\ud45c | Outright (UBCIRSER) | Capped (UCCIRSER) | \ucc28\uc774 |\n|------|---------------------|-------------------|------|\n| \uc5f0\ud658\uc0b0 \uc218\uc775\ub960 | 8.1% | ~7.4%* | -0.7% |\n| \uc0e4\ud504 \ube44\uc728 | 0.72 | 0.72 | \ub3d9\uc77c |\n| MDD | -21.4% | -20.3% | +1.1% \uac1c\uc120 |\n\n*\uc218\uc775\ub960\uc740 \uc5f0\ub3c4\ubcc4 \ub370\uc774\ud130\uc5d0\uc11c \uc5ed\uc0b0 (strategy_specs.json \uae30\uc900)\n\n### \uc6d4\uac04 \ud1b5\uacc4 (p20)\n- \ucd5c\ub300 \uc6d4\uac04 \uc218\uc775: +17.81% (Outright +24.27% \ub300\ube44 \uc81c\ud55c\ub428)\n- \ucd5c\uc18c \uc6d4\uac04 \uc218\uc775: -7.71% (Outright -9.08% \ub300\ube44 \uac1c\uc120)\n- \ud3c9\uade0 \uc6d4\uac04 \uc218\uc775: +0.64%\n- \uc0c1\uc2b9 \uc6d4 \ube44\uc728: 55%\n\n### \ucea1\ud551 \ud6a8\uacfc \ubd84\uc11d\n- **\ud14c\uc77c \ub9ac\uc2a4\ud06c \uac10\uc18c**: \ucd5c\ub300 \uc6d4\uac04 \uc190\uc2e4\uc774 -9.08% \u2192 -7.71%\ub85c \uac1c\uc120\n- **\uc0c1\ubc29\ub3c4 \uc81c\ud55c**: \ucd5c\ub300 \uc6d4\uac04 \uc218\uc775 24.27% \u2192 17.81%\ub85c \uac10\uc18c\n- **\uc0e4\ud504 \ube44\uc728 \uc720\uc9c0**: \uc218\uc775\ub960 \uac10\uc18c\uc640 \ubcc0\ub3d9\uc131 \uac10\uc18c\uac00 \ube44\ub840\ud558\uc5ec \uc0e4\ud504 \ub3d9\uc77c\n- **\ub300\ubd80\ubd84\uc758 \uae30\uac04 \uac70\uc758 \ub3d9\uc77c**: \ucea1\uc774 \uc2e4\uc81c\ub85c \ubc14\uc778\ub529\ub418\ub294 \uacbd\uc6b0\uac00 \uc801\uc74c (\uc2a4\ud050 \uac15\ub3c4\uac00 \uadf9\ub2e8\uc801\uc77c \ub54c\ub9cc)\n\n### \uc5f0\ub3c4\ubcc4 \uc8fc\uc694 \ucc28\uc774 (p19 \ucc28\ud2b8 \ube44\uad50)\n- 2000\ub144: Outright +39.21% vs Capped +36.76% (\ud2b9\uc815 \ucee4\ubaa8\ub514\ud2f0 \uacfc\uc9d1\uc911 \uc2dc \ucc28\uc774)\n- 2020\ub144: Outright +50.21% vs Capped \uc720\uc0ac\ud558\uc9c0\ub9cc \uc57d\uac04 \ub0ae\uc74c\n- \ub300\ubd80\ubd84\uc758 \uc5f0\ub3c4: \uac70\uc758 \ub3d9\uc77c\ud55c \uc218\uc775\ub960\n\n---\n\n## 5. UCITS \uaddc\uc815 \ubc30\uacbd\n\n### \uc65c \ucea1\ud551\uc774 \ud544\uc694\ud55c\uac00\n- UCITS \ud380\ub4dc\ub294 EU \uaddc\uc815\uc5d0 \uc758\ud574 \ub2e8\uc77c \uc790\uc0b0 \uc9d1\uc911\ub3c4 \uc81c\ud55c\n- \uae30\uad00\ud22c\uc790\uc790(\uc5f0\uae30\uae08, \ubcf4\ud5d8\uc0ac \ub4f1) \uc911 \uc0c1\ub2f9\uc218\uac00 UCITS \uaddc\uc815 \ub0b4 \ud22c\uc790\ub9cc \uac00\ub2a5\n- Capped \ubc84\uc804\uc774 \uc788\uc5b4\uc57c \uc774\ub7ec\ud55c \uae30\uad00\uc5d0 \ud310\ub9e4 \uac00\ub2a5\n\n### \uc2e4\ubb34\uc801 \uc758\ubbf8\n- \uc131\uacfc \ucc28\uc774\uac00 \ubbf8\ubbf8\ud558\ubbc0\ub85c UCITS \uc81c\uc57d\uc774 \uc788\ub294 \ud22c\uc790\uc790\ub294 Capped \uc120\ud0dd\n- UCITS \uc81c\uc57d\uc774 \uc5c6\uc73c\uba74 Outright\uc774 \uc57d\uac04 \uc720\ub9ac (\uadf9\ub2e8\uc801 \uc2dc\uadf8\ub110 \ud65c\uc6a9 \uac00\ub2a5)\n\n---\n\n## 6. \ub9ac\uc2a4\ud06c \uc694\uc778\n\nUBCIRSER\uacfc \ub3d9\uc77c \u2192 [UBCIRSER.md](UBCIRSER.md) \ucc38\uc870\n- \ucd94\uac00 \ub9ac\uc2a4\ud06c: \ucea1\ud551\uc73c\ub85c \uc778\ud574 \uac15\ud55c \uc2a4\ud050 \uc2dc\uadf8\ub110\uc744 \uc644\uc804\ud788 \ud65c\uc6a9\ud558\uc9c0 \ubabb\ud560 \uc218 \uc788\uc74c\n- \ucd94\uac00 \uc774\uc810: \ub2e8\uc77c \ucee4\ubaa8\ub514\ud2f0 \uc9d1\uc911 \ub9ac\uc2a4\ud06c \uc81c\ud55c\n\n---\n\n## 7. \ud22c\uc790 \uc2dc\uc0ac\uc810\n\n- **UCITS \ud380\ub4dc \ud3b8\uc785 \uc2dc \uc720\uc77c\ud55c \uc120\ud0dd\uc9c0**: \uaddc\uc815\uc0c1 Outright \ubd88\uac00 \u2192 Capped \ud544\uc218\n- **\uc131\uacfc \ucc28\uc774 \ubbf8\ubbf8**: \uc0e4\ud504 \ub3d9\uc77c, \uc218\uc775\ub960 0.7%p \ucc28\uc774\ub294 \ucea1\ud551 \ube44\uc6a9\uc73c\ub85c \uc218\uc6a9 \uac00\ub2a5\n- **MDD \uac1c\uc120**: -21.4% \u2192 -20.3%\ub85c \uc18c\ud3ed \uac1c\uc120\n- **Outright \ub300\ube44 \uc120\ud0dd \uae30\uc900**: UCITS \uaddc\uc815 \uc900\uc218 \uc5ec\ubd80\uac00 \uc720\uc77c\ud55c \uc758\uc0ac\uacb0\uc815 \uae30\uc900\n"
         },
         
@@ -80015,7 +80028,7 @@
         },
         
         'UCCIRSER': {
-            name: 'Commodity Skewness (CRIS)',
+            name: 'UBS Commodity Realized-Skewness Capped (CRIS UCITS)',
             grade: 'B+',
             score_pct: 79.2,
             is_eligible: true,
