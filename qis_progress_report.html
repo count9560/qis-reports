@@ -549,11 +549,99 @@
     </tbody>
 </table>
 
+<h3>전략 분류 및 참조자산</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left;">전략명</th>
+            <th>스타일</th>
+            <th>발행사</th>
+            <th>최고 상관 지수</th>
+            <th>상관계수</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Equity Value L/S</strong> <span class="muted">(XUBSGVL3)</span></td>
+            <td class="text-center">Equity Value</td>
+            <td class="text-center">UBS</td>
+            <td class="text-center">Tech Sector (XLK)</td>
+            <td class="text-center">-0.39</td>
+        </tr>
+        <tr>
+            <td><strong>Commodity Skewness</strong> <span class="muted">(UCCIRSER)</span></td>
+            <td class="text-center">Commodity Skew</td>
+            <td class="text-center">UBS</td>
+            <td class="text-center">S&P GSCI</td>
+            <td class="text-center">+0.66</td>
+        </tr>
+        <tr>
+            <td><strong>Commodity Rel-Skewness</strong> <span class="muted">(UBCIRSER)</span></td>
+            <td class="text-center">Commodity Skew</td>
+            <td class="text-center">UBS</td>
+            <td class="text-center">S&P GSCI</td>
+            <td class="text-center">+0.60</td>
+        </tr>
+        <tr>
+            <td><strong>Short Spread Carry</strong> <span class="muted">(COSXPLNE)</span></td>
+            <td class="text-center">Commodity Carry</td>
+            <td class="text-center">UBS</td>
+            <td class="text-center">BCOM Index</td>
+            <td class="text-center">-0.67</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>적격 전략 간 상관관계</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th>XUBSGVL3</th>
+            <th>UCCIRSER</th>
+            <th>UBCIRSER</th>
+            <th>COSXPLNE</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>XUBSGVL3</strong> <span class="muted">Equity Value</span></td>
+            <td class="text-center">—</td>
+            <td class="text-center">0.01</td>
+            <td class="text-center">0.01</td>
+            <td class="text-center">0.07</td>
+        </tr>
+        <tr>
+            <td><strong>UCCIRSER</strong> <span class="muted">Cmdty Skew</span></td>
+            <td class="text-center">0.01</td>
+            <td class="text-center">—</td>
+            <td class="text-center negative"><strong>0.99</strong></td>
+            <td class="text-center">-0.06</td>
+        </tr>
+        <tr>
+            <td><strong>UBCIRSER</strong> <span class="muted">Cmdty Skew</span></td>
+            <td class="text-center">0.01</td>
+            <td class="text-center negative"><strong>0.99</strong></td>
+            <td class="text-center">—</td>
+            <td class="text-center">-0.08</td>
+        </tr>
+        <tr>
+            <td><strong>COSXPLNE</strong> <span class="muted">Cmdty Carry</span></td>
+            <td class="text-center">0.07</td>
+            <td class="text-center">-0.06</td>
+            <td class="text-center">-0.08</td>
+            <td class="text-center">—</td>
+        </tr>
+    </tbody>
+</table>
+
 <blockquote class="highlight">
     <strong>포트폴리오 구성 관점</strong><br>
-    4개 전략은 Equity Value(1) + Commodity(3) 조합으로, 자산군 분산이 가능.
-    전략 간 평균 상관계수가 낮아 분산 효과 양호.
-    특히 COSXPLNE은 16년의 장기 트랙레코드를 보유하여 전략 안정성이 검증됨.
+    XUBSGVL3(Equity)와 나머지 Commodity 전략 간 상관계수가 0.01~0.07로 매우 낮아 자산군 분산이 우수함.
+    단, UCCIRSER-UBCIRSER는 상관계수 0.99로 사실상 동일 전략이므로 <strong>택 1</strong> 필요.
+    COSXPLNE은 16년 트랙레코드 보유, Commodity Skew 전략과 음(-)의 상관관계로 추가 분산효과 기대.
 </blockquote>
 
 
