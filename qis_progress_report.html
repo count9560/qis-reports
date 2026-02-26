@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QIS 투자 진행현황 보고</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Malgun Gothic', 'Segoe UI', Helvetica, Arial, sans-serif;
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 40px 28px;
+            background: #fff;
+            color: #1f2328;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        h1 { font-size: 20px; font-weight: 700; padding-bottom: 10px; border-bottom: 2px solid #d1d9e0; margin-bottom: 16px; }
+        h2 { font-size: 16px; font-weight: 700; padding-bottom: 6px; border-bottom: 1px solid #d1d9e0; margin: 28px 0 12px 0; }
+        h3 { font-size: 14px; font-weight: 700; margin: 18px 0 6px 0; }
+        p { margin: 4px 0; }
+        ul { margin: 4px 0 8px 24px; }
+        li { margin: 2px 0; }
+        hr { border: none; border-top: 1px solid #d1d9e0; margin: 16px 0; }
+        strong { font-weight: 700; }
+
+        .positive { color: #1a7f37; }
+        .negative { color: #cf222e; }
+        .muted { color: #656d76; font-size: 13px; }
+        .mono { font-family: 'SFMono-Regular', Consolas, monospace; }
+
+        .row { display: flex; flex-wrap: wrap; gap: 0 32px; }
+        .kv { min-width: 220px; }
+
+        blockquote { margin: 10px 0; padding: 10px 16px; border-left: 4px solid #d1d9e0; background: #f6f8fa; }
+        blockquote.highlight { border-left-color: #667eea; }
+        blockquote.pass { border-left-color: #1a7f37; }
+
+        /* Summary Boxes */
+        .summary-boxes {
+            display: flex;
+            gap: 12px;
+            margin: 12px 0;
+        }
+        .summary-box {
+            flex: 1;
+            text-align: center;
+            padding: 16px 8px;
+            border-radius: 8px;
+            border: 1px solid #d1d9e0;
+        }
+        .summary-box .big { font-size: 28px; font-weight: 700; font-family: 'SFMono-Regular', Consolas, monospace; }
+        .summary-box .label { font-size: 12px; color: #656d76; margin-top: 4px; }
+        .box-blue { background: #dbeafe; border-color: #93c5fd; }
+        .box-blue .big { color: #1d4ed8; }
+        .box-green { background: #dcfce7; border-color: #86efac; }
+        .box-green .big { color: #15803d; }
+        .box-red { background: #fee2e2; border-color: #fca5a5; }
+        .box-red .big { color: #b91c1c; }
+        .box-purple { background: #f3e8ff; border-color: #c4b5fd; }
+        .box-purple .big { color: #7c3aed; }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin: 10px 0;
+        }
+        th {
+            background: #f6f8fa;
+            font-weight: 700;
+            padding: 8px 10px;
+            text-align: center;
+            border-bottom: 2px solid #d1d9e0;
+            font-size: 12px;
+            color: #656d76;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #eaeef2;
+        }
+        tr:last-child td { border-bottom: none; }
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+
+        /* Grade badges */
+        .grade { display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 12px; }
+        .grade-a { background: #dcfce7; color: #15803d; }
+        .grade-b { background: #dbeafe; color: #1d4ed8; }
+
+        /* Limit table */
+        .limit-section {
+            margin: 12px 0;
+            padding: 16px;
+            background: #f6f8fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        .limit-section h3 { margin-top: 0; padding-bottom: 6px; border-bottom: 1px solid #d1d9e0; }
+        .limit-table th { background: #667eea; color: #fff; }
+        .limit-table .label-col { background: #f0f2f5; font-weight: 600; text-align: center; width: 160px; }
+        .limit-table .note-cell { font-size: 12px; line-height: 1.6; color: #555; }
+
+        /* Status tags */
+        .tag { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+        .tag-pending { background: #fef3c7; color: #92400e; }
+        .tag-review { background: #dbeafe; color: #1e40af; }
+        .tag-done { background: #dcfce7; color: #166534; }
+
+        /* Link button */
+        .link-btn {
+            display: inline-block;
+            margin: 6px 4px;
+            padding: 8px 18px;
+            background: #667eea;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .link-btn:hover { background: #5a6fd6; }
+        .link-btn-outline {
+            display: inline-block;
+            margin: 6px 4px;
+            padding: 8px 18px;
+            background: #fff;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid #667eea;
+        }
+        .link-btn-outline:hover { background: #f0f2ff; }
+
+        /* Filter criteria */
+        .filter-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin: 10px 0;
+        }
+        .filter-item {
+            padding: 8px 12px;
+            background: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #eaeef2;
+            font-size: 13px;
+        }
+        .filter-item .criterion { font-weight: 700; }
+        .filter-item .detail { color: #656d76; font-size: 12px; }
+
+        /* Distribution bar */
+        .dist-bar {
+            display: flex;
+            height: 28px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 10px 0;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .dist-bar > div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            min-width: 30px;
+        }
+
+        footer { margin-top: 36px; padding-top: 10px; border-top: 1px solid #d1d9e0; color: #656d76; font-size: 12px; }
+
+        @media print {
+            body { padding: 15px; max-width: 100%; }
+            .link-btn, .link-btn-outline { border: 1px solid #666; color: #333; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+
+<p class="muted" style="letter-spacing:2px;">QIS 투자 진행현황 / QIS INVESTMENT PROGRESS REPORT</p>
+
+<h1>QIS 전략 검토 및 투자 진행현황</h1>
+
+<p class="muted">2026-02-26 | 대체투자</p>
+
+
+<!-- ===== 1. 검토 현황 요약 ===== -->
+<h2>1. 검토 현황 요약</h2>
+
+<div class="summary-boxes">
+    <div class="summary-box box-blue">
+        <div class="big">38</div>
+        <div class="label">등록 전략</div>
+    </div>
+    <div class="summary-box box-purple">
+        <div class="big">33</div>
+        <div class="label">평가 완료</div>
+    </div>
+    <div class="summary-box box-green">
+        <div class="big">4</div>
+        <div class="label">투자 적격</div>
+    </div>
+    <div class="summary-box box-red">
+        <div class="big">12.1%</div>
+        <div class="label">적격률</div>
+    </div>
+</div>
+
+<p class="muted" style="margin-top:8px;">3개 투자은행(UBS, Morgan Stanley, Citi)의 QIS 전략을 체계적으로 평가하여 투자 적격 전략을 선별하였음.</p>
+
+<div class="row" style="margin-top:10px;">
+    <p class="kv"><strong>등록 전략</strong>: 38개 (UBS 20, Morgan Stanley 9, Citi 9)</p>
+    <p class="kv"><strong>제외 전략</strong>: 2개 (모자이크 전략, 오버피팅 위험)</p>
+    <p class="kv"><strong>평가 완료</strong>: 33개 (16개 항목 체크리스트 기반)</p>
+    <p class="kv"><strong>미평가</strong>: 3개 (가격 데이터 미수집)</p>
+</div>
+
+
+<!-- ===== 2. 선정 기준 ===== -->
+<h2>2. 선정 기준</h2>
+
+<h3>평가 체계: 16개 체크리스트 (4개 카테고리)</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>카테고리</th>
+            <th>항목 수</th>
+            <th>주요 평가 내용</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Performance</strong></td>
+            <td class="text-center">6</td>
+            <td>연환산수익률, 라이브수익률, 샤프비율, 소르티노비율, 수익 일관성, 1Y 수익률</td>
+        </tr>
+        <tr>
+            <td><strong>Risk</strong></td>
+            <td class="text-center">4</td>
+            <td>MDD, 변동성, 하방변동성, 최악의 월간 수익률</td>
+        </tr>
+        <tr>
+            <td><strong>Strategy Quality</strong></td>
+            <td class="text-center">2</td>
+            <td>트랙레코드 기간, 레버리지</td>
+        </tr>
+        <tr>
+            <td><strong>Correlation</strong></td>
+            <td class="text-center">4</td>
+            <td>포트폴리오 상관계수, 분산효과, 위기시기 분석</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>적격성 판정 기준 (4중 필터)</h3>
+
+<p class="muted">아래 4개 조건을 <strong>모두</strong> 충족해야 투자 적격 판정.</p>
+
+<div class="filter-grid">
+    <div class="filter-item">
+        <div class="criterion">1. 필수항목 전체 PASS</div>
+        <div class="detail">연환산수익률, 샤프비율 등 필수 항목 중 하나라도 FAIL 시 부적격</div>
+    </div>
+    <div class="filter-item">
+        <div class="criterion">2. FAIL 항목 ≤ 3개</div>
+        <div class="detail">16개 항목 중 FAIL이 4개 이상이면 부적격</div>
+    </div>
+    <div class="filter-item">
+        <div class="criterion">3. PASS 비율 ≥ 60%</div>
+        <div class="detail">16개 항목 중 PASS 비율이 60% 미만이면 부적격</div>
+    </div>
+    <div class="filter-item">
+        <div class="criterion">4. 총점 ≥ 70점</div>
+        <div class="detail">가중평균 점수가 70점 미만이면 부적격</div>
+    </div>
+</div>
+
+<h3>등급 기준</h3>
+<p><span class="grade grade-a">A</span> 80점 이상 (우수) &nbsp;
+<span class="grade grade-b">B</span> 65~79점 (양호) &nbsp;
+<span class="grade" style="background:#fef3c7; color:#92400e;">C</span> 50~64점 (보통) &nbsp;
+<span class="grade" style="background:#fee2e2; color:#b91c1c;">D/F</span> 49점 이하 (미흡)</p>
+
+
+<!-- ===== 3. 검토 결과 ===== -->
+<h2>3. 검토 결과</h2>
+
+<h3>점수 분포</h3>
+
+<div class="dist-bar">
+    <div style="flex:1; background:#15803d;" title="80+ : 1개">1</div>
+    <div style="flex:5; background:#22c55e;" title="75~79 : 5개">5</div>
+    <div style="flex:9; background:#fbbf24;" title="70~74 : 9개">9</div>
+    <div style="flex:10; background:#f97316;" title="65~69 : 10개">10</div>
+    <div style="flex:7; background:#ef4444;" title="60~64 : 7개">7</div>
+    <div style="flex:1; background:#991b1b;" title="<60 : 1개">1</div>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>점수 구간</th>
+            <th>전략 수</th>
+            <th>적격</th>
+            <th>비고</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>80점 이상</td>
+            <td class="text-center"><strong>1</strong></td>
+            <td class="text-center"><span class="positive">1</span></td>
+            <td class="muted">XUBSGVL3 (Equity Value L/S)</td>
+        </tr>
+        <tr>
+            <td>75 ~ 79점</td>
+            <td class="text-center"><strong>5</strong></td>
+            <td class="text-center"><span class="positive">3</span></td>
+            <td class="muted">UCCIRSER, UBCIRSER, COSXPLNE 적격 / CSCUD66A, CSCUD15A 부적격(필수항목 미충족)</td>
+        </tr>
+        <tr>
+            <td>70 ~ 74점</td>
+            <td class="text-center"><strong>9</strong></td>
+            <td class="text-center">0</td>
+            <td class="muted">XUBSTYS1(74.4), XUBSFRP1(73.1) 등 — PASS 비율 미달</td>
+        </tr>
+        <tr>
+            <td>65 ~ 69점</td>
+            <td class="text-center"><strong>10</strong></td>
+            <td class="text-center">0</td>
+            <td class="muted">총점 미달 또는 FAIL 항목 초과</td>
+        </tr>
+        <tr>
+            <td>60 ~ 64점</td>
+            <td class="text-center"><strong>7</strong></td>
+            <td class="text-center">0</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>60점 미만</td>
+            <td class="text-center"><strong>1</strong></td>
+            <td class="text-center">0</td>
+            <td class="muted">MSCBGLQ1 (54.7점)</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>발행사별 분포</h3>
+<table>
+    <thead>
+        <tr>
+            <th>발행사</th>
+            <th>등록</th>
+            <th>평가</th>
+            <th>적격</th>
+            <th>적격률</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>UBS</strong></td>
+            <td class="text-center">20</td>
+            <td class="text-center">18</td>
+            <td class="text-center"><strong class="positive">4</strong></td>
+            <td class="text-center">22.2%</td>
+        </tr>
+        <tr>
+            <td><strong>Morgan Stanley</strong></td>
+            <td class="text-center">9</td>
+            <td class="text-center">8</td>
+            <td class="text-center">0</td>
+            <td class="text-center">0%</td>
+        </tr>
+        <tr>
+            <td><strong>Citi</strong></td>
+            <td class="text-center">9</td>
+            <td class="text-center">2</td>
+            <td class="text-center">0</td>
+            <td class="text-center">0%</td>
+        </tr>
+    </tbody>
+</table>
+<p class="muted">* Citi 7개 전략은 금리 변동성 전략으로, 가격 데이터 수집 후 평가 예정</p>
+
+
+<!-- ===== 4. 적격 전략 상세 ===== -->
+<h2>4. 투자 적격 전략</h2>
+
+<p>4개 전략 모두 <strong>FAIL 항목 0개</strong>로 16개 평가 항목 전체 통과.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>순위</th>
+            <th style="text-align:left;">전략명</th>
+            <th>등급</th>
+            <th>총점</th>
+            <th>연환산<br>수익률</th>
+            <th>라이브<br>수익률</th>
+            <th>샤프</th>
+            <th>소르티노</th>
+            <th>MDD</th>
+            <th>변동성</th>
+            <th>트랙<br>레코드</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="text-center">1</td>
+            <td>
+                <strong>Equity Value L/S</strong><br>
+                <span class="muted">XUBSGVL3 · UBS · Equity Value</span>
+            </td>
+            <td class="text-center"><span class="grade grade-a">A</span></td>
+            <td class="text-center mono"><strong>80.0</strong></td>
+            <td class="text-center mono positive">5.9%</td>
+            <td class="text-center mono positive">10.6%</td>
+            <td class="text-center mono">0.76</td>
+            <td class="text-center mono">1.07</td>
+            <td class="text-center mono negative">-19.6%</td>
+            <td class="text-center mono">7.7%</td>
+            <td class="text-center mono">5.1yr</td>
+        </tr>
+        <tr>
+            <td class="text-center">2</td>
+            <td>
+                <strong>Commodity Skewness (CRIS)</strong><br>
+                <span class="muted">UCCIRSER · UBS · Commodity Skew</span>
+            </td>
+            <td class="text-center"><span class="grade grade-b">B+</span></td>
+            <td class="text-center mono"><strong>79.2</strong></td>
+            <td class="text-center mono positive">6.6%</td>
+            <td class="text-center mono positive">9.8%</td>
+            <td class="text-center mono">0.64</td>
+            <td class="text-center mono">0.99</td>
+            <td class="text-center mono negative">-15.2%</td>
+            <td class="text-center mono">10.3%</td>
+            <td class="text-center mono">7.4yr</td>
+        </tr>
+        <tr>
+            <td class="text-center">3</td>
+            <td>
+                <strong>Commodity Relative-Skewness (CRIS)</strong><br>
+                <span class="muted">UBCIRSER · UBS · Commodity Skew</span>
+            </td>
+            <td class="text-center"><span class="grade grade-b">B+</span></td>
+            <td class="text-center mono"><strong>78.3</strong></td>
+            <td class="text-center mono positive">7.7%</td>
+            <td class="text-center mono positive">12.8%</td>
+            <td class="text-center mono">0.66</td>
+            <td class="text-center mono">0.99</td>
+            <td class="text-center mono negative">-18.5%</td>
+            <td class="text-center mono">11.7%</td>
+            <td class="text-center mono">7.5yr</td>
+        </tr>
+        <tr>
+            <td class="text-center">4</td>
+            <td>
+                <strong>Short Spread Carry (COSI)</strong><br>
+                <span class="muted">COSXPLNE · UBS · Commodity Carry</span>
+            </td>
+            <td class="text-center"><span class="grade grade-b">B+</span></td>
+            <td class="text-center mono"><strong>75.7</strong></td>
+            <td class="text-center mono positive">5.5%</td>
+            <td class="text-center mono positive">5.4%</td>
+            <td class="text-center mono">0.74</td>
+            <td class="text-center mono">1.05</td>
+            <td class="text-center mono negative">-15.0%</td>
+            <td class="text-center mono">7.5%</td>
+            <td class="text-center mono">16.0yr</td>
+        </tr>
+    </tbody>
+</table>
+
+<blockquote class="highlight">
+    <strong>포트폴리오 구성 관점</strong><br>
+    4개 전략은 Equity Value(1) + Commodity(3) 조합으로, 자산군 분산이 가능.
+    전략 간 평균 상관계수가 낮아 분산 효과 양호.
+    특히 COSXPLNE은 16년의 장기 트랙레코드를 보유하여 전략 안정성이 검증됨.
+</blockquote>
+
+
+<!-- ===== 5. 투자한도표 ===== -->
+<h2>5. 투자한도표</h2>
+
+<div class="limit-section">
+    <h3>투자 한도 기본구조</h3>
+    <table class="limit-table">
+        <thead>
+            <tr>
+                <th>구분</th>
+                <th>한도</th>
+                <th>비고</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="label-col">총 명목금액한도</td>
+                <td style="text-align:center; font-weight:600;">USD 20,000,000</td>
+                <td class="note-cell" rowspan="2">
+                    <ul style="margin:0; padding-left:18px; list-style:disc;">
+                        <li>거래건당 액면 USD 5,000,000 제한</li>
+                        <li>거래 건당 레버리지 배수 적용</li>
+                        <li>유동성 인정지수 또는 해당지수를 기초자산으로 직접 산출, 연계된 지수를 기초 전략으로 함</li>
+                        <li>리스크검토로 승인된 전략 상품 매수에 한함</li>
+                        <li>손절매 이후 재진입까지 별도의 리스크 검토 필요</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-col">손절매 한도</td>
+                <td style="text-align:center; font-weight:600; color:#cf222e;">-20%</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h3>전략별 배분 현황 <span class="tag tag-pending">진행 중</span></h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th style="text-align:left;">전략명</th>
+            <th>발행사</th>
+            <th>거래구조</th>
+            <th>명목금액(USD)</th>
+            <th>진행 현황</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="text-center">1</td>
+            <td>Equity Value L/S <span class="muted">(XUBSGVL3)</span></td>
+            <td class="text-center">UBS</td>
+            <td class="text-center">TRS</td>
+            <td class="text-center mono">5,000,000</td>
+            <td class="text-center"><span class="tag tag-review">리스크검토 예정</span></td>
+        </tr>
+        <tr>
+            <td class="text-center">2</td>
+            <td>Commodity Skewness <span class="muted">(UCCIRSER)</span></td>
+            <td class="text-center">UBS</td>
+            <td class="text-center">TRS</td>
+            <td class="text-center mono">5,000,000</td>
+            <td class="text-center"><span class="tag tag-review">리스크검토 예정</span></td>
+        </tr>
+        <tr>
+            <td class="text-center">3</td>
+            <td>Commodity Relative-Skewness <span class="muted">(UBCIRSER)</span></td>
+            <td class="text-center">UBS</td>
+            <td class="text-center">TRS</td>
+            <td class="text-center mono">5,000,000</td>
+            <td class="text-center"><span class="tag tag-review">리스크검토 예정</span></td>
+        </tr>
+        <tr>
+            <td class="text-center">4</td>
+            <td>Short Spread Carry <span class="muted">(COSXPLNE)</span></td>
+            <td class="text-center">UBS</td>
+            <td class="text-center">TRS</td>
+            <td class="text-center mono">5,000,000</td>
+            <td class="text-center"><span class="tag tag-review">리스크검토 예정</span></td>
+        </tr>
+        <tr style="background:#f6f8fa; font-weight:700;">
+            <td></td>
+            <td>합계</td>
+            <td></td>
+            <td></td>
+            <td class="text-center mono">20,000,000</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<p class="muted">* 전략별 배분금액은 리스크 검토 결과에 따라 조정 가능</p>
+
+
+<!-- ===== 6. 향후 계획 ===== -->
+<h2>6. 향후 계획</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>단계</th>
+            <th style="text-align:left;">내용</th>
+            <th>현황</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="text-center">1</td>
+            <td>전략 스크리닝 및 체크리스트 평가 (33개 전략)</td>
+            <td class="text-center"><span class="tag tag-done">완료</span></td>
+        </tr>
+        <tr>
+            <td class="text-center">2</td>
+            <td>투자 적격 전략 선별 (4개 전략)</td>
+            <td class="text-center"><span class="tag tag-done">완료</span></td>
+        </tr>
+        <tr>
+            <td class="text-center">3</td>
+            <td>리스크 검토 의뢰 (전략별 리스크검토의뢰서 제출)</td>
+            <td class="text-center"><span class="tag tag-review">진행 예정</span></td>
+        </tr>
+        <tr>
+            <td class="text-center">4</td>
+            <td>리스크 검토 승인 후 ISDA 계약 체결</td>
+            <td class="text-center"><span class="tag tag-pending">대기</span></td>
+        </tr>
+        <tr>
+            <td class="text-center">5</td>
+            <td>전략 편입 실행 및 모니터링 체계 구축</td>
+            <td class="text-center"><span class="tag tag-pending">대기</span></td>
+        </tr>
+    </tbody>
+</table>
+
+
+<!-- ===== Links ===== -->
+<hr style="margin-top:28px;">
+
+<p style="text-align:center; margin:16px 0;">
+    <a class="link-btn" href="https://count9560.github.io/qis-reports/batch_report_latest.html" target="_blank">전략 비교 보고서 (상세)</a>
+    <a class="link-btn-outline" href="https://count9560.github.io/qis-reports/" target="_blank">보고서 전체 목록</a>
+</p>
+
+
+<footer>
+    <p>QIS Fund Manager — 투자 진행현황 보고서 자동 생성 | 2026-02-26</p>
+    <p class="muted">본 보고서는 데이터 기반 자동 평가 시스템으로 생성되었으며, 최종 투자 의사결정은 리스크 검토를 거쳐야 합니다.</p>
+</footer>
+
+</body>
+</html>
