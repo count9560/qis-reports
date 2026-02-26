@@ -258,7 +258,7 @@
     <tbody>
         <tr><td colspan="6" style="background:#f6f8fa; font-weight:700; font-size:12px; color:#656d76; letter-spacing:1px;">PERFORMANCE</td></tr>
         <tr>
-            <td>연환산 수익률</td>
+            <td>연환산 수익률<br><span class="muted">복리 기준 연간 수익률</span></td>
             <td class="text-center">Y</td>
             <td class="text-center">&ge; 3%</td>
             <td class="text-center">3%</td>
@@ -266,7 +266,7 @@
             <td class="text-center">1.2</td>
         </tr>
         <tr>
-            <td>라이브 연환산 수익률</td>
+            <td>라이브 연환산 수익률<br><span class="muted">라이브 시작일 이후 실제 운용 수익률. 백테스트 과적합 검증</span></td>
             <td class="text-center"></td>
             <td class="text-center">&ge; 3%</td>
             <td class="text-center">3%</td>
@@ -274,7 +274,7 @@
             <td class="text-center">1.1</td>
         </tr>
         <tr>
-            <td>샤프 비율</td>
+            <td>샤프 비율<br><span class="muted">위험 대비 초과수익. 변동성 1단위당 무위험수익률 초과분</span></td>
             <td class="text-center">Y</td>
             <td class="text-center">&ge; 0.5</td>
             <td class="text-center">0.5</td>
@@ -282,7 +282,7 @@
             <td class="text-center">1.2</td>
         </tr>
         <tr>
-            <td>소르티노 비율</td>
+            <td>소르티노 비율<br><span class="muted">하방 위험 대비 수익률. 손실 변동성만 고려</span></td>
             <td class="text-center"></td>
             <td class="text-center">&ge; 0.7</td>
             <td class="text-center">0.7</td>
@@ -290,7 +290,7 @@
             <td class="text-center">1.0</td>
         </tr>
         <tr>
-            <td>3년 수익률 일관성</td>
+            <td>3년 수익률 일관성<br><span class="muted">연도별 양의 수익 비율. 특정 연도 쏠림 없이 꾸준한 성과 확인</span></td>
             <td class="text-center">Y</td>
             <td class="text-center">&ge; 60%</td>
             <td class="text-center">60%</td>
@@ -298,7 +298,7 @@
             <td class="text-center">1.1</td>
         </tr>
         <tr>
-            <td>1년 수익률</td>
+            <td>1년 수익률<br><span class="muted">최근 1년 절대 수익률. 현재 모멘텀 확인</span></td>
             <td class="text-center"></td>
             <td class="text-center">&ge; 3%</td>
             <td class="text-center">3%</td>
@@ -307,7 +307,7 @@
         </tr>
         <tr><td colspan="6" style="background:#f6f8fa; font-weight:700; font-size:12px; color:#656d76; letter-spacing:1px;">RISK</td></tr>
         <tr>
-            <td>1년 최대 낙폭 (MDD)</td>
+            <td>1년 최대 낙폭 (MDD)<br><span class="muted">1년 롤링 윈도우 MDD 최대값. 최악의 1년간 손실 측정</span></td>
             <td class="text-center">Y</td>
             <td class="text-center">&le; 20%</td>
             <td class="text-center">20%</td>
@@ -315,7 +315,7 @@
             <td class="text-center">1.2</td>
         </tr>
         <tr>
-            <td>연환산 변동성</td>
+            <td>연환산 변동성<br><span class="muted">수익률의 표준편차. 가격 변동의 불확실성 정도</span></td>
             <td class="text-center"></td>
             <td class="text-center">&le; 15%</td>
             <td class="text-center">15%</td>
@@ -323,7 +323,7 @@
             <td class="text-center">1.0</td>
         </tr>
         <tr>
-            <td>하방 변동성</td>
+            <td>하방 변동성<br><span class="muted">음의 수익률만의 표준편차. 손실 발생시 변동 크기</span></td>
             <td class="text-center"></td>
             <td class="text-center">&le; 15%</td>
             <td class="text-center">15%</td>
@@ -331,7 +331,7 @@
             <td class="text-center">0.9</td>
         </tr>
         <tr>
-            <td>최악의 월간 수익률</td>
+            <td>최악의 월간 수익률<br><span class="muted">역사적 최악의 월 손실. 단기 급락 리스크</span></td>
             <td class="text-center"></td>
             <td class="text-center">&ge; -10%</td>
             <td class="text-center">-10%</td>
@@ -340,7 +340,7 @@
         </tr>
         <tr><td colspan="6" style="background:#f6f8fa; font-weight:700; font-size:12px; color:#656d76; letter-spacing:1px;">STRATEGY QUALITY</td></tr>
         <tr>
-            <td>트랙레코드 기간</td>
+            <td>트랙레코드 기간<br><span class="muted">실제 운용 기간. 다양한 시장 환경 경험 여부</span></td>
             <td class="text-center">Y</td>
             <td class="text-center">&ge; 3년</td>
             <td class="text-center">3년</td>
@@ -348,7 +348,7 @@
             <td class="text-center">1.1</td>
         </tr>
         <tr>
-            <td>레버리지 수준</td>
+            <td>레버리지 수준<br><span class="muted">사용 레버리지 배수. 3배 초과 시 FAIL</span></td>
             <td class="text-center"></td>
             <td class="text-center">&le; 3x</td>
             <td class="text-center">3x</td>
@@ -357,7 +357,7 @@
         </tr>
         <tr><td colspan="6" style="background:#f6f8fa; font-weight:700; font-size:12px; color:#656d76; letter-spacing:1px;">CORRELATION</td></tr>
         <tr>
-            <td>포트폴리오 평균 상관계수</td>
+            <td>포트폴리오 평균 상관계수<br><span class="muted">보유 상품들과의 평균 상관계수. 낮을수록 분산효과 우수</span></td>
             <td class="text-center"></td>
             <td class="text-center">&le; 0.5</td>
             <td class="text-center">0.5</td>
@@ -365,7 +365,7 @@
             <td class="text-center">1.2</td>
         </tr>
         <tr>
-            <td>최대 상관 상품</td>
+            <td>최대 상관 상품<br><span class="muted">가장 높은 상관관계 상품과의 상관계수. 중복 투자 방지</span></td>
             <td class="text-center"></td>
             <td class="text-center">&le; 0.7</td>
             <td class="text-center">0.7</td>
@@ -373,7 +373,7 @@
             <td class="text-center">1.0</td>
         </tr>
         <tr>
-            <td>분산효과 기여도</td>
+            <td>분산효과 기여도<br><span class="muted">포트폴리오 추가 시 변동성 감소 효과. 높을수록 유리</span></td>
             <td class="text-center"></td>
             <td class="text-center">&ge; 5%</td>
             <td class="text-center">5%</td>
@@ -381,7 +381,7 @@
             <td class="text-center">1.1</td>
         </tr>
         <tr>
-            <td>위기 시 양(+)의 수익</td>
+            <td>위기 시 양(+)의 수익<br><span class="muted">위기 시기(금융위기, 코로나 등) 중 양의 수익 비율</span></td>
             <td class="text-center"></td>
             <td class="text-center">&ge; 20%</td>
             <td class="text-center">20%</td>
