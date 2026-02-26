@@ -216,28 +216,115 @@
     </tbody>
 </table>
 
-<h3>적격성 판정 기준 (4중 필터)</h3>
+<h3>점수 산정 체계</h3>
 
-<p class="muted">아래 4개 조건을 <strong>모두</strong> 충족해야 투자 적격 판정.</p>
+<p>각 항목은 <strong>2단계</strong>로 평가됩니다.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>단계</th>
+            <th style="text-align:left;">내용</th>
+            <th style="text-align:left;">설명</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="text-center">1단계</td>
+            <td>Raw Value → Score (0~10점)</td>
+            <td class="muted">각 지표를 설정된 범위 내에서 0~10점으로 선형 변환</td>
+        </tr>
+        <tr>
+            <td class="text-center">2단계</td>
+            <td>Score → PASS / WARNING / FAIL</td>
+            <td class="muted">6.0점 이상 PASS, 4.8점 이상 WARNING, 4.8점 미만 FAIL</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>주요 지표별 PASS 기준</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th style="text-align:left;">지표</th>
+            <th>Benchmark</th>
+            <th>PASS 경계 (6.0점)</th>
+            <th>점수 범위</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>연환산 수익률</td>
+            <td class="text-center mono">≥ 5%</td>
+            <td class="text-center mono">5%</td>
+            <td class="text-center muted">-4% ~ +11%</td>
+        </tr>
+        <tr>
+            <td>라이브 수익률</td>
+            <td class="text-center mono">≥ 5%</td>
+            <td class="text-center mono">5%</td>
+            <td class="text-center muted">-4% ~ +11%</td>
+        </tr>
+        <tr>
+            <td>샤프 비율</td>
+            <td class="text-center mono">≥ 0.5</td>
+            <td class="text-center mono">0.65</td>
+            <td class="text-center muted">-0.25 ~ +1.25</td>
+        </tr>
+        <tr>
+            <td>소르티노 비율</td>
+            <td class="text-center mono">≥ 0.7</td>
+            <td class="text-center mono">0.9</td>
+            <td class="text-center muted">0 ~ +1.5</td>
+        </tr>
+        <tr>
+            <td>MDD</td>
+            <td class="text-center mono">≤ 25%</td>
+            <td class="text-center mono">19%</td>
+            <td class="text-center muted">5% ~ 40%</td>
+        </tr>
+        <tr>
+            <td>변동성</td>
+            <td class="text-center mono">≤ 20%</td>
+            <td class="text-center mono">15%</td>
+            <td class="text-center muted">5% ~ 30%</td>
+        </tr>
+        <tr>
+            <td>트랙레코드</td>
+            <td class="text-center mono">≥ 3년</td>
+            <td class="text-center mono">3년</td>
+            <td class="text-center muted">1년 ~ 5년</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>적격성 판정 (4중 필터)</h3>
+
+<p>아래 4개 조건을 <strong>모두</strong> 충족해야 투자 적격 판정. 총점이 높아도 한 가지라도 위반 시 부적격.</p>
 
 <div class="filter-grid">
     <div class="filter-item">
         <div class="criterion">1. 필수항목 전체 PASS</div>
-        <div class="detail">연환산수익률, 샤프비율 등 필수 항목 중 하나라도 FAIL 시 부적격</div>
+        <div class="detail">연환산수익률, 샤프비율, MDD, 변동성 등 필수(mandatory) 항목 중 하나라도 FAIL 시 부적격</div>
     </div>
     <div class="filter-item">
         <div class="criterion">2. FAIL 항목 ≤ 3개</div>
-        <div class="detail">16개 항목 중 FAIL이 4개 이상이면 부적격</div>
+        <div class="detail">16개 항목 중 FAIL이 4개 이상이면 리스크 집중도 과다로 부적격</div>
     </div>
     <div class="filter-item">
         <div class="criterion">3. PASS 비율 ≥ 60%</div>
-        <div class="detail">16개 항목 중 PASS 비율이 60% 미만이면 부적격</div>
+        <div class="detail">16개 항목 중 10개 이상 PASS 필요. 전반적 품질 미달 시 부적격</div>
     </div>
     <div class="filter-item">
         <div class="criterion">4. 총점 ≥ 70점</div>
-        <div class="detail">가중평균 점수가 70점 미만이면 부적격</div>
+        <div class="detail">카테고리별 가중평균 점수 70점 미만이면 부적격</div>
     </div>
 </div>
+
+<blockquote class="highlight">
+    <strong>필터 효과</strong>: 총점 75점 이상이면서도 부적격 판정된 전략이 2개 존재 (CSCUD66A 76.0점, CSCUD15A 75.6점). 점수만으로는 양호하나 필수항목 FAIL로 인해 걸러진 사례로, 4중 필터가 단순 점수 기준보다 엄격하게 작동함.
+</blockquote>
 
 <h3>등급 기준</h3>
 <p><span class="grade grade-a">A</span> 80점 이상 (우수) &nbsp;
