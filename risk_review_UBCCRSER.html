@@ -53,10 +53,24 @@
             .chart-wrap { break-inside: avoid; }
             h2 { break-after: avoid; }
         }
+        .analysis-content { margin: 12px 0; }
+        .analysis-content h1 { font-size: 18px; font-weight: 700; margin: 20px 0 10px 0; padding-bottom: 5px; border-bottom: 2px solid #0d9488; color: #134e4a; }
+        .analysis-content h2 { font-size: 15px; font-weight: 700; margin: 16px 0 8px 0; padding-bottom: 4px; border-bottom: 1px solid #d1d9e0; }
+        .analysis-content h3 { font-size: 14px; font-weight: 600; margin: 14px 0 6px 0; color: #0d9488; }
+        .analysis-content h4 { font-size: 13px; font-weight: 600; margin: 10px 0 4px 0; color: #475569; }
+        .analysis-content table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 13px; }
+        .analysis-content th { background: #0d9488; color: white; padding: 7px 10px; text-align: left; font-weight: 600; }
+        .analysis-content td { padding: 6px 10px; border-bottom: 1px solid #e5e7eb; }
+        .analysis-content tr:nth-child(even) { background: #f0fdfa; }
+        .analysis-content blockquote { border-left: 3px solid #0d9488; background: #f0fdfa; padding: 8px 14px; margin: 10px 0; color: #475569; font-style: italic; }
+        .analysis-content code { background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-size: 12px; }
+        .analysis-content pre { background: #1e293b; color: #e2e8f0; padding: 14px; border-radius: 6px; overflow-x: auto; margin: 10px 0; }
+        .analysis-content pre code { background: none; padding: 0; color: inherit; }
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
 
@@ -89,6 +103,12 @@
 
 
 <div class="desc" id="description-content"></div>
+
+
+
+<!-- ===== 2-1. 심층 분석 ===== -->
+<h2>2-1. 심층 분석 (PDF 원본 기반)</h2>
+<div class="analysis-content" id="analysis-content"></div>
 
 
 
@@ -323,7 +343,7 @@
 
 
 <footer>
-    <p>QIS Fund Manager — 리스크검토의뢰서 자동 생성 | 2026-02-26 11:53:07</p>
+    <p>QIS Fund Manager — 리스크검토의뢰서 자동 생성 | 2026-02-26 17:28:30</p>
 </footer>
 
 
@@ -386,6 +406,20 @@
         c = c.replace(/<p>\s*<ul>/g, '<ul>');
         c = c.replace(/<\/ul>\s*<\/p>/g, '</ul>');
         el.innerHTML = c;
+        if (typeof renderMathInElement === 'function') {
+            renderMathInElement(el, { delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}], throwOnError: false });
+        }
+    });
+</script>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const el = document.getElementById('analysis-content');
+        if (!el) return;
+        const raw = "# UBCCRSER \u2014 UBS Skewness Curve (CRIS Curve)\n\n\u003e \uc6d0\ubcf8: `20260130_UBS CRIS-WF_ ID 53651621.pdf` (53p, 2026\ub144 2\uc6d4) \u2014 p21~28\n\u003e \ubd84\uc11d\uc77c: 2026-02-26\n\u003e \uad00\ub828 \uc804\ub7b5: [UBCIRSER](UBCIRSER.md) (Outright), [UCCIRSER](UCCIRSER.md) (UCITS Capped)\n\n---\n\n## 1. \uc804\ub7b5 \uac1c\uc694\n\nCRIS Outright\uacfc **\ub3d9\uc77c\ud55c \uc2a4\ud050 \uc2dc\uadf8\ub110**\uc744 \uc0ac\uc6a9\ud558\ub418, \ucee4\ubaa8\ub514\ud2f0 \uc790\uccb4\ub97c \ub9e4\ub9e4\ud558\ub294 \ub300\uc2e0 **\uc120\ubb3c \ucee4\ube0c \uc2a4\ud504\ub808\ub4dc(F0 vs F3/F6)**\ub97c \ub9e4\ub9e4\ud558\ub294 \uc804\ub7b5.\n\n**\ud575\uc2ec \ucc28\uc774**: Outright\uc740 \ucee4\ubaa8\ub514\ud2f0 \ubc29\ud5a5\uc131 \ubca0\ud305\uc774\uc9c0\ub9cc, Curve\ub294 \uac19\uc740 \ucee4\ubaa8\ub514\ud2f0\uc758 \uadfc\uc6d4\ubb3c\uacfc \uc6d0\uc6d4\ubb3c \uac04 \uc2a4\ud504\ub808\ub4dc\ub97c \ub9e4\ub9e4\ud558\ubbc0\ub85c \ucee4\ubaa8\ub514\ud2f0 \ubca0\ud0c0 \ub178\ucd9c\uc774 \ud6e8\uc52c \uc801\ub2e4.\n\n---\n\n## 2. \ud575\uc2ec \uba54\ucee4\ub2c8\uc998\n\n### \uc2dc\uadf8\ub110 (Outright\uacfc \ub3d9\uc77c)\n- Pearson\u0027s Moment Coefficient of Skewness (6/9/12M \ube14\ub80c\ub4dc)\n- BCOMF0 \uc778\ub371\uc2a4(\uadfc\uc6d4\ubb3c)\uc758 \uc77c\uc77c \uc218\uc775\ub960\ub85c \uc2a4\ud050 \uacc4\uc0b0\n\n### \ud2b8\ub808\uc774\ub529 \ubc29\uc2dd (Outright\uacfc \ub2e4\ub984)\n- **\ub871 \ud3ec\uc9c0\uc158**: \uc74c\uc758 \uc2a4\ud050 \ucee4\ubaa8\ub514\ud2f0 \u2192 F0 \ub9e4\uc218 / F3 or F6 \ub9e4\ub3c4 (\uadfc\uc6d4 \ub871 \uc2a4\ud504\ub808\ub4dc)\n- **\uc20f \ud3ec\uc9c0\uc158**: \uc591\uc758 \uc2a4\ud050 \ucee4\ubaa8\ub514\ud2f0 \u2192 F0 \ub9e4\ub3c4 / F3 or F6 \ub9e4\uc218 (\uadfc\uc6d4 \uc20f \uc2a4\ud504\ub808\ub4dc)\n- \uc2a4\ud504\ub808\ub4dc \ub9e4\ub9e4\uc774\ubbc0\ub85c \ubc29\ud5a5\uc131 \ub9ac\uc2a4\ud06c\uac00 \ud06c\uac8c \uc904\uc5b4\ub4e6\n\n---\n\n## 3. \ubc29\ubc95\ub860 \u2014 4\ub2e8\uacc4 \ud504\ub85c\uc138\uc2a4 (p22~23)\n\n### Step 1: \ud22c\uc790 \uc720\ub2c8\ubc84\uc2a4\n**21\uac1c** \ucee4\ubaa8\ub514\ud2f0 (Outright 24\uac1c\uc5d0\uc11c 3\uac1c \uc81c\uc678):\n- \uae08\uc18d 5\uac1c (Nickel, Lead, Aluminium, Copper, Zinc)\n- \ub18d\uc0b0\ubb3c 10\uac1c (\ub3d9\uc77c)\n- \uc5d0\ub108\uc9c0 6\uac1c (\ub3d9\uc77c)\n- **\uc81c\uc678: Gold, Silver, Platinum** \u2014 \uadc0\uae08\uc18d \ucee4\ube0c\uac00 contango \uc911\uc2ec\uc73c\ub85c \uc6c0\uc9c1\uc5ec \uc2a4\ud504\ub808\ub4dc \uc2dc\uadf8\ub110 \ubd80\uc801\ud569 (p23 \uc8fc\uc11d)\n\n### Step 2~4\n- \uc2a4\ud050 \ub7ad\ud0b9\uc740 24\uac1c \ubaa8\ub450\ub85c \uacc4\uc0b0\ud558\uc9c0\ub9cc, \uc2e4\uc81c \uc2a4\ud504\ub808\ub4dc \ud2b8\ub808\uc774\ub529\uc740 21\uac1c\ub9cc \uc218\ud589\n- \ubc84\ud0b7 \ud06c\uae30: 5\uac1c\uc529 (24/4\uac00 \uc544\ub2cc 21\uac1c \uae30\uc900)\n- \ub9ac\ubc38\ub7f0\uc2f1: \uc6d4 1\ud68c\n\n---\n\n## 4. \uc131\uacfc \ub370\uc774\ud130 (PDF \uc6d0\ubcf8, p26~27)\n\n### \uc804\uccb4 \uae30\uac04 (\ubc31\ud14c\uc2a4\ud2b8 2002~)\n\n| \uc9c0\ud45c | \uac12 |\n|------|-----|\n| \uc5f0\ud658\uc0b0 \uc218\uc775\ub960 | 3.1% |\n| \uc0e4\ud504 \ube44\uc728 | 1.00 |\n| \ubcc0\ub3d9\uc131 | ~3.1% (\uc218\uc775\ub960/\uc0e4\ud504\uc5d0\uc11c \uc5ed\uc0b0) |\n| MDD | -6.6% |\n\n- \ub370\uc774\ud130 \uae30\uc900: 2026\ub144 1\uc6d4 30\uc77c\n- \ubc31\ud14c\uc2a4\ud2b8 \uc2dc\uc791: 2002\ub144\n\n### \uc6d4\uac04 \ud1b5\uacc4 (p27)\n- \ucd5c\ub300 \uc6d4\uac04 \uc218\uc775: +10.01%\n- \ucd5c\uc18c \uc6d4\uac04 \uc218\uc775: -3.30%\n- \ud3c9\uade0 \uc6d4\uac04 \uc218\uc775: +0.19%\n- \uc0c1\uc2b9 \uc6d4 \ube44\uc728: 58%\n- \ud558\ub77d \uc6d4 \ube44\uc728: 42%\n\n### \uc5f0\ub3c4\ubcc4 \uc131\uacfc (p26)\n- **\ucd5c\uace0**: 2020\ub144 +13.19%, 2004\ub144 +7.54%, 2022\ub144 +7.83%\n- **\ucd5c\uc800**: 2013\ub144 -0.98%, 2026 YTD -0.25%\n- 25\ub144 \uc911 \uc591\uc758 \uc218\uc775 22\ub144 / \uc74c\uc758 \uc218\uc775 3\ub144 \u2014 **\ub9e4\uc6b0 \ub192\uc740 \uc591\uc758 \uc218\uc775 \ube48\ub3c4**\n\n### \uc139\ud130\ubcc4 \uae30\uc5ec (p28)\n- 20\uac1c \uac1c\ubcc4 \ucee4\ubaa8\ub514\ud2f0\ubcc4 \uc5f0\ub3c4 \uae30\uc5ec\ub3c4 \ud14c\uc774\ube14 \uc81c\uacf5\n- \uc5d0\ub108\uc9c0(\ud2b9\ud788 Natural Gas)\uc640 \ub18d\uc0b0\ubb3c\uc774 \uc8fc\uc694 \uae30\uc5ec\n\n---\n\n## 5. \uc2a4\ud050 \ud3c9\uade0\ud68c\uadc0 \uc2e4\uc99d \u2014 \ucee4\ube0c \ubc84\uc804 (p24~25)\n\n- **89%**: \uc74c\uc758 \uc2a4\ud050 \u2192 \ub2e4\uc74c \uc6d4 \uc2a4\ud504\ub808\ub4dc \ubd84\ud3ec\uc5d0\uc11c \uc591\uc758 \uc2a4\ud050\ub85c \uc804\ud658\n- **97%**: \uc591\uc758 \uc2a4\ud050 \u2192 \ub2e4\uc74c \uc6d4 \uc2a4\ud504\ub808\ub4dc \ubd84\ud3ec\uc5d0\uc11c \uc74c\uc758 \uc2a4\ud050\ub85c \uc804\ud658\n- Outright(85%/89%)\ubcf4\ub2e4 **\ub354 \ub192\uc740 \ud3c9\uade0\ud68c\uadc0 \ud655\ub960** \u2014 \ucee4\ube0c \uc2a4\ud504\ub808\ub4dc\uac00 \ub354 \uc608\uce21 \uac00\ub2a5\n\n---\n\n## 6. \ub9ac\uc2a4\ud06c \uc694\uc778\n\n1. **\uc2a4\ud050 \uc9c0\uc18d \ub9ac\uc2a4\ud06c**: Outright\uacfc \ub3d9\uc77c\ud558\uc9c0\ub9cc \uc2a4\ud504\ub808\ub4dc\uc774\ubbc0\ub85c \uc190\uc2e4 \uaddc\ubaa8 \uc81c\ud55c\uc801\n2. **\uc544\uc6c3\ub77c\uc774\uc5b4 \ud3b8\ud5a5**: \uadf9\ub2e8\uc801 \uc218\uc775\ub960\uc5d0 \uc758\ud55c \uc798\ubabb\ub41c \uc2dc\uadf8\ub110\n3. **\ub0ae\uc740 \uc808\ub300 \uc218\uc775\ub960**: \uc5f0 3.1%\ub85c \ub2e8\ub3c5 \ud22c\uc790\uc5d0\ub294 \ubd80\uc871 \u2192 \ud3ec\ud2b8\ud3f4\ub9ac\uc624 \ubd84\uc0b0 \ubaa9\uc801 \uc801\ud569\n\n---\n\n## 7. Outright vs Curve \ube44\uad50\n\n| | CRIS Outright (UBCIRSER) | CRIS Curve (UBCCRSER) |\n|---|---|---|\n| \ud2b8\ub808\uc774\ub529 | \ucee4\ubaa8\ub514\ud2f0 \ubc29\ud5a5 \ub9e4\ub9e4 | \ucee4\ube0c \uc2a4\ud504\ub808\ub4dc \ub9e4\ub9e4 |\n| \uc720\ub2c8\ubc84\uc2a4 | 24\uac1c | 21\uac1c (\uadc0\uae08\uc18d \ucee4\ube0c \uc81c\uc678) |\n| \uc218\uc775\ub960 | 8.1% | 3.1% |\n| \ubcc0\ub3d9\uc131 | 11.2% | ~3.1% |\n| \uc0e4\ud504 | 0.72 | **1.00** |\n| MDD | -21.4% | **-6.6%** |\n| \uc0c1\uc2b9\uc6d4 \ube44\uc728 | 56% | **58%** |\n| \uc591\uc758 \uc218\uc775 \uc5f0\ub3c4 | 21/27 | **22/25** |\n| \ucee4\ubaa8\ub514\ud2f0 \ubca0\ud0c0 | \uc788\uc74c (\ubcc0\ub3d9\uc801) | **\uac70\uc758 \uc5c6\uc74c** |\n\n\u2192 Curve\ub294 \ub0ae\uc740 \ubcc0\ub3d9\uc131/\ub192\uc740 \uc0e4\ud504/\ub0ae\uc740 MDD\ub85c **\uc218\ube44\uc801 \ubd84\uc0b0 \uc5ed\ud560**\uc5d0 \ucd5c\uc801\n\n---\n\n## 8. \ud22c\uc790 \uc2dc\uc0ac\uc810\n\n- **\ud3ec\ud2b8\ud3f4\ub9ac\uc624 \ubd84\uc0b0 \ud6a8\uacfc**: \ucee4\ubaa8\ub514\ud2f0 \ubca0\ud0c0 \ub178\ucd9c \uc5c6\uc774 \uc2a4\ud050 \ud504\ub9ac\ubbf8\uc5c4 \ucd94\ucd9c\n- **Outright\uacfc\uc758 \ubcf4\uc644\uc131**: \ub3d9\uc77c \uc2dc\uadf8\ub110\uc774\uc9c0\ub9cc \ub9ac\uc2a4\ud06c \ud504\ub85c\ud544\uc774 \uc644\uc804\ud788 \ub2e4\ub984\n- **\uc548\uc815\uc801 \uc218\uc775 \ud504\ub85c\ud544**: 25\ub144 \uc911 22\ub144 \uc591\uc758 \uc218\uc775, MDD -6.6%\n- **\ub2e8\ub3c5 \ud22c\uc790\ubcf4\ub2e4 \uc870\ud569 \uc801\ud569**: \uc808\ub300 \uc218\uc775\ub960 3.1%\ub294 \ub2e8\ub3c5\uc73c\ub85c \ub9e4\ub825 \ubd80\uc871, \ub808\ubc84\ub9ac\uc9c0 \ub610\ub294 \ub2e4\ub978 \uc804\ub7b5\uacfc \uc870\ud569 \uc2dc \uac00\uce58 \uadf9\ub300\ud654\n- **\uc139\ud130\ubcc4 \ubd84\uc0b0 \ud6a8\uacfc**: \ud3ec\ud2b8\ud3f4\ub9ac\uc624 \ub808\ubca8\uc5d0\uc11c \ub3cc\ub9b4 \ub54c \uc139\ud130 \ud569\ubcf4\ub2e4 \ub354 \ub098\uc740 \uc131\uacfc (p29~30)\n";
+        el.innerHTML = marked.parse(raw);
         if (typeof renderMathInElement === 'function') {
             renderMathInElement(el, { delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}], throwOnError: false });
         }
