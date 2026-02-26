@@ -39,30 +39,6 @@
         blockquote.highlight { border-left-color: #667eea; }
         blockquote.pass { border-left-color: #1a7f37; }
 
-        /* Summary Boxes */
-        .summary-boxes {
-            display: flex;
-            gap: 12px;
-            margin: 12px 0;
-        }
-        .summary-box {
-            flex: 1;
-            text-align: center;
-            padding: 16px 8px;
-            border-radius: 8px;
-            border: 1px solid #d1d9e0;
-        }
-        .summary-box .big { font-size: 28px; font-weight: 700; font-family: 'SFMono-Regular', Consolas, monospace; }
-        .summary-box .label { font-size: 12px; color: #656d76; margin-top: 4px; }
-        .box-blue { background: #dbeafe; border-color: #93c5fd; }
-        .box-blue .big { color: #1d4ed8; }
-        .box-green { background: #dcfce7; border-color: #86efac; }
-        .box-green .big { color: #15803d; }
-        .box-red { background: #fee2e2; border-color: #fca5a5; }
-        .box-red .big { color: #b91c1c; }
-        .box-purple { background: #f3e8ff; border-color: #c4b5fd; }
-        .box-purple .big { color: #7c3aed; }
-
         /* Tables */
         table {
             width: 100%;
@@ -195,32 +171,14 @@
 <!-- ===== 1. 검토 현황 요약 ===== -->
 <h2>1. 검토 현황 요약</h2>
 
-<div class="summary-boxes">
-    <div class="summary-box box-blue">
-        <div class="big">38</div>
-        <div class="label">등록 전략</div>
-    </div>
-    <div class="summary-box box-purple">
-        <div class="big">33</div>
-        <div class="label">평가 완료</div>
-    </div>
-    <div class="summary-box box-green">
-        <div class="big">4</div>
-        <div class="label">투자 적격</div>
-    </div>
-    <div class="summary-box box-red">
-        <div class="big">12.1%</div>
-        <div class="label">적격률</div>
-    </div>
-</div>
-
-<p class="muted" style="margin-top:8px;">3개 투자은행(UBS, Morgan Stanley, Citi)의 QIS 전략을 체계적으로 평가하여 투자 적격 전략을 선별하였음.</p>
+<p>3개 투자은행(UBS, Morgan Stanley, Citi)의 QIS 전략을 체계적으로 평가하여 투자 적격 전략을 선별하였음.</p>
 
 <div class="row" style="margin-top:10px;">
     <p class="kv"><strong>등록 전략</strong>: 38개 (UBS 20, Morgan Stanley 9, Citi 9)</p>
     <p class="kv"><strong>제외 전략</strong>: 2개 (모자이크 전략, 오버피팅 위험)</p>
     <p class="kv"><strong>평가 완료</strong>: 33개 (16개 항목 체크리스트 기반)</p>
     <p class="kv"><strong>미평가</strong>: 3개 (가격 데이터 미수집)</p>
+    <p class="kv"><strong>투자 적격</strong>: <span class="positive">4개</span> (적격률 12.1%)</p>
 </div>
 
 
