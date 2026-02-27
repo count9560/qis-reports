@@ -1663,7 +1663,7 @@
     <!-- Header -->
     <div class="report-header">
         <h1>QIS Strategy Comparison Report</h1>
-        <p class="subtitle">31 Strategies Evaluated | 2026-02-27 16:03</p>
+        <p class="subtitle">31 Strategies Evaluated | 2026-02-27 16:07</p>
         <p style="margin-top:10px;">
             <a href="qis_progress_report.html" style="display:inline-block; padding:6px 16px; background:#667eea; color:#fff; text-decoration:none; border-radius:6px; font-size:13px; font-weight:600;">투자 진행현황 보고서 (2026-02-26)</a>
         </p>
@@ -2146,7 +2146,7 @@
                 
                     
                     
-                    <tr data-issuer="UBS" data-styles="Momentum">
+                    <tr data-issuer="UBS" data-styles="Skew">
                         <td class="rank-cell rank-2">
                             #2
                         </td>
@@ -2154,12 +2154,12 @@
                             <strong>UCCIRSER</strong>
                         </td>
                         <td>UBS Commodity Realized-Skewness Capped (CRIS UCITS)</td>
-                        <td style="font-size: 11px; color: #555; line-height: 1.4;">UCITS-compliant capped version of CRIS Outright. Same Pearson skewness signal with 35% max / 20% target single commodity caps applied to long and short legs independently.</td>
+                        <td style="font-size: 11px; color: #555; line-height: 1.4;">CRIS Outright(UBCIRSER)의 UCITS 규정 준수 버전. 동일한 피어슨 스큐 시그널에 35/20 캡핑 규칙 적용. 단일 커모디티 집중도 제한으로 MDD 개선(-20.3%). 샤프비율 0.72 동일, 연환산 수익률 7.4%.</td>
                         <td style="font-size: 11px; color: #666;">Commodity Skew</td>
                         <td>
                             <div class="style-badges-wrap">
                             
-                                <span class="style-badge" style="background: #007bff;">Momentum</span>
+                                <span class="style-badge" style="background: #6c757d;">Skew</span>
                             
                             </div>
                         </td>
@@ -2203,7 +2203,7 @@
                 
                     
                     
-                    <tr data-issuer="UBS" data-styles="Curve">
+                    <tr data-issuer="UBS" data-styles="Skew">
                         <td class="rank-cell rank-3">
                             #3
                         </td>
@@ -2211,12 +2211,12 @@
                             <strong>UBCIRSER</strong>
                         </td>
                         <td>UBS Commodity Relative-Skewness (CRIS)</td>
-                        <td style="font-size: 11px; color: #555; line-height: 1.4;">Long/short commodity skewness strategy. Long low-skew, short high-skew commodities across 24 BCOM universe. Monthly rebalance.</td>
+                        <td style="font-size: 11px; color: #555; line-height: 1.4;">커모디티 실현 스큐니스 기반 롱/숏 전략. 24개 BCOM 커모디티의 피어슨 스큐를 6/9/12개월 블렌드로 측정, 음의 스큐(Q1) 매수 / 양의 스큐(Q4) 매도. 월간 리밸런싱(10일 분산). 연환산 수익률 8.1%, 샤프비율 0.72.</td>
                         <td style="font-size: 11px; color: #666;">Commodity Skew</td>
                         <td>
                             <div class="style-badges-wrap">
                             
-                                <span class="style-badge" style="background: #e6a800;">Curve</span>
+                                <span class="style-badge" style="background: #6c757d;">Skew</span>
                             
                             </div>
                         </td>
@@ -2551,7 +2551,7 @@
                 
                     
                     
-                    <tr data-issuer="UBS" data-styles="Curve">
+                    <tr data-issuer="UBS" data-styles="Curve,Skew">
                         <td class="rank-cell ">
                             #9
                         </td>
@@ -2559,12 +2559,14 @@
                             <strong>UBCCRSER</strong>
                         </td>
                         <td>UBS Skewness Curve</td>
-                        <td style="font-size: 11px; color: #555; line-height: 1.4;">실현 스큐니스 기반 밸류 전략. 피어슨 스큐 계수로 21개 원자재 순위화. 스큐 최저 롱 / 스큐 최고 숏. Selective Hedging 이론 기반 과대/과소평가 포착. 연환산 수익률 3.20%, 샤프비율 1.01.</td>
+                        <td style="font-size: 11px; color: #555; line-height: 1.4;">커모디티 실현 스큐니스 기반 커브 스프레드 전략. 21개 BCOM 커모디티(귀금속 제외)의 피어슨 스큐로 순위화, 음의 스큐 롱 / 양의 스큐 숏 커브 스프레드(F0 vs F3/F6) 구성. 연환산 수익률 3.1%, 샤프비율 1.00.</td>
                         <td style="font-size: 11px; color: #666;">Commodity Curve</td>
                         <td>
                             <div class="style-badges-wrap">
                             
                                 <span class="style-badge" style="background: #e6a800;">Curve</span>
+                            
+                                <span class="style-badge" style="background: #6c757d;">Skew</span>
                             
                             </div>
                         </td>
@@ -4778,7 +4780,7 @@
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
                                         <div style="margin-top: 4px;">
                                             
-                                            <span class="style-badge" style="background: #007bff;">Momentum</span>
+                                            <span class="style-badge" style="background: #6c757d;">Skew</span>
                                             
                                             
                                             
@@ -4799,7 +4801,7 @@
                                 </div>
                                 
                                 <div style="font-size: 11px; color: #555; line-height: 1.5; margin: 10px 0; padding: 8px; background: #f8f9fa; border-radius: 6px; border-left: 3px solid #667eea;">
-                                    UCITS-compliant capped version of CRIS Outright. Same Pearson skewness signal with 35% max / 20% target single commodity caps applied to long and shor...
+                                    CRIS Outright(UBCIRSER)의 UCITS 규정 준수 버전. 동일한 피어슨 스큐 시그널에 35/20 캡핑 규칙 적용. 단일 커모디티 집중도 제한으로 MDD 개선(-20.3%). 샤프비율 0.72 동일, 연환산 수익률 7.4%.
                                 </div>
                                 
                                 <div class="mini-card-metrics">
@@ -4848,7 +4850,7 @@
                                         <div style="font-size: 10px; color: #888; margin-top: 3px;">UBS</div>
                                         <div style="margin-top: 4px;">
                                             
-                                            <span class="style-badge" style="background: #e6a800;">Curve</span>
+                                            <span class="style-badge" style="background: #6c757d;">Skew</span>
                                             
                                             
                                             
@@ -4869,7 +4871,7 @@
                                 </div>
                                 
                                 <div style="font-size: 11px; color: #555; line-height: 1.5; margin: 10px 0; padding: 8px; background: #f8f9fa; border-radius: 6px; border-left: 3px solid #667eea;">
-                                    Long/short commodity skewness strategy. Long low-skew, short high-skew commodities across 24 BCOM universe. Monthly rebalance.
+                                    커모디티 실현 스큐니스 기반 롱/숏 전략. 24개 BCOM 커모디티의 피어슨 스큐를 6/9/12개월 블렌드로 측정, 음의 스큐(Q1) 매수 / 양의 스큐(Q4) 매도. 월간 리밸런싱(10일 분산). 연환산 수익률 8.1%, 샤프비율 0.72.
                                 </div>
                                 
                                 <div class="mini-card-metrics">
@@ -5296,6 +5298,8 @@
                                             
                                             <span class="style-badge" style="background: #e6a800;">Curve</span>
                                             
+                                            <span class="style-badge" style="background: #6c757d;">Skew</span>
+                                            
                                             
                                             
                                             
@@ -5315,7 +5319,7 @@
                                 </div>
                                 
                                 <div style="font-size: 11px; color: #555; line-height: 1.5; margin: 10px 0; padding: 8px; background: #f8f9fa; border-radius: 6px; border-left: 3px solid #667eea;">
-                                    실현 스큐니스 기반 밸류 전략. 피어슨 스큐 계수로 21개 원자재 순위화. 스큐 최저 롱 / 스큐 최고 숏. Selective Hedging 이론 기반 과대/과소평가 포착. 연환산 수익률 3.20%, 샤프비율 1.01.
+                                    커모디티 실현 스큐니스 기반 커브 스프레드 전략. 21개 BCOM 커모디티(귀금속 제외)의 피어슨 스큐로 순위화, 음의 스큐 롱 / 양의 스큐 숏 커브 스프레드(F0 vs F3/F6) 구성. 연환산 수익률 3.1%, 샤프비율 1.00.
                                 </div>
                                 
                                 <div class="mini-card-metrics">
@@ -6493,7 +6497,7 @@
                 
                 <div style="background: #f8f9fa; padding: 12px 15px; border-radius: 8px; margin-bottom: 15px; border-left: 3px solid #667eea;">
                     <div style="font-size: 12px; line-height: 1.7; color: #495057;">
-                        UCITS-compliant capped version of CRIS Outright. Same Pearson skewness signal with 35% max / 20% target single commodity caps applied to long and short legs independently.
+                        CRIS Outright(UBCIRSER)의 UCITS 규정 준수 버전. 동일한 피어슨 스큐 시그널에 35/20 캡핑 규칙 적용. 단일 커모디티 집중도 제한으로 MDD 개선(-20.3%). 샤프비율 0.72 동일, 연환산 수익률 7.4%.
                     </div>
                     <div style="margin-top: 10px; display: flex; gap: 8px; justify-content: flex-end; flex-wrap: wrap;">
                         <a href="risk_review_UCCIRSER.html" target="_blank" style="background: linear-gradient(135deg, #e67e22, #d35400); color: white; border: none; padding: 6px 14px; border-radius: 20px; font-size: 11px; cursor: pointer; font-weight: 600; box-shadow: 0 2px 8px rgba(230,126,34,0.3); text-decoration: none; display: inline-block;">
@@ -6601,7 +6605,7 @@
                 
                 <div style="background: #f8f9fa; padding: 12px 15px; border-radius: 8px; margin-bottom: 15px; border-left: 3px solid #667eea;">
                     <div style="font-size: 12px; line-height: 1.7; color: #495057;">
-                        Long/short commodity skewness strategy. Long low-skew, short high-skew commodities across 24 BCOM universe. Monthly rebalance.
+                        커모디티 실현 스큐니스 기반 롱/숏 전략. 24개 BCOM 커모디티의 피어슨 스큐를 6/9/12개월 블렌드로 측정, 음의 스큐(Q1) 매수 / 양의 스큐(Q4) 매도. 월간 리밸런싱(10일 분산). 연환산 수익률 8.1%, 샤프비율 0.72.
                     </div>
                     <div style="margin-top: 10px; display: flex; gap: 8px; justify-content: flex-end; flex-wrap: wrap;">
                         <a href="risk_review_UBCIRSER.html" target="_blank" style="background: linear-gradient(135deg, #e67e22, #d35400); color: white; border: none; padding: 6px 14px; border-radius: 20px; font-size: 11px; cursor: pointer; font-weight: 600; box-shadow: 0 2px 8px rgba(230,126,34,0.3); text-decoration: none; display: inline-block;">
@@ -7215,7 +7219,7 @@
                 
                 <div style="background: #f8f9fa; padding: 12px 15px; border-radius: 8px; margin-bottom: 15px; border-left: 3px solid #667eea;">
                     <div style="font-size: 12px; line-height: 1.7; color: #495057;">
-                        실현 스큐니스 기반 밸류 전략. 피어슨 스큐 계수로 21개 원자재 순위화. 스큐 최저 롱 / 스큐 최고 숏. Selective Hedging 이론 기반 과대/과소평가 포착. 연환산 수익률 3.20%, 샤프비율 1.01.
+                        커모디티 실현 스큐니스 기반 커브 스프레드 전략. 21개 BCOM 커모디티(귀금속 제외)의 피어슨 스큐로 순위화, 음의 스큐 롱 / 양의 스큐 숏 커브 스프레드(F0 vs F3/F6) 구성. 연환산 수익률 3.1%, 샤프비율 1.00.
                     </div>
                     <div style="margin-top: 10px; display: flex; gap: 8px; justify-content: flex-end; flex-wrap: wrap;">
                         <a href="risk_review_UBCCRSER.html" target="_blank" style="background: linear-gradient(135deg, #e67e22, #d35400); color: white; border: none; padding: 6px 14px; border-radius: 20px; font-size: 11px; cursor: pointer; font-weight: 600; box-shadow: 0 2px 8px rgba(230,126,34,0.3); text-decoration: none; display: inline-block;">
@@ -9562,7 +9566,7 @@
                     
                     
                     
-                    <option value="11" title="실현 스큐니스 기반 밸류 전략. 피어슨 스큐 계수로 21개 원자재 순위화. 스큐 최저 롱 / 스큐 최고 숏. Selective Hedging 이론 기반 과대/과소평가 포착. 연환산 수익률 3.20%, 샤프비율 1.01.">UBCCRSER - UBS Skewness Curve | 실현 스큐니스 기반 밸류 전략. 피어슨 스큐 계수로 21개 원자재 순위화. 스큐 최저 롱 ...</option>
+                    <option value="11" title="커모디티 실현 스큐니스 기반 커브 스프레드 전략. 21개 BCOM 커모디티(귀금속 제외)의 피어슨 스큐로 순위화, 음의 스큐 롱 / 양의 스큐 숏 커브 스프레드(F0 vs F3/F6) 구성. 연환산 수익률 3.1%, 샤프비율 1.00.">UBCCRSER - UBS Skewness Curve | 커모디티 실현 스큐니스 기반 커브 스프레드 전략. 21개 BCOM 커모디티(귀금속 제외)의...</option>
                     
                     
                     
@@ -9622,7 +9626,7 @@
                     
                     
                     
-                    <option value="23" title="UCITS-compliant capped version of CRIS Outright. Same Pearson skewness signal with 35% max / 20% target single commodity caps applied to long and short legs independently.">UCCIRSER - UBS Commodity Realized-Skewness Capped (CRIS UCITS) | UCITS-compliant capped version of CRIS Outright. S...</option>
+                    <option value="23" title="CRIS Outright(UBCIRSER)의 UCITS 규정 준수 버전. 동일한 피어슨 스큐 시그널에 35/20 캡핑 규칙 적용. 단일 커모디티 집중도 제한으로 MDD 개선(-20.3%). 샤프비율 0.72 동일, 연환산 수익률 7.4%.">UCCIRSER - UBS Commodity Realized-Skewness Capped (CRIS UCITS) | CRIS Outright(UBCIRSER)의 UCITS 규정 준수 버전. 동일한 피어슨 스...</option>
                     
                     
                     
@@ -9647,7 +9651,7 @@
                     
                     
                     
-                    <option value="28" title="Long/short commodity skewness strategy. Long low-skew, short high-skew commodities across 24 BCOM universe. Monthly rebalance.">UBCIRSER - UBS Commodity Relative-Skewness (CRIS) | Long/short commodity skewness strategy. Long low-s...</option>
+                    <option value="28" title="커모디티 실현 스큐니스 기반 롱/숏 전략. 24개 BCOM 커모디티의 피어슨 스큐를 6/9/12개월 블렌드로 측정, 음의 스큐(Q1) 매수 / 양의 스큐(Q4) 매도. 월간 리밸런싱(10일 분산). 연환산 수익률 8.1%, 샤프비율 0.72.">UBCIRSER - UBS Commodity Relative-Skewness (CRIS) | 커모디티 실현 스큐니스 기반 롱/숏 전략. 24개 BCOM 커모디티의 피어슨 스큐를 6/9...</option>
                     
                     
                     
@@ -9726,7 +9730,7 @@
                     
                     
                     
-                    <option value="11" title="실현 스큐니스 기반 밸류 전략. 피어슨 스큐 계수로 21개 원자재 순위화. 스큐 최저 롱 / 스큐 최고 숏. Selective Hedging 이론 기반 과대/과소평가 포착. 연환산 수익률 3.20%, 샤프비율 1.01.">UBCCRSER - UBS Skewness Curve | 실현 스큐니스 기반 밸류 전략. 피어슨 스큐 계수로 21개 원자재 순위화. 스큐 최저 롱 ...</option>
+                    <option value="11" title="커모디티 실현 스큐니스 기반 커브 스프레드 전략. 21개 BCOM 커모디티(귀금속 제외)의 피어슨 스큐로 순위화, 음의 스큐 롱 / 양의 스큐 숏 커브 스프레드(F0 vs F3/F6) 구성. 연환산 수익률 3.1%, 샤프비율 1.00.">UBCCRSER - UBS Skewness Curve | 커모디티 실현 스큐니스 기반 커브 스프레드 전략. 21개 BCOM 커모디티(귀금속 제외)의...</option>
                     
                     
                     
@@ -9786,7 +9790,7 @@
                     
                     
                     
-                    <option value="23" title="UCITS-compliant capped version of CRIS Outright. Same Pearson skewness signal with 35% max / 20% target single commodity caps applied to long and short legs independently.">UCCIRSER - UBS Commodity Realized-Skewness Capped (CRIS UCITS) | UCITS-compliant capped version of CRIS Outright. S...</option>
+                    <option value="23" title="CRIS Outright(UBCIRSER)의 UCITS 규정 준수 버전. 동일한 피어슨 스큐 시그널에 35/20 캡핑 규칙 적용. 단일 커모디티 집중도 제한으로 MDD 개선(-20.3%). 샤프비율 0.72 동일, 연환산 수익률 7.4%.">UCCIRSER - UBS Commodity Realized-Skewness Capped (CRIS UCITS) | CRIS Outright(UBCIRSER)의 UCITS 규정 준수 버전. 동일한 피어슨 스...</option>
                     
                     
                     
@@ -9811,7 +9815,7 @@
                     
                     
                     
-                    <option value="28" title="Long/short commodity skewness strategy. Long low-skew, short high-skew commodities across 24 BCOM universe. Monthly rebalance.">UBCIRSER - UBS Commodity Relative-Skewness (CRIS) | Long/short commodity skewness strategy. Long low-s...</option>
+                    <option value="28" title="커모디티 실현 스큐니스 기반 롱/숏 전략. 24개 BCOM 커모디티의 피어슨 스큐를 6/9/12개월 블렌드로 측정, 음의 스큐(Q1) 매수 / 양의 스큐(Q4) 매도. 월간 리밸런싱(10일 분산). 연환산 수익률 8.1%, 샤프비율 0.72.">UBCIRSER - UBS Commodity Relative-Skewness (CRIS) | 커모디티 실현 스큐니스 기반 롱/숏 전략. 24개 BCOM 커모디티의 피어슨 스큐를 6/9...</option>
                     
                     
                     
@@ -76457,7 +76461,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>Generated by QIS Fund Manager | 2026-02-27 16:03:55</p>
+        <p>Generated by QIS Fund Manager | 2026-02-27 16:07:24</p>
     </footer>
 
     <!-- Price Chart Initialization -->
@@ -77580,13 +77584,13 @@
         'UCCIRSER': {
             ticker: 'UCCIRSER',
             name: 'UBS Commodity Realized-Skewness Capped (CRIS UCITS)',
-            description: 'UCITS-compliant capped version of CRIS Outright. Same Pearson skewness signal with 35% max / 20% target single commodity caps applied to long and short legs independently.',
+            description: 'CRIS Outright(UBCIRSER)의 UCITS 규정 준수 버전. 동일한 피어슨 스큐 시그널에 35/20 캡핑 규칙 적용. 단일 커모디티 집중도 제한으로 MDD 개선(-20.3%). 샤프비율 0.72 동일, 연환산 수익률 7.4%.',
             strategy_type: '',
             issuer: 'UBS',
             grade: 'B+',
             score: 79.17397819585753,
             is_eligible: true,
-            style_labels: ['Momentum'],
+            style_labels: ['Skew'],
             ref_corr: { primary: 'S&amp;P GSCI', corr: 0.66 }
         },
         
@@ -77595,13 +77599,13 @@
         'UBCIRSER': {
             ticker: 'UBCIRSER',
             name: 'UBS Commodity Relative-Skewness (CRIS)',
-            description: 'Long/short commodity skewness strategy. Long low-skew, short high-skew commodities across 24 BCOM universe. Monthly rebalance.',
+            description: '커모디티 실현 스큐니스 기반 롱/숏 전략. 24개 BCOM 커모디티의 피어슨 스큐를 6/9/12개월 블렌드로 측정, 음의 스큐(Q1) 매수 / 양의 스큐(Q4) 매도. 월간 리밸런싱(10일 분산). 연환산 수익률 8.1%, 샤프비율 0.72.',
             strategy_type: '',
             issuer: 'UBS',
             grade: 'B+',
             score: 78.26858878873279,
             is_eligible: true,
-            style_labels: ['Curve'],
+            style_labels: ['Skew'],
             ref_corr: { primary: 'S&amp;P GSCI', corr: 0.60 }
         },
         
@@ -77685,13 +77689,13 @@
         'UBCCRSER': {
             ticker: 'UBCCRSER',
             name: 'UBS Skewness Curve',
-            description: '실현 스큐니스 기반 밸류 전략. 피어슨 스큐 계수로 21개 원자재 순위화. 스큐 최저 롱 / 스큐 최고 숏. Selective Hedging 이론 기반 과대/과소평가 포착. 연환산 수익률 3.20%, 샤프비율 1.01.',
+            description: '커모디티 실현 스큐니스 기반 커브 스프레드 전략. 21개 BCOM 커모디티(귀금속 제외)의 피어슨 스큐로 순위화, 음의 스큐 롱 / 양의 스큐 숏 커브 스프레드(F0 vs F3/F6) 구성. 연환산 수익률 3.1%, 샤프비율 1.00.',
             strategy_type: '',
             issuer: 'UBS',
             grade: 'F',
             score: 73.04516589933996,
             is_eligible: false,
-            style_labels: ['Curve'],
+            style_labels: ['Curve', 'Skew'],
             ref_corr: { primary: 'Brent Crude', corr: 0.56 }
         },
         
