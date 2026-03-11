@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>투자 진행현황 보고서 목록</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f4f6f9; min-height: 100vh; }
+        .container { max-width: 700px; margin: 0 auto; padding: 40px 20px; }
+        .header { text-align: center; margin-bottom: 30px; }
+        .header h1 { font-size: 24px; color: #1a1a2e; margin-bottom: 8px; }
+        .header p { font-size: 14px; color: #6c757d; }
+        .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; }
+        table { width: 100%; border-collapse: collapse; }
+        th { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; padding: 14px 20px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; text-align: left; }
+        th:last-child { text-align: right; }
+        tr { border-bottom: 1px solid #f0f0f0; transition: background 0.15s; }
+        tr:last-child { border-bottom: none; }
+        .back-link { display: inline-block; margin-top: 20px; color: #667eea; text-decoration: none; font-size: 13px; font-weight: 600; }
+        .back-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>투자 진행현황 보고서</h1>
+            <p>총 1건의 보고서가 있습니다</p>
+        </div>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:60px;">#</th>
+                        <th>작성일</th>
+                        <th style="text-align:right;width:120px;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+        <tr style="cursor:pointer;" onclick="window.location.href='qis_progress_report_20260226.html'" onmouseover="this.style.background='#f0f4ff'" onmouseout="this.style.background=''">
+            <td style="padding:14px 20px;font-size:14px;color:#495057;">1</td>
+            <td style="padding:14px 20px;font-size:14px;font-weight:600;color:#2c3e50;">2026-02-26<span style="background:#059669;color:#fff;padding:2px 8px;border-radius:10px;font-size:11px;margin-left:8px;">최신</span></td>
+            <td style="padding:14px 20px;text-align:right;">
+                <a href="qis_progress_report_20260226.html" style="color:#667eea;text-decoration:none;font-weight:600;font-size:13px;">보고서 보기 →</a>
+            </td>
+        </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="text-align:center;">
+            <a href="batch_report_latest.html" class="back-link">← 전략 비교 보고서로 돌아가기</a>
+        </div>
+    </div>
+</body>
+</html>
