@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QIS 보고서 목록</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f4f6f9; min-height: 100vh; }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        .header { text-align: center; margin-bottom: 30px; }
+        .header h1 { font-size: 24px; color: #1a1a2e; margin-bottom: 8px; }
+        .header p { font-size: 14px; color: #6c757d; }
+        .tab-bar { display: flex; gap: 8px; margin-bottom: 16px; justify-content: center; }
+        .tab-btn { padding: 8px 20px; border: 2px solid #dee2e6; border-radius: 20px; background: #fff; cursor: pointer; font-size: 13px; font-weight: 600; color: #6c757d; transition: all 0.2s; }
+        .tab-btn.active { border-color: #667eea; color: #667eea; background: #f0f4ff; }
+        .tab-btn:hover { border-color: #667eea; }
+        .tab-btn .count { font-size: 11px; background: #e9ecef; padding: 1px 6px; border-radius: 8px; margin-left: 4px; }
+        .tab-btn.active .count { background: #667eea; color: #fff; }
+        .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; }
+        table { width: 100%; border-collapse: collapse; }
+        th { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; padding: 12px 16px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; text-align: left; }
+        th:last-child { text-align: right; }
+        tr { border-bottom: 1px solid #f0f0f0; transition: background 0.15s; }
+        tr:last-child { border-bottom: none; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .back-link { display: inline-block; margin-top: 20px; color: #667eea; text-decoration: none; font-size: 13px; font-weight: 600; }
+        .back-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>QIS 보고서</h1>
+            <p>총 2건의 보고서</p>
+        </div>
+        <div class="tab-bar">
+            <button class="tab-btn active" onclick="switchReportTab('all')">전체 <span class="count">2</span></button>
+            <button class="tab-btn" onclick="switchReportTab('price')">가격 업데이트 <span class="count">1</span></button>
+            <button class="tab-btn" onclick="switchReportTab('progress')">투자 진행현황 <span class="count">1</span></button>
+        </div>
+
+        <div id="tab-all" class="tab-content active">
+            <div class="card">
+                <table>
+                    <thead><tr><th>작성일</th><th>유형</th><th style="text-align:right;width:80px;"></th></tr></thead>
+                    <tbody>        <tr style="cursor:pointer;" onclick="window.location.href='price_update_20260403.html'" onmouseover="this.style.background='#f0f4ff'" onmouseout="this.style.background=''">
+            <td style="padding:12px 16px;font-size:14px;font-weight:600;color:#2c3e50;">2026-04-03<span style="background:#059669;color:#fff;padding:2px 8px;border-radius:10px;font-size:11px;margin-left:8px;">최신</span></td>
+            <td style="padding:12px 16px;"><span style="background:#e67e22;color:#fff;padding:2px 8px;border-radius:8px;font-size:10px;">가격 업데이트</span></td>
+            <td style="padding:12px 16px;text-align:right;">
+                <a href="price_update_20260403.html" style="color:#667eea;text-decoration:none;font-weight:600;font-size:13px;">보기 →</a>
+            </td>
+        </tr>
+        <tr style="cursor:pointer;" onclick="window.location.href='qis_progress_report_20260226.html'" onmouseover="this.style.background='#f0f4ff'" onmouseout="this.style.background=''">
+            <td style="padding:12px 16px;font-size:14px;font-weight:600;color:#2c3e50;">2026-02-26</td>
+            <td style="padding:12px 16px;"><span style="background:#667eea;color:#fff;padding:2px 8px;border-radius:8px;font-size:10px;">진행현황</span></td>
+            <td style="padding:12px 16px;text-align:right;">
+                <a href="qis_progress_report_20260226.html" style="color:#667eea;text-decoration:none;font-weight:600;font-size:13px;">보기 →</a>
+            </td>
+        </tr>
+</tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="tab-price" class="tab-content">
+            <div class="card">
+                <table>
+                    <thead><tr><th>작성일</th><th>유형</th><th style="text-align:right;width:80px;"></th></tr></thead>
+                    <tbody>        <tr style="cursor:pointer;" onclick="window.location.href='price_update_20260403.html'" onmouseover="this.style.background='#f0f4ff'" onmouseout="this.style.background=''">
+            <td style="padding:12px 16px;font-size:14px;font-weight:600;color:#2c3e50;">2026-04-03<span style="background:#059669;color:#fff;padding:2px 8px;border-radius:10px;font-size:11px;margin-left:8px;">최신</span></td>
+            <td style="padding:12px 16px;"><span style="background:#e67e22;color:#fff;padding:2px 8px;border-radius:8px;font-size:10px;">가격 업데이트</span></td>
+            <td style="padding:12px 16px;text-align:right;">
+                <a href="price_update_20260403.html" style="color:#667eea;text-decoration:none;font-weight:600;font-size:13px;">보기 →</a>
+            </td>
+        </tr>
+</tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="tab-progress" class="tab-content">
+            <div class="card">
+                <table>
+                    <thead><tr><th>작성일</th><th>유형</th><th style="text-align:right;width:80px;"></th></tr></thead>
+                    <tbody>        <tr style="cursor:pointer;" onclick="window.location.href='qis_progress_report_20260226.html'" onmouseover="this.style.background='#f0f4ff'" onmouseout="this.style.background=''">
+            <td style="padding:12px 16px;font-size:14px;font-weight:600;color:#2c3e50;">2026-02-26<span style="background:#059669;color:#fff;padding:2px 8px;border-radius:10px;font-size:11px;margin-left:8px;">최신</span></td>
+            <td style="padding:12px 16px;"><span style="background:#667eea;color:#fff;padding:2px 8px;border-radius:8px;font-size:10px;">진행현황</span></td>
+            <td style="padding:12px 16px;text-align:right;">
+                <a href="qis_progress_report_20260226.html" style="color:#667eea;text-decoration:none;font-weight:600;font-size:13px;">보기 →</a>
+            </td>
+        </tr>
+</tbody>
+                </table>
+            </div>
+        </div>
+
+        <div style="text-align:center;">
+            <a href="batch_report_latest.html" class="back-link">← 전략 비교 보고서로 돌아가기</a>
+        </div>
+    </div>
+    <script>
+    function switchReportTab(tab) {
+        document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+        document.getElementById('tab-' + tab).classList.add('active');
+        event.target.closest('.tab-btn').classList.add('active');
+    }
+    </script>
+</body>
+</html>
