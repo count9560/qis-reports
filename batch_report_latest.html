@@ -1752,7 +1752,7 @@
     <!-- Header -->
     <div class="report-header">
         <h1>QIS Strategy Comparison Report</h1>
-        <p class="subtitle">27 Strategies Evaluated | 2026-04-06 10:03</p>
+        <p class="subtitle">27 Strategies Evaluated | 2026-04-06 10:07</p>
         <p style="margin-top:10px;">
             <a href="reports.html" style="display:inline-block; padding:6px 16px; background:#667eea; color:#fff; text-decoration:none; border-radius:6px; font-size:13px; font-weight:600;">📋 보고서</a>
         </p>
@@ -2164,6 +2164,176 @@
             
         </div>
 
+        <!-- Asset Class Filter Row (visible in 전체 tab) -->
+        <div id="asset-filter-row" class="category-tabs" style="margin-top: 6px; gap: 6px;">
+            <button class="issuer-tab active" data-asset="all" onclick="filterByAsset('all')" style="font-size: 12px; padding: 4px 12px;">
+                Asset: 전체
+            </button>
+            
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+                
+                
+                    
+                
+            
+            
+            <button class="issuer-tab" data-asset="Equity" onclick="filterByAsset('Equity')" style="font-size: 12px; padding: 4px 12px;">
+                Equity <span class="tab-count" style="font-size: 10px;">10</span>
+            </button>
+            
+            <button class="issuer-tab" data-asset="Fixed Income" onclick="filterByAsset('Fixed Income')" style="font-size: 12px; padding: 4px 12px;">
+                Fixed Income <span class="tab-count" style="font-size: 10px;">2</span>
+            </button>
+            
+            <button class="issuer-tab" data-asset="FX" onclick="filterByAsset('FX')" style="font-size: 12px; padding: 4px 12px;">
+                FX <span class="tab-count" style="font-size: 10px;">1</span>
+            </button>
+            
+            <button class="issuer-tab" data-asset="Multi-Asset" onclick="filterByAsset('Multi-Asset')" style="font-size: 12px; padding: 4px 12px;">
+                Multi-Asset <span class="tab-count" style="font-size: 10px;">14</span>
+            </button>
+            
+        </div>
+
+        <!-- Dimension Group View Toggle -->
+        <div id="dimension-view-row" style="margin-top: 8px; display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 12px; color: #6c757d; font-weight: 600;">Group by:</span>
+            <button class="issuer-tab active" data-groupby="none" onclick="toggleGroupView('none')" style="font-size: 11px; padding: 3px 10px;">없음</button>
+            <button class="issuer-tab" data-groupby="asset_class" onclick="toggleGroupView('asset_class')" style="font-size: 11px; padding: 3px 10px;">Asset Class</button>
+            <button class="issuer-tab" data-groupby="issuer" onclick="toggleGroupView('issuer')" style="font-size: 11px; padding: 3px 10px;">Issuer</button>
+            <button class="issuer-tab" data-groupby="maincat" onclick="toggleGroupView('maincat')" style="font-size: 11px; padding: 3px 10px;">Main Category</button>
+        </div>
+
         <!-- All Strategies Tab (Ranking Table) -->
         <div id="tab-all" class="tab-content active">
             <div style="overflow-x: auto;">
@@ -2190,7 +2360,7 @@
                 
                     
                     
-                    <tr data-issuer="UBS" data-styles="Value,Long/Short">
+                    <tr data-issuer="UBS" data-styles="Value,Long/Short" data-asset="Multi-Asset" data-maincat="Equity">
                         <td class="rank-cell rank-1">
                             #1
                         </td>
@@ -2315,7 +2485,7 @@
                         <td style="font-size: 10px; color: #888;">2021-01-22</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSGVL3')" title="클릭하여 상세 내역 보기">
                             80.1
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="80.1">
                                 <div class="score-bar-fill progress-pass"
                                      style="width: 80.0921790929522%; background: #28a745;"></div>
                             </div>
@@ -2331,7 +2501,7 @@
                 
                     
                     
-                    <tr data-issuer="UBS" data-styles="Momentum,Long/Short">
+                    <tr data-issuer="UBS" data-styles="Momentum,Long/Short" data-asset="Equity" data-maincat="Equity">
                         <td class="rank-cell rank-2">
                             #2
                         </td>
@@ -2456,7 +2626,7 @@
                         <td style="font-size: 10px; color: #888;">2021-01-22</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSGMM3')" title="클릭하여 상세 내역 보기">
                             78.8
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="78.8">
                                 <div class="score-bar-fill progress-pass"
                                      style="width: 78.76293530381547%; background: #28a745;"></div>
                             </div>
@@ -2472,7 +2642,7 @@
                 
                     
                     
-                    <tr data-issuer="UBS" data-styles="Volatility,Structural Alpha">
+                    <tr data-issuer="UBS" data-styles="Volatility,Structural Alpha" data-asset="Equity" data-maincat="Volatility">
                         <td class="rank-cell rank-3">
                             #3
                         </td>
@@ -2597,7 +2767,7 @@
                         <td style="font-size: 10px; color: #888;">2019-01-01</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSFVP2')" title="클릭하여 상세 내역 보기">
                             77.6
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="77.6">
                                 <div class="score-bar-fill progress-pass"
                                      style="width: 77.58772093856182%; background: #28a745;"></div>
                             </div>
@@ -2613,7 +2783,7 @@
                 
                     
                     
-                    <tr data-issuer="UBS" data-styles="Growth,Long/Short">
+                    <tr data-issuer="UBS" data-styles="Growth,Long/Short" data-asset="Equity" data-maincat="기타">
                         <td class="rank-cell ">
                             #4
                         </td>
@@ -2706,7 +2876,7 @@
                         <td style="font-size: 10px; color: #888;">2021-01-22</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSGGR3')" title="클릭하여 상세 내역 보기">
                             76.6
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="76.6">
                                 <div class="score-bar-fill progress-pass"
                                      style="width: 76.55103526278404%; background: #28a745;"></div>
                             </div>
@@ -2722,7 +2892,7 @@
                 
                     
                     
-                    <tr data-issuer="UBS" data-styles="Mean Reversion,Long/Short">
+                    <tr data-issuer="UBS" data-styles="Mean Reversion,Long/Short" data-asset="Multi-Asset" data-maincat="Commodity">
                         <td class="rank-cell ">
                             #5
                         </td>
@@ -2839,7 +3009,7 @@
                         <td style="font-size: 10px; color: #888;">2018-08-29</td>
                         <td class="clickable-score" onclick="showScoreDetail('UBCIRSER')" title="클릭하여 상세 내역 보기">
                             75.9
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="75.9">
                                 <div class="score-bar-fill progress-pass"
                                      style="width: 75.87015695301494%; background: #28a745;"></div>
                             </div>
@@ -2855,7 +3025,7 @@
                 
                     
                     
-                    <tr data-issuer="UBS" data-styles="Curve">
+                    <tr data-issuer="UBS" data-styles="Curve" data-asset="Multi-Asset" data-maincat="Commodity">
                         <td class="rank-cell ">
                             #6
                         </td>
@@ -2978,7 +3148,7 @@
                         <td style="font-size: 10px; color: #888;">2018-12-13</td>
                         <td class="clickable-score" onclick="showScoreDetail('AQPEEC4N')" title="클릭하여 상세 내역 보기">
                             74.7
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="74.7">
                                 <div class="score-bar-fill progress-pass"
                                      style="width: 74.70326599364722%; background: #28a745;"></div>
                             </div>
@@ -2994,7 +3164,7 @@
                 
                     
                     
-                    <tr data-issuer="UBS" data-styles="Mean Reversion,Value">
+                    <tr data-issuer="UBS" data-styles="Mean Reversion,Value" data-asset="FX" data-maincat="FX">
                         <td class="rank-cell ">
                             #7
                         </td>
@@ -3114,7 +3284,7 @@
                         <td style="font-size: 10px; color: #888;">2020-06-10</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSXMRU')" title="클릭하여 상세 내역 보기">
                             73.8
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="73.8">
                                 <div class="score-bar-fill progress-pass"
                                      style="width: 73.7539742655369%; background: #28a745;"></div>
                             </div>
@@ -3130,7 +3300,7 @@
                 
                     
                     
-                    <tr data-issuer="UBS" data-styles="Mean Reversion,Long/Short,Curve">
+                    <tr data-issuer="UBS" data-styles="Mean Reversion,Long/Short,Curve" data-asset="Multi-Asset" data-maincat="Commodity">
                         <td class="rank-cell ">
                             #8
                         </td>
@@ -3257,7 +3427,7 @@
                         <td style="font-size: 10px; color: #888;">2019-06-25</td>
                         <td class="clickable-score" onclick="showScoreDetail('UBCCRSER')" title="클릭하여 상세 내역 보기">
                             72.3
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="72.3">
                                 <div class="score-bar-fill progress-pass"
                                      style="width: 72.34196473374777%; background: #28a745;"></div>
                             </div>
@@ -3273,7 +3443,7 @@
                 
                     
                     
-                    <tr data-issuer="UBS" data-styles="Carry,Curve">
+                    <tr data-issuer="UBS" data-styles="Carry,Curve" data-asset="Multi-Asset" data-maincat="Commodity">
                         <td class="rank-cell ">
                             #9
                         </td>
@@ -3398,7 +3568,7 @@
                         <td style="font-size: 10px; color: #888;">2015-12-01</td>
                         <td class="clickable-score" onclick="showScoreDetail('CSCUD15A')" title="클릭하여 상세 내역 보기">
                             72.0
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="72.0">
                                 <div class="score-bar-fill progress-pass"
                                      style="width: 71.98030884654973%; background: #28a745;"></div>
                             </div>
@@ -3414,7 +3584,7 @@
                 
                     
                     
-                    <tr data-issuer="UBS" data-styles="Carry">
+                    <tr data-issuer="UBS" data-styles="Carry" data-asset="Multi-Asset" data-maincat="Commodity">
                         <td class="rank-cell ">
                             #10
                         </td>
@@ -3537,7 +3707,7 @@
                         <td style="font-size: 10px; color: #888;">2014-01-01</td>
                         <td class="clickable-score" onclick="showScoreDetail('UBCILPLE')" title="클릭하여 상세 내역 보기">
                             69.8
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="69.8">
                                 <div class="score-bar-fill progress-warn"
                                      style="width: 69.75464568644625%; background: #ffc107;"></div>
                             </div>
@@ -3553,7 +3723,7 @@
                 
                     
                     
-                    <tr data-issuer="UBS" data-styles="Mean Reversion,Value">
+                    <tr data-issuer="UBS" data-styles="Mean Reversion,Value" data-asset="Multi-Asset" data-maincat="FX">
                         <td class="rank-cell ">
                             #11
                         </td>
@@ -3678,7 +3848,7 @@
                         <td style="font-size: 10px; color: #888;">2025-06-01</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSXMRF')" title="클릭하여 상세 내역 보기">
                             69.0
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="69.0">
                                 <div class="score-bar-fill progress-warn"
                                      style="width: 69.0057171015827%; background: #ffc107;"></div>
                             </div>
@@ -3694,7 +3864,7 @@
                 
                     
                     
-                    <tr data-issuer="UBS" data-styles="Carry,Curve">
+                    <tr data-issuer="UBS" data-styles="Carry,Curve" data-asset="Multi-Asset" data-maincat="Commodity">
                         <td class="rank-cell ">
                             #12
                         </td>
@@ -3819,7 +3989,7 @@
                         <td style="font-size: 10px; color: #888;">2014-06-01</td>
                         <td class="clickable-score" onclick="showScoreDetail('CSCUD66A')" title="클릭하여 상세 내역 보기">
                             67.7
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="67.7">
                                 <div class="score-bar-fill progress-warn"
                                      style="width: 67.67496583225497%; background: #ffc107;"></div>
                             </div>
@@ -3835,7 +4005,7 @@
                 
                     
                     
-                    <tr data-issuer="UBS" data-styles="Mean Reversion,Value">
+                    <tr data-issuer="UBS" data-styles="Mean Reversion,Value" data-asset="Multi-Asset" data-maincat="FX">
                         <td class="rank-cell ">
                             #13
                         </td>
@@ -3944,7 +4114,7 @@
                         <td style="font-size: 10px; color: #888;">2020-12-16</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSXVAU')" title="클릭하여 상세 내역 보기">
                             67.5
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="67.5">
                                 <div class="score-bar-fill progress-warn"
                                      style="width: 67.4880231529564%; background: #ffc107;"></div>
                             </div>
@@ -3960,7 +4130,7 @@
                 
                     
                     
-                    <tr data-issuer="UBS" data-styles="Carry,Curve">
+                    <tr data-issuer="UBS" data-styles="Carry,Curve" data-asset="Multi-Asset" data-maincat="Rates">
                         <td class="rank-cell ">
                             #14
                         </td>
@@ -4085,7 +4255,7 @@
                         <td style="font-size: 10px; color: #888;">2021-08-01</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSRDCU')" title="클릭하여 상세 내역 보기">
                             66.5
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="66.5">
                                 <div class="score-bar-fill progress-warn"
                                      style="width: 66.47864208669861%; background: #ffc107;"></div>
                             </div>
@@ -4101,7 +4271,7 @@
                 
                     
                     
-                    <tr data-issuer="UBS" data-styles="Low Beta,Long/Short">
+                    <tr data-issuer="UBS" data-styles="Low Beta,Long/Short" data-asset="Equity" data-maincat="기타">
                         <td class="rank-cell ">
                             #15
                         </td>
@@ -4194,7 +4364,7 @@
                         <td style="font-size: 10px; color: #888;">2021-01-22</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSGLB3')" title="클릭하여 상세 내역 보기">
                             65.9
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="65.9">
                                 <div class="score-bar-fill progress-warn"
                                      style="width: 65.86529134728791%; background: #ffc107;"></div>
                             </div>
@@ -4210,7 +4380,7 @@
                 
                     
                     
-                    <tr data-issuer="UBS" data-styles="Trend Following">
+                    <tr data-issuer="UBS" data-styles="Trend Following" data-asset="Multi-Asset" data-maincat="기타">
                         <td class="rank-cell ">
                             #16
                         </td>
@@ -4333,7 +4503,7 @@
                         <td style="font-size: 10px; color: #888;">2019-01-01</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSNHIT')" title="클릭하여 상세 내역 보기">
                             64.6
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="64.6">
                                 <div class="score-bar-fill progress-warn"
                                      style="width: 64.62193683585133%; background: #ffc107;"></div>
                             </div>
@@ -4349,7 +4519,7 @@
                 
                     
                     
-                    <tr data-issuer="UBS" data-styles="Carry,Value">
+                    <tr data-issuer="UBS" data-styles="Carry,Value" data-asset="Multi-Asset" data-maincat="Rates">
                         <td class="rank-cell ">
                             #17
                         </td>
@@ -4458,7 +4628,7 @@
                         <td style="font-size: 10px; color: #888;">2020-05-07</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSR9VD')" title="클릭하여 상세 내역 보기">
                             63.8
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="63.8">
                                 <div class="score-bar-fill progress-warn"
                                      style="width: 63.831301280673514%; background: #ffc107;"></div>
                             </div>
@@ -4474,7 +4644,7 @@
                 
                     
                     
-                    <tr data-issuer="Citi" data-styles="Vol Selling,Dispersion,Risk Premium,Defensive">
+                    <tr data-issuer="Citi" data-styles="Vol Selling,Dispersion,Risk Premium,Defensive" data-asset="Equity" data-maincat="Volatility">
                         <td class="rank-cell ">
                             #18
                         </td>
@@ -4603,7 +4773,7 @@
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('CIEQDUV5')" title="클릭하여 상세 내역 보기">
                             63.4
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="63.4">
                                 <div class="score-bar-fill progress-warn"
                                      style="width: 63.41054905025325%; background: #ffc107;"></div>
                             </div>
@@ -4619,7 +4789,7 @@
                 
                     
                     
-                    <tr data-issuer="UBS" data-styles="Carry">
+                    <tr data-issuer="UBS" data-styles="Carry" data-asset="Multi-Asset" data-maincat="Commodity">
                         <td class="rank-cell ">
                             #19
                         </td>
@@ -4742,7 +4912,7 @@
                         <td style="font-size: 10px; color: #888;">2011-03-01</td>
                         <td class="clickable-score" onclick="showScoreDetail('UBSIXPLN')" title="클릭하여 상세 내역 보기">
                             61.5
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="61.5">
                                 <div class="score-bar-fill progress-warn"
                                      style="width: 61.51782630901618%; background: #ffc107;"></div>
                             </div>
@@ -4758,7 +4928,7 @@
                 
                     
                     
-                    <tr data-issuer="UBS" data-styles="Carry">
+                    <tr data-issuer="UBS" data-styles="Carry" data-asset="Multi-Asset" data-maincat="Commodity">
                         <td class="rank-cell ">
                             #20
                         </td>
@@ -4881,7 +5051,7 @@
                         <td style="font-size: 10px; color: #888;">2010-01-29</td>
                         <td class="clickable-score" onclick="showScoreDetail('COSXPLNE')" title="클릭하여 상세 내역 보기">
                             60.9
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="60.9">
                                 <div class="score-bar-fill progress-warn"
                                      style="width: 60.85956127324401%; background: #ffc107;"></div>
                             </div>
@@ -4897,7 +5067,7 @@
                 
                     
                     
-                    <tr data-issuer="UBS" data-styles="Quality,Long/Short">
+                    <tr data-issuer="UBS" data-styles="Quality,Long/Short" data-asset="Equity" data-maincat="Equity">
                         <td class="rank-cell ">
                             #21
                         </td>
@@ -4990,7 +5160,7 @@
                         <td style="font-size: 10px; color: #888;">2021-01-22</td>
                         <td class="clickable-score" onclick="showScoreDetail('XUBSGQT3')" title="클릭하여 상세 내역 보기">
                             60.7
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="60.7">
                                 <div class="score-bar-fill progress-warn"
                                      style="width: 60.73701780277664%; background: #ffc107;"></div>
                             </div>
@@ -5006,7 +5176,7 @@
                 
                     
                     
-                    <tr data-issuer="Citi" data-styles="Carry">
+                    <tr data-issuer="Citi" data-styles="Carry" data-asset="Fixed Income" data-maincat="Rates">
                         <td class="rank-cell ">
                             #22
                         </td>
@@ -5105,7 +5275,7 @@
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('CIIRVET1')" title="클릭하여 상세 내역 보기">
                             60.3
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="60.3">
                                 <div class="score-bar-fill progress-warn"
                                      style="width: 60.30792175557514%; background: #ffc107;"></div>
                             </div>
@@ -5121,7 +5291,7 @@
                 
                     
                     
-                    <tr data-issuer="Morgan Stanley" data-styles="Vol Selling,Dispersion,Risk Premium">
+                    <tr data-issuer="Morgan Stanley" data-styles="Vol Selling,Dispersion,Risk Premium" data-asset="Equity" data-maincat="Volatility">
                         <td class="rank-cell ">
                             #23
                         </td>
@@ -5248,7 +5418,7 @@
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('MSCBDV11')" title="클릭하여 상세 내역 보기">
                             60.2
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="60.2">
                                 <div class="score-bar-fill progress-warn"
                                      style="width: 60.163623952046464%; background: #ffc107;"></div>
                             </div>
@@ -5264,7 +5434,7 @@
                 
                     
                     
-                    <tr data-issuer="Citi" data-styles="Risk Premium,Defensive">
+                    <tr data-issuer="Citi" data-styles="Risk Premium,Defensive" data-asset="Equity" data-maincat="Volatility">
                         <td class="rank-cell ">
                             #24
                         </td>
@@ -5389,7 +5559,7 @@
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('CIEQPU06')" title="클릭하여 상세 내역 보기">
                             60.1
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="60.1">
                                 <div class="score-bar-fill progress-warn"
                                      style="width: 60.11302282108638%; background: #ffc107;"></div>
                             </div>
@@ -5405,7 +5575,7 @@
                 
                     
                     
-                    <tr data-issuer="Morgan Stanley" data-styles="Vol Selling,Dispersion,Risk Premium,Defensive">
+                    <tr data-issuer="Morgan Stanley" data-styles="Vol Selling,Dispersion,Risk Premium,Defensive" data-asset="Equity" data-maincat="Volatility">
                         <td class="rank-cell ">
                             #25
                         </td>
@@ -5534,7 +5704,7 @@
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('MSCBDVDS')" title="클릭하여 상세 내역 보기">
                             59.5
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="59.5">
                                 <div class="score-bar-fill progress-warn"
                                      style="width: 59.46187864880649%; background: #ffc107;"></div>
                             </div>
@@ -5550,7 +5720,7 @@
                 
                     
                     
-                    <tr data-issuer="Citi" data-styles="Carry">
+                    <tr data-issuer="Citi" data-styles="Carry" data-asset="Fixed Income" data-maincat="Rates">
                         <td class="rank-cell ">
                             #26
                         </td>
@@ -5649,7 +5819,7 @@
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('CIIRVUT1')" title="클릭하여 상세 내역 보기">
                             57.0
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="57.0">
                                 <div class="score-bar-fill progress-warn"
                                      style="width: 57.01534357361781%; background: #ffc107;"></div>
                             </div>
@@ -5665,7 +5835,7 @@
                 
                     
                     
-                    <tr data-issuer="Morgan Stanley" data-styles="Vol Selling,Risk Premium,Defensive">
+                    <tr data-issuer="Morgan Stanley" data-styles="Vol Selling,Risk Premium,Defensive" data-asset="Equity" data-maincat="Volatility">
                         <td class="rank-cell ">
                             #27
                         </td>
@@ -5792,7 +5962,7 @@
                         <td style="font-size: 10px; color: #888;">-</td>
                         <td class="clickable-score" onclick="showScoreDetail('MSCBGLQ1')" title="클릭하여 상세 내역 보기">
                             55.5
-                            <div class="score-bar">
+                            <div class="score-bar" data-score="55.5">
                                 <div class="score-bar-fill progress-warn"
                                      style="width: 55.50704369346954%; background: #ffc107;"></div>
                             </div>
@@ -63587,6 +63757,8 @@
     // Track current active filters
     let currentIssuerFilter = 'all';
     let currentStyleFilter = 'all';
+    let currentAssetFilter = 'all';
+    let currentGroupBy = 'none';
 
     function switchTab(tabName) {
         // Update tab buttons
@@ -63606,19 +63778,23 @@
             targetTab.classList.add('active');
         }
 
-        // Show/hide issuer and style filter rows (only in 전체 tab)
+        // Show/hide filter rows (only in 전체 tab)
         const issuerRow = document.getElementById('issuer-filter-row');
         const styleRow = document.getElementById('style-filter-row');
-        if (issuerRow) {
-            issuerRow.style.display = (tabName === 'all') ? '' : 'none';
-        }
-        if (styleRow) {
-            styleRow.style.display = (tabName === 'all') ? '' : 'none';
-        }
+        const assetRow = document.getElementById('asset-filter-row');
+        const dimRow = document.getElementById('dimension-view-row');
+        const isAll = (tabName === 'all');
+        if (issuerRow) issuerRow.style.display = isAll ? '' : 'none';
+        if (styleRow) styleRow.style.display = isAll ? '' : 'none';
+        if (assetRow) assetRow.style.display = isAll ? '' : 'none';
+        if (dimRow) dimRow.style.display = isAll ? '' : 'none';
         // Reset filters when switching category
-        if (tabName !== 'all') {
+        if (!isAll) {
             currentIssuerFilter = 'all';
             currentStyleFilter = 'all';
+            currentAssetFilter = 'all';
+            currentGroupBy = 'none';
+            removeGroupHeaders();
             applyRankingFilters();
         }
     }
@@ -63664,17 +63840,18 @@
     }
 
     function applyRankingFilters() {
-        const rows = document.querySelectorAll('#tab-all .ranking-table tbody tr');
+        const rows = document.querySelectorAll('#tab-all .ranking-table tbody tr:not(.group-header-row)');
         let rank = 0;
         rows.forEach(row => {
             const issuerMatch = (currentIssuerFilter === 'all' || row.dataset.issuer === currentIssuerFilter);
+            const assetMatch = (currentAssetFilter === 'all' || row.dataset.asset === currentAssetFilter);
             let styleMatch = true;
             if (currentStyleFilter !== 'all') {
                 const rowStyles = (row.dataset.styles || '').split(',');
                 styleMatch = rowStyles.includes(currentStyleFilter);
             }
 
-            if (issuerMatch && styleMatch) {
+            if (issuerMatch && styleMatch && assetMatch) {
                 row.style.display = '';
                 rank++;
                 row.querySelector('.rank-cell').textContent = '#' + rank;
@@ -63682,6 +63859,115 @@
                 row.style.display = 'none';
             }
         });
+
+        // 그룹 뷰가 활성화된 경우 그룹 헤더 업데이트
+        if (currentGroupBy !== 'none') {
+            updateGroupHeaders();
+        }
+    }
+
+    function filterByAsset(asset) {
+        currentAssetFilter = asset;
+        document.querySelectorAll('#asset-filter-row .issuer-tab').forEach(tab => {
+            tab.classList.remove('active');
+            if (tab.dataset.asset === asset) {
+                tab.classList.add('active');
+            }
+        });
+        applyRankingFilters();
+    }
+
+    function removeGroupHeaders() {
+        document.querySelectorAll('#tab-all .ranking-table tbody .group-header-row').forEach(r => r.remove());
+    }
+
+    function toggleGroupView(groupBy) {
+        currentGroupBy = groupBy;
+        // 버튼 활성화 상태 변경
+        document.querySelectorAll('#dimension-view-row .issuer-tab').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.dataset.groupby === groupBy) btn.classList.add('active');
+        });
+
+        removeGroupHeaders();
+
+        if (groupBy === 'none') {
+            applyRankingFilters();
+            return;
+        }
+
+        // 그룹 헤더 삽입 및 행 재정렬
+        const tbody = document.querySelector('#tab-all .ranking-table tbody');
+        const rows = Array.from(tbody.querySelectorAll('tr:not(.group-header-row)'));
+
+        // 그룹 키 결정
+        const getGroupKey = (row) => {
+            if (groupBy === 'asset_class') return row.dataset.asset || 'Multi-Asset';
+            if (groupBy === 'issuer') return row.dataset.issuer || 'Other';
+            if (groupBy === 'maincat') return row.dataset.maincat || '기타';
+            return '';
+        };
+
+        // 행 그룹핑
+        const groups = {};
+        rows.forEach(row => {
+            const key = getGroupKey(row);
+            if (!groups[key]) groups[key] = [];
+            groups[key].push(row);
+        });
+
+        // 그룹별 평균 점수 계산 (정렬용)
+        const groupOrder = Object.keys(groups).sort((a, b) => {
+            const avgA = groups[a].reduce((s, r) => {
+                const scoreEl = r.querySelector('.score-bar');
+                return s + (scoreEl ? parseFloat(scoreEl.dataset.score || 0) : 0);
+            }, 0) / groups[a].length;
+            const avgB = groups[b].reduce((s, r) => {
+                const scoreEl = r.querySelector('.score-bar');
+                return s + (scoreEl ? parseFloat(scoreEl.dataset.score || 0) : 0);
+            }, 0) / groups[b].length;
+            return avgB - avgA;
+        });
+
+        // tbody 재구성
+        let globalRank = 0;
+        const colCount = tbody.closest('table').querySelector('thead tr').children.length;
+
+        groupOrder.forEach(groupName => {
+            const groupRows = groups[groupName];
+            // 보이는 행만 카운트
+            const visibleRows = groupRows.filter(r => r.style.display !== 'none');
+            const visibleScores = visibleRows.map(r => {
+                const scoreEl = r.querySelector('.score-bar');
+                return scoreEl ? parseFloat(scoreEl.dataset.score || 0) : 0;
+            });
+            const avgScore = visibleScores.length ? (visibleScores.reduce((a, b) => a + b, 0) / visibleScores.length).toFixed(1) : '-';
+
+            // 그룹 헤더 행 생성
+            const headerRow = document.createElement('tr');
+            headerRow.className = 'group-header-row';
+            headerRow.innerHTML = `<td colspan="${colCount}" style="background:linear-gradient(135deg,#667eea22,#764ba222);padding:10px 16px;font-weight:700;font-size:14px;color:#2c3e50;border-left:4px solid #667eea;">
+                ${groupName}
+                <span style="font-weight:400;font-size:12px;color:#6c757d;margin-left:12px;">${visibleRows.length}개 전략 | 평균 ${avgScore}점</span>
+            </td>`;
+            tbody.appendChild(headerRow);
+
+            // 해당 그룹 행 추가
+            groupRows.forEach(row => {
+                tbody.appendChild(row);
+                if (row.style.display !== 'none') {
+                    globalRank++;
+                    row.querySelector('.rank-cell').textContent = '#' + globalRank;
+                }
+            });
+        });
+    }
+
+    function updateGroupHeaders() {
+        // 기존 헤더 제거 후 재삽입
+        if (currentGroupBy !== 'none') {
+            toggleGroupView(currentGroupBy);
+        }
     }
 
     // Accordion toggle functionality
@@ -63694,7 +63980,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>Generated by QIS Fund Manager | 2026-04-06 10:03:22</p>
+        <p>Generated by QIS Fund Manager | 2026-04-06 10:07:28</p>
     </footer>
 
     <!-- Price Chart Initialization -->
