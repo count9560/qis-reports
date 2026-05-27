@@ -102,7 +102,7 @@
 <h2>2. 전략 상세 설명</h2>
 
 
-<div class="desc" id="description-content"></div>
+<div class="desc analysis-content" id="description-content"></div>
 
 
 
@@ -327,7 +327,7 @@
 
 
 <footer>
-    <p>QIS Fund Manager — 리스크검토의뢰서 자동 생성 | 2026-05-27 10:38:47</p>
+    <p>QIS Fund Manager — 리스크검토의뢰서 자동 생성 | 2026-05-27 10:41:43</p>
 </footer>
 
 
@@ -374,19 +374,26 @@
     document.addEventListener('DOMContentLoaded', function() {
         const el = document.getElementById('description-content');
         if (!el) return;
-        let c = "**GS Cross Asset Carry (GSXAC01F)**\n\n**1. \ucd9c\ucc98**\n- \uc720\uc548\ud0c0\uc99d\uad8c \ud050\ub808\uc774\uc158 \ucd94\ucc9c 5\uc885 \uc911 **2\uc21c\uc704 (\ub2e4\uac01\ud654 \uac00\uce58)**\n- GS STS \uce74\ud14c\uace0\ub9ac: Carry \u2013 Linear, M6 Rank #18 (XA)\n\n**2. \uba54\ucee4\ub2c8\uc998**\n- \uc790\uc0b0\uad70\ubcc4 \uce90\ub9ac \uc2e0\ud638\ub97c \uc885\ud569\ud574 Cross-Asset \ud3ec\ud2b8\ud3f4\ub9ac\uc624 \uad6c\uc131\n- \uc790\uc0b0\uad70: Rates / FX / Commodity / Equity \uce90\ub9ac \uc2dc\uadf8\ub110 \ud1b5\ud569\n\n**3. \uc131\uacfc (GS STS Mar 2026 Recap M6 \ud45c \uae30\uc900)**\n| \uc9c0\ud45c | \uac12 |\n|------|-----|\n| 1y Return | +9.6% |\n| 1y Volatility | 6.7% |\n| 5y Volatility | 7.6% |\n| 5y Cumulative Return | **+80.1%** |\n| 2026-03 Return | +2.6% |\n\n**4. \uc9c4\uc785 \uac80\ud1a0 \ud3ec\uc778\ud2b8**\n- \uc790\uc0b0\uad70 \ub0b4\ubd80 \ubd84\uc0b0 \u2192 \ub2e8\uc77c \uc790\uc0b0\uad70 \uc804\ub7b5 \ub300\ube44 \uc548\uc815\uc801\n- 5y +80% \ub204\uc801 \u2014 \uc7a5\uae30 \uce90\ub9ac \uc54c\ud30c \ud655\uc778\n- \ubcf8 \ud504\ub85c\uc81d\ud2b8 \ud65c\uc131 \uc804\ub7b5 \uc911 Cross-Asset \uc885\ud569 \uce90\ub9ac \ubd80\uc7ac \u2192 \ub2e4\uac01\ud654 \ud575\uc2ec\n\n*\ucd9c\ucc98: GS STS Performance Recap March 2026 (\uba54\uc77c 2026-04-23 \uc218\uc2e0)*";
-        c = c.replace(/\[(.+?)\]/g, '<h3>$1</h3>');
-        c = c.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-        c = c.replace(/^- (.+)$/gm, '<li>$1</li>');
-        c = c.replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul>$1</ul>');
-        c = c.replace(/\n\n/g, '</p><p>');
-        c = '<p>' + c + '</p>';
-        c = c.replace(/<p>\s*<\/p>/g, '');
-        c = c.replace(/<p>\s*<h3>/g, '<h3>');
-        c = c.replace(/<\/h3>\s*<\/p>/g, '</h3>');
-        c = c.replace(/<p>\s*<ul>/g, '<ul>');
-        c = c.replace(/<\/ul>\s*<\/p>/g, '</ul>');
-        el.innerHTML = c;
+        let raw = "**GS Cross Asset Carry (GSXAC01F)**\n\n**1. \ucd9c\ucc98**\n- \uc720\uc548\ud0c0\uc99d\uad8c \ud050\ub808\uc774\uc158 \ucd94\ucc9c 5\uc885 \uc911 **2\uc21c\uc704 (\ub2e4\uac01\ud654 \uac00\uce58)**\n- GS STS \uce74\ud14c\uace0\ub9ac: Carry \u2013 Linear, M6 Rank #18 (XA)\n\n**2. \uba54\ucee4\ub2c8\uc998**\n- \uc790\uc0b0\uad70\ubcc4 \uce90\ub9ac \uc2e0\ud638\ub97c \uc885\ud569\ud574 Cross-Asset \ud3ec\ud2b8\ud3f4\ub9ac\uc624 \uad6c\uc131\n- \uc790\uc0b0\uad70: Rates / FX / Commodity / Equity \uce90\ub9ac \uc2dc\uadf8\ub110 \ud1b5\ud569\n\n**3. \uc131\uacfc (GS STS Mar 2026 Recap M6 \ud45c \uae30\uc900)**\n| \uc9c0\ud45c | \uac12 |\n|------|-----|\n| 1y Return | +9.6% |\n| 1y Volatility | 6.7% |\n| 5y Volatility | 7.6% |\n| 5y Cumulative Return | **+80.1%** |\n| 2026-03 Return | +2.6% |\n\n**4. \uc9c4\uc785 \uac80\ud1a0 \ud3ec\uc778\ud2b8**\n- \uc790\uc0b0\uad70 \ub0b4\ubd80 \ubd84\uc0b0 \u2192 \ub2e8\uc77c \uc790\uc0b0\uad70 \uc804\ub7b5 \ub300\ube44 \uc548\uc815\uc801\n- 5y +80% \ub204\uc801 \u2014 \uc7a5\uae30 \uce90\ub9ac \uc54c\ud30c \ud655\uc778\n- \ubcf8 \ud504\ub85c\uc81d\ud2b8 \ud65c\uc131 \uc804\ub7b5 \uc911 Cross-Asset \uc885\ud569 \uce90\ub9ac \ubd80\uc7ac \u2192 \ub2e4\uac01\ud654 \ud575\uc2ec\n\n*\ucd9c\ucc98: GS STS Performance Recap March 2026 (\uba54\uc77c 2026-04-23 \uc218\uc2e0)*";
+
+        // LaTeX 수식 보호: marked.js가 깨뜨리지 않도록 플레이스홀더로 치환
+        const mathBlocks = [];
+        raw = raw.replace(/\$\$([\s\S]*?)\$\$/g, function(m) {
+            mathBlocks.push(m);
+            return '\x00MATH_' + (mathBlocks.length - 1) + '\x00';
+        });
+        raw = raw.replace(/\$([^\$\n]+?)\$/g, function(m) {
+            mathBlocks.push(m);
+            return '\x00MATH_' + (mathBlocks.length - 1) + '\x00';
+        });
+
+        let html = marked.parse(raw);
+
+        html = html.replace(/\x00MATH_(\d+)\x00/g, function(_, i) {
+            return mathBlocks[parseInt(i)];
+        });
+
+        el.innerHTML = html;
         if (typeof renderMathInElement === 'function') {
             renderMathInElement(el, { delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}], throwOnError: false });
         }

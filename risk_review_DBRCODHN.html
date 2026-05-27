@@ -102,7 +102,7 @@
 <h2>2. 전략 상세 설명</h2>
 
 
-<div class="desc" id="description-content"></div>
+<div class="desc analysis-content" id="description-content"></div>
 
 
 
@@ -327,7 +327,7 @@
 
 
 <footer>
-    <p>QIS Fund Manager — 리스크검토의뢰서 자동 생성 | 2026-05-27 10:38:46</p>
+    <p>QIS Fund Manager — 리스크검토의뢰서 자동 생성 | 2026-05-27 10:41:43</p>
 </footer>
 
 
@@ -374,19 +374,26 @@
     document.addEventListener('DOMContentLoaded', function() {
         const el = document.getElementById('description-content');
         if (!el) return;
-        let c = "**Deutsche Bank DBRCODHN (\ubd84\uc11d \uc804)**\n\n\ud604\uc7ac \ubd84\uc11d \uc790\ub8cc \ubbf8\uc218\uc2e0. \uac00\uaca9 \uc2dc\uacc4\uc5f4\ub9cc \ud655\ubcf4\ub41c \uc0c1\ud0dc\ub85c \ub4f1\ub85d.\n\n**\uc54c\ub824\uc9c4 \uc0ac\uc2e4:**\n- \ubc1c\ud589: Deutsche Bank\n- \uac00\uaca9 \uc2dc\uacc4\uc5f4: 2010-01-04 ~ 2026-04-29 (\uc77c\ubcc4)\n- \uc2dc\uc791\uac00: 222.26 / \uc885\uac00: 319.61 (16.3\ub144 \ub204\uc801 +43.8%)\n\n**\ub300\uae30 \ud56d\ubaa9:**\n- \uc815\uc2dd whitepaper / \ub9c8\ucf00\ud305 \uc790\ub8cc\n- \uce74\ud14c\uace0\ub9ac \ubd84\ub958 (\ud604\uc7ac \uc784\uc2dc \u0027Other\u0027)\n- detailed_description \ubcf8\uaca9 \uc791\uc131\n- \uc790\uc0b0\uad70 \uc2dd\ubcc4 (\ud604\uc7ac \uc784\uc2dc \u0027Multi-Asset\u0027)\n\n*\ucd9c\ucc98: \uac00\uaca9 \ud30c\uc77c \u0027C:\\Users\\infomax\\Desktop\\QIS \uc2dc\ubbac\ub808\uc774\uc158.xlsx\u0027 (2026-04-30 \ucd94\uac00 \ubc1c\uacac)*";
-        c = c.replace(/\[(.+?)\]/g, '<h3>$1</h3>');
-        c = c.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-        c = c.replace(/^- (.+)$/gm, '<li>$1</li>');
-        c = c.replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul>$1</ul>');
-        c = c.replace(/\n\n/g, '</p><p>');
-        c = '<p>' + c + '</p>';
-        c = c.replace(/<p>\s*<\/p>/g, '');
-        c = c.replace(/<p>\s*<h3>/g, '<h3>');
-        c = c.replace(/<\/h3>\s*<\/p>/g, '</h3>');
-        c = c.replace(/<p>\s*<ul>/g, '<ul>');
-        c = c.replace(/<\/ul>\s*<\/p>/g, '</ul>');
-        el.innerHTML = c;
+        let raw = "**Deutsche Bank DBRCODHN (\ubd84\uc11d \uc804)**\n\n\ud604\uc7ac \ubd84\uc11d \uc790\ub8cc \ubbf8\uc218\uc2e0. \uac00\uaca9 \uc2dc\uacc4\uc5f4\ub9cc \ud655\ubcf4\ub41c \uc0c1\ud0dc\ub85c \ub4f1\ub85d.\n\n**\uc54c\ub824\uc9c4 \uc0ac\uc2e4:**\n- \ubc1c\ud589: Deutsche Bank\n- \uac00\uaca9 \uc2dc\uacc4\uc5f4: 2010-01-04 ~ 2026-04-29 (\uc77c\ubcc4)\n- \uc2dc\uc791\uac00: 222.26 / \uc885\uac00: 319.61 (16.3\ub144 \ub204\uc801 +43.8%)\n\n**\ub300\uae30 \ud56d\ubaa9:**\n- \uc815\uc2dd whitepaper / \ub9c8\ucf00\ud305 \uc790\ub8cc\n- \uce74\ud14c\uace0\ub9ac \ubd84\ub958 (\ud604\uc7ac \uc784\uc2dc \u0027Other\u0027)\n- detailed_description \ubcf8\uaca9 \uc791\uc131\n- \uc790\uc0b0\uad70 \uc2dd\ubcc4 (\ud604\uc7ac \uc784\uc2dc \u0027Multi-Asset\u0027)\n\n*\ucd9c\ucc98: \uac00\uaca9 \ud30c\uc77c \u0027C:\\Users\\infomax\\Desktop\\QIS \uc2dc\ubbac\ub808\uc774\uc158.xlsx\u0027 (2026-04-30 \ucd94\uac00 \ubc1c\uacac)*";
+
+        // LaTeX 수식 보호: marked.js가 깨뜨리지 않도록 플레이스홀더로 치환
+        const mathBlocks = [];
+        raw = raw.replace(/\$\$([\s\S]*?)\$\$/g, function(m) {
+            mathBlocks.push(m);
+            return '\x00MATH_' + (mathBlocks.length - 1) + '\x00';
+        });
+        raw = raw.replace(/\$([^\$\n]+?)\$/g, function(m) {
+            mathBlocks.push(m);
+            return '\x00MATH_' + (mathBlocks.length - 1) + '\x00';
+        });
+
+        let html = marked.parse(raw);
+
+        html = html.replace(/\x00MATH_(\d+)\x00/g, function(_, i) {
+            return mathBlocks[parseInt(i)];
+        });
+
+        el.innerHTML = html;
         if (typeof renderMathInElement === 'function') {
             renderMathInElement(el, { delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}], throwOnError: false });
         }

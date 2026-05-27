@@ -102,7 +102,7 @@
 <h2>2. 전략 상세 설명</h2>
 
 
-<div class="desc" id="description-content"></div>
+<div class="desc analysis-content" id="description-content"></div>
 
 
 
@@ -329,7 +329,7 @@
 
 
 <footer>
-    <p>QIS Fund Manager — 리스크검토의뢰서 자동 생성 | 2026-05-27 10:38:43</p>
+    <p>QIS Fund Manager — 리스크검토의뢰서 자동 생성 | 2026-05-27 10:41:40</p>
 </footer>
 
 
@@ -376,19 +376,26 @@
     document.addEventListener('DOMContentLoaded', function() {
         const el = document.getElementById('description-content');
         if (!el) return;
-        let c = "**Citi Equity US Put Ratio Strategy**\n\n**1. \uc804\ub7b5 \uac1c\uc694 (PDF Page 7-10)**\n\nS\u0026P 500 \ud48b \ub808\uc774\uc2dc\uc624 \uc804\ub7b5\uc784.\n- \ub871 \ubcc0\ub3d9\uc131 \uc775\uc2a4\ud3ec\uc800\n- \uc544\uc6c3\ub77c\uc774\ud2b8 \uc635\uc158 \ub9e4\uc218 \ub300\ube44 \uc800\ube44\uc6a9 \uad6c\uc870\n- \uc0c1\uc7a5 \uc635\uc158 \uc0ac\uc6a9\n\n\n**2. \uc804\ub7b5 \ud30c\ub77c\ubbf8\ud130 (PDF Page 7-10)**\n\n| \ud56d\ubaa9 | \uac12 | \ucd9c\ucc98 |\n|------|-----|------|\n| **\uae30\ucd08\uc790\uc0b0** | S\u0026P 500 Index | PDF |\n| **\ub9ac\ubc38\ub7f0\uc2f1** | \uc77c\uac04 (Daily) | PDF |\n| **\ub9cc\uae30** | 3\uac1c\uc6d4 | PDF |\n| **\ub378\ud0c0** | 30%-delta puts | PDF |\n\n\n**3. \uc131\uacfc \uc9c0\ud45c (PDF Page 10, \uc2dc\ubbac\ub808\uc774\uc158 \uae30\ubc18)**\n\n| \uc9c0\ud45c | \uac12 |\n|------|-----|\n| **\uc5f0\ud658\uc0b0 \uc218\uc775\ub960** | 15.8% |\n| **\uc5f0\ud658\uc0b0 \ubcc0\ub3d9\uc131** | 18.5% |\n| **\uc0e4\ud504\ube44\uc728** | 0.86 |\n| **\ucd5c\ub300 \ub099\ud3ed (MDD)** | -22.2% |\n\n\n**4. \ub77c\uc774\ube0c \ud2b8\ub799\ub808\ucf54\ub4dc**\n\n| \ud56d\ubaa9 | \uac12 |\n|------|-----|\n| **\ub77c\uc774\ube0c \uc2dc\uc791\uc77c** | \ud655\uc778 \ud544\uc694 (PDF \ubbf8\uae30\uc7ac) |\n| **\ud2b8\ub799\ub808\ucf54\ub4dc** | - |\n\n\n**5. \ub9ac\uc2a4\ud06c \uc694\uc778**\n\n- \uae09\ub77d\uc7a5\uc5d0\uc11c \uc20f \ub808\uadf8 \uc190\uc2e4 \uac00\ub2a5\n- \uc635\uc158 \ud589\uc0ac/\ub9cc\uae30 \ub9ac\uc2a4\ud06c\n- \ub192\uc740 \ubcc0\ub3d9\uc131 (18.5%)\n\n\n\u26a0\ufe0f **\uc8fc\uc758**: PDF\ub294 \ub9c8\ucf00\ud305 \ubb38\uc11c\ub85c, \uc131\uacfc \ub370\uc774\ud130\ub294 \uc2dc\ubbac\ub808\uc774\uc158 \uae30\ubc18. \ub77c\uc774\ube0c \uc2dc\uc791\uc77c \ubbf8\uae30\uc7ac.\n";
-        c = c.replace(/\[(.+?)\]/g, '<h3>$1</h3>');
-        c = c.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-        c = c.replace(/^- (.+)$/gm, '<li>$1</li>');
-        c = c.replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul>$1</ul>');
-        c = c.replace(/\n\n/g, '</p><p>');
-        c = '<p>' + c + '</p>';
-        c = c.replace(/<p>\s*<\/p>/g, '');
-        c = c.replace(/<p>\s*<h3>/g, '<h3>');
-        c = c.replace(/<\/h3>\s*<\/p>/g, '</h3>');
-        c = c.replace(/<p>\s*<ul>/g, '<ul>');
-        c = c.replace(/<\/ul>\s*<\/p>/g, '</ul>');
-        el.innerHTML = c;
+        let raw = "**Citi Equity US Put Ratio Strategy**\n\n**1. \uc804\ub7b5 \uac1c\uc694 (PDF Page 7-10)**\n\nS\u0026P 500 \ud48b \ub808\uc774\uc2dc\uc624 \uc804\ub7b5\uc784.\n- \ub871 \ubcc0\ub3d9\uc131 \uc775\uc2a4\ud3ec\uc800\n- \uc544\uc6c3\ub77c\uc774\ud2b8 \uc635\uc158 \ub9e4\uc218 \ub300\ube44 \uc800\ube44\uc6a9 \uad6c\uc870\n- \uc0c1\uc7a5 \uc635\uc158 \uc0ac\uc6a9\n\n\n**2. \uc804\ub7b5 \ud30c\ub77c\ubbf8\ud130 (PDF Page 7-10)**\n\n| \ud56d\ubaa9 | \uac12 | \ucd9c\ucc98 |\n|------|-----|------|\n| **\uae30\ucd08\uc790\uc0b0** | S\u0026P 500 Index | PDF |\n| **\ub9ac\ubc38\ub7f0\uc2f1** | \uc77c\uac04 (Daily) | PDF |\n| **\ub9cc\uae30** | 3\uac1c\uc6d4 | PDF |\n| **\ub378\ud0c0** | 30%-delta puts | PDF |\n\n\n**3. \uc131\uacfc \uc9c0\ud45c (PDF Page 10, \uc2dc\ubbac\ub808\uc774\uc158 \uae30\ubc18)**\n\n| \uc9c0\ud45c | \uac12 |\n|------|-----|\n| **\uc5f0\ud658\uc0b0 \uc218\uc775\ub960** | 15.8% |\n| **\uc5f0\ud658\uc0b0 \ubcc0\ub3d9\uc131** | 18.5% |\n| **\uc0e4\ud504\ube44\uc728** | 0.86 |\n| **\ucd5c\ub300 \ub099\ud3ed (MDD)** | -22.2% |\n\n\n**4. \ub77c\uc774\ube0c \ud2b8\ub799\ub808\ucf54\ub4dc**\n\n| \ud56d\ubaa9 | \uac12 |\n|------|-----|\n| **\ub77c\uc774\ube0c \uc2dc\uc791\uc77c** | \ud655\uc778 \ud544\uc694 (PDF \ubbf8\uae30\uc7ac) |\n| **\ud2b8\ub799\ub808\ucf54\ub4dc** | - |\n\n\n**5. \ub9ac\uc2a4\ud06c \uc694\uc778**\n\n- \uae09\ub77d\uc7a5\uc5d0\uc11c \uc20f \ub808\uadf8 \uc190\uc2e4 \uac00\ub2a5\n- \uc635\uc158 \ud589\uc0ac/\ub9cc\uae30 \ub9ac\uc2a4\ud06c\n- \ub192\uc740 \ubcc0\ub3d9\uc131 (18.5%)\n\n\n\u26a0\ufe0f **\uc8fc\uc758**: PDF\ub294 \ub9c8\ucf00\ud305 \ubb38\uc11c\ub85c, \uc131\uacfc \ub370\uc774\ud130\ub294 \uc2dc\ubbac\ub808\uc774\uc158 \uae30\ubc18. \ub77c\uc774\ube0c \uc2dc\uc791\uc77c \ubbf8\uae30\uc7ac.\n";
+
+        // LaTeX 수식 보호: marked.js가 깨뜨리지 않도록 플레이스홀더로 치환
+        const mathBlocks = [];
+        raw = raw.replace(/\$\$([\s\S]*?)\$\$/g, function(m) {
+            mathBlocks.push(m);
+            return '\x00MATH_' + (mathBlocks.length - 1) + '\x00';
+        });
+        raw = raw.replace(/\$([^\$\n]+?)\$/g, function(m) {
+            mathBlocks.push(m);
+            return '\x00MATH_' + (mathBlocks.length - 1) + '\x00';
+        });
+
+        let html = marked.parse(raw);
+
+        html = html.replace(/\x00MATH_(\d+)\x00/g, function(_, i) {
+            return mathBlocks[parseInt(i)];
+        });
+
+        el.innerHTML = html;
         if (typeof renderMathInElement === 'function') {
             renderMathInElement(el, { delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}], throwOnError: false });
         }

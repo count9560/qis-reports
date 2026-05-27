@@ -102,7 +102,7 @@
 <h2>2. 전략 상세 설명</h2>
 
 
-<div class="desc" id="description-content"></div>
+<div class="desc analysis-content" id="description-content"></div>
 
 
 
@@ -333,7 +333,7 @@
 
 
 <footer>
-    <p>QIS Fund Manager — 리스크검토의뢰서 자동 생성 | 2026-05-27 10:38:43</p>
+    <p>QIS Fund Manager — 리스크검토의뢰서 자동 생성 | 2026-05-27 10:41:40</p>
 </footer>
 
 
@@ -380,19 +380,26 @@
     document.addEventListener('DOMContentLoaded', function() {
         const el = document.getElementById('description-content');
         if (!el) return;
-        let c = "**Morgan Stanley US Equity Downside Vega Dispersion**\n\n**1. \uc804\ub7b5 \uac1c\uc694**\n\n\ubbf8\uad6d \uc8fc\uc2dd \uc2dc\uc7a5\uc758 \ubca0\uac00 \uc911\ub9bd \ud558\ubc29 \ubd84\uc0b0(Downside Vega Dispersion) \uc804\ub7b5\uc784.\n- \uac1c\ubcc4\uc8fc\uc2dd \ubcc0\ub3d9\uc131 \ub871 vs \uc9c0\uc218 \ubcc0\ub3d9\uc131 \uc20f\n- \uc0c1\uad00\uad00\uacc4 \ud558\ub77d \uc2dc \uc218\uc775 \ucd94\uad6c\n\n\n**2. \ub77c\uc774\ube0c \ud2b8\ub799\ub808\ucf54\ub4dc**\n\n| \ud56d\ubaa9 | \uac12 |\n|------|-----|\n| **\ub77c\uc774\ube0c \uc2dc\uc791\uc77c** | \ud655\uc778 \ud544\uc694 (PDF \uc5c6\uc74c) |\n| **\ud2b8\ub799\ub808\ucf54\ub4dc** | - |\n| **\ub9ac\ubc38\ub7f0\uc2f1** | \ud655\uc778 \ud544\uc694 |\n| **\ubaa9\ud45c \ubcc0\ub3d9\uc131** | \ud655\uc778 \ud544\uc694 |\n\n\n**3. \ub9ac\uc2a4\ud06c \uc694\uc778**\n\n- \uc704\uae30 \uc2dc \uc0c1\uad00\uad00\uacc4 \uae09\ub4f1\uc73c\ub85c \uc190\uc2e4 \uac00\ub2a5\n- \uac1c\ubcc4\uc8fc\uc2dd \uc635\uc158 \uc720\ub3d9\uc131 \ub9ac\uc2a4\ud06c\n- \ud2b9\uc815 \uc885\ubaa9/\uc139\ud130 \uc9d1\uc911 \ub9ac\uc2a4\ud06c\n\n\n\u26a0\ufe0f **PDF \uc5c6\uc74c**: \ud3ec\uc9c0\uc158 \uad6c\uc870, \uc885\ubaa9 \uc120\ud0dd \uae30\uc900, \uad6c\uccb4\uc801 \ud30c\ub77c\ubbf8\ud130 \ub4f1\uc740 Term Sheet \ud655\uc778 \ud544\uc694\n";
-        c = c.replace(/\[(.+?)\]/g, '<h3>$1</h3>');
-        c = c.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-        c = c.replace(/^- (.+)$/gm, '<li>$1</li>');
-        c = c.replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul>$1</ul>');
-        c = c.replace(/\n\n/g, '</p><p>');
-        c = '<p>' + c + '</p>';
-        c = c.replace(/<p>\s*<\/p>/g, '');
-        c = c.replace(/<p>\s*<h3>/g, '<h3>');
-        c = c.replace(/<\/h3>\s*<\/p>/g, '</h3>');
-        c = c.replace(/<p>\s*<ul>/g, '<ul>');
-        c = c.replace(/<\/ul>\s*<\/p>/g, '</ul>');
-        el.innerHTML = c;
+        let raw = "**Morgan Stanley US Equity Downside Vega Dispersion**\n\n**1. \uc804\ub7b5 \uac1c\uc694**\n\n\ubbf8\uad6d \uc8fc\uc2dd \uc2dc\uc7a5\uc758 \ubca0\uac00 \uc911\ub9bd \ud558\ubc29 \ubd84\uc0b0(Downside Vega Dispersion) \uc804\ub7b5\uc784.\n- \uac1c\ubcc4\uc8fc\uc2dd \ubcc0\ub3d9\uc131 \ub871 vs \uc9c0\uc218 \ubcc0\ub3d9\uc131 \uc20f\n- \uc0c1\uad00\uad00\uacc4 \ud558\ub77d \uc2dc \uc218\uc775 \ucd94\uad6c\n\n\n**2. \ub77c\uc774\ube0c \ud2b8\ub799\ub808\ucf54\ub4dc**\n\n| \ud56d\ubaa9 | \uac12 |\n|------|-----|\n| **\ub77c\uc774\ube0c \uc2dc\uc791\uc77c** | \ud655\uc778 \ud544\uc694 (PDF \uc5c6\uc74c) |\n| **\ud2b8\ub799\ub808\ucf54\ub4dc** | - |\n| **\ub9ac\ubc38\ub7f0\uc2f1** | \ud655\uc778 \ud544\uc694 |\n| **\ubaa9\ud45c \ubcc0\ub3d9\uc131** | \ud655\uc778 \ud544\uc694 |\n\n\n**3. \ub9ac\uc2a4\ud06c \uc694\uc778**\n\n- \uc704\uae30 \uc2dc \uc0c1\uad00\uad00\uacc4 \uae09\ub4f1\uc73c\ub85c \uc190\uc2e4 \uac00\ub2a5\n- \uac1c\ubcc4\uc8fc\uc2dd \uc635\uc158 \uc720\ub3d9\uc131 \ub9ac\uc2a4\ud06c\n- \ud2b9\uc815 \uc885\ubaa9/\uc139\ud130 \uc9d1\uc911 \ub9ac\uc2a4\ud06c\n\n\n\u26a0\ufe0f **PDF \uc5c6\uc74c**: \ud3ec\uc9c0\uc158 \uad6c\uc870, \uc885\ubaa9 \uc120\ud0dd \uae30\uc900, \uad6c\uccb4\uc801 \ud30c\ub77c\ubbf8\ud130 \ub4f1\uc740 Term Sheet \ud655\uc778 \ud544\uc694\n";
+
+        // LaTeX 수식 보호: marked.js가 깨뜨리지 않도록 플레이스홀더로 치환
+        const mathBlocks = [];
+        raw = raw.replace(/\$\$([\s\S]*?)\$\$/g, function(m) {
+            mathBlocks.push(m);
+            return '\x00MATH_' + (mathBlocks.length - 1) + '\x00';
+        });
+        raw = raw.replace(/\$([^\$\n]+?)\$/g, function(m) {
+            mathBlocks.push(m);
+            return '\x00MATH_' + (mathBlocks.length - 1) + '\x00';
+        });
+
+        let html = marked.parse(raw);
+
+        html = html.replace(/\x00MATH_(\d+)\x00/g, function(_, i) {
+            return mathBlocks[parseInt(i)];
+        });
+
+        el.innerHTML = html;
         if (typeof renderMathInElement === 'function') {
             renderMathInElement(el, { delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}], throwOnError: false });
         }
