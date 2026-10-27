@@ -1780,43 +1780,90 @@
     <!-- Header -->
     <div class="report-header">
         <h1>QIS Strategy Comparison Report</h1>
-        <p class="subtitle">55 Strategies Evaluated · 정책 제외 25종 참고 수록 (총 80) | 데이터 기준일 2026-10-23 | 2026-10-27 14:35</p>
+        <p class="subtitle">55 Strategies Evaluated · 정책 제외 25종 참고 수록 (총 80) | 데이터 기준일 2026-10-23 | 2026-10-27 15:12</p>
         <p style="margin-top:10px;">
             <a href="reports.html" style="display:inline-block; padding:6px 16px; background:#667eea; color:#fff; text-decoration:none; border-radius:6px; font-size:13px; font-weight:600;">📋 보고서</a>
         </p>
     </div>
 
-    <!-- Risk Limit Table -->
+    <!-- Risk Limit Table — FY2026 하반기 한도개편 확정본 (리스크팀 검토의견 2026-09-23 수용) -->
     <div class="risk-limit-section">
-        <h3>📋 한도표</h3>
+        <h3>📋 QIS 한도표 <span style="font-size:12px; font-weight:400; color:#6c757d;">FY2026 하반기 개편 · 리스크팀 검토의견 2026-09-23 수용</span></h3>
         <table class="limit-table">
             <thead>
                 <tr>
-                    <th>구분</th>
-                    <th>한도</th>
+                    <th style="width:160px;">구분</th>
+                    <th style="width:200px;">한도</th>
                     <th>비고</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td class="label-col">총 명목금액한도</td>
-                    <td style="text-align:center; font-weight:600;">USD 20,000,000</td>
-                    <td class="note-cell" rowspan="2">
-                        <ul style="margin:0; padding-left:18px; list-style:disc;">
-                            <li>거래건당 액면 USD 5,000,000 제한</li>
-                            <li>거래 건당 레버리지 배수 적용</li>
-                            <li>유동성 인정지수 또는 해당지수를 기초자산으로 직접 산출, 연계된 지수를 기초 전략으로 함</li>
-                            <li>리스크검토로 승인된 전략 상품 매수에 한함</li>
-                            <li>손절매 이후 재진입까지 별도의 리스크 검토 필요</li>
-                        </ul>
-                    </td>
+                    <td class="label-col">총 명목금액</td>
+                    <td style="text-align:center; font-weight:600;">USD 2,000만</td>
+                    <td class="note-cell">변동 없음</td>
                 </tr>
                 <tr>
-                    <td class="label-col">손절매 한도</td>
-                    <td style="text-align:center; font-weight:600; color:#e74c3c;">-20%</td>
+                    <td class="label-col">적격전략당 한도</td>
+                    <td style="text-align:center; font-weight:600;">USD 500만</td>
+                    <td class="note-cell">동일 전략의 분할 거래는 합산하여 적용. 레버리지 배수 반영 기준은 현행 유지</td>
+                </tr>
+                <tr>
+                    <td class="label-col">진입 절차</td>
+                    <td style="text-align:center; font-weight:600;">체크리스트 충족 시 자율진입</td>
+                    <td class="note-cell">건별 리스크검토 승인에서 변경. 품의서 결재(임원 전결)는 유지하며, 리스크검토 의뢰 대신 품의서에 거래 개요·첨부 3종(Termsheet, 전략 지수 설명서, Historical Data)·체크리스트를 기재. 거래가능 기초자산 범위 밖 자산과 비정형 구조는 자율진입 제외, 개별 리스크검토</td>
+                </tr>
+                <tr>
+                    <td class="label-col">기초지수 요건</td>
+                    <td style="text-align:center; font-weight:600;">삭제</td>
+                    <td class="note-cell">유동성 인정지수 요건을 상시 확인 가능한 전략 단위 요건(아래 체크리스트)으로 대체</td>
+                </tr>
+                <tr>
+                    <td class="label-col">북 손실한도</td>
+                    <td style="text-align:center; font-weight:600; color:#e74c3c;">20억원</td>
+                    <td class="note-cell">전략별 △20% 손절에서 변경. 북 누적손실 20억원 도달 시 신규 진입 중단 및 포지션 순차 청산 (총 명목 약 300억원의 6~7%)</td>
                 </tr>
             </tbody>
         </table>
+
+        <div style="font-size:14px; font-weight:600; color:#2c3e50; margin:18px 0 8px;">자율진입 체크리스트 <span style="font-size:12px; font-weight:400; color:#6c757d;">하나라도 미충족 시 자율진입 불가, 개별 리스크검토 대상</span></div>
+        <table class="limit-table">
+            <thead>
+                <tr>
+                    <th style="width:160px;">항목</th>
+                    <th>내용</th>
+                    <th style="width:260px;">진입 제한 대상</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="label-col">환금성</td>
+                    <td class="note-cell">Termsheet상 중도 환매가 요청일로부터 3일 이내 가능</td>
+                    <td class="note-cell">청산 경로가 확보되지 않은 전략</td>
+                </tr>
+                <tr>
+                    <td class="label-col">실운용기간</td>
+                    <td class="note-cell">실 운용 개시일(전략지수 출시, Bloomberg 조회 가능 시점) 이후 3년 이상의 Track Record. 백테스트와 Bloomberg 소급 입력 데이터는 제외</td>
+                    <td class="note-cell">백테스트만 존재하는 전략</td>
+                </tr>
+                <tr>
+                    <td class="label-col">월간수익률</td>
+                    <td class="note-cell">실운용기간 중 월 최대 하락폭 20% 이내</td>
+                    <td class="note-cell">변동성이 과도한 전략</td>
+                </tr>
+                <tr>
+                    <td class="label-col">손익구조</td>
+                    <td class="note-cell">옵션·VIX 선물 매도 등 주가 하락 및 변동성 상승 시 손실이 확대되는 포지션이 없고, 레버리지를 적용해도 손실이 명목 액면 이내로 제한</td>
+                    <td class="note-cell">손실 규모가 한정되지 않는 구조</td>
+                </tr>
+                <tr>
+                    <td class="label-col">진입규모</td>
+                    <td class="note-cell">레버리지 적용 후 액면 USD 500만 이하 (동일 전략 기존 포지션 합산 기준)</td>
+                    <td class="note-cell">특정 전략에 대한 집중</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size:11px; color:#6c757d; margin:10px 0 0;">출처: 2026 하반기 한도개편 리스크팀 검토의견(2026-09-23) 4. QIS 관리기준 변경 ①·② 의견 수용, 별첨 2. 체크리스트 상세</p>
     </div>
 
     <!-- Summary Cards -->
@@ -418749,7 +418796,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>Generated by QIS Fund Manager | 2026-10-27 14:35:08</p>
+        <p>Generated by QIS Fund Manager | 2026-10-27 15:12:49</p>
     </footer>
 
     <!-- Price Chart Initialization -->
